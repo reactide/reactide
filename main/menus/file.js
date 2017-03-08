@@ -14,7 +14,7 @@ const template = [
         click: () => {
           const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
           if (rootDir) {
-            BrowserWindow.getFocusedWindow().webContents.send('openDir', rootDir);
+            BrowserWindow.getFocusedWindow().webContents.send('openDir', rootDir[0]);
           }
         }
       },
@@ -35,6 +35,7 @@ const template = [
           if (file) {
             deleteDirectory('./lib/temp/new-project');
             copy(file[0], './lib/temp/');
+            BrowserWindow.getFocusedWindow().webContents.send('openDir', file[0])
           }
         }
       }
