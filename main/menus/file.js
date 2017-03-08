@@ -1,7 +1,7 @@
 const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
-const copy = require('../../lib/copy-dir-recurs');
-const deleteDirectory = require('../../lib/delete-recurs');
-
+const copy = require('../../lib/copy-directory');
+const deleteDirectory = require('../../lib/delete-directory');
+const mainWindow = require('../main.js');
 const template = [
   {
     label: 'Main',
@@ -13,22 +13,29 @@ const template = [
         label: 'Open',
         click: () => {
           const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
-          BrowserWindow.getFocusedWindow().webContents.send('openDir', rootDir);
+          if (rootDir) {
+            BrowserWindow.getFocusedWindow().webContents.send('openDir', rootDir);
+          }
         }
       },
       {
         label: 'Save',
         click: () => {
           const save = dialog.showSaveDialog();
-          
+          if (save) {
+            copy('./lib/temp/new-project', save[0]);
+          }
         }
       },
       {
         label: 'New Project',
         click: () => {
+          //warn user of unsaved changes before below
           const file = dialog.showOpenDialog({ properties: ['openDirectory'] });
-          deleteDirectory('./lib/temp/new-project');
-          copy(file[0], './lib/temp/');
+          if (file) {
+            deleteDirectory('./lib/temp/new-project');
+            copy(file[0], './lib/temp/');
+          }
         }
       }
     ],
