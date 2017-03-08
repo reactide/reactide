@@ -15,7 +15,8 @@ app.on('ready', () => {
   Menu.setApplicationMenu(menu);
   globalShortcut.register('CommandOrControl+Alt+I', () => {
     win.toggleDevTools();
-  })
+  });
+  module.exports = win;
 });
 
 ipcMain.on('hello', (event, arg)=> {
