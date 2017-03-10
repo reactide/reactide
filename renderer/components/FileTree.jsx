@@ -1,35 +1,51 @@
 import React from 'react';
+import File from './File.jsx';
+import Directory from './Directory.jsx';
 const fs = require('fs');
 const path = require('path');
 const {remote, ipcRenderer, dialog} = require('electron');
 const fileTree = require('../../lib/file-tree-sync');
 
+
 export default class FileTree extends React.Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      fileTree: null
+    }
     this.fileTreeInit();
   }
 
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPathArr) => {
-      //dirPath is an array with the absolute path to the opened directory
-      let now = Date.now();
-      this.setFileTree(dirPathArr[0]);
-      let watch = fs.watch(dirPathArr[0], {recursive: true}, (eventType, fileName) => {
-        this.setFileTree(dirPathArr[0]);
+      this.setFileTree(dirPathArr);
+      let watch = fs.watch(dirPathArr, { recursive: true }, (eventType, fileName) => {
+        this.setFileTree(dirPathArr);
       });
     });
   }
 
   setFileTree(path) {
     const projFileTree = fileTree(path);
-    console.log(JSON.stringify(projFileTree, null, this.state.num));
+    this.setState({
+      fileTree: projFileTree
+    })
   }
+
   render() {
-    return (
-      <div>
-        <h1>File Tree</h1>
-      </div>
-    )
+    if (this.state.fileTree) {
+      return (
+        <div>
+          <h1>File Tree</h1>
+          <Directory directory={this.state.fileTree} />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>File Tree</h1>
+        </div>
+      )
+    }
   }
 }

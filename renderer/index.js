@@ -8,7 +8,7 @@ import App from './components/App.jsx';
 const store = createStore(reducer);
 
 render(
-  <Provider store={store}>
+  // <Provider store={store}>
     <App />
-  </Provider>
+  // </Provider>
 , document.getElementById('root'));
