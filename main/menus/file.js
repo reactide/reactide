@@ -31,12 +31,12 @@ const template = [
         label: 'New Project',
         click: () => {
           //warn user of unsaved changes before below
-          const file = dialog.showOpenDialog({ properties: ['openDirectory'] });
-          if (file) {
+          // const file = dialog.showOpenDialog({ properties: ['openDirectory'] });
+          // if (file) {
             deleteDirectory('./lib/temp/new-project');
             copy(file[0], './lib/temp/');
             BrowserWindow.getFocusedWindow().webContents.send('openDir', file[0])
-          }
+          // }
         }
       }
     ],
