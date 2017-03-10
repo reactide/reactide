@@ -27,21 +27,9 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",
-    "browserify": "^14.1.0",
-    "cross-env": "^3.2.3",
-    "del": "^2.2.2",
     "electron-hot-loader": "^0.8.0",
     "electron-packager": "^8.5.2",
     "electron-reload": "^1.1.0",
-    "envify": "^4.0.0",
-    "gulp": "^3.9.1",
-    "gulp-uglify": "^2.1.0",
-    "gulp-util": "^3.0.8",
-    "npm-run-all": "^4.0.2",
-    "reactify": "^1.1.1",
-    "uglify-js": "^2.8.10",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.2.1"
   }
 }
