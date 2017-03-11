@@ -17,12 +17,16 @@ export default class FileTree extends React.Component {
   }
 
   fileTreeInit() {
-    ipcRenderer.on('openDir', (event, dirPathArr) => {
-      this.setFileTree(dirPathArr);
-      let watch = fs.watch(dirPathArr, { recursive: true }, (eventType, fileName) => {
-        this.setFileTree(dirPathArr);
+    ipcRenderer.on('openDir', (event, dirPath) => {
+      this.setFileTree(dirPath);
+      console.log(dirPath);
+      let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
+        this.setFileTree(dirPath);
       });
     });
+  }
+  openSim() {
+    ipcRenderer.send('openSimulator')
   }
 
   setFileTree(path) {
@@ -36,14 +40,16 @@ export default class FileTree extends React.Component {
     if (this.state.fileTree) {
       return (
         <div>
-          <h1>File Tree</h1>
-          <Directory directory={this.state.fileTree} />
+          <h1>File Trees</h1>
+          <button onClick={this.openSim}>Simulator</button>
+          <ul><Directory directory={this.state.fileTree} /></ul>
         </div>
       )
     } else {
       return (
         <div>
           <h1>File Tree</h1>
+          <button onClick={this.openSim}>Simulator</button>
         </div>
       )
     }

@@ -4,7 +4,7 @@ const url = require('url');
 const path = require('path');
 const template = require('./menus/file');
 const {spawn, exec} = require('child_process');
-require('electron-reload')(path.join(__dirname, '../'));
+// require('electron-reload')(path.join(__dirname, '../'));
 
 app.on('ready', () => {
   let win = new BrowserWindow({
@@ -17,11 +17,10 @@ app.on('ready', () => {
   globalShortcut.register('CommandOrControl+Alt+I', () => {
     win.toggleDevTools();
   });
-  // let spawnOfHell = spawn('ls', {
-  //   cwd:path.join(__dirname, '../lib/temp/new-project'),
-  //   shell:true,
-  // });
-  let spawnOfHeaven = exec('NODE_ENV="production"', {
+  
+});
+function simulator() {
+  let spawnOfHeaven = exec('webpack', {
     cwd: path.join(__dirname, '../lib/temp/new-project')
   }, (err, stdout, stderr) => {
     console.log('err:', err);
@@ -32,15 +31,12 @@ app.on('ready', () => {
       height: 600
     });
     child.loadURL('file://' + path.join(__dirname, '../lib/temp/new-project/client/public/index.html'));
+    child.toggleDevTools();
   })
-  // console.log(spawnOfHell);
-  // module.exports = win;
-});
+}
 
-ipcMain.on('hello', (event, arg) => {
-  console.log(arg);
-  event.sender.send('reply', 'hello');
-  event.returnValue = 'HI';
+ipcMain.on('openSimulator', (event, arg) => {
+  simulator();
 })
 
 
