@@ -16,7 +16,6 @@ app.on('ready', () => {
   globalShortcut.register('CommandOrControl+Alt+I', () => {
     win.toggleDevTools();
   });
-  win.webContents.send('dirname', __dirname);
   
 });
 function simulator() {
