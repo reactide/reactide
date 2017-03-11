@@ -1,8 +1,10 @@
 const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
+const electron = require('electron'); console.log(electron);
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const mainWindow = require('../main.js');
+console.log(global.editor);
 const template = [
   {
     label: 'Main',
