@@ -19,9 +19,9 @@ export default class TabContainer extends React.Component {
       tabs.push(<Tab name={this.state.tabs[i]} />);
     }
     return (
-      <div className="tab-container">
+      <ul className="list-inline tab-bar inset-panel">
         {tabs}
-      </div>
+      </ul>
     )
   }
 }

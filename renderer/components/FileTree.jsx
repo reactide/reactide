@@ -24,9 +24,6 @@ export default class FileTree extends React.Component {
       });
     });
   }
-  openSim() {
-    ipcRenderer.send('openSimulator')
-  }
 
   setFileTree(path) {
     const projFileTree = fileTree(path);
@@ -38,17 +35,20 @@ export default class FileTree extends React.Component {
   render() {
     if (this.state.fileTree) {
       return (
-        <div className="file-tree">
-          <h1>File Trees</h1>
-          <button onClick={this.openSim}>Simulator</button>
-          <ul><Directory directory={this.state.fileTree} /></ul>
+        <div className="tree-view-resizer tool-panel">
+          <div className="tree-view-scroller">
+            <ul className="tree-view full-menu list-tree has-collapsable-children">
+              <Directory directory={this.state.fileTree} />
+            </ul>
+          </div>
+          <div className="tree-view-resize-handle"></div>
         </div>
       )
     } else {
       return (
-        <div className="file-tree">
-          <h1>File Tree</h1>
-          <button onClick={this.openSim}>Simulator</button>
+        <div className="tree-view-resizer tool-panel">
+          <em>No project loaded</em>
+          <div className="tree-view-resize-handle"></div>
         </div>
       )
     }
