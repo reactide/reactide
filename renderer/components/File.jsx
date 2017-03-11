@@ -2,8 +2,8 @@ import React from 'react';
 
 const File = ({file}) => {
   return (
-    <li>
-      {file.name}
+    <li className="list-item">
+      <span className="icon icon-file-text">{file.name}</span>
     </li>
   )
 }
