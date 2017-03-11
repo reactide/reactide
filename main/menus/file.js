@@ -1,4 +1,5 @@
 const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
+const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const mainWindow = require('../main.js');
@@ -34,8 +35,11 @@ const template = [
           // const file = dialog.showOpenDialog({ properties: ['openDirectory'] });
           // if (file) {
             deleteDirectory('./lib/temp/new-project');
-            copy(file[0], './lib/temp/');
-            BrowserWindow.getFocusedWindow().webContents.send('openDir', file[0])
+            console.log('DELETED');
+            copy('./lib/new-project-template/new-project', './lib/temp/');
+            console.log('COPIED');
+            BrowserWindow.getFocusedWindow().webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
+            console.log(path.join(__dirname, '../../lib/temp/new-project'));
           // }
         }
       }
