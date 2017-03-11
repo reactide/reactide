@@ -8,6 +8,10 @@ module.exports = {
         publicPath: ''
     },
 	target:'electron',
+	node: {
+		__dirname: false,
+		__filename: false
+	},
     module: {
 		loaders: [
 			{
