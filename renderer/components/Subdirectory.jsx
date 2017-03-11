@@ -25,16 +25,32 @@ export default class Subdirectory extends React.Component {
     }
     if (this.state.clicked) {
       return (
-        <div>
-          <li onClick={this.click}>{this.props.directory.name}</li>
-          <ul>{arr}</ul>
-        </div>
+        <li className="list-nested-item">
+          <div
+            className="list-item"
+            onClick={this.click}
+          >
+            <span className="icon icon-file-directory">
+              {this.props.directory.name}
+            </span>
+          </div>
+          <ul className="list-tree">
+            {arr}
+          </ul>
+        </li>
       )
     } else {
       return (
-        <div>
-          <li onClick={this.click}>{this.props.directory.name}</li>
-        </div>
+        <li
+          className="list-nested-item collapsed"
+          onClick={this.click}
+        >
+          <div className="list-item">
+            <span className="icon icon-file-directory">
+              {this.props.directory.name}
+            </span>
+          </div>
+        </li>
       )
     }
   }
