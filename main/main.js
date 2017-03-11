@@ -5,7 +5,6 @@ const path = require('path');
 const template = require('./menus/file');
 const {spawn, exec} = require('child_process');
 // require('electron-reload')(path.join(__dirname, '../'));
-
 app.on('ready', () => {
   let win = new BrowserWindow({
     width: 1000,
@@ -17,6 +16,7 @@ app.on('ready', () => {
   globalShortcut.register('CommandOrControl+Alt+I', () => {
     win.toggleDevTools();
   });
+  win.webContents.send('dirname', __dirname);
   
 });
 function simulator() {
