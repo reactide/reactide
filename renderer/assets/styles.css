@@ -1,0 +1,26 @@
+.file-tree {
+  float:left;
+  width:300px;
+  height:100%;
+  overflow:auto;
+  border:1px solid black;
+}
+.text-editor {
+  float:left;
+  width:600px;
+  height:100%;
+  overflow:auto;
+  border: 1px solid black;
+}
+
+.tab {
+  height:50px;
+  padding:5px;
+  border: 1px solid black;
+  float:left;
+}
+.tab-container {
+  height: 50px;
+  width:100%;
+  overflow:auto;
+}

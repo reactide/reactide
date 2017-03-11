@@ -3,5 +3,3 @@ dist
 .DS_Store
 yarn-error.log
 yarn.lock
-gulpfile.js
-hot.js

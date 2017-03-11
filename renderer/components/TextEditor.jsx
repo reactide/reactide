@@ -1,21 +1,17 @@
 import React from 'react';
-import CodeMirror from 'codemirror';
+import TabContainer from './TabContainer.jsx';
 
 export default class TextEditor extends React.Component {
   constructor() {
     super();
-    
-  }
-  componentDidMount() {
-    const elem = document.getElementsByTagName('textarea')[0];
-    let codeMirror = new CodeMirror.fromTextArea(elem, { mode: 'javascript' });
+
   }
 
   render() {
     return (
-      <div>
-        <h1> HELLO WORLD </h1>
-        <textarea style={{ height: '500px', width: '500px', backgroundColor: 'grey' }} ></textarea>
+      <div className="text-editor">
+        <TabContainer />
+        <div className="editor-container" id="editor-container"style={{ height:'100%', width:'100%', backgroundColor: 'grey' }} ></div>
       </div>
     )
   }
