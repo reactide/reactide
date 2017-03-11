@@ -19,7 +19,6 @@ export default class FileTree extends React.Component {
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
       this.setFileTree(dirPath);
-      console.log(dirPath);
       let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
         this.setFileTree(dirPath);
       });
@@ -39,7 +38,7 @@ export default class FileTree extends React.Component {
   render() {
     if (this.state.fileTree) {
       return (
-        <div>
+        <div className="file-tree">
           <h1>File Trees</h1>
           <button onClick={this.openSim}>Simulator</button>
           <ul><Directory directory={this.state.fileTree} /></ul>
@@ -47,7 +46,7 @@ export default class FileTree extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className="file-tree">
           <h1>File Tree</h1>
           <button onClick={this.openSim}>Simulator</button>
         </div>
