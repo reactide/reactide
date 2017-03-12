@@ -38,7 +38,7 @@ export default class FileTree extends React.Component {
         <div className="tree-view-resizer tool-panel">
           <div className="tree-view-scroller">
             <ul className="tree-view full-menu list-tree has-collapsable-children">
-              <Directory directory={this.state.fileTree} />
+              <Directory directory={this.state.fileTree} openFile={this.props.openFile}/>
             </ul>
           </div>
           <div className="tree-view-resize-handle"></div>

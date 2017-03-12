@@ -4,19 +4,12 @@ import Tab from './Tab.jsx';
 export default class TabContainer extends React.Component {
   constructor() {
     super();
-    this.state = {
-      tabs: [
-        'some.js',
-        'another.js',
-        'dude.js'
-      ]
-    }
   }
 
   render() {
     const tabs = [];
-    for (var i = 0; i < this.state.tabs.length; i++) {
-      tabs.push(<Tab name={this.state.tabs[i]} />);
+    for (var i = 0; i < this.props.appState.openTabs.length; i++) {
+      tabs.push(<Tab name={this.props.appState.openTabs[i].name} setActiveTab={this.props.setActiveTab} id={this.props.appState.openTabs[i].id}/>);
     }
     return (
       <ul className="list-inline tab-bar inset-panel">
