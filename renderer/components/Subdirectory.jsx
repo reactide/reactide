@@ -21,7 +21,7 @@ export default class Subdirectory extends React.Component {
       arr.push(<Directory directory={this.props.directory.subdirectories[i]} />)
     }
     for (var i = 0; i < this.props.directory.files.length; i++) {
-      arr.push(<File file={this.props.directory.files[i]}/>)
+      arr.push(<File file={this.props.directory.files[i]} openFile={this.props.openFile}/>)
     }
     if (this.state.clicked) {
       return (
