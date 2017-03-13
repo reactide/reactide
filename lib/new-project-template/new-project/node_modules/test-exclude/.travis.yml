@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+
+os:
+  - linux
+
+node_js:
+  - "0.12"
+  - "4"
+  - "stable"
+
+after_success: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
