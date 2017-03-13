@@ -1,15 +1,50 @@
 import React from 'react';
-import TextEditor from './TextEditor.jsx'
 import FileTree from './FileTree.jsx'
-
+import TextEditorPane from './TextEditorPane.jsx';
+import TextEditor from './TextEditor.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
 
 
 export default class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      openTabs: [],
+      activeTab: null
+    }
+    this.openFile = this.openFile.bind(this);
+    this.setActiveTab = this.setActiveTab.bind(this);
+    this.checkIfAlreadyOpened = this.checkIfAlreadyOpened.bind(this);
+    ipcRenderer.on('openDir', (err, arg) => {
+      this.setState({openTabs: [], activeTab:null});
+    })
   }
-
+  setActiveTab(id) {
+    this.setState({ activeTab: id });
+  }
+  openFile(file) {
+    let id = this.checkIfAlreadyOpened(file);
+    if (id === -1) {
+      const openTabs = this.state.openTabs;
+      id = openTabs.length;
+      openTabs.push({
+        path: file.path,
+        id,
+        name: file.name,
+        modified: false
+      });
+      this.setState({ openTabs, activeTab: id });
+    } else {
+      this.setState({activeTab: id});
+    }
+  }
+  checkIfAlreadyOpened(file) {
+    for (var i = 0; i < this.state.openTabs.length; i++) {
+      if (this.state.openTabs[i].path === file.path) {
+        return i;
+      }
+    } return -1;
+  }
   openSim() {
     ipcRenderer.send('openSimulator')
   }
@@ -24,12 +59,12 @@ export default class App extends React.Component {
           <ride-pane-axis className="horizontal">
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '200px' }}>
-              <FileTree />
+              <FileTree openFile={this.openFile} />
             </ride-pane>
 
-            <ride-pane>
-              <TextEditor />
-            </ride-pane>
+
+            <TextEditorPane appState={this.state} setActiveTab={this.setActiveTab} />
+
 
             <ride-pane-resize-handle className="horizontal"></ride-pane-resize-handle>
 
