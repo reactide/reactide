@@ -1,5 +1,5 @@
 {
-  "name": "my-electron-ex",
+  "name": "reactide",
   "version": "1.0.0",
   "description": "",
   "main": "./main/main.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
   },
-  "author": "",
+  "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
   "dependencies": {
     "electron": "^1.6.1",
