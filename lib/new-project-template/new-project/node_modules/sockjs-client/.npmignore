@@ -1,0 +1,11 @@
+tests/
+dist/
+build/
+.travis.yml
+.zuul.yml
+.eslintrc
+.jscsrc
+.jshintrc
+bower.json
+gulpfile.js
+Makefile
