@@ -1,0 +1,3856 @@
+{
+  "alert": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "alert"
+      }
+    }]
+  },
+  "alertdialog": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "alert"
+      }
+    }]
+  },
+  "application": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [{
+      "concept": {
+        "name": "Device Independence Delivery Unit"
+      }
+    }],
+    "relatedConcepts": []
+  },
+  "article": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "article"
+      }
+    }]
+  },
+  "banner": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "button": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-pressed",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "childrenPresentational": true,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "button"
+      }
+    }],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "link"
+      }
+    }, {
+      "module": "XForms",
+      "concept": {
+        "name": "trigger"
+      }
+    }]
+  },
+  "cell": {
+    "requiredProps": [],
+    "props": [
+      "aria-colindex",
+      "aria-colspan",
+      "aria-rowindex",
+      "aria-rowspan",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-roledescription"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "td"
+      }
+    }],
+    "relatedConcepts": []
+  },
+  "checkbox": {
+    "requiredProps": [
+      "aria-checked"
+    ],
+    "props": [
+      "aria-checked",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "childrenPresentational": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "option"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "input",
+        "attributes": [{
+          "name": "type",
+          "value": "checkbox"
+        }]
+      }
+    }]
+  },
+  "columnheader": {
+    "requiredProps": [],
+    "props": [
+      "aria-sort",
+      "aria-readonly",
+      "aria-required",
+      "aria-selected",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "interactive": true,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "th",
+        "attributes": [{
+          "name": "scope",
+          "value": "col"
+        }]
+      }
+    }],
+    "relatedConcepts": []
+  },
+  "combobox": {
+    "requiredProps": [
+      "aria-expanded"
+    ],
+    "props": [
+      "aria-expanded",
+      "aria-autocomplete",
+      "aria-required",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "select"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "select"
+      }
+    }]
+  },
+  "command": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "menuitem"
+      }
+    }]
+  },
+  "complementary": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "composite": {
+    "props": [
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "contentinfo": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "definition": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "dd"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "dfn"
+      }
+    }]
+  },
+  "dialog": {
+    "requiredProps": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "directory": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "DAISY Guide"
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "doc-abstract": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-acknowledgments": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-afterword": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-appendix": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-backlink": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-biblioentry": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-level",
+      "aria-live",
+      "aria-owns",
+      "aria-posinset",
+      "aria-relevant",
+      "aria-setsize"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-bibliography": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-biblioref": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-chapter": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-colophon": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-conclusion": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-cover": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-credit": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-credits": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-dedication": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-endnote": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-level",
+      "aria-live",
+      "aria-owns",
+      "aria-posinset",
+      "aria-relevant",
+      "aria-setsize"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-endnotes": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-epigraph": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-epilogue": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-errata": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-example": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-footnote": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-foreword": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-glossary": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-glossref": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-index": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-introduction": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-noteref": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-notice": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-pagebreak": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-orientation",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-pagelist": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-part": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-preface": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-prologue": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-pullquote": {
+    "props": [],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-qna": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-subtitle": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-tip": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "doc-toc": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedat",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "document": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "concept": {
+        "name": "Device Independence Delivery Unit"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "feed": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-roledescription"
+    ],
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "figure": {
+    "abstract": false,
+    "interactive": false,
+    "childrenPresentational": false,
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-roledescription"
+    ],
+    "requiredProps": [],
+    "baseConcepts": [],
+    "relatedConcepts":[{
+      "module": "HTML",
+      "concept": {
+        "name": "figure"
+      }
+    }]
+  },
+  "form": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "form"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "grid": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "table"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-level",
+      "aria-multiselectable",
+      "aria-readonly",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded"
+    ],
+    "childrenPresentational": false
+  },
+  "gridcell": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "td"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-readonly",
+      "aria-required",
+      "aria-selected",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "group": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "fieldset"
+      }
+    }],
+    "props": [
+      "aria-activedescendant",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "heading": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "h1"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "h2"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "h3"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "h4"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "h5"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "h6"
+      }
+    }],
+    "props": [
+      "aria-level",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "img": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "img"
+      }
+    }, {
+      "module": "DTB",
+      "concept": {
+        "name": "imggroup"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "input": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "input"
+      }
+    }]
+  },
+  "landmark": {
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "link": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "a"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "link"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "list": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "ol"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "ul"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "listbox": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "list"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "select"
+      }
+    }, {
+      "module": "XForms",
+      "concept": {
+        "name": "select"
+      }
+    }],
+    "props": [
+      "aria-multiselectable",
+      "aria-required",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-activedescendant"
+    ],
+    "childrenPresentational": false
+  },
+  "listitem": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "li"
+      }
+    }],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "item"
+      }
+    }],
+    "props": [
+      "aria-level",
+      "aria-posinset",
+      "aria-setsize",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "log": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "main": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "marquee": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "math": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "menu": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "list"
+      }
+    }, {
+      "module": "DTB",
+      "concept": {
+        "name": "sidebar"
+      }
+    }, {
+      "module": "XForms",
+      "concept": {
+        "name": "select"
+      }
+    }, {
+      "module": "JAPI",
+      "concept": {
+        "name": "MENU"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-activedescendant"
+    ],
+    "childrenPresentational": false
+  },
+  "menubar": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "toolbar"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-activedescendant"
+    ],
+    "childrenPresentational": false
+  },
+  "menuitem": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "option"
+      }
+    }, {
+      "module": "ARIA",
+      "concept": {
+        "name": "listitem"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "menuitem"
+      }
+    }, {
+      "module": "JAPI",
+      "concept": {
+        "name": "MENU_ITEM"
+      }
+    }],
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "menuitemcheckbox": {
+    "requiredProps": [
+      "aria-checked"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "menuitem"
+      }
+    }],
+    "props": [
+      "aria-checked",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "menuitemradio": {
+    "requiredProps": [
+      "aria-checked"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "menuitem"
+      }
+    }],
+    "props": [
+      "aria-checked",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-posinset",
+      "aria-selected",
+      "aria-setsize"
+    ],
+    "childrenPresentational": true
+  },
+  "navigation": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "nav"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "note": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "option": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "option"
+      }
+    }],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "listitem"
+      }
+    }, {
+      "module": "XForms",
+      "concept": {
+        "name": "item"
+      }
+    }],
+    "props": [
+      "aria-checked",
+      "aria-posinset",
+      "aria-selected",
+      "aria-setsize",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "presentation": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "progressbar": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "status"
+      }
+    }],
+    "props": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-valuetext",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "radio": {
+    "requiredProps": [
+      "aria-checked"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "input",
+        "attributes": [{
+          "name": "type",
+          "value": "radio"
+        }]
+      }
+    }],
+    "props": [
+      "aria-checked",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-posinset",
+      "aria-selected",
+      "aria-setsize"
+    ],
+    "childrenPresentational": true
+  },
+  "radiogroup": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "list"
+      }
+    }],
+    "props": [
+      "aria-required",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded"
+    ],
+    "childrenPresentational": false
+  },
+  "range": {
+    "props": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-valuetext",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "region": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "frame"
+      }
+    }, {
+      "concept": {
+        "name": "Device Independence Glossart perceivable unit"
+      }
+    }, {
+      "module": "ARIA",
+      "concept": {
+        "name": "section"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "roletype": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XHTML",
+      "concept": {
+        "name": "role"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "rel"
+      }
+    }, {
+      "module": "Dublin Core",
+      "concept": {
+        "name": "type"
+      }
+    }]
+  },
+  "row": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "tr"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-level",
+      "aria-selected",
+      "aria-activedescendant",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "rowgroup": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "tbody"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "tfoot"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "thead"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-activedescendant",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "rowheader": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "th",
+        "attributes": [{
+          "name": "scope",
+          "value": "row"
+        }]
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-sort",
+      "aria-readonly",
+      "aria-required",
+      "aria-selected",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "search": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "searchbox": {
+    "props": [
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-autocomplete",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-multiline",
+      "aria-owns",
+      "aria-placeholder",
+      "aria-readonly",
+      "aria-relevant",
+      "aria-required",
+      "aria-roledescription"
+    ],
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "childrenPresentational": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "input",
+        "attributes": [{
+          "name": "type",
+          "value": "search"
+        }]
+      }
+    }],
+    "relatedConcepts": []
+  },
+  "section": {
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "DTB",
+      "concept": {
+        "name": "frontmatter"
+      }
+    }, {
+      "module": "DTB",
+      "concept": {
+        "name": "level"
+      }
+    }, {
+      "module": "SMIL",
+      "concept": {
+        "name": "level"
+      }
+    }]
+  },
+  "sectionhead": {
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "select": {
+    "props": [
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "separator": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "hr"
+      }
+    }],
+    "props": [
+      "aria-expanded",
+      "aria-orientation",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "scrollbar": {
+    "requiredProps": [
+      "ARIA-CONTROLS",
+      "aria-orientation",
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow"
+    ],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-controls",
+      "aria-orientation",
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-atomic",
+      "aria-busy",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-valuetext"
+    ],
+    "childrenPresentational": true
+  },
+  "slider": {
+    "requiredProps": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-orientation",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-valuetext"
+    ],
+    "childrenPresentational": true
+  },
+  "spinbutton": {
+    "requiredProps": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-required",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-valuetext"
+    ],
+    "childrenPresentational": false
+  },
+  "status": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "structure": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "switch": {
+    "requiredProps": [
+      "aria-checked"
+    ],
+    "props": [
+      "aria-checked",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "abstract": false,
+    "interactive": true,
+    "childrenPresentational": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "button"
+      }
+    }]
+  },
+  "tab": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-selected",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": true
+  },
+  "table": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "table"
+      }
+    }],
+    "relatedConcepts": [],
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-roledescription"
+    ],
+    "childrenPresentational": false
+  },
+  "tablist": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "DAISY",
+      "concept": {
+        "name": "guide"
+      }
+    }],
+    "props": [
+      "aria-level",
+      "aria-multiselectable",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded"
+    ],
+    "childrenPresentational": false
+  },
+  "tabpanel": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "term": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "HTML",
+      "concept": {
+        "name": "dt"
+      }
+    }],
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-roledescription"
+    ],
+    "childrenPresentational": false
+  },
+  "textbox": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "XForms",
+      "concept": {
+        "name": "input"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "textarea"
+      }
+    }, {
+      "module": "HTML",
+      "concept": {
+        "name": "input",
+        "attributes": [{
+          "name": "type",
+          "value": "text"
+        }]
+      }
+    }],
+    "props": [
+      "aria-activedescendant",
+      "aria-autocomplete",
+      "aria-multiline",
+      "aria-readonly",
+      "aria-required",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "timer": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "toolbar": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [{
+      "module": "ARIA",
+      "concept": {
+        "name": "menubar"
+      }
+    }],
+    "props": [
+      "aria-activedescendant",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "tooltip": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "childrenPresentational": false
+  },
+  "tree": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-multiselectable",
+      "aria-required",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded"
+    ],
+    "childrenPresentational": false
+  },
+  "treegrid": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-level",
+      "aria-multiselectable",
+      "aria-readonly",
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-expanded",
+      "aria-required"
+    ],
+    "childrenPresentational": false
+  },
+  "treeitem": {
+    "requiredProps": [],
+    "abstract": false,
+    "interactive": true,
+    "baseConcepts": [],
+    "relatedConcepts": [],
+    "props": [
+      "aria-level",
+      "aria-posinset",
+      "aria-setsize",
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant",
+      "aria-checked",
+      "aria-selected"
+    ],
+    "childrenPresentational": false
+  },
+  "widget": {
+    "props": [
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "childrenPresentational": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  },
+  "window": {
+    "props": [
+      "aria-expanded",
+      "aria-atomic",
+      "aria-busy",
+      "aria-controls",
+      "aria-describedby",
+      "aria-disabled",
+      "aria-dropeffect",
+      "aria-flowto",
+      "aria-grabbed",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-label",
+      "aria-labelledby",
+      "aria-live",
+      "aria-owns",
+      "aria-relevant"
+    ],
+    "requiredProps": [],
+    "abstract": true,
+    "interactive": false,
+    "baseConcepts": [],
+    "relatedConcepts": []
+  }
+}
