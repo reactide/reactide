@@ -3,6 +3,7 @@ import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
+const fs = require('fs');
 
 
 export default class App extends React.Component {
@@ -10,26 +11,34 @@ export default class App extends React.Component {
     super();
     this.state = {
       openTabs: [],
-      activeTab: null
+      activeTab: null,
+      editorInstances: []
     }
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
     this.checkIfAlreadyOpened = this.checkIfAlreadyOpened.bind(this);
-    this.saveFile = this.saveFile.bind(this);
+    this.saveTab = this.saveTab.bind(this);
+    this.addEditorInstance = this.addEditorInstance.bind(this);
 
+    //reset tabs, should save tabs before doing this though
     ipcRenderer.on('openDir', (err, arg) => {
-      this.setState({openTabs: [], activeTab:null});
+      this.setState({ openTabs: [], activeTab: null });
     });
-    // ipcRenderer.on('saveFile', (err, arg) => {
-    //   if (this.state.activeTab) {
-    //     this.saveFile(this.state.openTabs[activeTab].path);
-    //   }
-    // })
+    ipcRenderer.on('saveFile', (err, arg) => {
+      if (this.state.activeTab) {
+        this.saveTab(this.state.activeTab);
+      }
+    })
   }
-  saveFile(filePath) {
-    if (index) {
-      this.state.openTabs[index].path
-    }
+  addEditorInstance(editor) {
+    const temp = this.state.editorInstances;
+    temp.push(editor);
+    this.setState({
+      editorInstances: temp
+    });
+  }
+  saveTab(tabIndex) {
+    fs.writeFileSync(this.state.openTabs[tabIndex].path, this.state.editorInstances[tabIndex].getValue(), { encoding: 'utf8' });
   }
   setActiveTab(id) {
     this.setState({ activeTab: id });
@@ -47,7 +56,7 @@ export default class App extends React.Component {
       });
       this.setState({ openTabs, activeTab: id });
     } else {
-      this.setState({activeTab: id});
+      this.setState({ activeTab: id });
     }
   }
   checkIfAlreadyOpened(file) {
@@ -75,7 +84,7 @@ export default class App extends React.Component {
             </ride-pane>
 
 
-            <TextEditorPane appState={this.state} setActiveTab={this.setActiveTab} />
+            <TextEditorPane appState={this.state} setActiveTab={this.setActiveTab} addEditorInstance={this.addEditorInstance} />
 
 
             <ride-pane-resize-handle className="horizontal"></ride-pane-resize-handle>
