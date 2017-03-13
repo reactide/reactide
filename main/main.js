@@ -18,7 +18,6 @@ app.on('ready', () => {
     win.toggleDevTools();
   });
   localShortcut.register(win, 'CommandOrControl+S', () => {
-    console.log('hello');
     win.webContents.send('saveFile');
   })
 });
