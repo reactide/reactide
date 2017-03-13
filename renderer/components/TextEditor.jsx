@@ -5,13 +5,6 @@ import { ipcRenderer } from 'electron';
 export default class TextEditor extends React.Component {
   constructor(props) {
     super();
-    this.state = {
-      editor: null
-    }
-    ipcRenderer.on('saveFile', (err, arg) => {
-      console.log(this.props);
-      console.log(this.state.editor);
-    })
   }
   componentDidMount() {
     let amdRequire = global.require('monaco-editor/min/vs/loader.js').require;
@@ -39,7 +32,7 @@ export default class TextEditor extends React.Component {
         value: file,
         language: 'javascript'
       });
-      this.setState({ editor }, () =>{console.log('state set')})
+      this.props.addEditorInstance(editor);
     });
   }
   render() {
