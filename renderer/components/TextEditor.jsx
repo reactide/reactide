@@ -32,12 +32,12 @@ export default class TextEditor extends React.Component {
         value: file,
         language: 'javascript'
       });
-      this.props.addEditorInstance(editor);
+      this.props.addEditorInstance(editor, this.props.id);
     });
   }
   render() {
     return (
-      <div className="item-views" style={{ display: (this.props.id === this.props.activeTab ? 'block' : 'none') }}>
+      <div className="item-views" style={{ display: (this.props.id == this.props.activeTab ? 'block' : 'none') }}>
         <div className="styleguide pane-item">
           <div
             className="editor-container"
