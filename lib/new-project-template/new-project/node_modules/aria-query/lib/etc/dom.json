@@ -1,0 +1,171 @@
+{
+  "a": {},
+  "abbr": {},
+  "acronym": {},
+  "address": {},
+  "applet": {},
+  "area": {},
+  "article": {},
+  "aside": {},
+  "audio": {},
+  "b": {},
+  "base": {
+    "reserved": true
+  },
+  "bdi": {},
+  "bdo": {},
+  "big": {},
+  "blink": {},
+  "blockquote": {},
+  "body": {},
+  "br": {},
+  "button": {
+    "interactive": true
+  },
+  "canvas": {},
+  "caption": {},
+  "center": {},
+  "cite": {},
+  "code": {},
+  "col": {
+    "reserved": true
+  },
+  "colgroup": {
+    "reserved": true
+  },
+  "content": {},
+  "data": {},
+  "datalist": {},
+  "dd": {},
+  "del": {},
+  "details": {},
+  "dfn": {},
+  "dialog": {},
+  "dir": {},
+  "div": {},
+  "dl": {},
+  "dt": {},
+  "em": {},
+  "embed": {},
+  "fieldset": {},
+  "figcaption": {},
+  "figure": {},
+  "font": {},
+  "footer": {},
+  "form": {},
+  "frame": {},
+  "frameset": {},
+  "h1": {},
+  "h2": {},
+  "h3": {},
+  "h4": {},
+  "h5": {},
+  "h6": {},
+  "head": {
+    "reserved": true
+  },
+  "header": {},
+  "hgroup": {},
+  "hr": {},
+  "html": {
+    "reserved": true
+  },
+  "i": {},
+  "iframe": {},
+  "img": {},
+  "input": {},
+  "ins": {},
+  "kbd": {},
+  "keygen": {},
+  "label": {},
+  "legend": {},
+  "li": {},
+  "link": {
+    "reserved": true
+  },
+  "main": {},
+  "map": {},
+  "mark": {},
+  "marquee": {},
+  "menu": {},
+  "menuitem": {},
+  "meta": {
+    "reserved": true
+  },
+  "meter": {},
+  "nav": {},
+  "noembed": {
+    "reserved": true
+  },
+  "noscript": {
+    "reserved": true
+  },
+  "object": {},
+  "ol": {},
+  "optgroup": {},
+  "option": {
+    "interactive": true
+  },
+  "output": {},
+  "p": {},
+  "param": {
+    "reserved": true
+  },
+  "picture": {
+    "reserved": true
+  },
+  "pre": {},
+  "progress": {},
+  "q": {},
+  "rp": {},
+  "rt": {},
+  "rtc": {},
+  "ruby": {},
+  "s": {},
+  "samp": {},
+  "script": {
+    "reserved": true
+  },
+  "section": {},
+  "select": {
+    "interactive": true
+  },
+  "small": {},
+  "source": {
+    "reserved": true
+  },
+  "spacer": {},
+  "span": {},
+  "strike": {},
+  "strong": {},
+  "style": {
+    "reserved": true
+  },
+  "sub": {},
+  "summary": {},
+  "sup": {},
+  "table": {},
+  "tbody": {},
+  "td": {},
+  "textarea": {
+    "interactive": true
+  },
+  "tfoot": {},
+  "th": {},
+  "thead": {},
+  "time": {},
+  "title": {
+    "reserved": true
+  },
+  "tr": {},
+  "track": {
+    "reserved": true
+  },
+  "tt": {},
+  "u": {},
+  "ul": {},
+  "var": {},
+  "video": {},
+  "wbr": {},
+  "xmp": {}
+}
