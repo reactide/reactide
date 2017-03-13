@@ -4,4 +4,4 @@ dist
 yarn-error.log
 yarn.lock
 !/lib/new-project-template/new-project/**
-!/lib/temp/**
+/lib/temp/**
