@@ -3,3 +3,4 @@ dist
 .DS_Store
 yarn-error.log
 yarn.lock
+!lib/new-project-template/new-project/node_modules
