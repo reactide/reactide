@@ -15,9 +15,21 @@ export default class App extends React.Component {
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
     this.checkIfAlreadyOpened = this.checkIfAlreadyOpened.bind(this);
+    this.saveFile = this.saveFile.bind(this);
+
     ipcRenderer.on('openDir', (err, arg) => {
       this.setState({openTabs: [], activeTab:null});
-    })
+    });
+    // ipcRenderer.on('saveFile', (err, arg) => {
+    //   if (this.state.activeTab) {
+    //     this.saveFile(this.state.openTabs[activeTab].path);
+    //   }
+    // })
+  }
+  saveFile(filePath) {
+    if (index) {
+      this.state.openTabs[index].path
+    }
   }
   setActiveTab(id) {
     this.setState({ activeTab: id });
