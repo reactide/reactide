@@ -1,6 +1,5 @@
 import React from 'react';
 import File from './File.jsx';
-import Subdirectory from './Subdirectory.jsx';
 
 export default class Directory extends React.Component {
   constructor() {
@@ -18,7 +17,7 @@ export default class Directory extends React.Component {
   render() {
     const arr = [];
     for (var i = 0; i < this.props.directory.subdirectories.length; i++) {
-      arr.push(<Subdirectory key={'s'+i} directory={this.props.directory.subdirectories[i]} openFile={this.props.openFile}/>)
+      arr.push(<Directory key={'s'+i} directory={this.props.directory.subdirectories[i]} openFile={this.props.openFile}/>)
     }
     for (var i = 0; i < this.props.directory.files.length; i++) {
       arr.push(<File key={'sf'+i} file={this.props.directory.files[i]} openFile={this.props.openFile}/>)
