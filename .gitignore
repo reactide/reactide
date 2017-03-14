@@ -4,3 +4,5 @@ dist
 yarn-error.log
 yarn.lock
 npm-debug.log
+!/lib/new-project-template/new-project/**
+/lib/temp/**
