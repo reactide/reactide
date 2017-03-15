@@ -13,6 +13,7 @@ export default class App extends React.Component {
       id: 0,
       openTabs: {},
       activeTab: null,
+      openedProjectPath: '',
     }
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
@@ -23,7 +24,9 @@ export default class App extends React.Component {
 
     //reset tabs, should save tabs before doing this though
     ipcRenderer.on('openDir', (err, arg) => {
-      this.setState({ openTabs: [], activeTab: null });
+      if (this.state.openedProjectPath !== arg) {
+        this.setState({ openTabs: [], activeTab: null, openedProjectPath: arg, id: 0 });
+      }
     });
     ipcRenderer.on('saveFile', (err, arg) => {
       console.log(this.state.activeTab);
