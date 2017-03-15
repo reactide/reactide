@@ -6,6 +6,7 @@ export default class TextEditor extends React.Component {
   constructor(props) {
     super();
   }
+
   componentDidMount() {
     let amdRequire = global.require('monaco-editor/min/vs/loader.js').require;
     var path = require('path');
@@ -30,11 +31,13 @@ export default class TextEditor extends React.Component {
     amdRequire(['vs/editor/editor.main'], () => {
       editor = monaco.editor.create(document.getElementById('e' + id), {
         value: file,
-        language: 'javascript'
+        language: 'javascript',
+        theme: "vs-dark",
       });
       this.props.addEditorInstance(editor, this.props.id);
     });
   }
+
   render() {
     return (
       <div className="item-views" style={{ display: (this.props.id == this.props.activeTab ? 'block' : 'none') }}>
