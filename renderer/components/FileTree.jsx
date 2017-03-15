@@ -4,7 +4,7 @@ import Directory from './Directory.jsx';
 const fs = require('fs');
 const path = require('path');
 const {remote, ipcRenderer, dialog} = require('electron');
-const fileTree = require('../../lib/file-tree-sync');
+const fileTree = require('../../lib/file-tree');
 
 
 export default class FileTree extends React.Component {
@@ -26,10 +26,13 @@ export default class FileTree extends React.Component {
   }
 
   setFileTree(path) {
-    const projFileTree = fileTree(path);
-    this.setState({
-      fileTree: projFileTree
-    })
+    let projFileTree;
+    fileTree(path, (fileTree) => {
+      console.log(fileTree);
+      this.setState({
+        fileTree
+      })
+    });
   }
 
   render() {
@@ -38,7 +41,7 @@ export default class FileTree extends React.Component {
         <div className="tree-view-resizer tool-panel">
           <div className="tree-view-scroller">
             <ul className="tree-view full-menu list-tree has-collapsable-children">
-              <Directory directory={this.state.fileTree} openFile={this.props.openFile}/>
+              <Directory directory={this.state.fileTree} openFile={this.props.openFile} />
             </ul>
           </div>
           <div className="tree-view-resize-handle"></div>
