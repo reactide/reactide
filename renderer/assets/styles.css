@@ -1,30 +1,3 @@
-.file-tree {
-  float:left;
-  width:300px;
-  height:100%;
-  overflow:auto;
-  border:1px solid black;
-}
-.text-editor {
-  float:left;
-  width:100%;
-  height:100%;
-  overflow:auto;
-  border: 1px solid black;
-}
-
-.tab {
-  height:50px;
-  padding:5px;
-  border: 1px solid black;
-  float:left;
-}
-.tab-container {
-  height: 50px;
-  width:100%;
-  overflow:auto;
-}
-
 .icon-alert::before {
   font-family: 'Octicons Regular';
   font-weight: normal;
@@ -7918,13 +7891,15 @@ progress:indeterminate {
   position: relative;
   height: inherit;
   text-align: center;
-  margin: 0 1em;
+  margin: 0 0 0 1em;
   border-bottom: 1px solid transparent;
   text-overflow: clip;
   -webkit-mask: linear-gradient(to left, rgba(0, 0, 0, 0), #000000 1em) no-repeat;
   background-color: #23272f;
   background-clip: content-box;
   backface-visibility: hidden;
+  width: 170px;
+  float: left;
 }
 .tab-bar .tab:hover .title {
   -webkit-mask-position: -1em 0;
@@ -7944,6 +7919,8 @@ progress:indeterminate {
   overflow: hidden;
   transform: scale(0);
   transition: transform .08s;
+  float: right;
+  position: relative;
 }
 .tab-bar .tab .close-icon:hover {
   color: #001133;
@@ -7955,13 +7932,18 @@ progress:indeterminate {
 .tab-bar .tab .close-icon::before {
   content: "\f05d";
   position: absolute;
-  font-size: 4em;
+  font-size: 4.7em;
   width: 1.5em;
   height: 1.5em;
   line-height: 1.5;
   text-align: center;
   transform: translate(-37.5%, -37.5%) rotate(45deg) scale(0.33);
   pointer-events: none;
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
 }
 .tab-bar .tab:hover .close-icon {
   transform: scale(1);
@@ -9340,9 +9322,5 @@ html {
 .styleguide .control .control-wrap .controls .btn-group .btn,
 .styleguide .control .control-wrap .controls .btn-justify .btn {
   flex: 1;
-}
-.monaco-editor {
-  height:100%;
-  width:100%;
 }
 /*# sourceMappingURL=main.css.map */
