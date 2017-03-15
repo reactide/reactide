@@ -11,7 +11,8 @@ export default class FileTree extends React.Component {
   constructor() {
     super();
     this.state = {
-      fileTree: null
+      fileTree: null,
+      watch: null
     }
     this.fileTreeInit();
   }
@@ -19,16 +20,18 @@ export default class FileTree extends React.Component {
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
       this.setFileTree(dirPath);
+      if (this.state.watch) {
+        this.state.watch.close();
+      }
       let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
         this.setFileTree(dirPath);
       });
+      this.setState({ watch })
     });
   }
 
   setFileTree(path) {
-    let projFileTree;
     fileTree(path, (fileTree) => {
-      console.log(fileTree);
       this.setState({
         fileTree
       })
