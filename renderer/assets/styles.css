@@ -7996,6 +7996,8 @@ progress:indeterminate {
   display: inline-block;
   font-size: inherit;
   transform: scale(1);
+  width: 2em;
+  height: 2em;
 }
 .tab-bar .tab.is-dragging {
   opacity: .5;
@@ -8278,6 +8280,7 @@ code {
   border-bottom-color: #4d78cc;
 }
 .tree-view {
+  padding-left: 10px;
   font-size: 1em;
   background: #23272f;
 }
