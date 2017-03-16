@@ -1,5 +1,5 @@
 const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
-const electron = require('electron'); 
+const electron = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
@@ -34,9 +34,10 @@ const template = [
         label: 'New Project',
         click: () => {
           //warn user of unsaved changes before belo
-            deleteDirectory('./lib/temp/new-project');
-            copy('./lib/new-project-template/new-project', './lib/temp/');
-            BrowserWindow.getFocusedWindow().webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
+          BrowserWindow.getFocusedWindow().webContents.send('newProject');
+          deleteDirectory('./lib/temp/new-project');
+          copy('./lib/new-project-template/new-project', './lib/temp/');
+          BrowserWindow.getFocusedWindow().webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
         }
       }
     ],
