@@ -20,9 +20,18 @@ export default class FileTree extends React.Component {
 
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
+      console.log('openDIr');
       if (dirPath !== this.state.rootDirPath) {
         this.setFileTree(dirPath);
       }
+    });
+    ipcRenderer.on('newProject', (event, arg) => {
+      if(this.state.watch) this.state.watch.close();
+      this.setState({
+        fileTree: null,
+        watch: null,
+        rootDirPath: ''
+      })
     })
   }
 
