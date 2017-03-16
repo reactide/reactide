@@ -31,7 +31,7 @@ export default class FileTree extends React.Component {
         fileTree: null,
         watch: null,
         rootDirPath: ''
-      }, ()=>{console.log('newProject:', this.state)})
+      })
     })
   }
 
@@ -42,14 +42,13 @@ export default class FileTree extends React.Component {
         this.state.watch.close();
       }
       let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
-        // this.setFileTree(dirPath);
-        console.log('watch emit');
+        this.setFileTree(dirPath);
       });
       this.setState({
         fileTree,
         rootDirPath: dirPath,
         watch
-      }, ()=>{console.log('setFileTree:', this.state)});
+      });
     })
   }
 
