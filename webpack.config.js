@@ -1,13 +1,13 @@
 var path = require('path');
 
 module.exports = {
-    entry: './renderer/index.js',
-    output: {
-        path: path.join(__dirname, './dist'),
-        filename: 'webpack-bundle.js',
-        publicPath: ''
-    },
-	target:'electron',
+  entry: './renderer/index.js',
+  output: {
+    path: path.join(__dirname, './dist'),
+    filename: 'bundle.js',
+    publicPath: '/dist',
+  },
+  target: 'electron',
 	node: {
 		__dirname: false,
 		__filename: false

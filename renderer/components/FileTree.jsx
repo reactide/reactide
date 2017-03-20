@@ -67,7 +67,7 @@ export default class FileTree extends React.Component {
     } else {
       return (
         <div className="tree-view-resizer tool-panel">
-          <div className="tree-view-resize-handle"></div>
+          <div className="tree-view-resize-handle">No Project Opened</div>
         </div>
       )
     }

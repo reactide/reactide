@@ -5,7 +5,9 @@
   "main": "./main/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && electron ."
+    "start": "NODE_ENV=production electron .",
+    "dev-start": "NODE_ENV=development electron .",
+    "dev": "webpack-dev-server --inline --content-base ./renderer"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
