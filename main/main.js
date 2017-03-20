@@ -22,7 +22,7 @@ app.on('ready', () => {
   })
 });
 function simulator(root) {
-  let spawn = exec('webpack', {
+  let spawn = exec('webpack-dev-server --inline --content-base ./public', {
     cwd: path.join(__dirname, '../lib/temp/new-project')
   }, (err, stdout, stderr) => {
     let child = new BrowserWindow({
