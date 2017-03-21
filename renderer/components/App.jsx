@@ -43,8 +43,7 @@ export default class App extends React.Component {
       }
     }
     event.stopPropagation();
-    const activeTab = temp[0].id;
-    this.setState({ openTabs: temp, activeTab });
+    this.setState({ openTabs: temp, activeTab: temp[0].id });
   }
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
