@@ -8,12 +8,23 @@ export default class TextEditorPane extends React.Component {
   }
   render() {
     const editorArr = [];
-    for (var i in this.props.appState.openTabs) {
-      editorArr.push(<TextEditor key={i} id={i} tab={this.props.appState.openTabs[i]} activeTab={this.props.appState.activeTab} addEditorInstance={this.props.addEditorInstance}/>);
+    for (var i = 0; i < this.props.appState.openTabs.length; i++) {
+      editorArr.push(
+        <TextEditor 
+          key={this.props.appState.openTabs[i].id} 
+          id={this.props.appState.openTabs[i].id} 
+          tab={this.props.appState.openTabs[i]} 
+          activeTab={this.props.appState.activeTab} 
+          addEditorInstance={this.props.addEditorInstance}
+        />);
     }
     return (
       <ride-pane>
-        <TabContainer appState={this.props.appState} setActiveTab={this.props.setActiveTab} closeTab={this.props.closeTab}/>
+        <TabContainer 
+          appState={this.props.appState} 
+          setActiveTab={this.props.setActiveTab} 
+          closeTab={this.props.closeTab}
+        />
         {editorArr}
       </ride-pane>
     )
