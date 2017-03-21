@@ -5,8 +5,8 @@ import TextEditor from './TextEditor.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
 const fileTree = require('../../lib/file-tree');
 const fs = require('fs');
-const path=require('path');
-
+const path = require('path');
+const {File, Directory} = require('../../lib/item-schema');
 
 export default class App extends React.Component {
   constructor() {
@@ -43,6 +43,7 @@ export default class App extends React.Component {
     this.closeOpenDialogs = this.closeOpenDialogs.bind(this);
     this.createForm = this.createForm.bind(this);
     this.createItem = this.createItem.bind(this);
+    this.findDirNode = this.findDirNode.bind(this);
 
     //reset tabs, should save tabs before doing this though
     ipcRenderer.on('openDir', (event, arg) => {
@@ -94,6 +95,7 @@ export default class App extends React.Component {
 
       toggleClicked(temp);
     }
+
     if (this.state.openMenuId === null) event.stopPropagation();
     this.setState({
       selected: {
@@ -105,12 +107,28 @@ export default class App extends React.Component {
   }
 
   setFileTree(dirPath) {
+    // this.findDirNode = this.findDirNode.bind(this);
     fileTree(dirPath, (fileTree) => {
       if (this.state.watch) {
         this.state.watch.close();
       }
       let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
-        this.setFileTree(dirPath);
+        if (eventType === 'rename') {
+          const fileTree = this.state.fileTree;
+          const absPath = path.join(this.state.rootDirPath, fileName);
+
+          const dirNode = this.findDirNode(path.dirname(absPath), fileTree);
+          fs.stat(absPath, (err, stat) => {
+            if (stat.isFile()) {
+              dirNode.files.push(new File(absPath, path.basename(absPath)));
+            } else {
+              dirNode.subdirectories.push(new Directory(absPath, path.basename(absPath)));
+            }
+            this.setState({
+              fileTree
+            })
+          })
+        }
       });
       this.setState({
         fileTree,
@@ -119,13 +137,30 @@ export default class App extends React.Component {
       });
     })
   }
-  openCreateMenu(id, event) {
-    this.setState({openMenuId: id});
+  findDirNode(dirPath, directory = this.state.fileTree) {
+    if (directory.path === dirPath) return directory;
+    else {
+      let dirNode;
+      for (var i in directory.subdirectories) {
+        dirNode = this.findDirNode(dirPath, directory.subdirectories[i]);
+        if (dirNode) return dirNode;
+      }
+    }
+  }
+  openCreateMenu(id, itemPath, event) {
+    event.stopPropagation();
+    this.setState({
+      openMenuId: id,
+      selected: {
+        id: id,
+        path: itemPath
+      }
+    });
   }
   createForm(id, type, event) {
     event.stopPropagation();
     this.setState({
-      formInfo :{
+      formInfo: {
         id,
         type
       },
@@ -134,7 +169,10 @@ export default class App extends React.Component {
   }
   createItem(event) {
     if (event.key === 'Enter') {
-      console.log(event.target.value);
+      //send path and file type to main process to actually create file/dir
+      if (event.target.value) ipcRenderer.send('createItem', this.state.selected.path, event.target.value, this.state.formInfo.type);
+      //add new File or Directory based on file type, SHOULD DO THIS IN WATCH
+
       this.setState({
         formInfo: {
           id: null,
@@ -157,7 +195,7 @@ export default class App extends React.Component {
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
     let i;
-    for (i = 0; this.state.openTabs[i].id !== id; i++) {}
+    for (i = 0; this.state.openTabs[i].id !== id; i++) { }
     temp[i].editor = editor;
     this.setState({
       openTabs: temp
@@ -196,7 +234,7 @@ export default class App extends React.Component {
   openSim() {
     ipcRenderer.send('openSimulator')
   }
-  closeOpenDialogs(){
+  closeOpenDialogs() {
     this.setState({
       openMenuId: null,
       formInfo: {
@@ -215,8 +253,8 @@ export default class App extends React.Component {
           <ride-pane-axis className="horizontal">
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '200px' }}>
-              <FileTree 
-                openFile={this.openFile} 
+              <FileTree
+                openFile={this.openFile}
                 openCreateMenu={this.openCreateMenu}
                 openMenuId={this.state.openMenuId}
                 formInfo={this.state.formInfo}
@@ -228,10 +266,10 @@ export default class App extends React.Component {
               />
             </ride-pane>
 
-            <TextEditorPane 
-              appState={this.state} 
-              setActiveTab={this.setActiveTab} 
-              addEditorInstance={this.addEditorInstance} 
+            <TextEditorPane
+              appState={this.state}
+              setActiveTab={this.setActiveTab}
+              addEditorInstance={this.addEditorInstance}
               closeTab={this.closeTab}
               openMenuId={this.state.openMenuId}
             />

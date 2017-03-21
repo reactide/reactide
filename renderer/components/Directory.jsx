@@ -73,7 +73,7 @@ export default class Directory extends React.Component {
         >
           <div className="list-item">
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
-            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
             {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id}/> : <span/>}
           </div>
           {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem}/> : <span />}

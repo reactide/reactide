@@ -9329,6 +9329,7 @@ html {
 .plus-icon {
   font-size: 15px;
   float:right;
+  cursor: pointer;
 }
 .create-menu {
   padding:0px 10px 10px 10px;
