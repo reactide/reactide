@@ -5,7 +5,8 @@ const path = require('path');
 const template = require('./menus/file');
 const {spawn, exec} = require('child_process');
 const localShortcut = require('electron-localshortcut');
-// require('electron-reload')(path.join(__dirname, '../'));
+const fs = require('fs');
+
 app.on('ready', () => {
   let win = new BrowserWindow({
     width: 1000,
@@ -40,6 +41,18 @@ function simulator(root) {
 
 ipcMain.on('openSimulator', (event, root) => {
   simulator(root);
+})
+ipcMain.on('createItem', (event, dirPath, name, type) => {
+  console.log('hello???')
+  if (type === 'file') {
+    fs.writeFile(path.join(dirPath, name), '', (err) => {
+      if (err) console.log(err);
+    })
+  } else {
+    fs.mkdir(path.join(dirPath, name), (err) => {
+      if (err) console.log(err);
+    })
+  }
 })
 
 
