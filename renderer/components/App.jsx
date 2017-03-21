@@ -3,8 +3,10 @@ import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
+const fileTree = require('../../lib/file-tree');
 const fs = require('fs');
-
+const path = require('path');
+const {File, Directory} = require('../../lib/item-schema');
 
 export default class App extends React.Component {
   constructor() {
@@ -14,28 +16,172 @@ export default class App extends React.Component {
       openTabs: [],
       activeTab: null,
       openedProjectPath: '',
+      openMenuId: null,
+      formInfo: {
+        id: null,
+        type: null
+      },
+      fileTree: null,
+      watch: null,
+      rootDirPath: '',
+      selected: {
+        id: null,
+        path: ''
+      }
     }
+
+    this.fileTreeInit();
+    this.clickHandler = this.clickHandler.bind(this);
+    this.setFileTree = this.setFileTree.bind(this);
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
     this.checkIfAlreadyOpened = this.checkIfAlreadyOpened.bind(this);
     this.saveTab = this.saveTab.bind(this);
     this.addEditorInstance = this.addEditorInstance.bind(this);
     this.closeTab = this.closeTab.bind(this);
+    this.openCreateMenu = this.openCreateMenu.bind(this);
+    this.closeOpenDialogs = this.closeOpenDialogs.bind(this);
+    this.createForm = this.createForm.bind(this);
+    this.createItem = this.createItem.bind(this);
+    this.findDirNode = this.findDirNode.bind(this);
 
     //reset tabs, should save tabs before doing this though
-    ipcRenderer.on('openDir', (err, arg) => {
+    ipcRenderer.on('openDir', (event, arg) => {
       if (this.state.openedProjectPath !== arg) {
         this.setState({ openTabs: [], activeTab: null, openedProjectPath: arg, nextTabId: 0 });
       }
     });
-    ipcRenderer.on('saveFile', (err, arg) => {
-      console.log(this.state.activeTab);
+    ipcRenderer.on('saveFile', (event, arg) => {
       if (this.state.activeTab !== null) {
         this.saveTab(this.state.activeTab);
       }
     })
   }
-  closeTab(id) {
+  fileTreeInit() {
+    ipcRenderer.on('openDir', (event, dirPath) => {
+      if (dirPath !== this.state.rootDirPath) {
+        this.setFileTree(dirPath);
+      }
+    });
+    ipcRenderer.on('newProject', (event, arg) => {
+      if (this.state.watch) this.state.watch.close();
+      this.setState({
+        fileTree: null,
+        watch: null,
+        rootDirPath: '',
+        selectedItem: {
+          id: null,
+        }
+      })
+    })
+  }
+
+  clickHandler(id, filePath, type, event) {
+    const temp = this.state.fileTree;
+
+    if (type === 'directory') {
+
+      function toggleClicked(dir) {
+        if (dir.path === filePath) {
+          dir.opened = !dir.opened;
+          return;
+        }
+        else {
+          for (var i = 0; i < dir.subdirectories.length; i++) {
+            toggleClicked(dir.subdirectories[i]);
+          }
+        }
+      }
+
+      toggleClicked(temp);
+    }
+
+    if (this.state.openMenuId === null) event.stopPropagation();
+    this.setState({
+      selected: {
+        id,
+        path: filePath
+      },
+      fileTree: temp
+    });
+  }
+
+  setFileTree(dirPath) {
+    // this.findDirNode = this.findDirNode.bind(this);
+    fileTree(dirPath, (fileTree) => {
+      if (this.state.watch) {
+        this.state.watch.close();
+      }
+      let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
+        if (eventType === 'rename') {
+          const fileTree = this.state.fileTree;
+          const absPath = path.join(this.state.rootDirPath, fileName);
+
+          const dirNode = this.findDirNode(path.dirname(absPath), fileTree);
+          fs.stat(absPath, (err, stat) => {
+            if (stat.isFile()) {
+              dirNode.files.push(new File(absPath, path.basename(absPath)));
+            } else {
+              dirNode.subdirectories.push(new Directory(absPath, path.basename(absPath)));
+            }
+            this.setState({
+              fileTree
+            })
+          })
+        }
+      });
+      this.setState({
+        fileTree,
+        rootDirPath: dirPath,
+        watch
+      });
+    })
+  }
+  findDirNode(dirPath, directory = this.state.fileTree) {
+    if (directory.path === dirPath) return directory;
+    else {
+      let dirNode;
+      for (var i in directory.subdirectories) {
+        dirNode = this.findDirNode(dirPath, directory.subdirectories[i]);
+        if (dirNode) return dirNode;
+      }
+    }
+  }
+  openCreateMenu(id, itemPath, event) {
+    event.stopPropagation();
+    this.setState({
+      openMenuId: id,
+      selected: {
+        id: id,
+        path: itemPath
+      }
+    });
+  }
+  createForm(id, type, event) {
+    event.stopPropagation();
+    this.setState({
+      formInfo: {
+        id,
+        type
+      },
+      openMenuId: null
+    })
+  }
+  createItem(event) {
+    if (event.key === 'Enter') {
+      //send path and file type to main process to actually create file/dir
+      if (event.target.value) ipcRenderer.send('createItem', this.state.selected.path, event.target.value, this.state.formInfo.type);
+      //add new File or Directory based on file type, SHOULD DO THIS IN WATCH
+
+      this.setState({
+        formInfo: {
+          id: null,
+          type: null
+        }
+      })
+    }
+  }
+  closeTab(id, event) {
     const temp = this.state.openTabs;
     for (var i = 0; i < temp.length; i++) {
       if (temp[i].id === id) {
@@ -43,22 +189,19 @@ export default class App extends React.Component {
         break;
       }
     }
-    this.setState({ openTabs: temp });
+    event.stopPropagation();
+    this.setState({ openTabs: temp, activeTab: temp[0] ? temp[0].id : null });
   }
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
     let i;
-    for (i = 0; this.state.openTabs[i].id !== id; i++) {
-      console.log('openTabId:', this.state.openTabs[i].id);
-      console.log('id:', id);
-    }
+    for (i = 0; this.state.openTabs[i].id !== id; i++) { }
     temp[i].editor = editor;
     this.setState({
       openTabs: temp
     })
   }
   saveTab(tabIndex) {
-    console.log("Should Save");
     fs.writeFileSync(this.state.openTabs[tabIndex].path, this.state.openTabs[tabIndex].editor.getValue(), { encoding: 'utf8' });
   }
   setActiveTab(id) {
@@ -69,13 +212,6 @@ export default class App extends React.Component {
     if (id === -1) {
       const openTabs = this.state.openTabs;
       id = this.state.nextTabId;
-      // openTabs[this.state.id] = {
-      //   path: file.path,
-      //   id,
-      //   name: file.name,
-      //   modified: false,
-      //   editor: null
-      // };
       openTabs.push({
         path: file.path,
         id,
@@ -98,10 +234,18 @@ export default class App extends React.Component {
   openSim() {
     ipcRenderer.send('openSimulator')
   }
-
+  closeOpenDialogs() {
+    this.setState({
+      openMenuId: null,
+      formInfo: {
+        id: null,
+        type: null
+      }
+    })
+  }
   render() {
     return (
-      <ride-workspace className="scrollbars-visible-always">
+      <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
         <ride-panel-container className="header"></ride-panel-container>
 
@@ -109,14 +253,25 @@ export default class App extends React.Component {
           <ride-pane-axis className="horizontal">
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '200px' }}>
-              <FileTree openFile={this.openFile} />
+              <FileTree
+                openFile={this.openFile}
+                openCreateMenu={this.openCreateMenu}
+                openMenuId={this.state.openMenuId}
+                formInfo={this.state.formInfo}
+                createForm={this.createForm}
+                createItem={this.createItem}
+                fileTree={this.state.fileTree}
+                selected={this.state.selected}
+                clickHandler={this.clickHandler}
+              />
             </ride-pane>
 
-            <TextEditorPane 
-              appState={this.state} 
-              setActiveTab={this.setActiveTab} 
-              addEditorInstance={this.addEditorInstance} 
+            <TextEditorPane
+              appState={this.state}
+              setActiveTab={this.setActiveTab}
+              addEditorInstance={this.addEditorInstance}
               closeTab={this.closeTab}
+              openMenuId={this.state.openMenuId}
             />
 
             <ride-pane-resize-handle className="horizontal"></ride-pane-resize-handle>
