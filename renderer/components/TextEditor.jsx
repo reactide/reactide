@@ -28,11 +28,11 @@ export default class TextEditor extends React.Component {
     const id = this.props.id;
     var editor;
     amdRequire(['vs/editor/editor.main'], () => {
-      editor = monaco.editor.create(document.getElementById('e' + id), {
+      editor = monaco.editor.create(document.getElementById(id), {
         value: file,
         language: 'javascript'
       });
-      this.props.addEditorInstance(editor, this.props.id);
+      this.props.addEditorInstance(editor, id);
     });
   }
   render() {
@@ -41,7 +41,7 @@ export default class TextEditor extends React.Component {
         <div className="styleguide pane-item">
           <div
             className="editor-container"
-            id={'e' + this.props.id}
+            id={this.props.id}
             style={{ height: '100%', width: '100%' }}
           ></div>
         </div>
