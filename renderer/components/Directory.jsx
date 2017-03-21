@@ -16,18 +16,35 @@ export default class Directory extends React.Component {
   }
   render() {
     const arr = [];
+    let uniqueId;
     for (var i = 0; i < this.props.directory.subdirectories.length; i++) {
-      arr.push(<Directory key={'s'+i} directory={this.props.directory.subdirectories[i]} openFile={this.props.openFile}/>)
+      arr.push(
+        <Directory 
+          key={this.props.directory.subdirectories[i].id} 
+          id={this.props.directory.subdirectories[i].id} 
+          directory={this.props.directory.subdirectories[i]} 
+          openFile={this.props.openFile}
+          clickHandler={this.props.clickHandler}
+          selected={this.props.selected}
+        />)
     }
     for (var i = 0; i < this.props.directory.files.length; i++) {
-      arr.push(<File key={'sf'+i} file={this.props.directory.files[i]} openFile={this.props.openFile}/>)
+      arr.push(
+        <File 
+          key={this.props.directory.files[i].id} 
+          id={this.props.directory.files[i].id} 
+          file={this.props.directory.files[i]} 
+          openFile={this.props.openFile}
+          clickHandler={this.props.clickHandler}
+          selected={this.props.selected}
+        />)
     }
-    if (this.state.clicked) {
+    if (this.props.directory.opened) {
       return (
-        <li className="list-nested-item">
+        <li className={this.props.selected.id === this.props.id ? 'list-nested-item selected' : 'list-nested-item'}>
           <div
             className="list-item"
-            onClick={this.click}
+            onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
           >
             <span className="icon icon-file-directory">
               {this.props.directory.name}
@@ -40,7 +57,10 @@ export default class Directory extends React.Component {
       )
     } else {
       return (
-        <li className="list-nested-item collapsed" onClick={this.click}>
+        <li 
+          className={this.props.selected.id === this.props.id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
+          onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
+        >
           <div className="list-item">
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
           </div>
