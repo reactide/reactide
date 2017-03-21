@@ -4,8 +4,8 @@ module.exports = {
   entry: './renderer/index.js',
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'webpack-bundle.js',
-    publicPath: '',
+    filename: 'bundle.js',
+    publicPath: '/dist',
   },
   target: 'electron',
 	node: {
