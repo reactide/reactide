@@ -1,20 +1,21 @@
 import React from 'react';
 import File from './File.jsx';
 import CreateMenu from './CreateMenu.jsx';
+import CreateForm from './CreateForm.jsx';
 
 export default class Directory extends React.Component {
   constructor() {
     super();
-    this.state = {
-      clicked: false
-    }
-    this.click = this.click.bind(this);
+    // this.state = {
+    //   clicked: false
+    // }
+    // this.click = this.click.bind(this);
   }
-  click() {
-    this.setState({
-      clicked: !this.state.clicked
-    })
-  }
+  // click() {
+  //   this.setState({
+  //     clicked: !this.state.clicked
+  //   })
+  // }
   render() {
     const arr = [];
     let uniqueId;
@@ -29,6 +30,9 @@ export default class Directory extends React.Component {
           selected={this.props.selected}
           openCreateMenu={this.props.openCreateMenu}
           openMenuId={this.props.openMenuId}
+          formInfo={this.props.formInfo}
+          createForm={this.props.createForm}
+          createItem={this.props.createItem}
         />)
     }
     for (var i = 0; i < this.props.directory.files.length; i++) {
@@ -53,8 +57,9 @@ export default class Directory extends React.Component {
               {this.props.directory.name}
             </span>
             <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
-            {this.props.openMenuId === this.props.id ?<CreateMenu/> : <span/>}
+            {this.props.openMenuId === this.props.id ?<CreateMenu createForm={this.props.createForm} id={this.props.id}/> : <span />}
           </div>
+          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem}/> : <span />}
           <ul className="list-tree">
             {arr}
           </ul>
@@ -69,8 +74,9 @@ export default class Directory extends React.Component {
           <div className="list-item">
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
             <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
-            {this.props.openMenuId === this.props.id ?<CreateMenu/> : <span/>}
+            {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id}/> : <span/>}
           </div>
+          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem}/> : <span />}
         </li>
       )
     }

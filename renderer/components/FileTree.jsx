@@ -10,98 +10,25 @@ const fileTree = require('../../lib/file-tree');
 export default class FileTree extends React.Component {
   constructor() {
     super();
-    this.state = {
-      fileTree: null,
-      watch: null,
-      rootDirPath: '',
-      selected: {
-        id: null,
-        path: ''
-      }
-    }
-    this.fileTreeInit();
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  fileTreeInit() {
-    ipcRenderer.on('openDir', (event, dirPath) => {
-      if (dirPath !== this.state.rootDirPath) {
-        this.setFileTree(dirPath);
-      }
-    });
-    ipcRenderer.on('newProject', (event, arg) => {
-      if (this.state.watch) this.state.watch.close();
-      this.setState({
-        fileTree: null,
-        watch: null,
-        rootDirPath: '',
-        selectedItem: {
-          id: null,
-        }
-      })
-    })
-  }
-
-  clickHandler(id, filePath, type, event) {
-    const temp = this.state.fileTree;
-
-    if (type === 'directory') {
-
-      function toggleClicked(dir) {
-        if (dir.path === filePath) {
-          dir.opened = !dir.opened;
-          return;
-        }
-        else {
-          for (var i = 0; i < dir.subdirectories.length; i++) {
-            toggleClicked(dir.subdirectories[i]);
-          }
-        }
-      }
-
-      toggleClicked(temp);
-    }
-    console.log(!!this.props.openMenuId)
-    if (this.props.openMenuId === null) event.stopPropagation();
-    this.setState({
-      selected: {
-        id,
-        path: filePath
-      },
-      fileTree: temp
-    });
-  }
-
-  setFileTree(dirPath) {
-    fileTree(dirPath, (fileTree) => {
-      if (this.state.watch) {
-        this.state.watch.close();
-      }
-      let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
-        this.setFileTree(dirPath);
-      });
-      this.setState({
-        fileTree,
-        rootDirPath: dirPath,
-        watch
-      });
-    })
   }
 
   render() {
-    if (this.state.fileTree) {
+    if (this.props.fileTree) {
       return (
         <div className="tree-view-resizer tool-panel">
           <div className="tree-view-scroller">
             <ul className="tree-view full-menu list-tree has-collapsable-children">
               <Directory
-                directory={this.state.fileTree}
+                directory={this.props.fileTree}
                 openFile={this.props.openFile}
-                id={this.state.fileTree.id}
-                clickHandler={this.clickHandler}
-                selected={this.state.selected}
+                id={this.props.fileTree.id}
+                clickHandler={this.props.clickHandler}
+                selected={this.props.selected}
                 openCreateMenu={this.props.openCreateMenu}
                 openMenuId={this.props.openMenuId}
+                formInfo={this.props.formInfo}
+                createForm={this.props.createForm}
+                createItem={this.props.createItem}
               />
             </ul>
           </div>
