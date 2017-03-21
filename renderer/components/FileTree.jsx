@@ -25,7 +25,6 @@ export default class FileTree extends React.Component {
 
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
-      console.log('openDIr');
       if (dirPath !== this.state.rootDirPath) {
         this.setFileTree(dirPath);
       }
@@ -68,9 +67,7 @@ export default class FileTree extends React.Component {
         path: filePath
       },
       fileTree: temp
-    }, () => {
-      console.log(this.state.selected);
-    })
+    });
   }
 
   setFileTree(dirPath) {
