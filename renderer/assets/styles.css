@@ -9326,4 +9326,26 @@ html {
 .styleguide .control .control-wrap .controls .btn-justify .btn {
   flex: 1;
 }
+.plus-icon {
+  font-size: 15px;
+  float:right;
+}
+.create-menu {
+  padding:0px 10px 10px 10px;
+  width:200px;
+  position:absolute;
+  background-color:white;
+  left: 100px;
+  z-index: 5;
+  border-radius: 3px;
+}
+.create-button {
+  width:90%;
+  height:30px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 8px;
+}
 /*# sourceMappingURL=main.css.map */

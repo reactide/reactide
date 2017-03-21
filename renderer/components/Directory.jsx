@@ -1,5 +1,6 @@
 import React from 'react';
 import File from './File.jsx';
+import CreateMenu from './CreateMenu.jsx';
 
 export default class Directory extends React.Component {
   constructor() {
@@ -19,21 +20,23 @@ export default class Directory extends React.Component {
     let uniqueId;
     for (var i = 0; i < this.props.directory.subdirectories.length; i++) {
       arr.push(
-        <Directory 
-          key={this.props.directory.subdirectories[i].id} 
-          id={this.props.directory.subdirectories[i].id} 
-          directory={this.props.directory.subdirectories[i]} 
+        <Directory
+          key={this.props.directory.subdirectories[i].id}
+          id={this.props.directory.subdirectories[i].id}
+          directory={this.props.directory.subdirectories[i]}
           openFile={this.props.openFile}
           clickHandler={this.props.clickHandler}
           selected={this.props.selected}
+          openCreateMenu={this.props.openCreateMenu}
+          openMenuId={this.props.openMenuId}
         />)
     }
     for (var i = 0; i < this.props.directory.files.length; i++) {
       arr.push(
-        <File 
-          key={this.props.directory.files[i].id} 
-          id={this.props.directory.files[i].id} 
-          file={this.props.directory.files[i]} 
+        <File
+          key={this.props.directory.files[i].id}
+          id={this.props.directory.files[i].id}
+          file={this.props.directory.files[i]}
           openFile={this.props.openFile}
           clickHandler={this.props.clickHandler}
           selected={this.props.selected}
@@ -49,6 +52,8 @@ export default class Directory extends React.Component {
             <span className="icon icon-file-directory">
               {this.props.directory.name}
             </span>
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
+            {this.props.openMenuId === this.props.id ?<CreateMenu/> : <span/>}
           </div>
           <ul className="list-tree">
             {arr}
@@ -57,12 +62,14 @@ export default class Directory extends React.Component {
       )
     } else {
       return (
-        <li 
+        <li
           className={this.props.selected.id === this.props.id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
           onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
         >
           <div className="list-item">
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
+            {this.props.openMenuId === this.props.id ?<CreateMenu/> : <span/>}
           </div>
         </li>
       )
