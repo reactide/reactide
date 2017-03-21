@@ -1,15 +1,11 @@
 import React from 'react';
 
-export default class CreateMenu extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div className="create-menu">
-        <button className="create-button" onClick={()=>{console.log('createfile')}}>Create File</button>
-        <button className="create-button" onClick={()=>{console.log('createdirectory')}}>Create Directory</button>
-      </div>
-    )
-  }
-} 
+const CreateMenu = ({id, createForm}) => {
+  return (
+    <div className="create-menu">
+      <button className="create-button" onClick={createForm.bind(null, id, 'file')}>Create File</button>
+      <button className="create-button" onClick={createForm.bind(null, id, 'directory')}>Create Directory</button>
+    </div>
+  )
+}
+export default CreateMenu;

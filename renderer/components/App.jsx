@@ -3,7 +3,9 @@ import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
+const fileTree = require('../../lib/file-tree');
 const fs = require('fs');
+const path=require('path');
 
 
 export default class App extends React.Component {
@@ -15,7 +17,22 @@ export default class App extends React.Component {
       activeTab: null,
       openedProjectPath: '',
       openMenuId: null,
+      formInfo: {
+        id: null,
+        type: null
+      },
+      fileTree: null,
+      watch: null,
+      rootDirPath: '',
+      selected: {
+        id: null,
+        path: ''
+      }
     }
+
+    this.fileTreeInit();
+    this.clickHandler = this.clickHandler.bind(this);
+    this.setFileTree = this.setFileTree.bind(this);
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
     this.checkIfAlreadyOpened = this.checkIfAlreadyOpened.bind(this);
@@ -23,22 +40,108 @@ export default class App extends React.Component {
     this.addEditorInstance = this.addEditorInstance.bind(this);
     this.closeTab = this.closeTab.bind(this);
     this.openCreateMenu = this.openCreateMenu.bind(this);
-    this.closeOpenMenu = this.closeOpenMenu.bind(this);
+    this.closeOpenDialogs = this.closeOpenDialogs.bind(this);
+    this.createForm = this.createForm.bind(this);
+    this.createItem = this.createItem.bind(this);
+
     //reset tabs, should save tabs before doing this though
-    ipcRenderer.on('openDir', (err, arg) => {
+    ipcRenderer.on('openDir', (event, arg) => {
       if (this.state.openedProjectPath !== arg) {
         this.setState({ openTabs: [], activeTab: null, openedProjectPath: arg, nextTabId: 0 });
       }
     });
-    ipcRenderer.on('saveFile', (err, arg) => {
+    ipcRenderer.on('saveFile', (event, arg) => {
       if (this.state.activeTab !== null) {
         this.saveTab(this.state.activeTab);
       }
     })
   }
+  fileTreeInit() {
+    ipcRenderer.on('openDir', (event, dirPath) => {
+      if (dirPath !== this.state.rootDirPath) {
+        this.setFileTree(dirPath);
+      }
+    });
+    ipcRenderer.on('newProject', (event, arg) => {
+      if (this.state.watch) this.state.watch.close();
+      this.setState({
+        fileTree: null,
+        watch: null,
+        rootDirPath: '',
+        selectedItem: {
+          id: null,
+        }
+      })
+    })
+  }
+
+  clickHandler(id, filePath, type, event) {
+    const temp = this.state.fileTree;
+
+    if (type === 'directory') {
+
+      function toggleClicked(dir) {
+        if (dir.path === filePath) {
+          dir.opened = !dir.opened;
+          return;
+        }
+        else {
+          for (var i = 0; i < dir.subdirectories.length; i++) {
+            toggleClicked(dir.subdirectories[i]);
+          }
+        }
+      }
+
+      toggleClicked(temp);
+    }
+    if (this.state.openMenuId === null) event.stopPropagation();
+    this.setState({
+      selected: {
+        id,
+        path: filePath
+      },
+      fileTree: temp
+    });
+  }
+
+  setFileTree(dirPath) {
+    fileTree(dirPath, (fileTree) => {
+      if (this.state.watch) {
+        this.state.watch.close();
+      }
+      let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
+        this.setFileTree(dirPath);
+      });
+      this.setState({
+        fileTree,
+        rootDirPath: dirPath,
+        watch
+      });
+    })
+  }
   openCreateMenu(id, event) {
-    // event.stopPropagation();
     this.setState({openMenuId: id});
+  }
+  createForm(id, type, event) {
+    event.stopPropagation();
+    this.setState({
+      formInfo :{
+        id,
+        type
+      },
+      openMenuId: null
+    })
+  }
+  createItem(event) {
+    if (event.key === 'Enter') {
+      console.log(event.target.value);
+      this.setState({
+        formInfo: {
+          id: null,
+          type: null
+        }
+      })
+    }
   }
   closeTab(id, event) {
     const temp = this.state.openTabs;
@@ -49,7 +152,7 @@ export default class App extends React.Component {
       }
     }
     event.stopPropagation();
-    this.setState({ openTabs: temp, activeTab: temp[0].id });
+    this.setState({ openTabs: temp, activeTab: temp[0] ? temp[0].id : null });
   }
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
@@ -93,12 +196,18 @@ export default class App extends React.Component {
   openSim() {
     ipcRenderer.send('openSimulator')
   }
-  closeOpenMenu(){
-    this.setState({openMenuId: null})
+  closeOpenDialogs(){
+    this.setState({
+      openMenuId: null,
+      formInfo: {
+        id: null,
+        type: null
+      }
+    })
   }
   render() {
     return (
-      <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenMenu}>
+      <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
         <ride-panel-container className="header"></ride-panel-container>
 
@@ -110,6 +219,12 @@ export default class App extends React.Component {
                 openFile={this.openFile} 
                 openCreateMenu={this.openCreateMenu}
                 openMenuId={this.state.openMenuId}
+                formInfo={this.state.formInfo}
+                createForm={this.createForm}
+                createItem={this.createItem}
+                fileTree={this.state.fileTree}
+                selected={this.state.selected}
+                clickHandler={this.clickHandler}
               />
             </ride-pane>
 
