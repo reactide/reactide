@@ -29,13 +29,12 @@ export default class App extends React.Component {
       }
     });
     ipcRenderer.on('saveFile', (err, arg) => {
-      console.log(this.state.activeTab);
       if (this.state.activeTab !== null) {
         this.saveTab(this.state.activeTab);
       }
     })
   }
-  closeTab(id) {
+  closeTab(id, event) {
     const temp = this.state.openTabs;
     for (var i = 0; i < temp.length; i++) {
       if (temp[i].id === id) {
@@ -43,22 +42,20 @@ export default class App extends React.Component {
         break;
       }
     }
-    this.setState({ openTabs: temp });
+    event.stopPropagation();
+    const activeTab = temp[0].id;
+    this.setState({ openTabs: temp, activeTab });
   }
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
     let i;
-    for (i = 0; this.state.openTabs[i].id !== id; i++) {
-      console.log('openTabId:', this.state.openTabs[i].id);
-      console.log('id:', id);
-    }
+    for (i = 0; this.state.openTabs[i].id !== id; i++) {}
     temp[i].editor = editor;
     this.setState({
       openTabs: temp
     })
   }
   saveTab(tabIndex) {
-    console.log("Should Save");
     fs.writeFileSync(this.state.openTabs[tabIndex].path, this.state.openTabs[tabIndex].editor.getValue(), { encoding: 'utf8' });
   }
   setActiveTab(id) {
