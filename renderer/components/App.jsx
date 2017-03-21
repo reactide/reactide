@@ -14,6 +14,7 @@ export default class App extends React.Component {
       openTabs: [],
       activeTab: null,
       openedProjectPath: '',
+      openMenuId: null,
     }
     this.openFile = this.openFile.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
@@ -21,7 +22,8 @@ export default class App extends React.Component {
     this.saveTab = this.saveTab.bind(this);
     this.addEditorInstance = this.addEditorInstance.bind(this);
     this.closeTab = this.closeTab.bind(this);
-
+    this.openCreateMenu = this.openCreateMenu.bind(this);
+    this.closeOpenMenu = this.closeOpenMenu.bind(this);
     //reset tabs, should save tabs before doing this though
     ipcRenderer.on('openDir', (err, arg) => {
       if (this.state.openedProjectPath !== arg) {
@@ -33,6 +35,10 @@ export default class App extends React.Component {
         this.saveTab(this.state.activeTab);
       }
     })
+  }
+  openCreateMenu(id, event) {
+    // event.stopPropagation();
+    this.setState({openMenuId: id});
   }
   closeTab(id, event) {
     const temp = this.state.openTabs;
@@ -65,13 +71,6 @@ export default class App extends React.Component {
     if (id === -1) {
       const openTabs = this.state.openTabs;
       id = this.state.nextTabId;
-      // openTabs[this.state.id] = {
-      //   path: file.path,
-      //   id,
-      //   name: file.name,
-      //   modified: false,
-      //   editor: null
-      // };
       openTabs.push({
         path: file.path,
         id,
@@ -94,10 +93,12 @@ export default class App extends React.Component {
   openSim() {
     ipcRenderer.send('openSimulator')
   }
-
+  closeOpenMenu(){
+    this.setState({openMenuId: null})
+  }
   render() {
     return (
-      <ride-workspace className="scrollbars-visible-always">
+      <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenMenu}>
 
         <ride-panel-container className="header"></ride-panel-container>
 
@@ -105,7 +106,11 @@ export default class App extends React.Component {
           <ride-pane-axis className="horizontal">
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '200px' }}>
-              <FileTree openFile={this.openFile} />
+              <FileTree 
+                openFile={this.openFile} 
+                openCreateMenu={this.openCreateMenu}
+                openMenuId={this.state.openMenuId}
+              />
             </ride-pane>
 
             <TextEditorPane 
@@ -113,6 +118,7 @@ export default class App extends React.Component {
               setActiveTab={this.setActiveTab} 
               addEditorInstance={this.addEditorInstance} 
               closeTab={this.closeTab}
+              openMenuId={this.state.openMenuId}
             />
 
             <ride-pane-resize-handle className="horizontal"></ride-pane-resize-handle>
