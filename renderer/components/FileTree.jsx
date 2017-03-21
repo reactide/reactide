@@ -42,7 +42,7 @@ export default class FileTree extends React.Component {
     })
   }
 
-  clickHandler(id, filePath, type) {
+  clickHandler(id, filePath, type, event) {
     const temp = this.state.fileTree;
 
     if (type === 'directory') {
@@ -61,6 +61,8 @@ export default class FileTree extends React.Component {
 
       toggleClicked(temp);
     }
+    console.log(!!this.props.openMenuId)
+    if (this.props.openMenuId === null) event.stopPropagation();
     this.setState({
       selected: {
         id,
@@ -98,6 +100,8 @@ export default class FileTree extends React.Component {
                 id={this.state.fileTree.id}
                 clickHandler={this.clickHandler}
                 selected={this.state.selected}
+                openCreateMenu={this.props.openCreateMenu}
+                openMenuId={this.props.openMenuId}
               />
             </ul>
           </div>
