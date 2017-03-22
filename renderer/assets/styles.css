@@ -9355,4 +9355,7 @@ html {
   background-color:#23272f;
   color:white;
 }
+.tab-container {
+  overflow: scroll;
+}
 /*# sourceMappingURL=main.css.map */

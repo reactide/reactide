@@ -53,7 +53,7 @@ export default class App extends React.Component {
     });
     ipcRenderer.on('saveFile', (event, arg) => {
       if (this.state.activeTab !== null) {
-        this.saveTab(this.state.activeTab);
+        this.saveTab();
       }
     })
   }
@@ -199,7 +199,7 @@ export default class App extends React.Component {
       openTabs: temp
     })
   }
-  saveTab(tabId) {
+  saveTab() {
     for (var i = 0; i < this.state.openTabs.length; i++) {
       if (this.state.openTabs[i].id === this.state.activeTab) {
         fs.writeFileSync(this.state.openTabs[i].path, this.state.openTabs[i].editor.getValue(), { encoding: 'utf8' });
