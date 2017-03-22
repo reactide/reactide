@@ -107,7 +107,6 @@ export default class App extends React.Component {
   }
 
   setFileTree(dirPath) {
-    // this.findDirNode = this.findDirNode.bind(this);
     fileTree(dirPath, (fileTree) => {
       if (this.state.watch) {
         this.state.watch.close();
@@ -171,7 +170,6 @@ export default class App extends React.Component {
     if (event.key === 'Enter') {
       //send path and file type to main process to actually create file/dir
       if (event.target.value) ipcRenderer.send('createItem', this.state.selected.path, event.target.value, this.state.formInfo.type);
-      //add new File or Directory based on file type, SHOULD DO THIS IN WATCH
 
       this.setState({
         formInfo: {
@@ -201,8 +199,13 @@ export default class App extends React.Component {
       openTabs: temp
     })
   }
-  saveTab(tabIndex) {
-    fs.writeFileSync(this.state.openTabs[tabIndex].path, this.state.openTabs[tabIndex].editor.getValue(), { encoding: 'utf8' });
+  saveTab(tabId) {
+    for (var i = 0; i < this.state.openTabs.length; i++) {
+      if (this.state.openTabs[i].id === this.state.activeTab) {
+        fs.writeFileSync(this.state.openTabs[i].path, this.state.openTabs[i].editor.getValue(), { encoding: 'utf8' });
+        break;
+      }
+    }
   }
   setActiveTab(id) {
     this.setState({ activeTab: id });
