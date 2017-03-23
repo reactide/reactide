@@ -6,16 +6,7 @@ import CreateForm from './CreateForm.jsx';
 export default class Directory extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   clicked: false
-    // }
-    // this.click = this.click.bind(this);
   }
-  // click() {
-  //   this.setState({
-  //     clicked: !this.state.clicked
-  //   })
-  // }
   render() {
     const arr = [];
     let uniqueId;
@@ -30,7 +21,7 @@ export default class Directory extends React.Component {
           selectedItem={this.props.selectedItem}
           openCreateMenu={this.props.openCreateMenu}
           openMenuId={this.props.openMenuId}
-          formInfo={this.props.formInfo}
+          createMenuInfo={this.props.createMenuInfo}
           createForm={this.props.createForm}
           createItem={this.props.createItem}
         />)
@@ -59,7 +50,7 @@ export default class Directory extends React.Component {
             <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
             {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id} /> : <span />}
           </div>
-          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
+          {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
           <ul className="list-tree">
             {arr}
           </ul>
@@ -72,10 +63,10 @@ export default class Directory extends React.Component {
         >
           <div className="list-item" onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}>
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
-            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}>+</span>
             {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id} /> : <span />}
           </div>
-          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
+          {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
         </li>
       )
     }
