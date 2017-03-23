@@ -23,10 +23,10 @@ export default class FileTree extends React.Component {
                 openFile={this.props.openFile}
                 id={this.props.fileTree.id}
                 clickHandler={this.props.clickHandler}
-                selected={this.props.selected}
+                selectedItem={this.props.selectedItem}
                 openCreateMenu={this.props.openCreateMenu}
                 openMenuId={this.props.openMenuId}
-                formInfo={this.props.formInfo}
+                createMenuInfo={this.props.createMenuInfo}
                 createForm={this.props.createForm}
                 createItem={this.props.createItem}
               />

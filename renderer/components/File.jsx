@@ -1,9 +1,9 @@
 import React from 'react';
 
-const File = ({file, openFile, selected, id, clickHandler}) => {
+const File = ({file, openFile, selectedItem, id, clickHandler}) => {
   return (
     <li 
-      className={selected.id === id ? 'list-item selected' : 'list-item'}  
+      className={selectedItem.id === id ? 'list-item selected' : 'list-item'}  
       onDoubleClick={openFile.bind(null, file)}
       onClick={clickHandler.bind(null, id, file.path, file.type)}
     >

@@ -19,7 +19,7 @@ export default class TabContainer extends React.Component {
         />);
     }
     return (
-      <ul className="list-inline tab-bar inset-panel">
+      <ul className="list-inline tab-bar inset-panel tab-container">
         {tabs}
       </ul>
     )
