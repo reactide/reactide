@@ -6,16 +6,7 @@ import CreateForm from './CreateForm.jsx';
 export default class Directory extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   clicked: false
-    // }
-    // this.click = this.click.bind(this);
   }
-  // click() {
-  //   this.setState({
-  //     clicked: !this.state.clicked
-  //   })
-  // }
   render() {
     const arr = [];
     let uniqueId;
@@ -27,10 +18,10 @@ export default class Directory extends React.Component {
           directory={this.props.directory.subdirectories[i]}
           openFile={this.props.openFile}
           clickHandler={this.props.clickHandler}
-          selected={this.props.selected}
+          selectedItem={this.props.selectedItem}
           openCreateMenu={this.props.openCreateMenu}
           openMenuId={this.props.openMenuId}
-          formInfo={this.props.formInfo}
+          createMenuInfo={this.props.createMenuInfo}
           createForm={this.props.createForm}
           createItem={this.props.createItem}
         />)
@@ -43,12 +34,12 @@ export default class Directory extends React.Component {
           file={this.props.directory.files[i]}
           openFile={this.props.openFile}
           clickHandler={this.props.clickHandler}
-          selected={this.props.selected}
+          selectedItem={this.props.selectedItem}
         />)
     }
     if (this.props.directory.opened) {
       return (
-        <li className={this.props.selected.id === this.props.id ? 'list-nested-item selected' : 'list-nested-item'}>
+        <li className={this.props.selectedItem.id === this.props.id ? 'list-nested-item selected' : 'list-nested-item'}>
           <div
             className="list-item"
             onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
@@ -56,10 +47,10 @@ export default class Directory extends React.Component {
             <span className="icon icon-file-directory">
               {this.props.directory.name}
             </span>
-            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id)}>+</span>
-            {this.props.openMenuId === this.props.id ?<CreateMenu createForm={this.props.createForm} id={this.props.id}/> : <span />}
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
+            {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id} /> : <span />}
           </div>
-          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem}/> : <span />}
+          {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
           <ul className="list-tree">
             {arr}
           </ul>
@@ -68,15 +59,14 @@ export default class Directory extends React.Component {
     } else {
       return (
         <li
-          className={this.props.selected.id === this.props.id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
-          onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
+          className={this.props.selectedItem.id === this.props.id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
         >
-          <div className="list-item">
+          <div className="list-item" onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}>
             <span className="icon icon-file-directory">{this.props.directory.name}</span>
-            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
-            {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id}/> : <span/>}
+            <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}>+</span>
+            {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id} /> : <span />}
           </div>
-          {this.props.formInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem}/> : <span />}
+          {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
         </li>
       )
     }

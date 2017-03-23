@@ -9355,4 +9355,15 @@ html {
   background-color:#23272f;
   color:white;
 }
+.tab-container {
+  overflow: scroll;
+}
+.delete-prompt {
+  height:200px;
+  width:200px;
+  position: absolute;
+  left: 400px;
+  background-color: grey;
+  z-index: 5;
+}
 /*# sourceMappingURL=main.css.map */
