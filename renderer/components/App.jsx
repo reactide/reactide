@@ -24,10 +24,11 @@ export default class App extends React.Component {
       fileTree: null,
       watch: null,
       rootDirPath: '',
-      selected: {
+      selectedItem: {
         id: null,
         path: ''
-      }
+      },
+      fileChangeType: null
     }
 
     this.fileTreeInit();
@@ -43,7 +44,7 @@ export default class App extends React.Component {
     this.closeOpenDialogs = this.closeOpenDialogs.bind(this);
     this.createForm = this.createForm.bind(this);
     this.createItem = this.createItem.bind(this);
-    this.findDirNode = this.findDirNode.bind(this);
+    this.findParentDir = this.findParentDir.bind(this);
 
     //reset tabs, should save tabs before doing this though
     ipcRenderer.on('openDir', (event, arg) => {
@@ -71,6 +72,7 @@ export default class App extends React.Component {
         rootDirPath: '',
         selectedItem: {
           id: null,
+          path: null
         }
       })
     })
@@ -95,10 +97,9 @@ export default class App extends React.Component {
 
       toggleClicked(temp);
     }
-
     if (this.state.openMenuId === null) event.stopPropagation();
     this.setState({
-      selected: {
+      selectedItem: {
         id,
         path: filePath
       },
@@ -115,16 +116,50 @@ export default class App extends React.Component {
         if (eventType === 'rename') {
           const fileTree = this.state.fileTree;
           const absPath = path.join(this.state.rootDirPath, fileName);
+          const parentDir = this.findParentDir(path.dirname(absPath), fileTree);
 
-          const dirNode = this.findDirNode(path.dirname(absPath), fileTree);
           fs.stat(absPath, (err, stat) => {
             if (stat.isFile()) {
-              dirNode.files.push(new File(absPath, path.basename(absPath)));
+              let fileIndex, subdirIndex;
+              switch (this.state.fileChangeType) {
+                case 'new':
+                  dirNode.files.push(new File(absPath, path.basename(absPath)));
+                  break;
+                case 'rename':
+                  fileIndex = this.findItemIndex(dirNode.files, path.basename(absPath));
+                  dirNode.files[fileIndex].name = path.basename(absPath);
+                  dirNode.files[fileIndex].path = absPath;
+                  break;
+                case 'delete':
+                  fileIndex = this.findItemIndex(dirNode.files, path.basename(absPath));
+                  dirNode.files.splice(fileIndex, 1);
+                  break;
+                default:
+                  this.setFileTree;
+                  break;
+              }
             } else {
-              dirNode.subdirectories.push(new Directory(absPath, path.basename(absPath)));
+              switch (this.state.fileChangeType) {
+                case 'new':
+                  dirNode.subdirectories.push(new Directory(absPath, path.basename(absPath)));
+                  break;
+                case 'rename':
+                  subdirIndex = this.findItemIndex(dirNode.files, path.basename(absPath));
+                  dirNode.subdirectories[subdirIndex].name = path.basename(absPath);
+                  dirNode.subdirectories[subdirIndex].path = absPath;
+                  break;
+                case 'delete':
+                  subdirIndex = this.findItemIndex(dirNode.subdirectories, path.basename(absPath));
+                  dirNode.subdirectories.splice(subdirIndex, 1);
+                  break;
+                default:
+                  this.setFileTree;
+                  break;
+              }
             }
             this.setState({
-              fileTree
+              fileTree,
+              fileChangeType: null
             })
           })
         }
@@ -136,12 +171,19 @@ export default class App extends React.Component {
       });
     })
   }
-  findDirNode(dirPath, directory = this.state.fileTree) {
+  findItemIndex(filesOrDirs, name) {
+    for (var i = 0; i < filesOrDirs.length; i++) {
+      if (filesOrDirs[i].name === name) {
+        return i;
+      }
+    } return -1;
+  }
+  findParentDir(dirPath, directory = this.state.fileTree) {
     if (directory.path === dirPath) return directory;
     else {
       let dirNode;
       for (var i in directory.subdirectories) {
-        dirNode = this.findDirNode(dirPath, directory.subdirectories[i]);
+        dirNode = this.findParentDir(dirPath, directory.subdirectories[i]);
         if (dirNode) return dirNode;
       }
     }
@@ -150,7 +192,7 @@ export default class App extends React.Component {
     event.stopPropagation();
     this.setState({
       openMenuId: id,
-      selected: {
+      selectedItem: {
         id: id,
         path: itemPath
       }
@@ -169,12 +211,13 @@ export default class App extends React.Component {
   createItem(event) {
     if (event.key === 'Enter') {
       //send path and file type to main process to actually create file/dir
-      if (event.target.value) ipcRenderer.send('createItem', this.state.selected.path, event.target.value, this.state.formInfo.type);
+      if (event.target.value) ipcRenderer.send('createItem', this.state.selectedItem.path, event.target.value, this.state.formInfo.type);
 
       this.setState({
         formInfo: {
           id: null,
-          type: null
+          type: null,
+          fileChangeType: 'new'
         }
       })
     }
@@ -192,8 +235,10 @@ export default class App extends React.Component {
   }
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
-    let i;
-    for (i = 0; this.state.openTabs[i].id !== id; i++) { }
+    let i = 0;
+    while (this.state.openTabs[i].id !== id) {
+      i++;
+    }
     temp[i].editor = editor;
     this.setState({
       openTabs: temp
@@ -235,7 +280,7 @@ export default class App extends React.Component {
     } return -1;
   }
   openSim() {
-    ipcRenderer.send('openSimulator')
+    ipcRenderer.send('openSimulator');
   }
   closeOpenDialogs() {
     this.setState({
@@ -264,7 +309,7 @@ export default class App extends React.Component {
                 createForm={this.createForm}
                 createItem={this.createItem}
                 fileTree={this.state.fileTree}
-                selected={this.state.selected}
+                selectedItem={this.state.selectedItem}
                 clickHandler={this.clickHandler}
               />
             </ride-pane>
