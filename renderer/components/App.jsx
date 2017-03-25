@@ -195,7 +195,6 @@ export default class App extends React.Component {
           const name = path.basename(absPath);
           const openTabs = this.state.openTabs;
 
-          //delete handler
           if (this.state.fileChangeType === 'delete') {
             let index;
             if (this.state.selectedItem.type === 'directory') {
@@ -211,8 +210,8 @@ export default class App extends React.Component {
                 break;
               }
             }
-          } else if (this.state.fileChangeType === 'new') {
-            //new handler
+          }
+          else if (this.state.fileChangeType === 'new') {
             if (this.state.createMenuInfo.type === 'directory') {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
@@ -239,9 +238,13 @@ export default class App extends React.Component {
                 type: this.state.selectedItem.type,
                 path: path.join(path.dirname(absPath), this.state.newName)
               }
+<<<<<<< HEAD
             });
 
             //rename the opened tab of the renamed file if it's there
+=======
+            })
+>>>>>>> b835818b... refactored a bit
             for (var i = 0; i < this.state.openTabs.length; i++) {
               if (openTabs[i].name === name) {
                 openTabs[i].name = this.state.newName;
