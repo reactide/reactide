@@ -1246,6 +1246,7 @@
 		"findWithAssert": false,
 		"keyEvent": false,
 		"pauseTest": false,
+		"resumeTest": false,
 		"triggerEvent": false,
 		"visit": false
 	},
