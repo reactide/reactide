@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateForm = ({createItem}) => {console.log('created form')
+const CreateForm = ({createItem}) => {
   return (
     <div className='list-item'>
       <input className='create-form' onKeyPress={createItem} onClick={(event) => {event.stopPropagation()}} /> 
