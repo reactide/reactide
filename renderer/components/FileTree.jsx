@@ -29,6 +29,8 @@ export default class FileTree extends React.Component {
                 createMenuInfo={this.props.createMenuInfo}
                 createForm={this.props.createForm}
                 createItem={this.props.createItem}
+                rename={this.props.rename}
+                renameHandler={this.props.renameHandler}
               />
             </ul>
           </div>

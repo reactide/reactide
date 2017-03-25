@@ -9328,7 +9328,9 @@ html {
 }
 .plus-icon {
   font-size: 15px;
-  float:right;
+  /*float:right;*/
+  position: absolute;
+  right: 0px;
   cursor: pointer;
 }
 .create-menu {
@@ -9365,5 +9367,11 @@ html {
   left: 400px;
   background-color: grey;
   z-index: 5;
+}
+.rename-input {
+  height:25px;
+  width:100%;
+  background-color: #23272f;
+  color:white;
 }
 /*# sourceMappingURL=main.css.map */
