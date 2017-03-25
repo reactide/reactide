@@ -13,7 +13,6 @@
     if (process.env.NODE_ENV === 'development') {
       var script = document.createElement('script');
       script.src = 'http://localhost:8080/dist/bundle.js';
-      // script.src = 'http://localhost:8080/webpack-dev-server.js';
       document.getElementsByTagName('body')[0].append(script);
     } else {
       require('../dist/bundle.js');

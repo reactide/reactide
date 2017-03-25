@@ -97,6 +97,8 @@ module.exports =
     test.equal(ipaddr.IPv4.parse('0.0.0.0').range(),         'unspecified')
     test.equal(ipaddr.IPv4.parse('0.1.0.0').range(),         'unspecified')
     test.equal(ipaddr.IPv4.parse('10.1.0.1').range(),        'private')
+    test.equal(ipaddr.IPv4.parse('100.64.0.0').range(),      'carrierGradeNat')
+    test.equal(ipaddr.IPv4.parse('100.127.255.255').range(), 'carrierGradeNat')
     test.equal(ipaddr.IPv4.parse('192.168.2.1').range(),     'private')
     test.equal(ipaddr.IPv4.parse('224.100.0.1').range(),     'multicast')
     test.equal(ipaddr.IPv4.parse('169.254.15.0').range(),    'linkLocal')
