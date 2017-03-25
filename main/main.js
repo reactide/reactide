@@ -15,7 +15,9 @@ app.on('ready', () => {
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
   let menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
-  win.toggleDevTools();
+
+  if (process.env.NODE_ENV === 'development') win.toggleDevTools();
+  
   registerShortcuts(win);
 });
 registerIpcListeners();
