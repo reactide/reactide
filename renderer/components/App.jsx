@@ -195,7 +195,8 @@ export default class App extends React.Component {
           const absPath = path.join(this.state.rootDirPath, fileName);
           const parentDir = this.findParentDir(path.dirname(absPath), fileTree);
           const name = path.basename(absPath);
-
+          const openTabs = this.state.openTabs;
+          
           if (this.state.fileChangeType === 'delete') {
             let index;
             if (this.state.selectedItem.type === 'directory') {
@@ -205,19 +206,14 @@ export default class App extends React.Component {
               index = this.findItemIndex(parentDir.files, name);
               parentDir.files.splice(index, 1);
             }
-            const openTabs = this.state.openTabs;
             for (var i = 0; i < this.state.openTabs.length; i++) {
               if (openTabs[i].name === name) {
                 openTabs.splice(i, 1);
-                this.setState({
-                  openTabs
-                });
                 break;
               }
             }
           }
           else if (this.state.fileChangeType === 'new') {
-            console.log(this.state.createMenuInfo);
             if (this.state.createMenuInfo.type === 'directory') {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
@@ -243,13 +239,9 @@ export default class App extends React.Component {
                 path: path.join(path.dirname(absPath), this.state.newName)
               }
             })
-            const openTabs = this.state.openTabs;
             for (var i = 0; i < this.state.openTabs.length; i++) {
               if (openTabs[i].name === name) {
                 openTabs[i].name = this.state.newName;
-                this.setState({
-                  openTabs
-                });
                 break;
               }
             }
@@ -261,7 +253,8 @@ export default class App extends React.Component {
             createMenuInfo: {
               id: null,
               type: null
-            }
+            },
+            openTabs
           });
         }
       });
