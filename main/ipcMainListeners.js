@@ -33,7 +33,10 @@ module.exports = () => {
     }
   })
   ipcMain.on('delete', (event, itemPath) => {
-    console.log('should delete');
     deleteItem(itemPath);
+  })
+  ipcMain.on('rename', (event, itemPath, newName) => {
+    console.log(itemPath, path.join(path.dirname(itemPath),newName));
+    fs.rename(itemPath, path.join(path.dirname(itemPath), newName));
   })
 }
