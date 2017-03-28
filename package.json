@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production electron .",
     "dev-start": "NODE_ENV=development electron .",
-    "dev": "webpack-dev-server --inline --hot --content-base ./renderer"
+    "dev": "webpack-dev-server --inline --content-base ./renderer"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
