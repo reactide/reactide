@@ -39,6 +39,7 @@ html {
 	height: -o-calc(100% - 30px);
 	height: calc(100% - 30px);
 	border: 0;
+	z-index: -1;
 }
 
 #errors {
