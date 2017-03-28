@@ -33,6 +33,17 @@ export default class TextEditor extends React.Component {
         language: 'javascript'
       });
       this.props.addEditorInstance(editor, id);
+
+      window.addEventListener('resize', () => {
+        if (id === this.props.activeTab) {
+          let editorNode = document.getElementById(id);
+          let parent = editorNode.parentElement;
+          editorNode.style.width = parent.clientWidth;
+          editorNode.firstElementChild.style.width = parent.clientWidth;
+          editorNode.firstElementChild.firstElementChild.style.width = parent.clientWidth;
+          editorNode.getElementsByClassName('monaco-scrollable-element')[0].style.width = parent.clientWidth - 46;
+        }
+      })
     });
   }
   render() {

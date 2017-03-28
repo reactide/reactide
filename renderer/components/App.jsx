@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import FileTree from './FileTree';
 import TextEditorPane from './TextEditorPane';
 import DeletePrompt from './DeletePrompt';
@@ -8,14 +7,6 @@ import MockComponentInspector from './MockComponentInspector';
 
 const { ipcRenderer } = require('electron');
 const { getTree } = require('../../lib/file-tree');
-=======
-import FileTree from './FileTree.jsx'
-import TextEditorPane from './TextEditorPane.jsx';
-import TextEditor from './TextEditor.jsx';
-import DeletePrompt from './DeletePrompt.jsx';
-const {remote, ipcRenderer, dialog} = require('electron');
-const {getTree} = require('../../lib/file-tree');
->>>>>>> e575c385... browser simulator works for external projects. hot loading only for projects using react-hot-loader
 const fs = require('fs');
 const path = require('path');
 const { File, Directory } = require('../../lib/item-schema');
@@ -190,12 +181,8 @@ export default class App extends React.Component {
 
   //calls file tree module and sets state with file tree object representation in callback
   setFileTree(dirPath) {
-<<<<<<< HEAD
     getTree(dirPath, fileTree => {
       //if watcher instance already exists close it as it's for the previously opened project
-=======
-    getTree(dirPath, (fileTree) => {
->>>>>>> e575c385... browser simulator works for external projects. hot loading only for projects using react-hot-loader
       if (this.state.watch) {
         this.state.watch.close();
       }
@@ -208,6 +195,7 @@ export default class App extends React.Component {
           const name = path.basename(absPath);
           const openTabs = this.state.openTabs;
 
+          //delete handler
           if (this.state.fileChangeType === 'delete') {
             let index;
             if (this.state.selectedItem.type === 'directory') {
@@ -223,8 +211,8 @@ export default class App extends React.Component {
                 break;
               }
             }
-          }
-          else if (this.state.fileChangeType === 'new') {
+          } else if (this.state.fileChangeType === 'new') {
+            //new handler
             if (this.state.createMenuInfo.type === 'directory') {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
@@ -251,7 +239,9 @@ export default class App extends React.Component {
                 type: this.state.selectedItem.type,
                 path: path.join(path.dirname(absPath), this.state.newName)
               }
-            })
+            });
+
+            //rename the opened tab of the renamed file if it's there
             for (var i = 0; i < this.state.openTabs.length; i++) {
               if (openTabs[i].name === name) {
                 openTabs[i].name = this.state.newName;
