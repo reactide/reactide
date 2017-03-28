@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const {exec} = require('child_process');
 const deleteItem = require('../lib/delete-directory');
-const {count} = require('../lib/file-tree');
 
 function simulator(root) {
   const projInfo = JSON.parse(fs.readFileSync(path.join(__dirname, '../lib/projInfo.js')));
