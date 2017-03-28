@@ -16,12 +16,6 @@ function simulator(root) {
     child.loadURL('http://localhost:8080');
     child.toggleDevTools();
   })
-  // let child = new BrowserWindow({
-  //   width: 800,
-  //   height: 600
-  // });
-  // child.loadURL('http://localhost:8080');
-  // child.toggleDevTools();
 }
 
 module.exports = () => {
