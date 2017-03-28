@@ -7,6 +7,8 @@ const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const fs = require('fs');
 
+registerIpcListeners();
+
 app.on('ready', () => {
   let win = new BrowserWindow({
     width: 1000,
@@ -18,9 +20,10 @@ app.on('ready', () => {
 
   if (process.env.NODE_ENV === 'development') win.toggleDevTools();
   
+  global.mainWindow = win;
   registerShortcuts(win);
 });
-registerIpcListeners();
+
 
 
 
