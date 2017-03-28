@@ -13,20 +13,25 @@ module.exports = {
 		__dirname: false,
 		__filename: false
 	},
-    module: {
-		loaders: [
-			{
-				test: /\.js$|\.jsx$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/,
-				query: {
-						presets: ['es2015', 'react']
-				}
-			},
-			{
-				test: /(\.css|\.scss)$/,
-				loaders: ['style', 'css', 'sass']
-			}
-		]
-	}
+  module: {
+    loaders: [
+      {
+        test: /\.js$|\.jsx$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react'],
+        },
+      }, {
+        test: /(\.css|\.scss)$/,
+        loaders: ['style', 'css', 'sass'],
+      }, {
+        test: /\.(eot|woff)$/,
+        loader: 'file-loader',
+      },
+    ],
+  },
+  devServer: {
+    port: 8081
+  }
 }
