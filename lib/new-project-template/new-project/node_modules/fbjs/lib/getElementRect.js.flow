@@ -19,7 +19,7 @@ const containsNode = require('./containsNode');
  * @return {object}
  */
 function getElementRect(elem) {
-  const docElem = document.documentElement;
+  const docElem = elem.ownerDocument.documentElement;
 
   // FF 2, Safari 3 and Opera 9.5- do not support getBoundingClientRect().
   // IE9- will throw if the element is not in the document.

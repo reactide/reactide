@@ -1,3 +1,7 @@
+## 1.1.3 (March 16, 2017)
+
+- Fixed `Command#normalize()` issue when set a value for option with argument and no default value
+
 ## 1.1.2 (December 3, 2016)
 
 - Fix exception on `Command#normalize()`

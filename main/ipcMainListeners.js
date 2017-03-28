@@ -5,14 +5,15 @@ const {exec} = require('child_process');
 const deleteItem = require('../lib/delete-directory');
 
 function simulator(root) {
-  let spawn = exec('webpack-dev-server --inline --content-base ./public', {
-    cwd: path.join(__dirname, '../lib/temp/new-project')
+  let child = exec('webpack-dev-server', {
+    cwd: path.join(__dirname, '../lib/temp/new-project'),
+    shell: '/bin/bash'
   }, (err, stdout, stderr) => {
     let child = new BrowserWindow({
       width: 800,
       height: 600
     });
-    child.loadURL('file://' + path.join(__dirname, '../lib/temp/new-project/client/public/index.html'));
+    child.loadURL('http://localhost:8080');
     child.toggleDevTools();
   })
 }
@@ -36,7 +37,7 @@ module.exports = () => {
     deleteItem(itemPath);
   })
   ipcMain.on('rename', (event, itemPath, newName) => {
-    console.log(itemPath, path.join(path.dirname(itemPath),newName));
+    console.log(itemPath, path.join(path.dirname(itemPath), newName));
     fs.rename(itemPath, path.join(path.dirname(itemPath), newName));
   })
 }
