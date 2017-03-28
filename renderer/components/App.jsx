@@ -4,7 +4,7 @@ import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
-const fileTree = require('../../lib/file-tree');
+const {getTree} = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
 const {File, Directory} = require('../../lib/item-schema');
@@ -180,7 +180,7 @@ export default class App extends React.Component {
   }
   //calls file tree module and sets state with file tree object representation in callback
   setFileTree(dirPath) {
-    fileTree(dirPath, (fileTree) => {
+    getTree(dirPath, (fileTree) => {
       if (this.state.watch) {
         this.state.watch.close();
       }
