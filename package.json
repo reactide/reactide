@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production electron .",
     "dev-start": "NODE_ENV=development electron .",
-    "dev": "webpack-dev-server --inline --content-base ./renderer"
+    "build": "webpack-dev-server --inline --content-base ./renderer",
+    "dev": "npm-run-all -p build dev-start"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
@@ -35,6 +36,8 @@
     "electron-hot-loader": "^0.8.0",
     "electron-packager": "^8.5.2",
     "electron-reload": "^1.1.0",
-    "webpack": "^2.2.1"
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }
