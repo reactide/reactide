@@ -3,7 +3,7 @@ const electron = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
-const mainWindow = require('../main.js');
+
 const template = [
   {
     label: 'Main',
@@ -14,9 +14,10 @@ const template = [
       {
         label: 'Open',
         click: () => {
+          global.newProj = false;
           const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
           if (rootDir) {
-            BrowserWindow.getFocusedWindow().webContents.send('openDir', rootDir[0]);
+            global.mainWindow.webContents.send('openDir', rootDir[0]);
           }
         }
       },
@@ -27,17 +28,18 @@ const template = [
           if (save) {
             copy('./lib/temp/new-project', save[0]);
           }
-          BrowserWindow.getFocusedWindow().webContents.send('openDir', save[0]);
+          global.mainWindow.webContents.send('openDir', save[0]);
         }
       },
       {
         label: 'New Project',
         click: () => {
           //warn user of unsaved changes before belo
-          BrowserWindow.getFocusedWindow().webContents.send('newProject');
+          global.newProj = true;
+          global.mainWindow.webContents.send('newProject');
           deleteDirectory('./lib/temp/new-project');
           copy('./lib/new-project-template/new-project', './lib/temp/');
-          BrowserWindow.getFocusedWindow().webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
+          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
         }
       }
     ],
