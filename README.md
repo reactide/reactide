@@ -4,7 +4,7 @@
 Reactide is a cross-platform desktop application that offers a custom simulator, making build-tool and server configuration unnecessary. Reactide brings development back to the days where opening a single file instantly renders the project in the browser. With Reactide, developers can achieve the same simplicity with a single React JSX file while still utilizing the power of React.
 
 <p align="center">
-  <img alt="babel" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png>
+  <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png>
 </p>
 
 ![Reactide Screenshot](http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png)
