@@ -5,5 +5,6 @@ yarn-error.log
 !yarn.lock
 npm-debug.log
 !/lib/new-project-template/new-project/**
+/lib/new-project-template/new-project/node_modules
 /lib/new-project-template/new-project/.DS_Store
 /lib/temp/**
