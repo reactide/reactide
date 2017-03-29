@@ -30,6 +30,8 @@ const installExtensions = async () => {
 
 app.on('ready', async () => {
   await installExtensions();
+registerIpcListeners();
+
   let win = new BrowserWindow({
     width: 1000,
     height: 800
@@ -40,9 +42,10 @@ app.on('ready', async () => {
 
   if (process.env.NODE_ENV === 'development') win.toggleDevTools();
   
+  global.mainWindow = win;
   registerShortcuts(win);
 });
-registerIpcListeners();
+
 
 
 

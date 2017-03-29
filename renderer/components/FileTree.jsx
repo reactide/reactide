@@ -4,7 +4,6 @@ import Directory from './Directory.jsx';
 const fs = require('fs');
 const path = require('path');
 const {remote, ipcRenderer, dialog} = require('electron');
-const fileTree = require('../../lib/file-tree');
 
 
 export default class FileTree extends React.Component {
