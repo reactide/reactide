@@ -342,9 +342,11 @@ export default class App extends React.Component {
       }
     }
   }
+  
   setActiveTab(id) {
     this.setState({ activeTab: id });
   }
+
   openFile(file) {
     let id = this.checkIfProjOpened(file);
     if (id === -1) {
@@ -358,10 +360,12 @@ export default class App extends React.Component {
         editor: null
       })
       this.setState({ openTabs, activeTab: id, nextTabId: id + 1 });
+      // store.dispatch()
     } else {
       this.setState({ activeTab: id });
     }
   }
+
   checkIfProjOpened(file) {
     for (var i = 0; i < this.state.openTabs.length; i++) {
       if (this.state.openTabs[i].path === file.path) {
