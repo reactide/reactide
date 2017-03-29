@@ -20,7 +20,7 @@ function simulator(root) {
       child.toggleDevTools();
     })
   }
-  else if(projInfo.webpack) { console.log('should open')
+  else if(projInfo.webpack) { 
     let child = exec('webpack', {
       cwd: projInfo.rootPath,
       shell: '/bin/bash'
