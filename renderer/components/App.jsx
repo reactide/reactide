@@ -3,11 +3,11 @@ import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
-const {remote, ipcRenderer, dialog} = require('electron');
-const {getTree} = require('../../lib/file-tree');
+const { remote, ipcRenderer, dialog } = require('electron');
+const { getTree } = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
-const {File, Directory} = require('../../lib/item-schema');
+const { File, Directory } = require('../../lib/item-schema');
 
 export default class App extends React.Component {
   constructor() {
@@ -312,6 +312,17 @@ export default class App extends React.Component {
       })
     }
   }
+  // closeTab(id, event) {
+  //   const temp = this.state.openTabs;
+  //   for (var i = 0; i < temp.length; i++) {
+  //     if (temp[i].id === id) {
+  //       temp.splice(i, 1);
+  //       break;
+  //     }
+  //   }
+  //   event.stopPropagation();
+  //   this.setState({ openTabs: temp, activeTab: temp[0] ? temp[0].id : null });
+  // }
   closeTab(id, event) {
     const temp = this.state.openTabs;
     for (var i = 0; i < temp.length; i++) {
@@ -323,6 +334,7 @@ export default class App extends React.Component {
     event.stopPropagation();
     this.setState({ openTabs: temp, activeTab: temp[0] ? temp[0].id : null });
   }
+
   addEditorInstance(editor, id) {
     const temp = this.state.openTabs;
     let i = 0;
@@ -342,7 +354,7 @@ export default class App extends React.Component {
       }
     }
   }
-  
+
   setActiveTab(id) {
     this.setState({ activeTab: id }, () => {
       let editorNode = document.getElementById(id);
@@ -399,6 +411,7 @@ export default class App extends React.Component {
       rename: false
     });
   }
+
   render() {
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs} >
