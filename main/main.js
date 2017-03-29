@@ -6,10 +6,32 @@ const template = require('./menus/file');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const fs = require('fs');
+require('electron-debug')();
 
+const installExtensions = async () => {
+  if (process.env.NODE_ENV === 'development') {
+    const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
+
+    const extensions = [
+      'REACT_DEVELOPER_TOOLS',
+      'REDUX_DEVTOOLS'
+    ];
+
+    const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+
+    // TODO: Use async interation statement.
+    //       Waiting on https://github.com/tc39/proposal-async-iteration
+    //       Promises will fail silently, which isn't what we want in development
+    return Promise
+      .all(extensions.map(name => installer.default(installer[name], forceDownload)))
+      .catch(console.log);
+  }
+};
+
+app.on('ready', async () => {
+  await installExtensions();
 registerIpcListeners();
 
-app.on('ready', () => {
   let win = new BrowserWindow({
     width: 1000,
     height: 800
