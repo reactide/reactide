@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "electron": "^1.6.1",
+    "electron-debug": "^1.1.0",
     "electron-localshortcut": "^1.1.0",
     "fs": "0.0.1-security",
     "monaco-editor": "^0.8.3",
@@ -29,6 +30,8 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",
+    "devtron": "^1.4.0",
+    "electron-devtools-installer": "^2.1.0",
     "electron-hot-loader": "^0.8.0",
     "electron-packager": "^8.5.2",
     "electron-reload": "^1.1.0",
