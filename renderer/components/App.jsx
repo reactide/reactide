@@ -4,7 +4,7 @@ import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
 const {remote, ipcRenderer, dialog} = require('electron');
-const fileTree = require('../../lib/file-tree');
+const {getTree} = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
 const {File, Directory} = require('../../lib/item-schema');
@@ -141,7 +141,7 @@ export default class App extends React.Component {
         this.setState({
           rename: true
         })
-        document.body.onkeydown = () => {};
+        document.body.onkeydown = () => { };
       }
     }
     if (type === 'directory') {
@@ -180,7 +180,7 @@ export default class App extends React.Component {
   }
   //calls file tree module and sets state with file tree object representation in callback
   setFileTree(dirPath) {
-    fileTree(dirPath, (fileTree) => {
+    getTree(dirPath, (fileTree) => {
       if (this.state.watch) {
         this.state.watch.close();
       }
@@ -196,7 +196,7 @@ export default class App extends React.Component {
           const parentDir = this.findParentDir(path.dirname(absPath), fileTree);
           const name = path.basename(absPath);
           const openTabs = this.state.openTabs;
-          
+
           if (this.state.fileChangeType === 'delete') {
             let index;
             if (this.state.selectedItem.type === 'directory') {
@@ -226,7 +226,7 @@ export default class App extends React.Component {
               index = this.findItemIndex(parentDir.subdirectories, name);
               parentDir.subdirectories[index].name = this.state.newName;
               parentDir.subdirectories[index].path = path.join(path.dirname(absPath), this.state.newName);
-              
+
             } else {
               index = this.findItemIndex(parentDir.files, name);
               parentDir.files[index].name = this.state.newName;
@@ -292,7 +292,7 @@ export default class App extends React.Component {
     });
   }
   createForm(id, type, event) {
-    document.body.onkeydown = () => {};
+    document.body.onkeydown = () => { };
     event.stopPropagation();
     this.setState({
       createMenuInfo: {
@@ -343,7 +343,15 @@ export default class App extends React.Component {
     }
   }
   setActiveTab(id) {
-    this.setState({ activeTab: id });
+    this.setState({ activeTab: id }, () => {
+      let editorNode = document.getElementById(id);
+      let parent = editorNode.parentElement;
+      editorNode.style.width = parent.clientWidth;
+      editorNode.firstElementChild.style.width = parent.clientWidth;
+      editorNode.firstElementChild.firstElementChild.style.width = parent.clientWidth;
+      editorNode.getElementsByClassName('monaco-scrollable-element')[0].style.width = parent.clientWidth - 46;
+    });
+
   }
   openFile(file) {
     let id = this.checkIfProjOpened(file);
@@ -410,395 +418,395 @@ export default class App extends React.Component {
                 rename={this.state.rename}
                 renameHandler={this.renameHandler}
               />
-            {this.state.deletePromptOpen ? <DeletePrompt deletePromptHandler={this.deletePromptHandler} name={path.basename(this.state.selectedItem.path)} /> : <span />}
-            
+              {this.state.deletePromptOpen ? <DeletePrompt deletePromptHandler={this.deletePromptHandler} name={path.basename(this.state.selectedItem.path)} /> : <span />}
 
-            <div className="item-views">
-              <div className="styleguide pane-item">
-                <header className="styleguide-header">
-                  <h5>Component Tree</h5>
-                </header>
 
-                <main className="styleguide-sections">
+              <div className="item-views">
+                <div className="styleguide pane-item">
+                  <header className="styleguide-header">
+                    <h5>Component Tree</h5>
+                  </header>
+
+                  <main className="styleguide-sections">
 
                     <div className="tree-view-resizer tool-panel">
                       <div className="tree-view-scroller">
 
-                          <ul className="tree">
-                            <li>
-                              <input type="checkbox" checked="checked" id="a1" />
-                              <label className="tree_label" for="a1">app</label>
-                              <ul>
-                                <li>
-                                  <input type="checkbox" checked="checked" id="c1" />
-                                  <label className="tree_label" for="c1">header</label>
-                                  <ul>
-                                    <li>
-                                      <input type="checkbox" checked="checked" id="c2" />
-                                      <label for="c2" className="tree_label">h1</label>
-                                      <ul>
-                                        <li>
-                                          <input type="checkbox" id="c14" disabled />
-                                          <label for="c14" className="tree_label">todos</label>
-                                        </li>
-                                        <li>
-                                          <input type="checkbox" id="c15" disabled />
-                                          <label for="c15" className="tree_label">input</label>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                      <input type="checkbox" checked="checked" id="c3" />
-                                      <label for="c3" className="tree_label">Looong level 1 <br/>label text</label>
-                                      <ul>
-                                        <li>
-                                          <input type="checkbox" id="c13" disabled />
-                                          <label for="c13" className="tree_label">Level 2</label>
-                                        </li>
-                                        <li>
-                                          <input type="checkbox" checked="checked" id="c4" />
-                                          <label for="c4" className="tree_label">
-                                            <span className="treecaret">Sample</span>
-                                            <span className="tree_custom">
-                                              type: <span className="text-info">'input'</span><br />
-                                              className: <span className="text-info">'new-todo'</span><br />
-                                              type: <span className="text-info">'text'</span><br />
-                                              placeholder: <span className="text-info">'What needs to be done?'</span><br />
-                                              autoFocus: <span className="text-info">true</span><br />
-                                              value: <span className="text-info">''</span>
-                                            </span>
-                                          </label>
-                                          <ul>
-                                            <li>
-                                              <input type="checkbox" id="c12" disabled />
-                                              <label for="c12" className="tree_label">Level 3</label>
-                                            </li>
-                                          </ul>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </li>
-                                        
-                                <li>
-                                  <input type="checkbox" checked="checked" id="c5" />
-                                  <label className="tree_label" for="c5">section</label>
-                                  <ul>
-                                    <li>
-                                      <input type="checkbox" checked="checked" id="c6" />
-                                      <label for="c6" className="tree_label">input</label>
-                                      <ul>
-                                        <li>
-                                          <input type="checkbox" id="c11" disabled />
-                                          <label for="c11" className="tree_label">Level 2</label>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                      <input type="checkbox" checked="checked" id="c7" />
-                                      <label for="c7" className="tree_label">ul</label>
-                                      <ul>
-                                        <li>
-                                          <input type="checkbox" id="c10" disabled />
-                                          <label for="c10" className="tree_label">Level 2</label>
-                                        </li>
-                                        <li>
-                                          <input type="checkbox" checked="checked" id="c8" />
-                                          <label for="c8" className="tree_label">Level 2</label>
-                                          <ul>
-                                            <li>
-                                              <input type="checkbox" id="c9" disabled />
-                                              <label for="c9" className="tree_label">Level 3</label>
-                                            </li>
-                                          </ul>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                    <li>
-                                      <input type="checkbox" checked="checked" id="c20" />
-                                      <label for="c20" className="tree_label">footer</label>
-                                      <ul>
-                                        <li>
-                                          <input type="checkbox" id="c21" disabled />
-                                          <label for="c21" className="tree_label">span</label>
-                                        </li>
-                                        <li>
-                                          <input type="checkbox" checked="checked" id="c22" />
-                                          <label for="c22" className="tree_label">ul</label>
-                                          <ul>
-                                            <li>
-                                              <input type="checkbox" checked="checked" id="c23" />
-                                              <label for="c23" className="tree_label">li</label>
-                                              <ul>
-                                                <li>
-                                                  <input type="checkbox" id="c25" disabled />
-                                                  <label for="c25" className="tree_label">a</label>
-                                                </li>
-                                              </ul>
-                                            </li>
-                                            <li>
-                                              <input type="checkbox" id="c24" disabled />
-                                              <label for="c24" className="tree_label">li</label>
-                                            </li>
-                                          </ul>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </li>
-                              </ul>            
-                            </li>
-                          </ul>
-                        
+                        <ul className="tree">
+                          <li>
+                            <input type="checkbox" checked="checked" id="a1" />
+                            <label className="tree_label" for="a1">app</label>
+                            <ul>
+                              <li>
+                                <input type="checkbox" checked="checked" id="c1" />
+                                <label className="tree_label" for="c1">header</label>
+                                <ul>
+                                  <li>
+                                    <input type="checkbox" checked="checked" id="c2" />
+                                    <label for="c2" className="tree_label">h1</label>
+                                    <ul>
+                                      <li>
+                                        <input type="checkbox" id="c14" disabled />
+                                        <label for="c14" className="tree_label">todos</label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" id="c15" disabled />
+                                        <label for="c15" className="tree_label">input</label>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox" checked="checked" id="c3" />
+                                    <label for="c3" className="tree_label">Looong level 1 <br />label text</label>
+                                    <ul>
+                                      <li>
+                                        <input type="checkbox" id="c13" disabled />
+                                        <label for="c13" className="tree_label">Level 2</label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" checked="checked" id="c4" />
+                                        <label for="c4" className="tree_label">
+                                          <span className="treecaret">Sample</span>
+                                          <span className="tree_custom">
+                                            type: <span className="text-info">'input'</span><br />
+                                            className: <span className="text-info">'new-todo'</span><br />
+                                            type: <span className="text-info">'text'</span><br />
+                                            placeholder: <span className="text-info">'What needs to be done?'</span><br />
+                                            autoFocus: <span className="text-info">true</span><br />
+                                            value: <span className="text-info">''</span>
+                                          </span>
+                                        </label>
+                                        <ul>
+                                          <li>
+                                            <input type="checkbox" id="c12" disabled />
+                                            <label for="c12" className="tree_label">Level 3</label>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+
+                              <li>
+                                <input type="checkbox" checked="checked" id="c5" />
+                                <label className="tree_label" for="c5">section</label>
+                                <ul>
+                                  <li>
+                                    <input type="checkbox" checked="checked" id="c6" />
+                                    <label for="c6" className="tree_label">input</label>
+                                    <ul>
+                                      <li>
+                                        <input type="checkbox" id="c11" disabled />
+                                        <label for="c11" className="tree_label">Level 2</label>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox" checked="checked" id="c7" />
+                                    <label for="c7" className="tree_label">ul</label>
+                                    <ul>
+                                      <li>
+                                        <input type="checkbox" id="c10" disabled />
+                                        <label for="c10" className="tree_label">Level 2</label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" checked="checked" id="c8" />
+                                        <label for="c8" className="tree_label">Level 2</label>
+                                        <ul>
+                                          <li>
+                                            <input type="checkbox" id="c9" disabled />
+                                            <label for="c9" className="tree_label">Level 3</label>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox" checked="checked" id="c20" />
+                                    <label for="c20" className="tree_label">footer</label>
+                                    <ul>
+                                      <li>
+                                        <input type="checkbox" id="c21" disabled />
+                                        <label for="c21" className="tree_label">span</label>
+                                      </li>
+                                      <li>
+                                        <input type="checkbox" checked="checked" id="c22" />
+                                        <label for="c22" className="tree_label">ul</label>
+                                        <ul>
+                                          <li>
+                                            <input type="checkbox" checked="checked" id="c23" />
+                                            <label for="c23" className="tree_label">li</label>
+                                            <ul>
+                                              <li>
+                                                <input type="checkbox" id="c25" disabled />
+                                                <label for="c25" className="tree_label">a</label>
+                                              </li>
+                                            </ul>
+                                          </li>
+                                          <li>
+                                            <input type="checkbox" id="c24" disabled />
+                                            <label for="c24" className="tree_label">li</label>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
                       </div>
                     </div>
-                  
-                </main>
+
+                  </main>
+                </div>
               </div>
-            </div>
 
-          </ride-pane>
-          <ride-pane-resize-handle class="horizontal"></ride-pane-resize-handle>
+            </ride-pane>
+            <ride-pane-resize-handle class="horizontal"></ride-pane-resize-handle>
 
 
-          <TextEditorPane
-            appState={this.state}
-            setActiveTab={this.setActiveTab}
-            addEditorInstance={this.addEditorInstance}
-            closeTab={this.closeTab}
-          />
+            <TextEditorPane
+              appState={this.state}
+              setActiveTab={this.setActiveTab}
+              addEditorInstance={this.addEditorInstance}
+              closeTab={this.closeTab}
+            />
 
             <ride-pane-resize-handle className="horizontal"></ride-pane-resize-handle>
 
-          <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
+            <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
 
-            <div className="item-views">
-              <div className="styleguide pane-item">
-                <header className="styleguide-header">
-                  <h5>Component Inspector</h5>
-                </header>
-                <main className="styleguide-sections">
-
-                  <section className="bordered">
-                    <button className='btn' onClick={this.openSim}>Simulator</button>
-                    <h3>Props</h3>
-                    <div className="control">
-                      <div className="control-rendered">
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">className</div>
-                            <div className="controls">
-                              <input className='input-text' type='text' placeholder='todo-item active' />
-                            </div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">placeholder</div>
-                            <div className="controls">
-                              <input className='input-text' type='text' placeholder='What needs to be done?' />
-                            </div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">value</div>
-                            <div className="controls">
-                              <input className='input-text' type='text' placeholder='' />
-                            </div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">autoFocus</div>
-                            <div className="controls">
-                              <div className='btn-group'>
-                                <button className='btn'>Off</button>
-                                <button className='btn selected'>On</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                  <section className="bordered">
-                    <h3>Styles</h3>
-                    <div className="control">
-                      <div className="control-rendered">
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">count</div>
-                            <div className="controls"><input className='input-range' type='range' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">columns</div>
-                            <div className="controls"><input className='input-range' type='range' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">width</div>
-                            <div className="controls"><input className='input-range' type='range' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">padding</div>
-                            <div className="controls"><input className='input-number' type='number' min='1' max='10' placeholder='1-10' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">margin</div>
-                            <div className="controls"><input className='input-number' type='number' min='1' max='10' placeholder='1-10' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">color</div>
-                            <div className="controls"><input className='input-color' type='color' value='#FF85FF' /></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">position</div>
-                            <div className="controls">
-                              <select className='input-select'><option>Relative</option><option>Option 2</option><option>Option 3</option></select>
-                            </div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">float</div>
-                            <div className="controls"><select className='input-select'><option>Left</option><option>Option 2</option><option>Option 3</option></select></div>
-                          </div>
-                        </div>
-                        <div className='block'>
-                          <div className="control-wrap">
-                            <div className="label">active</div>
-                            <div className="controls">
-                              <div className='btn-group'>
-                                <button className='btn'>Off</button>
-                                <button className='btn selected'>On</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <section className="bordered">
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                    <h1 className="section-heading">Controls Library</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                    <button className='btn' onClick={this.openSim}>Simulator</button>
-                  </section>
+              <div className="item-views">
+                <div className="styleguide pane-item">
+                  <header className="styleguide-header">
+                    <h5>Component Inspector</h5>
+                  </header>
                   <main className="styleguide-sections">
+
                     <section className="bordered">
-                      <h1 className="section-heading">Controls Library</h1>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                      <h3>Button Groups &amp; Selectors</h3>
+                      <button className='btn' onClick={this.openSim}>Simulator</button>
+                      <h3>Props</h3>
                       <div className="control">
                         <div className="control-rendered">
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Sample</div>
+                              <div className="label">className</div>
+                              <div className="controls">
+                                <input className='input-text' type='text' placeholder='todo-item active' />
+                              </div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">placeholder</div>
+                              <div className="controls">
+                                <input className='input-text' type='text' placeholder='What needs to be done?' />
+                              </div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">value</div>
+                              <div className="controls">
+                                <input className='input-text' type='text' placeholder='' />
+                              </div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">autoFocus</div>
                               <div className="controls">
                                 <div className='btn-group'>
-                                  <button className='btn'>One</button>
-                                  <button className='btn selected'>Two</button>
-                                  <button className='btn'>Three</button>
+                                  <button className='btn'>Off</button>
+                                  <button className='btn selected'>On</button>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <h3>Selectors</h3>
+                    </section>
+                    <section className="bordered">
+                      <h3>Styles</h3>
                       <div className="control">
                         <div className="control-rendered">
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Range</div>
+                              <div className="label">count</div>
                               <div className="controls"><input className='input-range' type='range' /></div>
                             </div>
                           </div>
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Number</div>
+                              <div className="label">columns</div>
+                              <div className="controls"><input className='input-range' type='range' /></div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">width</div>
+                              <div className="controls"><input className='input-range' type='range' /></div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">padding</div>
                               <div className="controls"><input className='input-number' type='number' min='1' max='10' placeholder='1-10' /></div>
                             </div>
                           </div>
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Color</div>
+                              <div className="label">margin</div>
+                              <div className="controls"><input className='input-number' type='number' min='1' max='10' placeholder='1-10' /></div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">color</div>
                               <div className="controls"><input className='input-color' type='color' value='#FF85FF' /></div>
                             </div>
                           </div>
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Selector</div>
-                              <div className="controls"><select className='input-select'><option>Option 1</option><option>Option 2</option><option>Option 3</option></select></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3>Booleans</h3>
-                      <div className="control">
-                        <div className="control-rendered">
-                          <div className='block'>
-                            <div className="control-wrap">
-                              <div className="label">Checkbox</div>
-                              <div className="controls"><input className='input-checkbox' type='checkbox' checked /></div>
-                            </div>
-                          </div>
-                          <div className='block'>
-                            <div className="control-wrap">
-                              <div className="label">Toggle</div>
-                              <div className="controls"><input className='input-toggle' type='checkbox' checked /></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <h3>Inputs Alternate</h3>
-                      <div className="control">
-                        <div className="control-rendered">
-                          <div className='block'>
-                            <div className="control-wrap">
-                              <div className="label">Text Input</div>
+                              <div className="label">position</div>
                               <div className="controls">
-                                <input className='input-text' type='text' placeholder='Text' />
+                                <select className='input-select'><option>Relative</option><option>Option 2</option><option>Option 3</option></select>
                               </div>
                             </div>
                           </div>
                           <div className='block'>
                             <div className="control-wrap">
-                              <div className="label">Search Input</div>
+                              <div className="label">float</div>
+                              <div className="controls"><select className='input-select'><option>Left</option><option>Option 2</option><option>Option 3</option></select></div>
+                            </div>
+                          </div>
+                          <div className='block'>
+                            <div className="control-wrap">
+                              <div className="label">active</div>
                               <div className="controls">
-                                <input className='input-search' type='search' placeholder='Search' />
+                                <div className='btn-group'>
+                                  <button className='btn'>Off</button>
+                                  <button className='btn selected'>On</button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <h3>Wide Inputs</h3>
-                      <div className="control">
-                        <div className="control-rendered">
-                          <input className='input-text' type='text' placeholder='Text' />
-                          <input className='input-search' type='search' placeholder='Search' />
-                          <textarea className='input-textarea' placeholder='Text Area'></textarea>
                         </div>
                       </div>
                     </section>
-                  </main>
+
+                    <section className="bordered">
+                      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                      <h1 className="section-heading">Controls Library</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                      <button className='btn' onClick={this.openSim}>Simulator</button>
+                    </section>
+                    <main className="styleguide-sections">
+                      <section className="bordered">
+                        <h1 className="section-heading">Controls Library</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                        <h3>Button Groups &amp; Selectors</h3>
+                        <div className="control">
+                          <div className="control-rendered">
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Sample</div>
+                                <div className="controls">
+                                  <div className='btn-group'>
+                                    <button className='btn'>One</button>
+                                    <button className='btn selected'>Two</button>
+                                    <button className='btn'>Three</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>Selectors</h3>
+                        <div className="control">
+                          <div className="control-rendered">
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Range</div>
+                                <div className="controls"><input className='input-range' type='range' /></div>
+                              </div>
+                            </div>
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Number</div>
+                                <div className="controls"><input className='input-number' type='number' min='1' max='10' placeholder='1-10' /></div>
+                              </div>
+                            </div>
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Color</div>
+                                <div className="controls"><input className='input-color' type='color' value='#FF85FF' /></div>
+                              </div>
+                            </div>
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Selector</div>
+                                <div className="controls"><select className='input-select'><option>Option 1</option><option>Option 2</option><option>Option 3</option></select></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>Booleans</h3>
+                        <div className="control">
+                          <div className="control-rendered">
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Checkbox</div>
+                                <div className="controls"><input className='input-checkbox' type='checkbox' checked /></div>
+                              </div>
+                            </div>
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Toggle</div>
+                                <div className="controls"><input className='input-toggle' type='checkbox' checked /></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>Inputs Alternate</h3>
+                        <div className="control">
+                          <div className="control-rendered">
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Text Input</div>
+                                <div className="controls">
+                                  <input className='input-text' type='text' placeholder='Text' />
+                                </div>
+                              </div>
+                            </div>
+                            <div className='block'>
+                              <div className="control-wrap">
+                                <div className="label">Search Input</div>
+                                <div className="controls">
+                                  <input className='input-search' type='search' placeholder='Search' />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <h3>Wide Inputs</h3>
+                        <div className="control">
+                          <div className="control-rendered">
+                            <input className='input-text' type='text' placeholder='Text' />
+                            <input className='input-search' type='search' placeholder='Search' />
+                            <textarea className='input-textarea' placeholder='Text Area'></textarea>
+                          </div>
+                        </div>
+                      </section>
+                    </main>
                   </main>
                 </div>
               </div>
