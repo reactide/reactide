@@ -1,9 +1,0 @@
-.gitignore
-
-node_modules/
-build/
-
-test/
-.travis.yml
-
-gulpfile.js
