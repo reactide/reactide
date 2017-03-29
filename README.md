@@ -1,4 +1,4 @@
-<a href='http://reactide.io/'><img alt="reactide" src="http://reactide.io/images/reactide-header.jpg" height="180"></a>
+<p align="center"><a href='http://reactide.io/'><img alt="reactide" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-logo.png" height="180"></a></p>
 
 ### Reactide is the first dedicated IDE for React web application development.
 Reactide is a cross-platform desktop application that offers a custom simulator, making build-tool and server configuration unnecessary. Reactide brings development back to the days where opening a single file instantly renders the project in the browser. With Reactide, developers can achieve the same simplicity with a single React JSX file while still utilizing the power of React.
