@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production electron .",
     "dev-start": "NODE_ENV=development electron .",
     "build": "webpack-dev-server --inline --content-base ./renderer",
-    "dev": "npm-run-all -p build dev-start"
+    "dev": "npm-run-all -p build dev-start",
+    "postinstall": "cd ./lib/new-project-template/new-project && yarn"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
