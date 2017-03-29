@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://reactide.io">
-    <img alt="reactide" src="https://github.com/reactide/reactide/blob/master/renderer/assets/IMG_0337.PNG" width="144">
+    <img alt="reactide" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-logo.png" width="144">
   </a>
 </p>
 
