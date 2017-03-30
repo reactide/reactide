@@ -19,7 +19,7 @@ Code is the representation of user-interfaces, but writing code rarely ever rese
 
 ## How to install.
 
-Run `npm run dev` in one terminal
+Run `npm run dev` in one terminal.
 
 Once the webpack server has started open another terminal and run `npm run dev-start`.
 
