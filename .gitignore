@@ -2,7 +2,6 @@ node_modules
 dist
 .DS_Store
 yarn-error.log
-yarn.lock
 npm-debug.log
 !/lib/new-project-template/new-project/**
 /lib/new-project-template/new-project/.DS_Store
