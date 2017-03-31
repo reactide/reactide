@@ -9489,13 +9489,10 @@ label.tree_label:hover:before {
 }
 .plus-icon {
   font-size: 15px;
-<<<<<<< HEAD
+
   /*float:right;*/
   position: absolute;
   right: 0px;
-=======
-  float: right;
->>>>>>> 567b80181c05917b48b24d6cde727a1b00dc366c
   cursor: pointer;
 }
 .create-menu {
