@@ -19,13 +19,5 @@ Managing state across a complex web of React components is the biggest pain poin
 ## Synchronized property and style controls
 Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
 
-## How to install
-
-Run `npm run dev` in one terminal.
-
-Once the webpack server has started open another terminal and run `npm run dev-start`.
-
-You can also run `npm start`, however please note that live reloading will then not be available.
-
 ## Contributors
 [Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
