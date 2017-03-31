@@ -16,8 +16,8 @@ Reactide runs an integrated Node server and custom browser simulator, which elim
 ## State flow visualization.
 Managing state across a complex web of React components is the biggest pain point of developing React apps. Reactide offers the first visual editing solution for today's most powerful visual UI engine. By navigating through a live-representation of  the architecture of a project, developers can quickly identify and jump to relevant components and edit them on the fly.
 
-## Synchronized property and style controls.
-Code is the representation of user-interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straight-forward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project, is now instant.
+## Synchronized property and style controls
+Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
 
 ## Contributors
 [Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
