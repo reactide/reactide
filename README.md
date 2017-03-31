@@ -3,6 +3,8 @@
 ### Reactide is the first dedicated IDE for React web application development
 Reactide is a cross-platform desktop application that offers a custom simulator, making build-tool and server configuration unnecessary. Reactide brings development back to the days where opening a single file instantly renders the project in the browser. With Reactide, developers can achieve the same simplicity with a single React JSX file while still utilizing the power of React.
 
+#### Reactide is in active development. Please follow this repo for contribution guidelines and our development road map.
+
 ## 
 <p align="center">
   <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png">
@@ -16,14 +18,6 @@ Managing state across a complex web of React components is the biggest pain poin
 
 ## Synchronized property and style controls
 Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
-
-## How to install
-
-Run `npm run dev` in one terminal.
-
-Once the webpack server has started open another terminal and run `npm run dev-start`.
-
-You can also run `npm start`, however please note that live reloading will then not be available.
 
 ## Contributors
 [Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
