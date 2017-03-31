@@ -37,9 +37,9 @@ const template = [
           //warn user of unsaved changes before belo
           global.newProj = true;
           global.mainWindow.webContents.send('newProject');
-          deleteDirectory('./lib/temp/new-project');
-          copy('./lib/new-project-template/new-project', './lib/temp/');
-          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/temp/new-project'));
+          deleteDirectory('./lib/new-project');
+          copy('./lib/new-project-template/new-project', './lib/');
+          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
         }
       }
     ],
