@@ -4,7 +4,7 @@
   "description": "",
   "main": "./main/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register test/test.js",
     "start": "NODE_ENV=production electron .",
     "dev-start": "NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer"
@@ -30,11 +30,18 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
     "devtron": "^1.4.0",
     "electron-devtools-installer": "^2.1.0",
     "electron-hot-loader": "^0.8.0",
     "electron-packager": "^8.5.2",
     "electron-reload": "^1.1.0",
+    "enzyme": "^2.8.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
+    "sinon": "^2.1.0",
     "webpack": "^2.2.1"
   }
 }
