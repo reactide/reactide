@@ -5,8 +5,8 @@
   "main": "./main/main.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register test/test.js",
-    "start": "NODE_ENV=production electron .",
-    "dev-start": "NODE_ENV=development electron .",
+    "start": "cross-env NODE_ENV=production electron .",
+    "dev-start": "cross-env NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
@@ -32,6 +32,7 @@
     "babel-register": "^6.23.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
+    "cross-env": "^4.0.0",
     "devtron": "^1.4.0",
     "electron-devtools-installer": "^2.1.0",
     "electron-hot-loader": "^0.8.0",
