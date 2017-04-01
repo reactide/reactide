@@ -10,6 +10,9 @@ Reactide is a cross-platform desktop application that offers a custom simulator,
   <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png">
 </p>
 
+## Get Reactide Running (While in beta)
+Frist you need to run ``npm install`` once finished you will need two terminal (OSX/Linux) or cmd/powershell (Windows) instances. In the first run ```npm run dev``` and in the second run ```npm run dev-start```, a window should open and you can start using Reactide.
+
 ## Get right to coding
 Reactide runs an integrated Node server and custom browser simulator, which eliminates the need to configure servers, build-tools, and even offers hot module reloading right out of the box. Projects developed in Reactide are build-tool agnostic. As projects evolve, the developer only needs to add necessary dependencies without having to make decisions before coding has even started.
 
