@@ -9490,12 +9490,17 @@ label.tree_label:hover:before {
 .plus-icon {
   font-size: 15px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   float: right;
 =======
   /*float:right;*/
   position: absolute;
   right: 0px;
 >>>>>>> b0ab8c17... rename working, also if tab is open will change the name on there
+=======
+  position: absolute;
+  right: 0px;
+>>>>>>> cfa5ae64... fixed styles
   cursor: pointer;
 }
 .create-menu {
@@ -9533,14 +9538,9 @@ label.tree_label:hover:before {
   background-color: grey;
   z-index: 5;
 }
-<<<<<<< HEAD
-/*# sourceMappingURL=main.css.map */
-=======
 .rename-input {
   height:25px;
   width:100%;
   background-color: #23272f;
   color:white;
 }
-/*# sourceMappingURL=main.css.map */
->>>>>>> b0ab8c17... rename working, also if tab is open will change the name on there
