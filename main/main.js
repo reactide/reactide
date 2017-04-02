@@ -37,7 +37,7 @@ app.on('ready', async () => {
     width: 1000,
     height: 800
   });
-  win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
+  win.loadURL('file://' + path.join(__dirname, '../dist/index.html'));
   let menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
