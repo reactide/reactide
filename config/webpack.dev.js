@@ -2,9 +2,19 @@
  * @license: MIT
  */
 const path = require('path');
+const { spawn } = require('child_process');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
+const config = require('./config');
+
+/**
+ * webpack plugins
+ */
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const publicPath = `http://${config.devServer.host}:${config.devServer.port}/dist`;
 
 module.exports = () => {
   return webpackMerge(commonConfig(), {
@@ -12,23 +22,54 @@ module.exports = () => {
     output: {
       path: path.resolve('dist'),
       filename: 'bundle.js',
-      publicPath: '/dist/',
+      publicPath,
+      libraryTarget: 'commonjs2'
     },
     plugins: [
       new ExtractTextPlugin({
         filename: '[name].css',
         allChunks: true
-      })
+      }),
+
+      new DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        'process.env.PORT': JSON.stringify(config.devServer.port)
+      }),
+
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        title: config.app.title,
+        chunksSortMode: 'dependency'
+      }),
     ],
-    target: 'web',
+    target: 'electron-renderer',
     devServer: {
-      port: 8081,
+      port: config.devServer.port,
+      publicPath,
+      inline: true,
+      lazy: false,
+      hot: false,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      contentBase: path.join(__dirname, 'dist'),
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 100
+      },
       historyApiFallback: {
-        index: '/dist/'
+        verbose: true,
+        disableDotRule: false,
+      },
+      setup() {
+        if (process.env.START_HOT) {
+          spawn(
+            'npm',
+            ['run', 'electron:dev'],
+            { shell: true, env: process.env, stdio: 'inherit' }
+          )
+          .on('close', code => process.exit(code))
+          .on('error', spawnError => console.error(spawnError));
+        }
       }
-    },
-    node: {
-      fs: 'empty'
     }
   })
 }

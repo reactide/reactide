@@ -13,13 +13,12 @@
 
 // root reducer top level reducer
 import { combineReducers } from 'redux';
-import tabsReducer from './tabs'
+import { tabReducer as tab } from './tabs'
 // import GifsReducer from './gifs';
 // import other reducers here
 
 const rootReducer = combineReducers({
-  // gifs: GifsReducer
-  // add reducer objects here
+  tab
 });
 
 export default rootReducer;

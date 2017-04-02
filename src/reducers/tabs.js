@@ -1,17 +1,16 @@
-import * as types from '../actions/index'
-// example
-const initialState = {};
+import * as Constants from '../constants';
 
-const reducer = (state = initialState, action={type:'hello'}) => {
+
+const initialState = {};
+export const tabReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'HELLO': (state = {}, action) => {
+    case Constants.HELLO: 
       return state;
-    }
-    default: return state;
+
+    default:
+      return state;
   } 
 }
-
-export default reducer;
 
 
 // const initialState = [];

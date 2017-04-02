@@ -7,9 +7,9 @@
     "test": "mocha --compilers js:babel-register test/test.js",
     "start": "cross-env NODE_ENV=production npm run electron .",
     "build": "NODE_ENV=electron npm run webpack",
-    "electron:dev": "cross-env NODE_ENV=electron npm run electron .",
-    "browser:dev": "NODE_ENV=dev npm run webpack-dev-server -- --inline",
-    
+    "hot:dev": "cross-env NODE_ENV=dev npm run webpack-dev-server -- --inline --progress --profile --colors",
+    "electron:dev": "cross-env HOT=1 NODE_ENV=dev npm run electron -- -r babel-register -r babel-polyfill ./src/main",
+    "dev": "cross-env START_HOT=1 npm run hot:dev",
     "electron": "node_modules/.bin/electron",
     "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
     "webpack": "node_modules/.bin/webpack"
@@ -32,6 +32,7 @@
     "babel": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",

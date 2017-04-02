@@ -1,10 +1,8 @@
 import React from 'react';
-import TabContainer from './TabContainer.jsx';
-import { ipcRenderer } from 'electron';
 
 export default class TextEditor extends React.Component {
   constructor(props) {
-    super();
+    super(props);
   }
 
   componentDidMount() {
@@ -29,6 +27,7 @@ export default class TextEditor extends React.Component {
     const id = this.props.id;
     var editor;
     amdRequire(['vs/editor/editor.main'], () => {
+      // eslint-disable-next-line
       editor = monaco.editor.create(document.getElementById(id), {
         value: file,
         language: 'javascript',
@@ -62,4 +61,11 @@ export default class TextEditor extends React.Component {
       </div>
     );
   }
+}
+
+TextEditor.propTypes = {
+  addEditorInstance: React.PropTypes.any,
+  id: React.PropTypes.any,
+  activeTab: React.PropTypes.any,
+  tab: React.PropTypes.any
 }

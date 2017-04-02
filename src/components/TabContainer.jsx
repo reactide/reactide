@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from './Tab.jsx';
+import Tab from './Tab';
 
 export default class TabContainer extends React.Component {
   constructor() {
@@ -24,4 +24,10 @@ export default class TabContainer extends React.Component {
       </ul>
     )
   }
+}
+
+TabContainer.propTypes = {
+  appState: React.PropTypes.any,
+  closeTab: React.PropTypes.any,
+  setActiveTab: React.PropTypes.any
 }

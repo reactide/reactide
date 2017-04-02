@@ -1,11 +1,13 @@
 import React from 'react';
-import FileTree from './FileTree.jsx'
-import TextEditorPane from './TextEditorPane.jsx';
-import DeletePrompt from './DeletePrompt.jsx';
 const { ipcRenderer } = require('electron');
-const { getTree } = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
+
+import FileTree from './FileTree'
+import TextEditorPane from './TextEditorPane';
+import DeletePrompt from './DeletePrompt';
+
+const { getTree } = require('../../lib/file-tree');
 const { File, Directory } = require('../../lib/item-schema');
 
 export default class App extends React.Component {
@@ -59,12 +61,12 @@ export default class App extends React.Component {
         this.setState({ openTabs: [], activeTab: null, openedProjectPath: arg, nextTabId: 0 });
       }
     });
-    ipcRenderer.on('saveFile', (event, arg) => {
+    ipcRenderer.on('saveFile', () => {
       if (this.state.activeTab !== null) {
         this.saveTab();
       }
     })
-    ipcRenderer.on('delete', (event, arg) => {
+    ipcRenderer.on('delete', () => {
       if (this.state.selectedItem.id) {
         this.setState({
           deletePromptOpen: true,
@@ -72,7 +74,7 @@ export default class App extends React.Component {
         });
       }
     })
-    ipcRenderer.on('enter', (event, arg) => {
+    ipcRenderer.on('enter', () => {
       if (this.state.selectedItem.focused) {
         //rename property just true or false i guess
         this.setState({
@@ -88,7 +90,7 @@ export default class App extends React.Component {
         this.setFileTree(dirPath);
       }
     });
-    ipcRenderer.on('newProject', (event, arg) => {
+    ipcRenderer.on('newProject', () => {
       if (this.state.watch) this.state.watch.close();
       this.setState({
         fileTree: null,

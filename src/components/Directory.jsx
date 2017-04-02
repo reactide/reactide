@@ -1,8 +1,8 @@
 import React from 'react';
-import File from './File.jsx';
-import CreateMenu from './CreateMenu.jsx';
-import CreateForm from './CreateForm.jsx';
-import RenameForm from './RenameForm.jsx';
+import File from './File';
+import CreateMenu from './CreateMenu';
+import CreateForm from './CreateForm';
+import RenameForm from './RenameForm';
 
 export default class Directory extends React.Component {
   constructor() {
@@ -10,7 +10,6 @@ export default class Directory extends React.Component {
   }
   render() {
     const arr = [];
-    let uniqueId;
     for (var i = 0; i < this.props.directory.subdirectories.length; i++) {
       arr.push(
         <Directory
@@ -29,7 +28,7 @@ export default class Directory extends React.Component {
           renameHandler={this.props.renameHandler}
         />)
     }
-    for (var i = 0; i < this.props.directory.files.length; i++) {
+    for (let i = 0; i < this.props.directory.files.length; i++) {
       arr.push(
         <File
           key={this.props.directory.files[i].id}
@@ -73,4 +72,19 @@ export default class Directory extends React.Component {
       )
     }
   }
+}
+
+Directory.propTypes = {
+  rename: React.PropTypes.any,
+  selectedItem: React.PropTypes.any,
+  id: React.PropTypes.any,
+  openMenuId: React.PropTypes.any,
+  createMenuInfo: React.PropTypes.any,
+  directory: React.PropTypes.any,
+  renameHandler: React.PropTypes.any,
+  openCreateMenu: React.PropTypes.any,
+  clickHandler: React.PropTypes.any,
+  createForm: React.PropTypes.any,
+  openFile: React.PropTypes.any,
+  createItem: React.PropTypes.any,
 }

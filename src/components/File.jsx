@@ -1,5 +1,5 @@
 import React from 'react';
-import RenameForm from './RenameForm.jsx';
+import RenameForm from './RenameForm';
 
 const File = ({file, openFile, selectedItem, id, clickHandler, rename, renameHandler}) => {
 
@@ -13,4 +13,15 @@ const File = ({file, openFile, selectedItem, id, clickHandler, rename, renameHan
     </li>
   )
 }
+
+File.propTypes = {
+  file: React.PropTypes.any,
+  openFile: React.PropTypes.any,
+  selectedItem: React.PropTypes.any,
+  id: React.PropTypes.any,
+  clickHandler: React.PropTypes.any,
+  rename: React.PropTypes.any,
+  renameHandler: React.PropTypes.any,
+}
+
 export default File;

@@ -10,4 +10,9 @@ const DeletePrompt = ({deletePromptHandler, name}) => {
   )
 }
 
+DeletePrompt.propTypes = {
+  deletePromptHandler: React.PropTypes.any,
+  name: React.PropTypes.any
+}
+
 export default DeletePrompt;

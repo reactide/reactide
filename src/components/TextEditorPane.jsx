@@ -1,6 +1,6 @@
 import React from 'react';
-import TextEditor from './TextEditor.jsx';
-import TabContainer from './TabContainer.jsx';
+import TextEditor from './TextEditor';
+import TabContainer from './TabContainer';
 
 export default class TextEditorPane extends React.Component {
   constructor() {
@@ -29,4 +29,11 @@ export default class TextEditorPane extends React.Component {
       </ride-pane>
     )
   }
+}
+
+TextEditorPane.propTypes = {
+  appState: React.PropTypes.any,
+  setActiveTab: React.PropTypes.any,
+  addEditorInstance: React.PropTypes.any,
+  closeTab: React.PropTypes.any,
 }

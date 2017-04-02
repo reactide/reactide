@@ -8,4 +8,10 @@ const CreateMenu = ({id, createForm}) => {
     </div>
   )
 }
+
+CreateMenu.propTypes = {
+  id: React.PropTypes.any,
+  createForm: React.PropTypes.any
+}
+
 export default CreateMenu;

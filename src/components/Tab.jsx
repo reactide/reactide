@@ -8,4 +8,12 @@ const Tab = ({name, setActiveTab, id, closeTab}) => {
     </li>
   )
 }
+
+Tab.propTypes = {
+  name: React.PropTypes.any,
+  setActiveTab: React.PropTypes.any,
+  id: React.PropTypes.any,
+  closeTab: React.PropTypes.any,
+}
+
 export default Tab;

@@ -2,18 +2,16 @@
  * @license: MIT
  */
 const path = require('path');
-const config = require('./config');
 
 /**
  * Webpack Plugin
  */
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = () => {
   return {
-    entry: './renderer/main',
+    entry: './src/index',
     resolve: {
       extensions: ['.js', '.jsx'],
       modules: [path.resolve('renderer'), 'node_modules']
@@ -40,18 +38,10 @@ module.exports = () => {
     },
     plugins: [
       /**
-       * Auto inject built file to html
-       */
-      new HtmlWebpackPlugin({
-        template: './renderer/index.html',
-        title: config.app.title,
-        chunksSortMode: 'dependency'
-      }),
-      /**
        * Copy assets files
        */
       new CopyWebpackPlugin([
-				{ from: 'renderer/assets', to: 'assets' }
+				{ from: 'src/assets', to: 'assets' }
 			]),
     ]
   }

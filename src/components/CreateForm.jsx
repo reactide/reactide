@@ -7,4 +7,9 @@ const CreateForm = ({createItem}) => {
     </div>
   )
 }
+
+CreateForm.propTypes = {
+  createItem: React.PropTypes.any
+}
+
 export default CreateForm;

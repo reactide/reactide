@@ -8,4 +8,8 @@ const RenameForm = ({renameHandler}) => {
   )
 }
 
+RenameForm.propTypes = {
+  renameHandler: React.PropTypes.any
+}
+
 export default RenameForm;

@@ -1,10 +1,5 @@
 import React from 'react';
-import File from './File.jsx';
-import Directory from './Directory.jsx';
-const fs = require('fs');
-const path = require('path');
-const {remote, ipcRenderer, dialog} = require('electron');
-
+import Directory from './Directory';
 
 export default class FileTree extends React.Component {
   constructor() {
@@ -64,4 +59,18 @@ export default class FileTree extends React.Component {
       )
     }
   }
+}
+
+FileTree.propTypes = {
+  fileTree: React.PropTypes.any,
+  openFile: React.PropTypes.any,
+  clickHandler: React.PropTypes.any,
+  selectedItem: React.PropTypes.any,
+  openCreateMenu: React.PropTypes.any,
+  openMenuId: React.PropTypes.any,
+  createMenuInfo: React.PropTypes.any,
+  createForm: React.PropTypes.any,
+  createItem: React.PropTypes.any,
+  rename: React.PropTypes.any,
+  renameHandler: React.PropTypes.any,
 }

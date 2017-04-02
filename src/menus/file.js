@@ -1,5 +1,4 @@
-const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
-const electron = require('electron');
+const {dialog} = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');

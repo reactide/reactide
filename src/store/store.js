@@ -1,6 +1,6 @@
-import { createStore, combineReducers, compose } from 'redux';
-import rootReducer from './reducers';
-import actions from './actions/';
+import { createStore, compose } from 'redux';
+import rootReducer from '../reducers';
+import actions from '../actions/';
 
 const actionCreators = {
   actions
