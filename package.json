@@ -1,6 +1,6 @@
 {
   "name": "reactide",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./main/main.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "webpack": "node_modules/.bin/webpack"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "electron": "^1.6.1",
     "electron-debug": "^1.1.0",

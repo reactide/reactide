@@ -1,9 +1,8 @@
 import React from 'react';
 import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
-import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
-const { remote, ipcRenderer, dialog } = require('electron');
+const { ipcRenderer } = require('electron');
 const { getTree } = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
@@ -146,7 +145,7 @@ export default class App extends React.Component {
     }
     if (type === 'directory') {
 
-      function toggleClicked(dir) {
+      const toggleClicked = (dir) => {
         if (dir.path === filePath) {
           dir.opened = !dir.opened;
           return;
@@ -239,7 +238,7 @@ export default class App extends React.Component {
                 path: path.join(path.dirname(absPath), this.state.newName)
               }
             })
-            for (var i = 0; i < this.state.openTabs.length; i++) {
+            for (let i = 0; i < this.state.openTabs.length; i++) {
               if (openTabs[i].name === name) {
                 openTabs[i].name = this.state.newName;
                 break;
@@ -452,37 +451,37 @@ export default class App extends React.Component {
                         <ul className="tree">
                           <li>
                             <input type="checkbox" checked="checked" id="a1" />
-                            <label className="tree_label" for="a1">app</label>
+                            <label className="tree_label" htmlFor="a1">app</label>
                             <ul>
                               <li>
                                 <input type="checkbox" checked="checked" id="c1" />
-                                <label className="tree_label" for="c1">header</label>
+                                <label className="tree_label" htmlFor="c1">header</label>
                                 <ul>
                                   <li>
                                     <input type="checkbox" checked="checked" id="c2" />
-                                    <label for="c2" className="tree_label">h1</label>
+                                    <label htmlFor="c2" className="tree_label">h1</label>
                                     <ul>
                                       <li>
                                         <input type="checkbox" id="c14" disabled />
-                                        <label for="c14" className="tree_label">todos</label>
+                                        <label htmlFor="c14" className="tree_label">todos</label>
                                       </li>
                                       <li>
                                         <input type="checkbox" id="c15" disabled />
-                                        <label for="c15" className="tree_label">input</label>
+                                        <label htmlFor="c15" className="tree_label">input</label>
                                       </li>
                                     </ul>
                                   </li>
                                   <li>
                                     <input type="checkbox" checked="checked" id="c3" />
-                                    <label for="c3" className="tree_label">Looong level 1 <br />label text</label>
+                                    <label htmlFor="c3" className="tree_label">Looong level 1 <br />label text</label>
                                     <ul>
                                       <li>
                                         <input type="checkbox" id="c13" disabled />
-                                        <label for="c13" className="tree_label">Level 2</label>
+                                        <label htmlFor="c13" className="tree_label">Level 2</label>
                                       </li>
                                       <li>
                                         <input type="checkbox" checked="checked" id="c4" />
-                                        <label for="c4" className="tree_label">
+                                        <label htmlFor="c4" className="tree_label">
                                           <span className="treecaret">Sample</span>
                                           <span className="tree_custom">
                                             type: <span className="text-info">'input'</span><br />
@@ -496,7 +495,7 @@ export default class App extends React.Component {
                                         <ul>
                                           <li>
                                             <input type="checkbox" id="c12" disabled />
-                                            <label for="c12" className="tree_label">Level 3</label>
+                                            <label htmlFor="c12" className="tree_label">Level 3</label>
                                           </li>
                                         </ul>
                                       </li>
@@ -507,33 +506,33 @@ export default class App extends React.Component {
 
                               <li>
                                 <input type="checkbox" checked="checked" id="c5" />
-                                <label className="tree_label" for="c5">section</label>
+                                <label className="tree_label" htmlFor="c5">section</label>
                                 <ul>
                                   <li>
                                     <input type="checkbox" checked="checked" id="c6" />
-                                    <label for="c6" className="tree_label">input</label>
+                                    <label htmlFor="c6" className="tree_label">input</label>
                                     <ul>
                                       <li>
                                         <input type="checkbox" id="c11" disabled />
-                                        <label for="c11" className="tree_label">Level 2</label>
+                                        <label htmlFor="c11" className="tree_label">Level 2</label>
                                       </li>
                                     </ul>
                                   </li>
                                   <li>
                                     <input type="checkbox" checked="checked" id="c7" />
-                                    <label for="c7" className="tree_label">ul</label>
+                                    <label htmlFor="c7" className="tree_label">ul</label>
                                     <ul>
                                       <li>
                                         <input type="checkbox" id="c10" disabled />
-                                        <label for="c10" className="tree_label">Level 2</label>
+                                        <label htmlFor="c10" className="tree_label">Level 2</label>
                                       </li>
                                       <li>
                                         <input type="checkbox" checked="checked" id="c8" />
-                                        <label for="c8" className="tree_label">Level 2</label>
+                                        <label htmlFor="c8" className="tree_label">Level 2</label>
                                         <ul>
                                           <li>
                                             <input type="checkbox" id="c9" disabled />
-                                            <label for="c9" className="tree_label">Level 3</label>
+                                            <label htmlFor="c9" className="tree_label">Level 3</label>
                                           </li>
                                         </ul>
                                       </li>
@@ -541,29 +540,29 @@ export default class App extends React.Component {
                                   </li>
                                   <li>
                                     <input type="checkbox" checked="checked" id="c20" />
-                                    <label for="c20" className="tree_label">footer</label>
+                                    <label htmlFor="c20" className="tree_label">footer</label>
                                     <ul>
                                       <li>
                                         <input type="checkbox" id="c21" disabled />
-                                        <label for="c21" className="tree_label">span</label>
+                                        <label htmlFor="c21" className="tree_label">span</label>
                                       </li>
                                       <li>
                                         <input type="checkbox" checked="checked" id="c22" />
-                                        <label for="c22" className="tree_label">ul</label>
+                                        <label htmlFor="c22" className="tree_label">ul</label>
                                         <ul>
                                           <li>
                                             <input type="checkbox" checked="checked" id="c23" />
-                                            <label for="c23" className="tree_label">li</label>
+                                            <label htmlFor="c23" className="tree_label">li</label>
                                             <ul>
                                               <li>
                                                 <input type="checkbox" id="c25" disabled />
-                                                <label for="c25" className="tree_label">a</label>
+                                                <label htmlFor="c25" className="tree_label">a</label>
                                               </li>
                                             </ul>
                                           </li>
                                           <li>
                                             <input type="checkbox" id="c24" disabled />
-                                            <label for="c24" className="tree_label">li</label>
+                                            <label htmlFor="c24" className="tree_label">li</label>
                                           </li>
                                         </ul>
                                       </li>
