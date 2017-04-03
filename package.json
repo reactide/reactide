@@ -63,5 +63,9 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^4.1.0"
+  },
+  "engines": {
+    "node": "> 5",
+    "npm": "> 4"
   }
 }
