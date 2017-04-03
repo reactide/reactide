@@ -1,37 +1,19 @@
-const path = require('path');
-const webpack = require('webpack');
+/**
+ * Webpack main config
+ * @license: MIT
+ */
 
-module.exports = {
-  entry: './renderer/index.js',
-  output: {
-    path: path.join(__dirname, './dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist',
-  },
-  target: 'electron',
-	node: {
-		__dirname: false,
-		__filename: false
-	},
-  module: {
-    loaders: [
-      {
-        test: /\.js$|\.jsx$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-        },
-      }, {
-        test: /(\.css|\.scss)$/,
-        loaders: ['style', 'css', 'sass'],
-      }, {
-        test: /\.(eot|woff)$/,
-        loader: 'file-loader',
-      },
-    ],
-  },
-  devServer: {
-    port: 8081
-  }
+switch (process.env.NODE_ENV) {
+  case 'prod':
+  case 'production':
+    module.exports = require('./config/webpack.prod')();
+    break;
+  
+  case 'dev':
+  case 'development':
+    module.exports = require('./config/webpack.dev')();
+    break;
+  
+  default:
+    module.exports = require('./config/webpack.dev');
 }

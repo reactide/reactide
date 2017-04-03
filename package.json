@@ -1,16 +1,21 @@
 {
   "name": "reactide",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./main/main.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register test/test.js",
-    "start": "cross-env NODE_ENV=production electron .",
-    "dev-start": "cross-env NODE_ENV=development electron .",
-    "dev": "webpack-dev-server --inline --content-base ./renderer"
+    "start": "cross-env NODE_ENV=production npm run electron .",
+    "build": "NODE_ENV=prod npm run webpack",
+    "hot:dev": "cross-env NODE_ENV=dev npm run webpack-dev-server -- --hot --inline --progress --profile --colors",
+    "electron:dev": "cross-env HOT=1 NODE_ENV=dev npm run electron -- -r babel-register -r babel-polyfill .",
+    "dev": "cross-env START_HOT=1 npm run hot:dev",
+    "electron": "node_modules/.bin/electron",
+    "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
+    "webpack": "node_modules/.bin/webpack"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "electron": "^1.6.1",
     "electron-debug": "^1.1.0",
@@ -21,29 +26,46 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "write-file-webpack-plugin": "^4.0.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.23.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
+    "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^4.0.0",
+    "css-loader": "^0.28.0",
     "devtron": "^1.4.0",
     "electron-devtools-installer": "^2.1.0",
     "electron-hot-loader": "^0.8.0",
     "electron-packager": "^8.5.2",
     "electron-reload": "^1.1.0",
     "enzyme": "^2.8.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3",
     "expect": "^1.20.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
+    "node-sass": "^4.5.2",
     "react-addons-test-utils": "^15.4.2",
+    "sass-loader": "^6.0.3",
     "sinon": "^2.1.0",
+    "style-loader": "^0.16.1",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "engines": {
+    "node": "> 5",
+    "npm": "> 4"
   }
 }

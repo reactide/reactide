@@ -6,7 +6,6 @@ const deleteItem = require('../lib/delete-directory');
 
 function simulator(root) {
   const projInfo = JSON.parse(fs.readFileSync(path.join(__dirname, '../lib/projInfo.js')));
-  
   if (projInfo.hotLoad) {
     let child = exec('webpack-dev-server', {
       cwd: projInfo.rootPath,
