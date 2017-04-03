@@ -6,9 +6,9 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register test/test.js",
     "start": "cross-env NODE_ENV=production npm run electron .",
-    "build": "NODE_ENV=electron npm run webpack",
-    "hot:dev": "cross-env NODE_ENV=dev npm run webpack-dev-server -- --inline --progress --profile --colors",
-    "electron:dev": "cross-env HOT=1 NODE_ENV=dev npm run electron -- -r babel-register -r babel-polyfill ./src/main",
+    "build": "NODE_ENV=prod npm run webpack",
+    "hot:dev": "cross-env NODE_ENV=dev npm run webpack-dev-server -- --hot --inline --progress --profile --colors",
+    "electron:dev": "cross-env HOT=1 NODE_ENV=dev npm run electron -- -r babel-register -r babel-polyfill .",
     "dev": "cross-env START_HOT=1 npm run hot:dev",
     "electron": "node_modules/.bin/electron",
     "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
@@ -26,7 +26,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "write-file-webpack-plugin": "^4.0.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

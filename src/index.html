@@ -2,40 +2,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Reactide IDE</title>
-  <script>
-    {
-      // Dynamically insert the renderer process
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      const port = process.env.PORT || 8080;
-      link.href = (process.env.NODE_ENV === 'dev')
-        ? 'http://localhost:' + port + '/dist/main.css'
-        : './dist/main.css';
-
-      // HACK: Writing the script path should be done with webpack
-      document.getElementsByTagName('head')[0].appendChild(link);
-    }
+  <title>Reactide</title>
   </script>
 </head>
 
 <body>
   <div id='root'></div>
-  <script>
-    {
-      // Dynamically insert the renderer process
-      const script = document.createElement('script');
-      const port = process.env.PORT || 8080;
-
-      script.src = (process.env.NODE_ENV === 'dev')
-        ? 'http://localhost:' + port + '/dist/bundle.js'
-        : './dist/bundle.js';
-
-      // @HACK: Writing the script path should be done
-      //        with HtmlWebpackPlugin
-      document.body.appendChild(script);
-    }
-  </script>
 </body>
 
 </html>

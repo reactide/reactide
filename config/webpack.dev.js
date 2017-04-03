@@ -13,6 +13,7 @@ const config = require('./config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const publicPath = `http://${config.devServer.host}:${config.devServer.port}/dist`;
 
@@ -22,7 +23,7 @@ module.exports = () => {
     output: {
       path: path.resolve('dist'),
       filename: 'bundle.js',
-      publicPath,
+      publicPath: './',
       libraryTarget: 'commonjs2'
     },
     plugins: [
@@ -41,14 +42,20 @@ module.exports = () => {
         title: config.app.title,
         chunksSortMode: 'dependency'
       }),
+
+      // Force webpack dev server write file to disk
+      new WriteFilePlugin()
     ],
     target: 'electron-renderer',
+    node: {
+      __dirname: false,
+      __filename: false
+    },
     devServer: {
       port: config.devServer.port,
       publicPath,
       inline: true,
-      lazy: false,
-      hot: false,
+      hot: true,
       headers: { 'Access-Control-Allow-Origin': '*' },
       contentBase: path.join(__dirname, 'dist'),
       watchOptions: {

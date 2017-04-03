@@ -28,7 +28,7 @@ module.exports = () => {
        * Auto inject built file to html
        */
       new HtmlWebpackPlugin({
-        template: './renderer/index.html',
+        template: './src/index.html',
         title: config.app.title,
         chunksSortMode: 'dependency'
       }),

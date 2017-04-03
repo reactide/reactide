@@ -7,15 +7,15 @@ const chai = require('chai');
 
 chai.use(chaiEnzyme());
 
-import CreateForm from '../renderer/components/CreateForm.jsx';
-import FileTree from '../renderer/components/FileTree.jsx';
-import Directory from '../renderer/components/Directory.jsx';
-import TextEditor from '../renderer/components/TextEditor';
-import Tab from '../renderer/components/Tab';
-import TextEditorPane from '../renderer/components/TextEditorPane';
-import TabContainer from '../renderer/components/TabContainer';
-import CreateMenu from '../renderer/components/CreateMenu';
-import DeletePrompt from '../renderer/components/DeletePrompt';
+import CreateForm from '../src/components/CreateForm';
+import FileTree from '../src/components/FileTree';
+import Directory from '../src/components/Directory';
+import TextEditor from '../src/components/TextEditor';
+import Tab from '../src/components/Tab';
+import TextEditorPane from '../src/components/TextEditorPane';
+import TabContainer from '../src/components/TabContainer';
+import CreateMenu from '../src/components/CreateMenu';
+import DeletePrompt from '../src/components/DeletePrompt';
 
 
 describe('React Components', () => {

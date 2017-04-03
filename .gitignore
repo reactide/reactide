@@ -69,3 +69,5 @@ typings/
 
 # Build
 dist
+
+lib/new-project
