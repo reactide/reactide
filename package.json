@@ -12,6 +12,7 @@
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "electron": "^1.6.1",
     "electron-debug": "^1.1.0",
     "electron-localshortcut": "^1.1.0",
@@ -29,6 +30,7 @@
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.23.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",

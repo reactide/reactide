@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const CreateForm = ({createItem}) => {
+export default function CreateForm ({createItem}) {
   return (
-    <div className='list-item'>
-      <input className='create-form' onKeyPress={createItem} onClick={(event) => {event.stopPropagation()}} /> 
+    <div className="list-item">
+      <input
+        className="create-form"
+        onKeyPress={createItem}
+        onClick={event => event.stopPropagation()}
+      />
     </div>
   )
 }
-export default CreateForm;
+
+CreateForm.propTypes = {
+  createItem: PropTypes.func,
+}

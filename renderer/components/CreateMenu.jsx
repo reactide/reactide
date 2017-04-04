@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
-const CreateMenu = ({id, createForm}) => {
-  return (
-    <div className="create-menu">
-      <button className="create-button" onClick={createForm.bind(null, id, 'file')}>Create File</button>
-      <button className="create-button" onClick={createForm.bind(null, id, 'directory')}>Create Directory</button>
-    </div>
+export default class CreateMenu extends PureComponent {
+  handleCreateFileForm = () => (
+    this.props.createForm(this.props.id, 'file')
   )
+
+  handleCreateDirectoryForm = () => (
+    this.props.createForm(this.props.id, 'directory')
+  )
+
+  render() {
+    return (
+      <div className="create-menu">
+        <button
+          className="create-button"
+          onClick={this.handleCreateFileForm}>
+          Create File
+        </button>
+        <button
+          className="create-button"
+          onClick={this.handleCreateDirectoryForm}>
+          Create Directory
+        </button>
+      </div>
+    )
+  }
 }
-export default CreateMenu;
+
+CreateMenu.propTypes = {
+  id: PropTypes.number,
+  createForm: PropTypes.func.isRequired,
+}
