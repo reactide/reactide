@@ -1,27 +1,24 @@
-import React from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Tab from './Tab.jsx';
 
-export default class TabContainer extends React.Component {
-  constructor() {
-    super();
-  }
+export default function TabContainer ({appState, setActiveTab, closeTab}) {
+  return (
+    <ul className="list-inline tab-bar inset-panel tab-container">
+      {appState.openTabs.map(tab => (
+        <Tab
+          key={tab.id}
+          name={tab.name}
+          setActiveTab={setActiveTab}
+          id={tab.id}
+          closeTab={closeTab}
+        />
+      ))}
+    </ul>
+  )
+}
 
-  render() {
-    const tabs = [];
-    for (var i = 0; i < this.props.appState.openTabs.length; i++) {
-      tabs.push(
-        <Tab 
-          key={i} 
-          name={this.props.appState.openTabs[i].name} 
-          setActiveTab={this.props.setActiveTab} 
-          id={this.props.appState.openTabs[i].id} 
-          closeTab={this.props.closeTab}
-        />);
-    }
-    return (
-      <ul className="list-inline tab-bar inset-panel tab-container">
-        {tabs}
-      </ul>
-    )
-  }
+TabContainer.propTypes = {
+  appState: PropTypes.object.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+  closeTab: PropTypes.func.isRequired,
 }

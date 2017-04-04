@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const RenameForm = ({renameHandler}) => {
+export default function RenameForm ({renameHandler}) {
   return (
     <span>
-      <input className='rename-input' onKeyPress={renameHandler} onClick={(event)=>{event.stopPropagation()}}/>
+      <input
+        className="rename-input"
+        onKeyPress={renameHandler}
+        onClick={event => event.stopPropagation()}
+      />
     </span>
   )
 }
 
-export default RenameForm;
+RenameForm.propTypes = {
+  renameHandler: PropTypes.func.isRequired,
+}
