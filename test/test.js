@@ -8,14 +8,17 @@ const chai = require('chai');
 chai.use(chaiEnzyme());
 
 import CreateForm from '../renderer/components/CreateForm.jsx';
+import CreateMenu from '../renderer/components/CreateMenu';
+import DeletePrompt from '../renderer/components/DeletePrompt';
+import File from '../renderer/components/File';
 import FileTree from '../renderer/components/FileTree.jsx';
 import Directory from '../renderer/components/Directory.jsx';
 import TextEditor from '../renderer/components/TextEditor';
 import Tab from '../renderer/components/Tab';
 import TextEditorPane from '../renderer/components/TextEditorPane';
 import TabContainer from '../renderer/components/TabContainer';
-import CreateMenu from '../renderer/components/CreateMenu';
-import DeletePrompt from '../renderer/components/DeletePrompt';
+import RenameForm from '../renderer/components/RenameForm';
+
 
 
 describe('React Components', () => {
@@ -248,4 +251,79 @@ describe('React Components', () => {
       expect(spy.calledWith(true)).toEqual(true);
     });
   });
+
+  describe('Rename Form', () => {
+    it('should render', () => {
+      const wrapper = shallow(<RenameForm renameHandler={()=>{}} />)
+      expect(wrapper.exists()).toEqual(true);
+    })
+
+    it('should call renameHandler on keyPress', () => {
+      const spy = sinon.spy();
+      const wrapper = shallow(<RenameForm renameHandler={spy} />);
+      wrapper.find('input').simulate('keyPress');
+      expect(spy.called).toEqual(true);
+    });
+  });
+
+  describe('File', () => {
+    it('should render', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} file={{path:'', name:''}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.exists()).toEqual(true);
+    });
+
+    it('should call openFile on doubleClick', () => {
+      const spy = sinon.spy();
+      const wrapper = shallow(<File selectedItem={{id:1}} file={{path:'', name:''}} openFile={spy} clickHandler={()=>{}}/>);
+      wrapper.simulate('doubleClick');
+      expect(spy.called).toEqual(true);
+    });
+
+    it('should call openFile with file on doubleClick', () => {
+      const spy = sinon.spy();
+      const wrapper = shallow(<File selectedItem={{id:1}} file={{path:'a', name:'a'}} openFile={spy} clickHandler={()=>{}}/>);
+      wrapper.simulate('doubleClick');
+      expect(spy.calledWith({path:'a',name:'a'})).toEqual(true);
+    });
+
+    it('should call clickHandler on single click', () => {
+      const spy = sinon.spy();
+      const wrapper = shallow(<File selectedItem={{id:1}} file={{path:'', name:''}} openFile={()=>{}} clickHandler={spy}/>);
+      wrapper.simulate('click');
+      expect(spy.called).toEqual(true);
+    });
+
+    it('should call clickHandler with id and file.path on single click', () => {
+      const spy = sinon.spy();
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} file={{path:'a', name:''}} openFile={()=>{}} clickHandler={spy}/>);
+      wrapper.simulate('click');
+      expect(spy.calledWith(1, 'a')).toEqual(true);
+    });
+
+    it('should render the name of the file', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.find('span').text()).toEqual('Jonny Greenwood');
+    });
+
+    it('should render RenameForm if rename && selectedItem.id === id', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={true} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.find(RenameForm).exists()).toEqual(true);
+    });
+
+    it('should not render RenameForm if rename && selectedItem.id === id', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.find(RenameForm).exists()).toEqual(false);
+    });
+
+    it('should have className list-item selected if selectedItem.id === id', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.find('.selected').exists()).toEqual(true);
+    });
+
+    it('should not have className selected if selectedItem.id === id', () => {
+      const wrapper = shallow(<File selectedItem={{id:1}} id={2} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      expect(wrapper.find('.selected').exists()).toEqual(false);
+    });
+  });
+
 });
