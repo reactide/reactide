@@ -118,7 +118,7 @@ export default class App extends React.Component {
       })
     }
   }
-  //handles click event from delete prompt 
+  //handles click event from delete prompt
   deletePromptHandler(answer) {
     if (answer) {
       ipcRenderer.send('delete', this.state.selectedItem.path);
@@ -280,20 +280,20 @@ export default class App extends React.Component {
     }
   }
   //click handler for plus button on directories, 'opens' new file/dir menu by setting openMenuID state
-  openCreateMenu(id, itemPath, type, event) {
-    event.stopPropagation();
+  openCreateMenu(id, itemPath, proxyEvent) {
+    proxyEvent.stopPropagation();
     this.setState({
       openMenuId: id,
       selectedItem: {
         id: id,
         path: itemPath,
-        type
+        type: null,
       }
     });
   }
-  createForm(id, type, event) {
+  createForm(id, type, proxyEvent) {
     document.body.onkeydown = () => { };
-    event.stopPropagation();
+    proxyEvent.stopPropagation();
     this.setState({
       createMenuInfo: {
         id,
