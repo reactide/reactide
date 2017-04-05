@@ -9,7 +9,18 @@ const template = [
     label: 'File',
     submenu: [
       {
-        label: 'Open',
+        label: 'New Project',
+        click: () => {
+          //warn user of unsaved changes before belo
+          global.newProj = true;
+          global.mainWindow.webContents.send('newProject');
+          deleteDirectory('./lib/new-project');
+          copy('./lib/new-project-template/new-project', './lib/');
+          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
+        }
+      },
+      {
+        label: 'Open Project',
         click: () => {
           global.newProj = false;
           const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
@@ -28,17 +39,6 @@ const template = [
           global.mainWindow.webContents.send('openDir', save[0]);
         }
       },
-      {
-        label: 'New Project',
-        click: () => {
-          //warn user of unsaved changes before belo
-          global.newProj = true;
-          global.mainWindow.webContents.send('newProject');
-          deleteDirectory('./lib/new-project');
-          copy('./lib/new-project-template/new-project', './lib/');
-          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
-        }
-      }
     ]
   },
   {
@@ -51,10 +51,7 @@ const template = [
         role: 'redo'
       },
       {
-        label: 'Reload Window CTRL/⌘+R',
-        click: () => {
-          global.mainWindow.webContents.reload()
-        }
+        role: 'reload'
       }
     ]
   }
