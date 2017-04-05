@@ -6,10 +6,7 @@ const deleteDirectory = require('../../lib/delete-directory');
 
 const template = [
   {
-    label: 'Main',
-  },
-  {
-    label: 'Test',
+    label: 'File',
     submenu: [
       {
         label: 'Open',
@@ -42,12 +39,23 @@ const template = [
           global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
         }
       }
-    ],
+    ]
   },
   {
-    label: 'TEST2',
+    label: 'View'
+  },
+  {
+    label: 'Tools',
     submenu: [
-      { role: 'redo' }
+      {
+        role: 'redo'
+      },
+      {
+        label: 'Reload Window CTRL/⌘+R',
+        click: () => {
+          global.mainWindow.webContents.reload()
+        }
+      }
     ]
   }
 ]

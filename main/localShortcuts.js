@@ -10,4 +10,7 @@ module.exports = (win) => {
   localShortcut.register(win, 'CommandOrControl+Backspace', () => {
     win.webContents.send('delete');
   });
+  localShortcut.register(win, 'CommandOrControl+R', () => {
+    win.reload();
+  })
 }

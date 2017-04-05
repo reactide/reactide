@@ -30,12 +30,12 @@ app.on('ready', async () => {
   if (isDevelopment) {
     await installExtensions();
   }
-  
+
   registerIpcListeners();
 
   let win = new BrowserWindow({
-    width: 1000,
-    height: 800
+    width: 1280,
+    height: 720
   });
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
   let menu = Menu.buildFromTemplate(template);
