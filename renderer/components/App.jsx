@@ -3,6 +3,8 @@ import FileTree from './FileTree.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
+import TreeView from './TreeView';
+
 const { remote, ipcRenderer, dialog } = require('electron');
 const { getTree } = require('../../lib/file-tree');
 const fs = require('fs');
@@ -118,7 +120,7 @@ export default class App extends React.Component {
       })
     }
   }
-  //handles click event from delete prompt 
+  //handles click event from delete prompt
   deletePromptHandler(answer) {
     if (answer) {
       ipcRenderer.send('delete', this.state.selectedItem.path);
@@ -438,149 +440,7 @@ export default class App extends React.Component {
               {this.state.deletePromptOpen ? <DeletePrompt deletePromptHandler={this.deletePromptHandler} name={path.basename(this.state.selectedItem.path)} /> : <span />}
 
 
-              <div className="item-views">
-                <div className="styleguide pane-item">
-                  <header className="styleguide-header">
-                    <h5>Component Tree</h5>
-                  </header>
-
-                  <main className="styleguide-sections">
-
-                    <div className="tree-view-resizer tool-panel">
-                      <div className="tree-view-scroller">
-
-                        <ul className="tree">
-                          <li>
-                            <input type="checkbox" checked="checked" id="a1" />
-                            <label className="tree_label" for="a1">app</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" checked="checked" id="c1" />
-                                <label className="tree_label" for="c1">header</label>
-                                <ul>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c2" />
-                                    <label for="c2" className="tree_label">h1</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c14" disabled />
-                                        <label for="c14" className="tree_label">todos</label>
-                                      </li>
-                                      <li>
-                                        <input type="checkbox" id="c15" disabled />
-                                        <label for="c15" className="tree_label">input</label>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c3" />
-                                    <label for="c3" className="tree_label">Looong level 1 <br />label text</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c13" disabled />
-                                        <label for="c13" className="tree_label">Level 2</label>
-                                      </li>
-                                      <li>
-                                        <input type="checkbox" checked="checked" id="c4" />
-                                        <label for="c4" className="tree_label">
-                                          <span className="treecaret">Sample</span>
-                                          <span className="tree_custom">
-                                            type: <span className="text-info">'input'</span><br />
-                                            className: <span className="text-info">'new-todo'</span><br />
-                                            type: <span className="text-info">'text'</span><br />
-                                            placeholder: <span className="text-info">'What needs to be done?'</span><br />
-                                            autoFocus: <span className="text-info">true</span><br />
-                                            value: <span className="text-info">''</span>
-                                          </span>
-                                        </label>
-                                        <ul>
-                                          <li>
-                                            <input type="checkbox" id="c12" disabled />
-                                            <label for="c12" className="tree_label">Level 3</label>
-                                          </li>
-                                        </ul>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </li>
-
-                              <li>
-                                <input type="checkbox" checked="checked" id="c5" />
-                                <label className="tree_label" for="c5">section</label>
-                                <ul>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c6" />
-                                    <label for="c6" className="tree_label">input</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c11" disabled />
-                                        <label for="c11" className="tree_label">Level 2</label>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c7" />
-                                    <label for="c7" className="tree_label">ul</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c10" disabled />
-                                        <label for="c10" className="tree_label">Level 2</label>
-                                      </li>
-                                      <li>
-                                        <input type="checkbox" checked="checked" id="c8" />
-                                        <label for="c8" className="tree_label">Level 2</label>
-                                        <ul>
-                                          <li>
-                                            <input type="checkbox" id="c9" disabled />
-                                            <label for="c9" className="tree_label">Level 3</label>
-                                          </li>
-                                        </ul>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c20" />
-                                    <label for="c20" className="tree_label">footer</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c21" disabled />
-                                        <label for="c21" className="tree_label">span</label>
-                                      </li>
-                                      <li>
-                                        <input type="checkbox" checked="checked" id="c22" />
-                                        <label for="c22" className="tree_label">ul</label>
-                                        <ul>
-                                          <li>
-                                            <input type="checkbox" checked="checked" id="c23" />
-                                            <label for="c23" className="tree_label">li</label>
-                                            <ul>
-                                              <li>
-                                                <input type="checkbox" id="c25" disabled />
-                                                <label for="c25" className="tree_label">a</label>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <input type="checkbox" id="c24" disabled />
-                                            <label for="c24" className="tree_label">li</label>
-                                          </li>
-                                        </ul>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                      </div>
-                    </div>
-
-                  </main>
-                </div>
-              </div>
+              <TreeView />
 
             </ride-pane>
             <ride-pane-resize-handle class="horizontal"></ride-pane-resize-handle>

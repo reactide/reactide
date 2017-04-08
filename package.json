@@ -5,8 +5,8 @@
   "main": "./main/main.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register --reporter nyan test/test.js",
-    "start": "cross-env NODE_ENV=production electron .",
-    "dev-start": "cross-env NODE_ENV=development electron .",
+    "start": "NODE_ENV=production electron .",
+    "dev-start": "NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
