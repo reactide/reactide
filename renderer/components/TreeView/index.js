@@ -34,7 +34,14 @@ const MOCK = {
         component: 'Sample',
         id: 'c4',
         active: true,
-        informations: {},
+        informations: {
+          type: 'input',
+          className: 'new-todo',
+          type: 'text',
+          placeholder: 'What needs to be done?',
+          autoFocus: true,
+          value: '',
+        },
         subcomponents: [{
           component: 'Level 3',
           id: 'c12',
