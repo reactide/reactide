@@ -5,6 +5,7 @@ const path = require('path');
 const template = require('./menus/file');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
+const registerWebContentsListeners = require('./webContentsListeners');
 const fs = require('fs');
 require('electron-debug')();
 
@@ -45,4 +46,5 @@ app.on('ready', async () => {
 
   global.mainWindow = win;
   registerShortcuts(win);
+  registerWebContentsListeners(win);
 });
