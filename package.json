@@ -15,7 +15,6 @@
     "electron": "^1.6.1",
     "electron-debug": "^1.1.0",
     "electron-localshortcut": "^1.1.0",
-    "fs": "0.0.1-security",
     "monaco-editor": "^0.8.3",
     "path": "^0.12.7",
     "react": "^15.4.2",
