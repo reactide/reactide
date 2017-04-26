@@ -6,13 +6,21 @@ const deleteDirectory = require('../../lib/delete-directory');
 
 const template = [
   {
-    label: 'Main',
-  },
-  {
-    label: 'Test',
+    label: 'File',
     submenu: [
       {
-        label: 'Open',
+        label: 'New Project',
+        click: () => {
+          //warn user of unsaved changes before belo
+          global.newProj = true;
+          global.mainWindow.webContents.send('newProject');
+          deleteDirectory('./lib/new-project');
+          copy('./lib/new-project-template/new-project', './lib/');
+          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
+        }
+      },
+      {
+        label: 'Open Project',
         click: () => {
           global.newProj = false;
           const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
@@ -31,23 +39,20 @@ const template = [
           global.mainWindow.webContents.send('openDir', save[0]);
         }
       },
-      {
-        label: 'New Project',
-        click: () => {
-          //warn user of unsaved changes before belo
-          global.newProj = true;
-          global.mainWindow.webContents.send('newProject');
-          deleteDirectory('./lib/new-project');
-          copy('./lib/new-project-template/new-project', './lib/');
-          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
-        }
-      }
-    ],
+    ]
   },
   {
-    label: 'TEST2',
+    label: 'View'
+  },
+  {
+    label: 'Tools',
     submenu: [
-      { role: 'redo' }
+      {
+        role: 'redo'
+      },
+      {
+        role: 'reload'
+      }
     ]
   }
 ]

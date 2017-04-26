@@ -2,7 +2,7 @@ const electron = require('electron');
 const { BrowserWindow, ipcMain, Menu, app, dialog } = require('electron');
 const url = require('url');
 const path = require('path');
-const template = require('./menus/file');
+const toolbar = require('./menus/mainToolbar');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const fs = require('fs');
@@ -30,15 +30,15 @@ app.on('ready', async () => {
   if (isDevelopment) {
     await installExtensions();
   }
-  
+
   registerIpcListeners();
 
   let win = new BrowserWindow({
-    width: 1000,
-    height: 800
+    width: 1280,
+    height: 720
   });
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
-  let menu = Menu.buildFromTemplate(template);
+  let menu = Menu.buildFromTemplate(toolbar);
   Menu.setApplicationMenu(menu);
 
   if (isDevelopment) win.toggleDevTools();
