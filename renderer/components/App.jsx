@@ -1,5 +1,5 @@
 import React from 'react';
-import FileTree from './FileTree.jsx'
+import FileTree from './FileTreeContainer.jsx'
 import TextEditorPane from './TextEditorPane.jsx';
 import TextEditor from './TextEditor.jsx';
 import DeletePrompt from './DeletePrompt.jsx';
