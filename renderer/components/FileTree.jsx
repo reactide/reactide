@@ -35,7 +35,7 @@ export default class FileTree extends React.Component {
                       createMenuInfo={this.props.createMenuInfo}
                       createMenuHandler={this.props.createMenuHandler}
                       createItem={this.props.createItem}
-                      rename={this.props.rename}
+                      renameFlag={this.props.renameFlag}
                       renameHandler={this.props.renameHandler}
                     />
                   </ul>
@@ -65,3 +65,17 @@ export default class FileTree extends React.Component {
     }
   }
 }
+
+// const FileTree = ({
+//   fileTree,
+//   openFile,
+//   clickHandler,
+//   selectedItem,
+//   openCreateMenu,
+//   openMenuId}
+//                       createMenuInfo={this.props.createMenuInfo}
+//                       createMenuHandler={this.props.createMenuHandler}
+//                       createItem={this.props.createItem}
+//                       rename={this.props.rename}
+//                       renameHandler={this.props.renameHandler}
+// })
