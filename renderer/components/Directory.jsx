@@ -4,73 +4,84 @@ import CreateMenu from './CreateMenu.jsx';
 import CreateForm from './CreateForm.jsx';
 import RenameForm from './RenameForm.jsx';
 
-export default class Directory extends React.Component {
-  constructor() {
-    super();
+const Directory = ({
+  directory,
+  openFile,
+  clickHandler,
+  selectedItem,
+  openCreateMenu,
+  openMenuId,
+  createMenuInfo,
+  createMenuHandler,
+  createItem,
+  renameFlag,
+  renameHandler,
+  id
+}) => {
+  const arr = [];
+  let uniqueId;
+  for (var i = 0; i < directory.subdirectories.length; i++) {
+    arr.push(
+      <Directory
+        key={directory.subdirectories[i].id}
+        id={directory.subdirectories[i].id}
+        directory={directory.subdirectories[i]}
+        openFile={openFile}
+        clickHandler={clickHandler}
+        selectedItem={selectedItem}
+        openCreateMenu={openCreateMenu}
+        openMenuId={openMenuId}
+        createMenuInfo={createMenuInfo}
+        createMenuHandler={createMenuHandler}
+        createItem={createItem}
+        renameFlag={renameFlag}
+        renameHandler={renameHandler}
+      />)
   }
-  render() {
-    const arr = [];
-    let uniqueId;
-    for (var i = 0; i < this.props.directory.subdirectories.length; i++) {
-      arr.push(
-        <Directory
-          key={this.props.directory.subdirectories[i].id}
-          id={this.props.directory.subdirectories[i].id}
-          directory={this.props.directory.subdirectories[i]}
-          openFile={this.props.openFile}
-          clickHandler={this.props.clickHandler}
-          selectedItem={this.props.selectedItem}
-          openCreateMenu={this.props.openCreateMenu}
-          openMenuId={this.props.openMenuId}
-          createMenuInfo={this.props.createMenuInfo}
-          createMenuHandler={this.props.createMenuHandler}
-          createItem={this.props.createItem}
-          rename={this.props.rename}
-          renameHandler={this.props.renameHandler}
-        />)
-    }
-    for (var i = 0; i < this.props.directory.files.length; i++) {
-      arr.push(
-        <File
-          key={this.props.directory.files[i].id}
-          id={this.props.directory.files[i].id}
-          file={this.props.directory.files[i]}
-          openFile={this.props.openFile}
-          clickHandler={this.props.clickHandler}
-          selectedItem={this.props.selectedItem}
-          rename={this.props.rename}
-          renameHandler={this.props.renameHandler}
-        />)
-    }
-    let item = (
-      <div
-        className="list-item"
-        onClick={this.props.clickHandler.bind(null, this.props.id, this.props.directory.path, this.props.directory.type)}
-      >
-        <span className="icon icon-file-directory">
-          {this.props.directory.name}
-        </span>
-        <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
-        {this.props.openMenuId === this.props.id ? <CreateMenu createMenuHandler={this.props.createMenuHandler} id={this.props.id} /> : <span />}
-        {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
+  for (var i = 0; i < directory.files.length; i++) {
+    arr.push(
+      <File
+        key={directory.files[i].id}
+        id={directory.files[i].id}
+        file={directory.files[i]}
+        openFile={openFile}
+        clickHandler={clickHandler}
+        selectedItem={selectedItem}
+        renameFlag={renameFlag}
+        renameHandler={renameHandler}
+      />)
+  }
+  let item = (
+    <div
+      className="list-item"
+      onClick={clickHandler.bind(null, id, directory.path, directory.type)}
+    >
+      <span className="icon icon-file-directory">
+        {directory.name}
+      </span>
+      <span className="plus-icon" onClick={openCreateMenu.bind(null, id, directory.path)}>+</span>
+      {openMenuId === id ? <CreateMenu createMenuHandler={createMenuHandler} id={id} /> : <span />}
+      {createMenuInfo.id === id ? <CreateForm createItem={createItem} /> : <span />}
     </div>)
-    if (this.props.directory.opened) {
-      return (
-        <li className={this.props.selectedItem.id === this.props.id ? 'list-nested-item selected' : 'list-nested-item'}>
-          {this.props.rename && this.props.selectedItem.id === this.props.id ? <RenameForm renameHandler={this.props.renameHandler} /> : item}
-          <ul className="list-tree">
-            {arr}
-          </ul>
-        </li>
-      )
-    } else {
-      return (
-        <li
-          className={this.props.selectedItem.id === this.props.id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
-        >
-          {this.props.rename && this.props.selectedItem.id === this.props.id ? <RenameForm renameHandler={this.props.renameHandler} /> : item}
-        </li>
-      )
-    }
+  if (directory.opened) {
+    return (
+      <li className={selectedItem.id === id ? 'list-nested-item selected' : 'list-nested-item'}>
+        {renameFlag && selectedItem.id === id ? <RenameForm renameHandler={renameHandler} /> : item}
+        <ul className="list-tree">
+          {arr}
+        </ul>
+      </li>
+    )
+  } else {
+    return (
+      <li
+        className={selectedItem.id === id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
+      >
+        {renameFlag && selectedItem.id === id ? <RenameForm renameHandler={renameHandler} /> : item}
+      </li>
+    )
   }
 }
+
+
+export default Directory;
