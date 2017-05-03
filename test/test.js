@@ -306,22 +306,22 @@ describe('React Components', () => {
     });
 
     it('should render RenameForm if rename && selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={true} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} renameFlag={true} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
       expect(wrapper.find(RenameForm).exists()).toEqual(true);
     });
 
     it('should not render RenameForm if rename && selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} renameFlag={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
       expect(wrapper.find(RenameForm).exists()).toEqual(false);
     });
 
     it('should have className list-item selected if selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{id:1}} id={1} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      const wrapper = shallow(<File selectedItem={{id:1}} id={1} renameFlag={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
       expect(wrapper.find('.selected').exists()).toEqual(true);
     });
 
     it('should not have className selected if selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{id:1}} id={2} rename={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
+      const wrapper = shallow(<File selectedItem={{id:1}} id={2} renameFlag={false} file={{path:'', name:'Jonny Greenwood'}} openFile={()=>{}} clickHandler={()=>{}}/>);
       expect(wrapper.find('.selected').exists()).toEqual(false);
     });
   });
