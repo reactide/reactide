@@ -183,7 +183,7 @@ describe('React Components', () => {
   describe('CreateMenu', () => {
 
     it('should render', () => {
-      const wrapper = shallow(<CreateMenu createForm={() => {}} />);
+      const wrapper = shallow(<CreateMenu createMenuHandler={() => {}} />);
       expect(wrapper.exists()).toEqual(true);
     });
 
@@ -191,14 +191,14 @@ describe('React Components', () => {
 
       it('should fire', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<CreateMenu createForm={spy} />);
+        const wrapper = shallow(<CreateMenu createMenuHandler={spy} />);
         wrapper.find('button').first().simulate('click');
         expect(spy.called).toEqual(true);
       });
 
       it('should be called with proper params', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<CreateMenu createForm={spy} id={1} />);
+        const wrapper = shallow(<CreateMenu createMenuHandler={spy} id={1} />);
         wrapper.find('button').first().simulate('click');
         expect(spy.calledWith(1, 'file')).toEqual(true);
       });
@@ -209,14 +209,14 @@ describe('React Components', () => {
 
       it('should fire', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<CreateMenu createForm={spy} />);
+        const wrapper = shallow(<CreateMenu createMenuHandler={spy} />);
         wrapper.find('button').at(1).simulate('click');
         expect(spy.called).toEqual(true);
       });
 
       it('should be called with proper params', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<CreateMenu createForm={spy} id={1} />);
+        const wrapper = shallow(<CreateMenu createMenuHandler={spy} id={1} />);
         wrapper.find('button').at(1).simulate('click');
         expect(spy.calledWith(1, 'directory')).toEqual(true);
       });
