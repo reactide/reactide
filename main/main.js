@@ -1,10 +1,8 @@
-// 'use strict';
-
 const electron = require('electron');
 const { BrowserWindow, ipcMain, Menu, app, dialog } = require('electron');
 const url = require('url');
 const path = require('path');
-const template = require('./menus/file');
+const template = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const fs = require('fs');
