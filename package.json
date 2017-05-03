@@ -4,7 +4,7 @@
   "description": "",
   "main": "./main/main.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register --reporter nyan test/test.js",
+    "test": "mocha --compilers js:babel-register test/test.js",
     "start": "cross-env NODE_ENV=production electron .",
     "dev-start": "cross-env NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer"
