@@ -23,7 +23,7 @@ export default class Directory extends React.Component {
           openCreateMenu={this.props.openCreateMenu}
           openMenuId={this.props.openMenuId}
           createMenuInfo={this.props.createMenuInfo}
-          createForm={this.props.createForm}
+          createMenuHandler={this.props.createMenuHandler}
           createItem={this.props.createItem}
           rename={this.props.rename}
           renameHandler={this.props.renameHandler}
@@ -51,7 +51,7 @@ export default class Directory extends React.Component {
           {this.props.directory.name}
         </span>
         <span className="plus-icon" onClick={this.props.openCreateMenu.bind(null, this.props.id, this.props.directory.path)}>+</span>
-        {this.props.openMenuId === this.props.id ? <CreateMenu createForm={this.props.createForm} id={this.props.id} /> : <span />}
+        {this.props.openMenuId === this.props.id ? <CreateMenu createMenuHandler={this.props.createMenuHandler} id={this.props.id} /> : <span />}
         {this.props.createMenuInfo.id === this.props.id ? <CreateForm createItem={this.props.createItem} /> : <span />}
     </div>)
     if (this.props.directory.opened) {
