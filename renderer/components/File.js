@@ -1,5 +1,5 @@
 import React from 'react';
-import RenameForm from './RenameForm.jsx';
+import RenameForm from './RenameForm';
 
 const File = ({file, openFile, selectedItem, id, clickHandler, renameFlag, renameHandler}) => {
 
