@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from './Tab.jsx';
+import Tab from './Tab';
 
 const TabContainer = ({
   appState,
