@@ -34,7 +34,7 @@ import RenameForm from '../renderer/components/RenameForm';
 //       });
 //       console.log(this.app)
 //       this.app.start();
-      
+
 //     });
 
 //     afterEach(function () {
