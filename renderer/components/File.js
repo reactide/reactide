@@ -1,7 +1,7 @@
 import React from 'react';
-import RenameForm from './RenameForm.jsx';
+import RenameForm from './RenameForm';
 
-const File = ({file, openFile, selectedItem, id, clickHandler, rename, renameHandler}) => {
+const File = ({file, openFile, selectedItem, id, clickHandler, renameFlag, renameHandler}) => {
 
   return (
     <li 
@@ -9,7 +9,7 @@ const File = ({file, openFile, selectedItem, id, clickHandler, rename, renameHan
       onDoubleClick={openFile.bind(null, file)}
       onClick={clickHandler.bind(null, id, file.path, file.type)}
     >
-    {rename && selectedItem.id === id ? <RenameForm renameHandler={renameHandler}/> : <span className="icon icon-file-text">{file.name}</span>}
+    {renameFlag && selectedItem.id === id ? <RenameForm renameHandler={renameHandler}/> : <span className="icon icon-file-text">{file.name}</span>}
     </li>
   )
 }
