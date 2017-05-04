@@ -4,6 +4,8 @@ const React = require('react');
 const sinon = require('sinon');
 const chaiEnzyme = require('chai-enzyme');
 const chai = require('chai');
+const Application = require('spectron').Application;
+const path = require('path');
 
 chai.use(chaiEnzyme());
 
@@ -20,16 +22,38 @@ import TabContainer from '../renderer/components/TabContainer'
 import TextEditorPane from '../renderer/components/TextEditorPane';
 import RenameForm from '../renderer/components/RenameForm';
 
+// describe('Electron', () => {
+//   describe('application launch', function () {
+//     this.timeout(20000);
 
+//     beforeEach(function () {
+//       console.log('file://' + path.join(__dirname, '../renderer/index.html'));
+//       this.app = new Application({
+//         path: 'node_modules/electron/dist/electron.exe',
+//         args: [path.join(__dirname, '../main/main.js')]
+//       });
+//       console.log(this.app)
+//       this.app.start();
+      
+//     });
+
+//     afterEach(function () {
+//       if (this.app && this.app.isRunning()) {
+//         this.app.stop()
+//       }
+//     });
+
+//     it('shows an initial window', function () {
+//       // console.log(this.app);
+//       this.app.client.getWindowCount().then(function (count) {
+//         expect(count).toEqual(1);
+//       });
+//     });
+//   });
+
+// });
 
 describe('React Components', () => {
-  describe('App', () => {
-    it('should render', () => {
-      const wrapper = shallow(<App />);
-      expect(wrapper.exists()).toEqual(true);
-    })
-  });
-
   describe('CreateForm', () => {
 
     it('should render', () => {
@@ -161,47 +185,47 @@ describe('React Components', () => {
     });
 
     it('should render CreateMenu if openMenuId is equal to id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={1}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={1} />);
       expect(wrapper.find(CreateMenu).exists()).toEqual(true);
     });
 
     it('shouldn\'t render CreateMenu if openMenuId is not equal to id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={2}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={2} />);
       expect(wrapper.find(CreateMenu).exists()).toEqual(false);
     });
 
     it('should render CreateForm if createMenuInfo.id is equal to id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={2}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 1 }} id={1} openMenuId={2} />);
       expect(wrapper.find(CreateForm).exists()).toEqual(true);
     });
 
     it('should not render CreateForm if createMenuInfo.id is not equal to id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} />);
       expect(wrapper.find(CreateForm).exists()).toEqual(false);
     });
 
     it('item should have class name selected if selected (selectedItem.id === id)', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} />);
       expect(wrapper.find('.list-nested-item .selected').exists()).toEqual(true);
     });
 
     it('item should not have class name selected if not selected (selectedItem.id !== id)', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 2 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 2 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} />);
       expect(wrapper.find('.list-nested-item .selected').exists()).toEqual(false);
     });
 
     it('should render RenameForm if renameFlag && selectedItem.id === id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={true}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={true} />);
       expect(wrapper.find(RenameForm).exists()).toEqual(true);
     });
-    
+
     it('should not render RenameForm if renameFlag && selectedItem.id !== id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 2 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={false}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 2 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={false} />);
       expect(wrapper.find(RenameForm).exists()).toEqual(false);
     });
 
     it('should not render the directory/file if renameFlag && selectedItem.id === id', () => {
-      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: []}} clickHandler={()=>{}} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={true}/>);
+      const wrapper = shallow(<Directory directory={{ subdirectories: [], files: [] }} clickHandler={() => { }} openCreateMenu={() => { }} selectedItem={{ id: 1 }} createMenuInfo={{ id: 2 }} id={1} openMenuId={2} renameFlag={true} />);
       expect(wrapper.find('.list-item').exists()).toEqual(false);
     });
   });

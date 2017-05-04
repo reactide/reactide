@@ -37,7 +37,7 @@ app.on('ready', async () => {
     width: 1000,
     height: 800
   });
-
+  
   //load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
 

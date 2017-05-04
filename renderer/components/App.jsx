@@ -55,7 +55,7 @@ export default class App extends React.Component {
     this.findParentDir = this.findParentDir.bind(this);
     this.deletePromptHandler = this.deletePromptHandler.bind(this);
     this.renameHandler = this.renameHandler.bind(this);
-
+    
     //reset tabs, should store state in local storage before doing this though
     ipcRenderer.on('openDir', (event, projPath) => {
       if (this.state.openedProjectPath !== projPath) {
