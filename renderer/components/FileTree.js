@@ -1,6 +1,10 @@
 import React from 'react';
+import File from './File';
 import Directory from './Directory';
-import PropTypes from 'prop-types';
+const fs = require('fs');
+const path = require('path');
+const {remote, ipcRenderer, dialog} = require('electron');
+const fileTree = require('../../lib/file-tree');
 
 const FileTree = ({
   fileTree,
