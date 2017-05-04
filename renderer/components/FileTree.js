@@ -4,7 +4,6 @@ import Directory from './Directory';
 const fs = require('fs');
 const path = require('path');
 const {remote, ipcRenderer, dialog} = require('electron');
-const fileTree = require('../../lib/file-tree');
 
 
 export default class FileTree extends React.Component {
@@ -34,14 +33,15 @@ export default class FileTree extends React.Component {
                       openCreateMenu={this.props.openCreateMenu}
                       openMenuId={this.props.openMenuId}
                       createMenuInfo={this.props.createMenuInfo}
-                      createForm={this.props.createForm}
+                      createMenuHandler={this.props.createMenuHandler}
                       createItem={this.props.createItem}
+                      rename={this.props.rename}
+                      renameHandler={this.props.renameHandler}
                     />
                   </ul>
                 </div>
                 <div className="tree-view-resize-handle"></div>
               </div>
-
             </main>
           </div>
         </div>

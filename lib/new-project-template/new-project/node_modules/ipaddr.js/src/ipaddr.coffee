@@ -77,6 +77,7 @@ class ipaddr.IPv4
     return matchCIDR(this.octets, other.octets, 8, cidrRange)
 
   # Special IPv4 address ranges.
+  # See also https://en.wikipedia.org/wiki/Reserved_IP_addresses
   SpecialRanges:
     unspecified: [
       [ new IPv4([0,     0,    0,   0]),  8 ]
@@ -92,6 +93,9 @@ class ipaddr.IPv4
     ]
     loopback: [ # RFC5735
       [ new IPv4([127,   0,    0,   0]), 8  ]
+    ]
+    carrierGradeNat: [ # RFC6598
+      [ new IPv4([100,   64,   0,   0]), 10 ]
     ]
     private: [ # RFC1918
       [ new IPv4([10,    0,    0,   0]), 8  ]

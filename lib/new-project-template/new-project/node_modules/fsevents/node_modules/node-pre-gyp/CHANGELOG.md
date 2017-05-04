@@ -1,5 +1,9 @@
 # node-pre-gyp changelog
 
+## 0.6.33
+
+ - Improved support for yarn
+
 ## 0.6.32
 
  - Honor npm configuration for CA bundles (@heikkipora)

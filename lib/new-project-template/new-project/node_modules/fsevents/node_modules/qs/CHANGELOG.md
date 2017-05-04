@@ -1,3 +1,15 @@
+## **6.3.1**
+- [Fix] ensure that `allowPrototypes: false` does not ever shadow Object.prototype properties (thanks, @snyk!)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `browserify`, `iconv-lite`, `qs-iconv`, `tape`
+- [Tests] on all node minors; improve test matrix
+- [Docs] document stringify option `allowDots` (#195)
+- [Docs] add empty object and array values example (#195)
+- [Docs] Fix minor inconsistency/typo (#192)
+- [Docs] document stringify option `sort` (#191)
+- [Refactor] `stringify`: throw faster with an invalid encoder
+- [Refactor] remove unnecessary escapes (#184)
+- Remove contributing.md, since `qs` is no longer part of `hapi` (#183)
+
 ## **6.3.0**
 - [New] Add support for RFC 1738 (#174, #173)
 - [New] `stringify`: Add `serializeDate` option to customize Date serialization (#159)
