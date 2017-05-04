@@ -6,7 +6,7 @@ import MockComponentTree from './MockComponentTree';
 import MockComponentInspector from './MockComponentInspector';
 
 const { ipcRenderer } = require('electron');
-const fileTree = require('../../lib/file-tree');
+const {getTree} = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
 const { File, Directory } = require('../../lib/item-schema');
@@ -460,7 +460,7 @@ export default class App extends React.Component {
                 openCreateMenu={this.openCreateMenu}
                 openMenuId={this.state.openMenuId}
                 createMenuInfo={this.state.createMenuInfo}
-                createForm={this.createForm}
+                createMenuHandler={this.createMenuHandler}
                 createItem={this.createItem}
                 fileTree={this.state.fileTree}
                 selectedItem={this.state.selectedItem}

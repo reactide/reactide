@@ -1,21 +1,20 @@
 import React from 'react';
 import Tab from './Tab';
 
-export default class TabContainer extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    const tabs = [];
-    for (var i = 0; i < this.props.appState.openTabs.length; i++) {
+const TabContainer = ({
+  appState,
+  setActiveTab,
+  closeTab
+}) => {
+  const tabs = [];
+    for (var i = 0; i < appState.openTabs.length; i++) {
       tabs.push(
         <Tab 
           key={i} 
-          name={this.props.appState.openTabs[i].name} 
-          setActiveTab={this.props.setActiveTab} 
-          id={this.props.appState.openTabs[i].id} 
-          closeTab={this.props.closeTab}
+          name={appState.openTabs[i].name} 
+          setActiveTab={setActiveTab} 
+          id={appState.openTabs[i].id} 
+          closeTab={closeTab}
         />);
     }
     return (
@@ -23,5 +22,6 @@ export default class TabContainer extends React.Component {
         {tabs}
       </ul>
     )
-  }
 }
+
+export default TabContainer;
