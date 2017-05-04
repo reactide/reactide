@@ -1,8 +1,7 @@
 import React from 'react';
-import File from './File.jsx';
-import CreateMenu from './CreateMenu.jsx';
-import CreateForm from './CreateForm.jsx';
-import RenameForm from './RenameForm.jsx';
+import File from './File';
+import CreateMenu from './CreateMenu';
+import CreateForm from './CreateForm';
 
 export default class Directory extends React.Component {
   constructor() {
