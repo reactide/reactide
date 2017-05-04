@@ -2,6 +2,7 @@ import React from 'react';
 import File from './File';
 import CreateMenu from './CreateMenu';
 import CreateForm from './CreateForm';
+import RenameForm from './RenameForm';
 
 const Directory = ({
   directory,
