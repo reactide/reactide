@@ -7,12 +7,12 @@ const chai = require('chai');
 
 chai.use(chaiEnzyme());
 
-import CreateForm from '../renderer/components/CreateForm.jsx';
+import CreateForm from '../renderer/components/CreateForm';
 import CreateMenu from '../renderer/components/CreateMenu';
 import DeletePrompt from '../renderer/components/DeletePrompt';
 import File from '../renderer/components/File';
-import FileTree from '../renderer/components/FileTree.jsx';
-import Directory from '../renderer/components/Directory.jsx';
+import FileTree from '../renderer/components/FileTree';
+import Directory from '../renderer/components/Directory';
 import TextEditor from '../renderer/components/TextEditor';
 import Tab from '../renderer/components/Tab';
 import TextEditorPane from '../renderer/components/TextEditorPane';
