@@ -1,6 +1,4 @@
 import React from 'react';
-import TabContainer from './TabContainer.jsx';
-import { ipcRenderer } from 'electron';
 
 export default class TextEditor extends React.Component {
   constructor(props) {
@@ -19,6 +17,7 @@ export default class TextEditor extends React.Component {
       }
       return encodeURI('file://' + pathName);
     }
+    // 
     amdRequire.config({
       baseUrl: uriFromPath(path.resolve(__dirname, '../node_modules/monaco-editor/min'))
     });

@@ -1,12 +1,8 @@
-const initialState = {};
+import { combineReducers } from 'redux';
+import editorPane from './editorPane';
 
-const reducer = (state = initialState, action={type:'hello'}) => {
-  switch (action.type) {
-    case 'HELLO': (state = {}, action) => {
-      return state;
-    }
-    default: return state;
-  } 
-}
+const rootReducer = combineReducers({
+  editorPane,
+});
 
-export { reducer };
+export default rootReducer;
