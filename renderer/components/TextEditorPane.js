@@ -1,6 +1,6 @@
 import React from 'react';
-import TextEditor from './TextEditor.jsx';
-import TabContainer from './TabContainer.jsx';
+import TextEditor from './TextEditor';
+import TabContainer from './TabContainer';
 
 const TextEditorPane = ({
   appState,
