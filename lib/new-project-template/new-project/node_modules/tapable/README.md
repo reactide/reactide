@@ -52,16 +52,6 @@ void plugin(names: string|string[], handler: Function)
 
 `handler` is a callback function. The signature depends on the class. `this` is the instance of the class.
 
-### restartApplyPlugins
-
-``` javascript
-void restartApplyPlugins()
-```
-
-Should only be called from a handler function.
-
-It restarts the process of applying handers.
-
 ## Protected functions
 
 ### applyPlugins
@@ -138,8 +128,6 @@ applyPluginsParallel(
 
 Applies all registered handlers for `name` parallel. The handler functions are called with all args and a callback function with the signature `(err?: Error) -> void`. The `callback` function is called when all handlers called the callback without `err`. If any handler calls the callback with `err`, `callback` is invoked with this error and the other handlers are ignored.
 
-`restartApplyPlugins` cannot be used.
-
 ### applyPluginsParallelBailResult
 
 ``` javascript
@@ -151,5 +139,3 @@ applyPluginsParallelBailResult(
 ```
 
 Applies all registered handlers for `name` parallel. The handler functions are called with all args and a callback function with the signature `(err?: Error) -> void`. Handler functions must call the callback. They can either pass an error, or pass undefined, or pass an value. The first result (either error or value) with is not undefined is passed to the `callback`. The order is defined by registeration not by speed of the handler function. This function compentate this.
-
-`restartApplyPlugins` cannot be used.

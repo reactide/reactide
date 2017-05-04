@@ -22,7 +22,7 @@ Some modules have mocks in the `mock` directory. These are replacements with min
 | domain | [bevry/domain-browser](https://github.com/bevry/domain-browser) | --- |
 | events | [Gozala/events](https://github.com/Gozala/events) | --- |
 | fs | --- | --- |
-| http | [substack/http-browserify](https://github.com/substack/http-browserify) | --- |
+| http | [jhiesey/stream-http](https://github.com/jhiesey/stream-http) | --- |
 | https | [substack/https-browserify](https://github.com/substack/https-browserify) | --- |
 | module | --- | --- |
 | net | --- | [net.js](https://github.com/webpack/node-libs-browser/blob/master/mock/net.js) |
@@ -55,12 +55,6 @@ This will be dropped as soon as IE9 is not a typical browser target anymore.
 
 The current `punycode` implementation uses bestiejs/punycode.js@1.x because bestiejs/punycode.js@2.x requires modern JS engines that understand `const` and `let`.
 It will be removed someday since it has already been [deprecated from the node API](https://nodejs.org/api/punycode.html).
-
-### `crypto`
-
-We locked `crypto-browserify` at `3.3.0` because `3.4.x` introduced a breaking change by requiring JSON files. We will not upgrade this module
-for webpack 1 anymore since it will introduce a breaking change for all users that don't have the [json-loader](https://github.com/webpack/json-loader) configured.
-You can, however, use a newer crypto-browserify version by configuring a [`resolve.alias`](http://webpack.github.io/docs/configuration.html#resolve-alias) and using the json-loader.
 
 ## License
 

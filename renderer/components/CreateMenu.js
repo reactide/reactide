@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CreateMenu = ({id, createForm}) => {
+const CreateMenu = ({id, createMenuHandler}) => {
   return (
     <div className="create-menu">
-      <button className="create-button" onClick={createForm.bind(null, id, 'file')}>Create File</button>
-      <button className="create-button" onClick={createForm.bind(null, id, 'directory')}>Create Directory</button>
+      <button className="create-button" onClick={createMenuHandler.bind(null, id, 'file')}>Create File</button>
+      <button className="create-button" onClick={createMenuHandler.bind(null, id, 'directory')}>Create Directory</button>
     </div>
   )
 }

@@ -32,6 +32,10 @@ var wp = new Watchpack({
 	// poll: 10000 - use polling with an interval of 10s
 	// poll defaults to undefined, which prefer native watching methods
 	// Note: enable polling when watching on a network path
+
+	ignored: /node_modules/,
+	// anymatch-compatible definition of files/paths to be ignored
+	// see https://github.com/paulmillr/chokidar#path-filtering
 });
 
 // Watchpack.prototype.watch(string[] files, string[] directories, [number startTime])

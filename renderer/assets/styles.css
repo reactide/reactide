@@ -9489,7 +9489,8 @@ label.tree_label:hover:before {
 }
 .plus-icon {
   font-size: 15px;
-  float: right;
+  position: absolute;
+  right: 0px;
   cursor: pointer;
 }
 .create-menu {
@@ -9526,5 +9527,11 @@ label.tree_label:hover:before {
   left: 400px;
   background-color: grey;
   z-index: 5;
+}
+.rename-input {
+  height:25px;
+  width:100%;
+  background-color: #23272f;
+  color:white;
 }
 /*# sourceMappingURL=main.css.map */
