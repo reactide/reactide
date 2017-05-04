@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from './Tab.jsx';
+import Tab from './Tab';
 
 export default class TabContainer extends React.Component {
   constructor() {
