@@ -24,9 +24,12 @@ import RenameForm from '../renderer/components/RenameForm';
 
 describe('React Components', () => {
   describe('App', () => {
-
+    it('should render', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.exists()).toEqual(true);
+    })
   });
-  
+
   describe('CreateForm', () => {
 
     it('should render', () => {
