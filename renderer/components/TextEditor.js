@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class TextEditor extends React.Component {
+export default class TextEditor extends React.PureComponent {
   constructor(props) {
     super();
   }

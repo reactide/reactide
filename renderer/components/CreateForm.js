@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CreateForm = ({createItem}) => {console.log('created form')
+const CreateForm = ({
+  createItem
+}) => {
   return (
     <div className='list-item'>
-      <input className='create-form' onKeyPress={createItem} onClick={(event) => {event.stopPropagation()}} /> 
+      <input className='create-form' onKeyPress={createItem} onClick={(event) => {event.stopPropagation()}} />
     </div>
   )
 }
