@@ -240,60 +240,60 @@ describe('React Components', () => {
 
   describe('File', () => {
     it('should render', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.exists()).toEqual(true);
     });
 
-    it('should call openFile on doubleClick', () => {
+    it('should call dblClickHandler on doubleClick', () => {
       const spy = sinon.spy();
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} openFile={spy} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} dblClickHandler={spy} clickHandler={() => { }} />);
       wrapper.simulate('doubleClick');
       expect(spy.called).toEqual(true);
     });
 
-    it('should call openFile with file on doubleClick', () => {
+    it('should call dblClickHandler with file on doubleClick', () => {
       const spy = sinon.spy();
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: 'a', name: 'a' }} openFile={spy} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: 'a', name: 'a' }} dblClickHandler={spy} clickHandler={() => { }} />);
       wrapper.simulate('doubleClick');
       expect(spy.calledWith({ path: 'a', name: 'a' })).toEqual(true);
     });
 
     it('should call clickHandler on single click', () => {
       const spy = sinon.spy();
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} openFile={() => { }} clickHandler={spy} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: '' }} dblClickHandler={() => { }} clickHandler={spy} />);
       wrapper.simulate('click');
       expect(spy.called).toEqual(true);
     });
 
     it('should call clickHandler with id and file.path on single click', () => {
       const spy = sinon.spy();
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} file={{ path: 'a', name: '' }} openFile={() => { }} clickHandler={spy} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} file={{ path: 'a', name: '' }} dblClickHandler={() => { }} clickHandler={spy} />);
       wrapper.simulate('click');
       expect(spy.calledWith(1, 'a')).toEqual(true);
     });
 
     it('should render the name of the file', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: 'Jonny Greenwood' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} file={{ path: '', name: 'Jonny Greenwood' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.find('span').text()).toEqual('Jonny Greenwood');
     });
 
     it('should render RenameForm if rename && selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={true} file={{ path: '', name: 'Jonny Greenwood' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={true} file={{ path: '', name: 'Jonny Greenwood' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.find(RenameForm).exists()).toEqual(true);
     });
 
     it('should not render RenameForm if rename && selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.find(RenameForm).exists()).toEqual(false);
     });
 
     it('should have className list-item selected if selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={1} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.find('.selected').exists()).toEqual(true);
     });
 
     it('should not have className selected if selectedItem.id === id', () => {
-      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={2} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} openFile={() => { }} clickHandler={() => { }} />);
+      const wrapper = shallow(<File selectedItem={{ id: 1 }} id={2} renameFlag={false} file={{ path: '', name: 'Jonny Greenwood' }} dblClickHandler={() => { }} clickHandler={() => { }} />);
       expect(wrapper.find('.selected').exists()).toEqual(false);
     });
   });
