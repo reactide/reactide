@@ -334,7 +334,7 @@ export default class App extends React.Component {
   //creation of new file/directory will trigger watch handler
   createItem(event) {
     if (event.key === 'Enter') {
-      //send path and file type to main process to actually create file/dir
+      //send path and file type to main process to actually create file/dir only if there is value
       if (event.target.value) ipcRenderer.send('createItem', this.state.selectedItem.path, event.target.value, this.state.createMenuInfo.type);
 
       //set type of file change so watch handler knows which type

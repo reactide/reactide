@@ -34,7 +34,7 @@ import RenameForm from '../renderer/components/RenameForm';
 //       });
 //       console.log(this.app)
 //       this.app.start();
-      
+
 //     });
 
 //     afterEach(function () {
@@ -54,20 +54,28 @@ import RenameForm from '../renderer/components/RenameForm';
 // });
 
 describe('React Components', () => {
+
+  // describe('App', () => {
+  //   it('should render', () => {
+  //     const wrapper = shallow(<App />);
+  //     expect(wrapper.exists()).toEqual(true);
+  //   });
+  // });
+
   describe('CreateForm', () => {
 
-    it('should render', () => {
-      const wrapper = shallow(<CreateForm />);
-      expect(wrapper.exists()).toEqual(true);
-    });
+      it('should render', () => {
+        const wrapper = shallow(<CreateForm />);
+        expect(wrapper.exists()).toEqual(true);
+      });
 
-    it('should fire keypress event when key is pressed', () => {
-      const spy = sinon.spy();
-      const wrapper = shallow(<CreateForm createItem={spy} />);
-      wrapper.find('input').simulate('keyPress');
-      expect(spy.called).toEqual(true);
+      it('should fire keypress event when key is pressed', () => {
+        const spy = sinon.spy();
+        const wrapper = shallow(<CreateForm createItem={spy} />);
+        wrapper.find('input').simulate('keyPress');
+        expect(spy.called).toEqual(true);
+      });
     });
-  });
 
   describe('CreateMenu', () => {
 

@@ -1,3 +1,5 @@
+'use strict'
+
 const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
 const electron = require('electron');
 const path = require('path');
