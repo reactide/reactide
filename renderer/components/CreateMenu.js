@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CreateMenu = ({id, createMenuHandler}) => {
   return (
@@ -8,4 +9,10 @@ const CreateMenu = ({id, createMenuHandler}) => {
     </div>
   )
 }
+
+CreateMenu.propTypes = {
+  id: PropTypes.number.isRequired,
+  createMenuHandler: PropTypes.func.isRequired
+}
+
 export default CreateMenu;

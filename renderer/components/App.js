@@ -42,7 +42,7 @@ export default class App extends React.Component {
     this.fileTreeInit();
     this.clickHandler = this.clickHandler.bind(this);
     this.setFileTree = this.setFileTree.bind(this);
-    this.openFile = this.openFile.bind(this);
+    this.dblClickHandler = this.dblClickHandler.bind(this);
     this.setActiveTab = this.setActiveTab.bind(this);
     this.isFileOpened = this.isFileOpened.bind(this);
     this.saveTab = this.saveTab.bind(this);
@@ -395,7 +395,7 @@ export default class App extends React.Component {
   }
 
   //double click handler for files
-  openFile(file) {
+  dblClickHandler(file) {
     let id = this.isFileOpened(file);
     if (id === -1) {
       const openTabs = this.state.openTabs;
@@ -456,7 +456,7 @@ export default class App extends React.Component {
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
               <FileTree
-                openFile={this.openFile}
+                dblClickHandler={this.dblClickHandler}
                 openCreateMenu={this.openCreateMenu}
                 openMenuId={this.state.openMenuId}
                 createMenuInfo={this.state.createMenuInfo}

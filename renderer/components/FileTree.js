@@ -7,7 +7,7 @@ const {remote, ipcRenderer, dialog} = require('electron');
 
 const FileTree = ({
   fileTree,
-  openFile,
+  dblClickHandler,
   clickHandler,
   selectedItem,
   openCreateMenu,
@@ -32,7 +32,7 @@ const FileTree = ({
                   <ul className="tree-view full-menu list-tree has-collapsable-children">
                     <Directory
                       directory={fileTree}
-                      openFile={openFile}
+                      dblClickHandler={dblClickHandler}
                       id={fileTree.id}
                       clickHandler={clickHandler}
                       selectedItem={selectedItem}
