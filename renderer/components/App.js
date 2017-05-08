@@ -33,7 +33,7 @@ export default class App extends React.Component {
         type: null,
         focused: false
       },
-      rename: false,
+      renameFlag: false,
       fileChangeType: null,
       deletePromptOpen: false,
       newName: ''
@@ -79,7 +79,7 @@ export default class App extends React.Component {
       if (this.state.selectedItem.focused) {
         //rename property just true or false i guess
         this.setState({
-          rename: true
+          renameFlag: true
         })
       }
     })
@@ -110,13 +110,13 @@ export default class App extends React.Component {
     if (event.key === 'Enter' && event.target.value) {
       ipcRenderer.send('rename', this.state.selectedItem.path, event.target.value);
       this.setState({
-        rename: false,
+        renameFlag: false,
         fileChangeType: 'rename',
         newName: event.target.value
       })
     } else if (event.key === 'Enter' && !event.target.value) {
       this.setState({
-        rename: false
+        renameFlag: false
       })
     }
   }
@@ -141,7 +141,7 @@ export default class App extends React.Component {
     document.body.onkeydown = (event) => {
       if (event.key === 'Enter') {
         this.setState({
-          rename: true
+          renameFlag: true
         })
         document.body.onkeydown = () => { };
       }
@@ -173,7 +173,7 @@ export default class App extends React.Component {
         focused: true
       },
       fileTree: temp,
-      rename: false,
+      renameFlag: false,
       createMenuInfo: {
         id: null,
         type: null
@@ -441,7 +441,7 @@ export default class App extends React.Component {
         type: null
       },
       selectedItem,
-      rename: false
+      renameFlag: false
     });
   }
 
@@ -465,6 +465,8 @@ export default class App extends React.Component {
                 fileTree={this.state.fileTree}
                 selectedItem={this.state.selectedItem}
                 clickHandler={this.clickHandler}
+                renameFlag={this.state.renameFlag}
+                renameHandler={this.renameHandler}
               />
               {this.state.deletePromptOpen ?
                 <DeletePrompt

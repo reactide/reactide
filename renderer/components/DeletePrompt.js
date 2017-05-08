@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DeletePrompt = ({deletePromptHandler, name}) => {
+const DeletePrompt = ({
+  deletePromptHandler, 
+  name
+}) => {
   return (
     <div className='delete-prompt'>
       <h1>Are you sure you want to delete {name}?</h1>
