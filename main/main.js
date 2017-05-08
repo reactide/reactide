@@ -1,3 +1,5 @@
+'use strict'
+
 const electron = require('electron');
 const { BrowserWindow, ipcMain, Menu, app, dialog } = require('electron');
 const url = require('url');
