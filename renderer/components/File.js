@@ -1,7 +1,16 @@
 import React from 'react';
 import RenameForm from './RenameForm';
+import PropTypes from 'prop-types';
 
-const File = ({file, dblClickHandler, selectedItem, id, clickHandler, renameFlag, renameHandler}) => {
+const File = ({
+  file, 
+  dblClickHandler, 
+  selectedItem, 
+  id, 
+  clickHandler, 
+  renameFlag, 
+  renameHandler
+}) => {
 
   return (
     <li 
@@ -13,4 +22,15 @@ const File = ({file, dblClickHandler, selectedItem, id, clickHandler, renameFlag
     </li>
   )
 }
+
+File.propTypes = {
+  file: PropTypes.object.isRequired,
+  dblClickHandler: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  renameFlag: PropTypes.bool.isRequired,
+  renameHandler: PropTypes.func.isRequired
+}
+
 export default File;

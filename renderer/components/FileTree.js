@@ -1,9 +1,10 @@
 import React from 'react';
 import File from './File';
 import Directory from './Directory';
-const fs = require('fs');
-const path = require('path');
-const {remote, ipcRenderer, dialog} = require('electron');
+import PropTypes from 'prop-types';
+import fs from 'fs';
+import path from 'path';
+import {remote, ipcRenderer, dialog} from 'electron';
 
 const FileTree = ({
   fileTree,
@@ -69,6 +70,20 @@ const FileTree = ({
         </div>
       )
     }
+}
+
+FileTree.propTypes = {
+  fileTree: PropTypes.object,
+  dblClickHandler: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object.isRequired,
+  openCreateMenu: PropTypes.func.isRequired,
+  openMenuId: PropTypes.number,
+  createMenuInfo: PropTypes.object,
+  createMenuHandler: PropTypes.func.isRequired,
+  createItem: PropTypes.func.isRequired,
+  renameFlag: PropTypes.bool.isRequired,
+  renameHandler: PropTypes.func.isRequired
 }
 
 export default FileTree;
