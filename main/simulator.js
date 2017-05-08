@@ -13,18 +13,16 @@ const simulator = (root) => {
 
   //Dynamic simulation
   if (projInfo.hotLoad) {
-    console.log('hotloading')
-    let child = exec('webpack-dev-server', {
-      cwd: projInfo.rootPath,
-      shell: '/bin/bash'
+    let child = exec('npm start', {
+      cwd: projInfo.rootPath
     }, (err, stdout, stderr) => {
-      let child = new BrowserWindow({
-        width: WIDTH,
-        height: HEIGHT
-      });
-      child.loadURL('http://localhost:8080');
-      child.toggleDevTools();
-    })
+        let child = new BrowserWindow({
+          width: WIDTH,
+          height: HEIGHT
+        });
+        child.loadURL('http://localhost:8080');
+        child.toggleDevTools();
+    });
   }
 
   else if (projInfo.webpack) {
