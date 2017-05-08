@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CreateForm = ({createItem}) => {console.log('created form')
   return (
@@ -7,4 +8,9 @@ const CreateForm = ({createItem}) => {console.log('created form')
     </div>
   )
 }
+
+CreateForm.propTypes = {
+  createItem: PropTypes.func.isRequired
+}
+
 export default CreateForm;
