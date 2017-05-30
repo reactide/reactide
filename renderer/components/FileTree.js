@@ -1,9 +1,5 @@
 import React from 'react';
-import File from './File';
 import Directory from './Directory';
-const fs = require('fs');
-const path = require('path');
-const {remote, ipcRenderer, dialog} = require('electron');
 
 const FileTree = ({
   fileTree,
