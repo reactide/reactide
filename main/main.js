@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
-const template = require('./menus/mainMenu');
+const menuTemplate = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const devtron = require('devtron');
@@ -46,7 +46,7 @@ app.on('ready', async () => {
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
 
   // initialize menus
-  const menu = Menu.buildFromTemplate(template);
+  const menu = Menu.buildFromTemplate(menuTemplate(win));
   Menu.setApplicationMenu(menu);
 
   // toggle devtools only if development
