@@ -3,11 +3,13 @@ const path = require('path');
 const template = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
+const devtron = require('devtron');
 require('electron-debug')();
 
-const isDevelopment = (process.env.NODE_ENV === 'development');
+const isDevelopment = process.env.NODE_ENV;
 
 const installExtensions = async () => {
+  devtron.install();
   const installer = require('electron-devtools-installer');
   const extensions = [
     'REACT_DEVELOPER_TOOLS',
@@ -28,10 +30,6 @@ const installExtensions = async () => {
 let win = null;
 
 app.on('ready', async () => {
-
-  // install React & Redux Extensions
-  await installExtensions();
-
   // initialize main window
   win = new BrowserWindow({
     width: 1000,
@@ -48,11 +46,14 @@ app.on('ready', async () => {
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
 
   // initialize menus
-  let menu = Menu.buildFromTemplate(template);
+  const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
   // toggle devtools only if development
-  if (isDevelopment) win.toggleDevTools();
+  if (process.env.NODE_ENV === 'development') {
+    await installExtensions();
+    win.toggleDevTools();
+  }
 
   // put Main window instance in global variable for use in other modules
   global.mainWindow = win;
