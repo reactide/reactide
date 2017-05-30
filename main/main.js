@@ -23,15 +23,16 @@ const installExtensions = async () => {
   }
 };
 
-//Main window Init
-let win = null; // define window in global scope to prevent garbage collection
+// Main window init
+// define window in global scope to prevent garbage collection
+let win = null;
 
 app.on('ready', async () => {
-  
-  //install React & Redux Extensions
+
+  // install React & Redux Extensions
   await installExtensions();
-  
-  //initialize main window
+
+  // initialize main window
   win = new BrowserWindow({
     width: 1000,
     height: 800,
@@ -42,26 +43,26 @@ app.on('ready', async () => {
     // icon: '', // pending
     show: false,
   });
-  
-  //load index.html to main window
+
+  // load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
 
-  //initialize menus
+  // initialize menus
   let menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
-  //toggle devtools only if development
+  // toggle devtools only if development
   if (isDevelopment) win.toggleDevTools();
 
-  //put Main window instance in global variable for use in other modules
+  // put Main window instance in global variable for use in other modules
   global.mainWindow = win;
 
-  //Register listeners and shortcuts
+  // Register listeners and shortcuts
   registerIpcListeners();
   registerShortcuts(win);
 
   // Wait for window to be ready before showing to avoid white loading screen
   win.once('ready-to-show', () => {
     win.show();
-  })
+  });
 });
