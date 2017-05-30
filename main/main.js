@@ -37,9 +37,10 @@ app.on('ready', async () => {
     height: 800,
     minWidth: 604,
     minHeight: 283,
-    title: 'Reactide'
+    title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
     // icon: '', // pending
+    show: false,
   });
   
   //load index.html to main window
@@ -58,4 +59,9 @@ app.on('ready', async () => {
   //Register listeners and shortcuts
   registerIpcListeners();
   registerShortcuts(win);
+
+  // Wait for window to be ready before showing to avoid white loading screen
+  win.once('ready-to-show', () => {
+    win.show();
+  })
 });
