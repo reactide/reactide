@@ -1,11 +1,8 @@
-const electron = require('electron');
 const { BrowserWindow, ipcMain, Menu, app, dialog } = require('electron');
-const url = require('url');
 const path = require('path');
 const template = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
-const fs = require('fs');
 require('electron-debug')();
 
 const isDevelopment = (process.env.NODE_ENV === 'development');
