@@ -33,7 +33,7 @@ const menuTemplate = windowObj => ([
       {
         label: 'New Project',
         click: () => {
-          //warn user of unsaved changes before belo
+          // warn user of unsaved changes before belo
           global.newProj = true;
           global.mainWindow.webContents.send('newProject');
           deleteDirectory('./lib/new-project');
