@@ -32,7 +32,9 @@ app.on('ready', async () => {
   //initialize main window
   let win = new BrowserWindow({
     width: 1000,
-    height: 800
+    height: 800,
+    minWidth: 604,
+    minHeight: 283,
   });
   
   //load index.html to main window
