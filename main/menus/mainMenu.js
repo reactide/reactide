@@ -1,10 +1,9 @@
-const {dialog, Menu, ipcMain, BrowserWindow} = require('electron');
-const electron = require('electron');
+const { dialog, Menu, ipcMain, BrowserWindow } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 
-const template = [
+const menuTemplate = windowObj => ([
   {
     label: 'Main',
   },
@@ -15,7 +14,7 @@ const template = [
         label: 'Open',
         click: () => {
           global.newProj = false;
-          const rootDir = dialog.showOpenDialog({ properties: ['openDirectory'] });
+          const rootDir = dialog.showOpenDialog(windowObj, { properties: ['openDirectory'] });
           if (rootDir) {
             global.mainWindow.webContents.send('openDir', rootDir[0]);
           }
@@ -50,6 +49,6 @@ const template = [
       { role: 'redo' }
     ]
   }
-]
+]);
 
-module.exports = template;
+module.exports = menuTemplate;
