@@ -6,8 +6,6 @@ const registerIpcListeners = require('./ipcMainListeners');
 const devtron = require('devtron');
 require('electron-debug')();
 
-const isDevelopment = process.env.NODE_ENV;
-
 const installExtensions = async () => {
   devtron.install();
   const installer = require('electron-devtools-installer');
