@@ -24,17 +24,22 @@ const installExtensions = async () => {
 };
 
 //Main window Init
+let win = null; // define window in global scope to prevent garbage collection
+
 app.on('ready', async () => {
   
   //install React & Redux Extensions
   await installExtensions();
   
   //initialize main window
-  let win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1000,
     height: 800,
     minWidth: 604,
     minHeight: 283,
+    title: 'Reactide'
+    // titleBarStyle: hidden-inset, // pending
+    // icon: '', // pending
   });
   
   //load index.html to main window
