@@ -7,6 +7,7 @@ const path = require('path');
 const template = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
+const registerWebContentsListeners = require('./webContentsListeners');
 const fs = require('fs');
 require('electron-debug')();
 
@@ -56,4 +57,5 @@ app.on('ready', async () => {
   //Register listeners and shortcuts
   registerIpcListeners();
   registerShortcuts(win);
+  registerWebContentsListeners(win);
 });
