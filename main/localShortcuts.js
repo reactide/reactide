@@ -1,3 +1,5 @@
+'use strict'
+
 const localShortcut = require('electron-localshortcut');
 
 module.exports = (win) => {
