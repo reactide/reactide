@@ -4,9 +4,9 @@ const webpack = require('webpack');
 module.exports = {
   entry: './renderer/index.js',
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },
   target: 'electron',
 	node: {
