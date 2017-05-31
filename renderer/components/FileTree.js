@@ -1,13 +1,14 @@
 import React from 'react';
 import File from './File';
 import Directory from './Directory';
-const fs = require('fs');
-const path = require('path');
-const {remote, ipcRenderer, dialog} = require('electron');
+import PropTypes from 'prop-types';
+import fs from 'fs';
+import path from 'path';
+import {remote, ipcRenderer, dialog} from 'electron';
 
 const FileTree = ({
   fileTree,
-  openFile,
+  dblClickHandler,
   clickHandler,
   selectedItem,
   openCreateMenu,
@@ -32,7 +33,7 @@ const FileTree = ({
                   <ul className="tree-view full-menu list-tree has-collapsable-children">
                     <Directory
                       directory={fileTree}
-                      openFile={openFile}
+                      dblClickHandler={dblClickHandler}
                       id={fileTree.id}
                       clickHandler={clickHandler}
                       selectedItem={selectedItem}
@@ -69,6 +70,20 @@ const FileTree = ({
         </div>
       )
     }
+}
+
+FileTree.propTypes = {
+  fileTree: PropTypes.object,
+  dblClickHandler: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object.isRequired,
+  openCreateMenu: PropTypes.func.isRequired,
+  openMenuId: PropTypes.number,
+  createMenuInfo: PropTypes.object,
+  createMenuHandler: PropTypes.func.isRequired,
+  createItem: PropTypes.func.isRequired,
+  renameFlag: PropTypes.bool.isRequired,
+  renameHandler: PropTypes.func.isRequired
 }
 
 export default FileTree;
