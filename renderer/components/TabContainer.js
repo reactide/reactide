@@ -1,5 +1,6 @@
 import React from 'react';
 import Tab from './Tab';
+import PropTypes from 'prop-types';
 
 const TabContainer = ({
   appState,
@@ -22,6 +23,12 @@ const TabContainer = ({
         {tabs}
       </ul>
     )
+}
+
+TabContainer.propTypes = {
+  appState: PropTypes.object.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+  closeTab: PropTypes.func.isRequired
 }
 
 export default TabContainer;

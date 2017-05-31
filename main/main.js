@@ -1,3 +1,5 @@
+'use strict';
+
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 const menuTemplate = require('./menus/mainMenu');
