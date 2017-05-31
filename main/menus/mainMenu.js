@@ -15,8 +15,8 @@ const menuTemplate = windowObj => [
       { role: 'hideothers' },
       { role: 'unhide' },
       { type: 'separator' },
-      { role: 'quit' },
-    ],
+      { role: 'quit' }
+    ]
   },
   {
     label: 'File',
@@ -29,13 +29,11 @@ const menuTemplate = windowObj => [
           global.mainWindow.webContents.send('newProject');
           deleteDirectory('./lib/new-project');
           copy('./lib/new-project-template/new-project', './lib/');
-          global.mainWindow.webContents.send(
-            'openDir',
-            path.join(__dirname, '../../lib/new-project')
-          );
+          global.mainWindow.webContents.send('openDir', path.join(__dirname, '../../lib/new-project'));
         },
-        accelerator: 'CommandOrControl+N',
+        accelerator: 'CommandOrControl+N'
       },
+      { type: 'separator' },
       {
         label: 'Open…',
         click: () => {
@@ -47,8 +45,9 @@ const menuTemplate = windowObj => [
             global.mainWindow.webContents.send('openDir', rootDir[0]);
           }
         },
-        accelerator: 'CommandOrControl+O',
+        accelerator: 'CommandOrControl+O'
       },
+      { type: 'separator' },
       {
         label: 'Save',
         click: () => {
@@ -58,9 +57,9 @@ const menuTemplate = windowObj => [
           }
           global.mainWindow.webContents.send('openDir', save[0]);
         },
-        accelerator: 'CommandOrControl+S',
-      },
-    ],
+        accelerator: 'CommandOrControl+S'
+      }
+    ]
   },
   {
     label: 'Edit',
@@ -70,22 +69,17 @@ const menuTemplate = windowObj => [
       { type: 'separator' },
       { role: 'cut' },
       { role: 'copy' },
-      { role: 'paste' },
-    ],
+      { role: 'paste' }
+    ]
   },
   {
     label: 'Selection',
-    submenu: [
-      { role: 'selectall' },
-    ],
+    submenu: [{ role: 'selectall' }]
   },
   {
     role: 'window',
-    submenu: [
-      { role: 'minimize' },
-      { role: 'close' },
-    ],
-  },
+    submenu: [{ role: 'minimize' }, { role: 'close' }]
+  }
 ];
 
 module.exports = menuTemplate;
