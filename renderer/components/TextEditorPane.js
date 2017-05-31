@@ -1,6 +1,7 @@
 import React from 'react';
 import TextEditor from './TextEditor';
 import TabContainer from './TabContainer';
+import PropTypes from 'prop-types';
 
 const TextEditorPane = ({
   appState,
@@ -30,4 +31,12 @@ const TextEditorPane = ({
       </ride-pane>
     )
 }
+
+TextEditorPane.propTypes = {
+  appState: PropTypes.object.isRequired,
+  addEditorInstance: PropTypes.func.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+  closeTab: PropTypes.func.isRequired
+}
+
 export default TextEditorPane;
