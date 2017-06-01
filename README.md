@@ -19,5 +19,23 @@ Managing state across a complex web of React components is the biggest pain poin
 ## Synchronized property and style controls
 Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
 
+## Running the application locally
+```bash
+
+# Installs all of the dependencies
+yarn install
+
+# Starts the application
+yarn dev
+
+# Now open up another terminal window and run this command
+yarn run dev-start
+
+# Alternatively with NPM
+npm install
+npm run dev
+npm run dev-start
+```
+
 ## Contributors
 [Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
