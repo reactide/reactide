@@ -8,7 +8,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
-  target: 'electron',
+  // Compile for Electron for main process.
+  target: 'electron-main',
+  // configure whether to polyfill or mock certain Node.js globals
 	node: {
 		__dirname: false,
 		__filename: false
