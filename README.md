@@ -7,17 +7,11 @@ Reactide is a cross-platform desktop application that offers a custom simulator,
 
 ## 
 <p align="center">
-  <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png">
-</p>
-
-## Get right to coding
-Reactide runs an integrated Node server and custom browser simulator, which eliminates the need to configure servers, build-tools, and even offers hot module reloading right out of the box. Projects developed in Reactide are build-tool agnostic. As projects evolve, the developer only needs to add necessary dependencies without having to make decisions before coding has even started.
+  <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screensh
 
 ## State flow visualization
-Managing state across a complex web of React components is the biggest pain point of developing React apps. Reactide offers the first visual editing solution for today's most powerful visual UI engine. By navigating through a live representation of  the architecture of a project, developers can quickly identify and jump to relevant components and edit them on the fly.
+Managing state across a complex web of React components is the biggest pain point of developing React apps. Reactide offers the first visual editing solution for today's most powerful visual UI engine. By navigating through a live representation of  the architecture of a project, developers can quickly identify and jump to relevant components and edit them on the fl
 
-## Synchronized property and style controls
-Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
 
 ## Contributors
 [Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
