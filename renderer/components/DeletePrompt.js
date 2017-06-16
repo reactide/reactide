@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const DeletePrompt = ({deletePromptHandler, name}) => {
+const DeletePrompt = ({
+  deletePromptHandler, 
+  name
+}) => {
   return (
     <div className='delete-prompt'>
       <h1>Are you sure you want to delete {name}?</h1>
@@ -8,6 +12,11 @@ const DeletePrompt = ({deletePromptHandler, name}) => {
       <button onClick={deletePromptHandler.bind(null, true)}>YES</button>
     </div>
   )
+}
+
+DeletePrompt.propTypes = {
+  deletePromptHandler: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default DeletePrompt;
