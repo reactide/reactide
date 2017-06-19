@@ -16,7 +16,7 @@ export default class TextEditor extends React.PureComponent {
       }
       return encodeURI('file://' + pathName);
     }
-    // 
+    //
     amdRequire.config({
       baseUrl: uriFromPath(path.resolve(__dirname, '../node_modules/monaco-editor/min'))
     });
@@ -29,7 +29,8 @@ export default class TextEditor extends React.PureComponent {
     amdRequire(['vs/editor/editor.main'], () => {
       editor = monaco.editor.create(document.getElementById(id), {
         value: file,
-        language: 'javascript'
+        language: 'javascript',
+        theme: 'vs-dark'
       });
       this.props.addEditorInstance(editor, id);
 
@@ -42,18 +43,14 @@ export default class TextEditor extends React.PureComponent {
           editorNode.firstElementChild.firstElementChild.style.width = parent.clientWidth;
           editorNode.getElementsByClassName('monaco-scrollable-element')[0].style.width = parent.clientWidth - 46;
         }
-      })
+      });
     });
   }
   render() {
     return (
-      <div className="item-views" style={{ display: (this.props.id == this.props.activeTab ? 'block' : 'none') }}>
+      <div className="item-views" style={{ display: this.props.id == this.props.activeTab ? 'block' : 'none' }}>
         <div className="styleguide pane-item">
-          <div
-            className="editor-container"
-            id={this.props.id}
-            style={{ height: '100%', width: '100%' }}
-          ></div>
+          <div className="editor-container" id={this.props.id} style={{ height: '100%', width: '100%' }} />
         </div>
       </div>
     );
