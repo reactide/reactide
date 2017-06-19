@@ -1,12 +1,12 @@
 import React from 'react';
-import FileTree from './FileTree'
+import FileTree from './FileTree';
 import TextEditorPane from './TextEditorPane';
 import DeletePrompt from './DeletePrompt';
 import MockComponentTree from './MockComponentTree';
 import MockComponentInspector from './MockComponentInspector';
 
 const { ipcRenderer } = require('electron');
-const {getTree} = require('../../lib/file-tree');
+const { getTree } = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
 const { File, Directory } = require('../../lib/item-schema');
@@ -37,7 +37,7 @@ export default class App extends React.Component {
       fileChangeType: null,
       deletePromptOpen: false,
       newName: ''
-    }
+    };
 
     this.fileTreeInit();
     this.clickHandler = this.clickHandler.bind(this);
@@ -66,7 +66,7 @@ export default class App extends React.Component {
       if (this.state.activeTab !== null) {
         this.saveTab();
       }
-    })
+    });
     ipcRenderer.on('delete', (event, arg) => {
       if (this.state.selectedItem.id) {
         this.setState({
@@ -74,15 +74,15 @@ export default class App extends React.Component {
           fileChangeType: 'delete'
         });
       }
-    })
+    });
     ipcRenderer.on('enter', (event, arg) => {
       if (this.state.selectedItem.focused) {
         //rename property just true or false i guess
         this.setState({
           renameFlag: true
-        })
+        });
       }
-    })
+    });
   }
   //registers listeners for opening projects and new projects
   fileTreeInit() {
@@ -102,8 +102,8 @@ export default class App extends React.Component {
           path: null,
           type: null
         }
-      })
-    })
+      });
+    });
   }
   //sends old path and new name to main process to rename, closes rename form and sets filechangetype and newName for fswatch
   renameHandler(event) {
@@ -113,14 +113,14 @@ export default class App extends React.Component {
         renameFlag: false,
         fileChangeType: 'rename',
         newName: event.target.value
-      })
+      });
     } else if (event.key === 'Enter' && !event.target.value) {
       this.setState({
         renameFlag: false
-      })
+      });
     }
   }
-  //handles click event from delete prompt 
+  //handles click event from delete prompt
   deletePromptHandler(answer) {
     if (answer) {
       ipcRenderer.send('delete', this.state.selectedItem.path);
@@ -131,29 +131,27 @@ export default class App extends React.Component {
     }
 
     this.setState({
-      deletePromptOpen: false,
+      deletePromptOpen: false
     });
   }
   //handles click events for directories and files in file tree render
   clickHandler(id, filePath, type, event) {
     const temp = this.state.fileTree;
 
-    document.body.onkeydown = (event) => {
+    document.body.onkeydown = event => {
       if (event.key === 'Enter') {
         this.setState({
           renameFlag: true
-        })
-        document.body.onkeydown = () => { };
+        });
+        document.body.onkeydown = () => {};
       }
-    }
+    };
     if (type === 'directory') {
-
       function toggleClicked(dir) {
         if (dir.path === filePath) {
           dir.opened = !dir.opened;
           return;
-        }
-        else {
+        } else {
           for (var i = 0; i < dir.subdirectories.length; i++) {
             toggleClicked(dir.subdirectories[i]);
           }
@@ -180,11 +178,10 @@ export default class App extends React.Component {
       }
     });
   }
-  
+
   //calls file tree module and sets state with file tree object representation in callback
   setFileTree(dirPath) {
-    getTree(dirPath, (fileTree) => {
-
+    getTree(dirPath, fileTree => {
       //if watcher instance already exists close it as it's for the previously opened project
       if (this.state.watch) {
         this.state.watch.close();
@@ -214,26 +211,21 @@ export default class App extends React.Component {
                 break;
               }
             }
-          }
-
-          //new handler
-          else if (this.state.fileChangeType === 'new') {
+          } else if (this.state.fileChangeType === 'new') {
+            //new handler
             if (this.state.createMenuInfo.type === 'directory') {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
               parentDir.files.push(new File(absPath, name));
             }
-          }
-
-          //rename handler
-          else if (this.state.fileChangeType === 'rename' && this.state.newName) {
+          } else if (this.state.fileChangeType === 'rename' && this.state.newName) {
+            //rename handler
             //fileName has new name, selectedItem has old name and path
             let index;
             if (this.state.selectedItem.type === 'directory') {
               index = this.findItemIndex(parentDir.subdirectories, name);
               parentDir.subdirectories[index].name = this.state.newName;
               parentDir.subdirectories[index].path = path.join(path.dirname(absPath), this.state.newName);
-
             } else {
               index = this.findItemIndex(parentDir.files, name);
               parentDir.files[index].name = this.state.newName;
@@ -266,7 +258,7 @@ export default class App extends React.Component {
               id: null,
               type: null
             },
-            openTabs,
+            openTabs
           });
         }
       });
@@ -285,7 +277,8 @@ export default class App extends React.Component {
       if (filesOrDirs[i].name === name) {
         return i;
       }
-    } return -1;
+    }
+    return -1;
   }
 
   //returns parent directory object of file/directory in question
@@ -315,7 +308,6 @@ export default class App extends React.Component {
 
   //handler for create menu
   createMenuHandler(id, type, event) {
-    
     //unhook keypress listeners
     document.body.onkeydown = () => {};
 
@@ -327,20 +319,26 @@ export default class App extends React.Component {
         type
       },
       openMenuId: null
-    })
+    });
   }
 
-  //sends input name to main, where the file/directory is actually created. 
+  //sends input name to main, where the file/directory is actually created.
   //creation of new file/directory will trigger watch handler
   createItem(event) {
     if (event.key === 'Enter') {
       //send path and file type to main process to actually create file/dir only if there is value
-      if (event.target.value) ipcRenderer.send('createItem', this.state.selectedItem.path, event.target.value, this.state.createMenuInfo.type);
+      if (event.target.value)
+        ipcRenderer.send(
+          'createItem',
+          this.state.selectedItem.path,
+          event.target.value,
+          this.state.createMenuInfo.type
+        );
 
       //set type of file change so watch handler knows which type
       this.setState({
         fileChangeType: 'new'
-      })
+      });
     }
   }
 
@@ -366,7 +364,7 @@ export default class App extends React.Component {
     temp[i].editor = editor;
     this.setState({
       openTabs: temp
-    })
+    });
   }
 
   //save handler
@@ -391,7 +389,6 @@ export default class App extends React.Component {
       editorNode.firstElementChild.firstElementChild.style.width = parent.clientWidth;
       editorNode.getElementsByClassName('monaco-scrollable-element')[0].style.width = parent.clientWidth - 46;
     });
-
   }
 
   //double click handler for files
@@ -406,7 +403,7 @@ export default class App extends React.Component {
         name: file.name,
         modified: false,
         editor: null
-      })
+      });
       this.setState({ openTabs, activeTab: id, nextTabId: id + 1 });
       // store.dispatch()
     } else {
@@ -420,7 +417,8 @@ export default class App extends React.Component {
       if (this.state.openTabs[i].path === file.path) {
         return this.state.openTabs[i].id;
       }
-    } return -1;
+    }
+    return -1;
   }
 
   //simulator click handler
@@ -433,7 +431,7 @@ export default class App extends React.Component {
     const selectedItem = this.state.selectedItem;
     selectedItem.focused = false;
 
-    document.body.onkeydown = () => { };
+    document.body.onkeydown = () => {};
     this.setState({
       openMenuId: null,
       createMenuInfo: {
@@ -468,18 +466,17 @@ export default class App extends React.Component {
                 renameFlag={this.state.renameFlag}
                 renameHandler={this.renameHandler}
               />
-              {this.state.deletePromptOpen ?
-                <DeletePrompt
-                  deletePromptHandler={this.deletePromptHandler}
-                  name={path.basename(this.state.selectedItem.path)}
-                /> :
-                <span />}
+              {this.state.deletePromptOpen
+                ? <DeletePrompt
+                    deletePromptHandler={this.deletePromptHandler}
+                    name={path.basename(this.state.selectedItem.path)}
+                  />
+                : <span />}
 
               <MockComponentTree />
 
             </ride-pane>
             <ride-pane-resize-handle class="horizontal" />
-
 
             <TextEditorPane
               appState={this.state}
@@ -493,10 +490,7 @@ export default class App extends React.Component {
 
             <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
 
-              <button
-                className='btn'
-                onClick={this.openSim}
-              >
+              <button className="btn" onClick={this.openSim}>
                 Simulator
               </button>
               <MockComponentInspector />

@@ -1,22 +1,20 @@
-"use strict";
+'use strict';
 
-const fs = require("fs");
-const path = require("path");
-const { exec } = require("child_process");
-const { BrowserWindow } = require("electron");
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
+const { BrowserWindow } = require('electron');
 
 const simulator = root => {
   const WIDTH = 800;
   const HEIGHT = 600;
   //Deserialize project info from projInfo file, contains path to index.html and presence of webpack among other things
-  const projInfo = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../lib/projInfo.js"))
-  );
+  const projInfo = JSON.parse(fs.readFileSync(path.join(__dirname, '../lib/projInfo.js')));
 
   //Dynamic simulation
   if (projInfo.hotLoad) {
     let child = exec(
-      "npm start",
+      'npm start',
       {
         cwd: projInfo.rootPath
       },
@@ -25,23 +23,23 @@ const simulator = root => {
           width: WIDTH,
           height: HEIGHT
         });
-        child.loadURL("http://localhost:8080");
+        child.loadURL('http://localhost:8080');
         child.toggleDevTools();
       }
     );
   } else if (projInfo.webpack) {
     let child = exec(
-      "webpack",
+      'webpack',
       {
         cwd: projInfo.rootPath,
-        shell: "/bin/bash"
+        shell: '/bin/bash'
       },
       (err, stdout, stderr) => {
         let child = new BrowserWindow({
           width: WIDTH,
           height: HEIGHT
         });
-        child.loadURL("file://" + projInfo.htmlPath);
+        child.loadURL('file://' + projInfo.htmlPath);
         child.toggleDevTools();
       }
     );
@@ -50,10 +48,10 @@ const simulator = root => {
       width: WIDTH,
       height: HEIGHT
     });
-    child.loadURL("file://" + projInfo.htmlPath);
+    child.loadURL('file://' + projInfo.htmlPath);
     child.toggleDevTools();
   } else {
-    console.log("No Index.html found");
+    console.log('No Index.html found');
   }
 };
 

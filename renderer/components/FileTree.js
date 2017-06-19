@@ -1,6 +1,6 @@
-import React from "react";
-import Directory from "./Directory";
-import PropTypes from "prop-types";
+import React from 'react';
+import Directory from './Directory';
+import PropTypes from 'prop-types';
 
 const FileTree = ({
   fileTree,
