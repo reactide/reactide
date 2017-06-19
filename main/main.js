@@ -11,10 +11,7 @@ require('electron-debug')();
 const installExtensions = async () => {
   devtron.install();
   const installer = require('electron-devtools-installer');
-  const extensions = [
-    'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS'
-  ];
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   for (const name of extensions) {
     try {
@@ -39,7 +36,7 @@ app.on('ready', async () => {
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
     // icon: '', // pending
-    show: false,
+    show: false
   });
 
   // load index.html to main window

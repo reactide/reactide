@@ -8,7 +8,7 @@ const actionCreators = {
 
 const composeEnhancers = (() => {
   const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-  if(process.env.NODE_ENV === 'development' && compose_) {
+  if (process.env.NODE_ENV === 'development' && compose_) {
     return compose_({ actionCreators });
   }
   return compose;
