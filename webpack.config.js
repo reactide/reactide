@@ -4,11 +4,13 @@ const webpack = require('webpack');
 module.exports = {
   entry: './renderer/index.js',
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },
-  target: 'electron',
+  // Compile for Electron for main process.
+  target: 'electron-main',
+  // configure whether to polyfill or mock certain Node.js globals
 	node: {
 		__dirname: false,
 		__filename: false
@@ -16,14 +18,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$|\.jsx$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-        },
       }, {
-        test: /(\.css|\.scss)$/,
+        test: /\.(css|scss|sass)$/,
         loaders: ['style', 'css', 'sass'],
       }, {
         test: /\.(eot|woff)$/,
