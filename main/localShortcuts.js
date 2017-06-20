@@ -1,9 +1,8 @@
-'use strict'
+'use strict';
 
 const localShortcut = require('electron-localshortcut');
 
-module.exports = (win) => {
-
+module.exports = win => {
   if (process.env.NODE_ENV === 'development') {
     localShortcut.register(win, 'CommandOrControl+Alt+I', () => {
       win.toggleDevTools();
@@ -17,4 +16,4 @@ module.exports = (win) => {
   localShortcut.register(win, 'CommandOrControl+Backspace', () => {
     win.webContents.send('delete');
   });
-}
+};
