@@ -1,34 +1,41 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   entry: './renderer/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, '/dist'),
+    filename: 'webpack-bundle.js',
     publicPath: '/dist/',
   },
   // Compile for Electron for main process.
   target: 'electron-main',
   // configure whether to polyfill or mock certain Node.js globals
-	node: {
-		__dirname: false,
-		__filename: false
-	},
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+        ]
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-      }, {
-        test: /\.(css|scss|sass)$/,
-        loaders: ['style', 'css', 'sass'],
-      }, {
-        test: /\.(eot|woff)$/,
-        loader: 'file-loader',
-      },
-    ],
+        query: {
+          "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+          ]
+        }
+      }
+    ]
   },
   devServer: {
     port: 8081
