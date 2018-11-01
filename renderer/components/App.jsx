@@ -443,6 +443,19 @@ export default class App extends React.Component {
     });
   }
 
+  handleOpenPath(path) {
+    this.setState({ currentFile: path });
+  }
+
+  handleEditorValueChange(value) {
+    this.setState(state => ({
+      files: {
+        ...state.files,
+        [state.currentFile]: value
+      }
+    }));
+  }
+
   render() {
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
@@ -484,6 +497,8 @@ export default class App extends React.Component {
               addEditorInstance={this.addEditorInstance}
               closeTab={this.closeTab}
               openMenuId={this.state.openMenuId}
+              onOpenFile={this.handleOpenFile}
+              onTextChange={this.handleEditorValueChange}
             />
 
             <ride-pane-resize-handle className="horizontal" />

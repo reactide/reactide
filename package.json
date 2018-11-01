@@ -13,7 +13,7 @@
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
   "license": "ISC",
   "dependencies": {
-    "monaco-editor": "^0.8.3",
+    "monaco-editor": "^0.14.3",
     "prop-types": "^15.5.8",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -28,6 +28,7 @@
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
     "cross-env": "^4.0.0",
+    "css-loader": "^1.0.1",
     "devtron": "^1.4.0",
     "electron": "^3.0.5",
     "electron-debug": "^2.0.0",
@@ -40,11 +41,14 @@
     "eslint": "^3.19.0",
     "expect": "^1.20.2",
     "mocha": "^3.2.0",
+    "monaco-editor-webpack-plugin": "^1.5.4",
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^2.1.0",
     "spectron": "^3.6.2",
+    "style-loader": "^0.23.1",
     "webpack": "^4.23.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "worker-loader": "^2.0.0"
   }
 }

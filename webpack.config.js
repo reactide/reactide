@@ -1,4 +1,5 @@
 const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
   entry: './renderer/index.js',
@@ -17,6 +18,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.worker\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'worker-loader',
+          options: {
+            name: '[name].js',
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use:
+          process.env.NODE_ENV === 'production'
+            ? [MiniCssExtractPlugin.loader, 'css-loader']
+            : ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.scss$/,
         use: [
           "style-loader", // creates style nodes from JS strings
@@ -27,7 +45,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /(node_modules|(vendor\/.+.bundle\.js))/,
         query: {
           "presets": [
             "@babel/preset-env",
@@ -37,6 +55,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new MonacoWebpackPlugin()
+  ],
   devServer: {
     port: 8081
   }
