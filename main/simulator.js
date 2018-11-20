@@ -2,34 +2,37 @@
 
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
+require('fix-path')();
+const { exec, spawn } = require('child_process');
 const { BrowserWindow } = require('electron');
 
-const simulator = root => {
+const simulator = () => {
   const WIDTH = 800;
   const HEIGHT = 600;
   //Deserialize project info from projInfo file, contains path to index.html and presence of webpack among other things
   const projInfo = JSON.parse(fs.readFileSync(path.join(__dirname, '../lib/projInfo.js')));
 
-  //Dynamic simulation
-  if (projInfo.hotLoad) {
+  //Simulation for CRA
+  if (projInfo.devServerScript === 'start') {
     let child = exec(
       'npm start',
       {
-        cwd: projInfo.rootPath
+        cwd: projInfo.rootPath,
       },
       (err, stdout, stderr) => {
-        let child = new BrowserWindow({
+        if(err) console.log(err);
+        let childWindow = new BrowserWindow({
           width: WIDTH,
           height: HEIGHT
         });
-        child.loadURL('http://localhost:8080');
-        child.toggleDevTools();
+        childWindow.loadURL('http://localhost:3000');
+        childWindow.openDevTools();
       }
     );
-  } else if (projInfo.webpack) {
+  //Simulation for react-dev-server
+  } else if (projInfo.devServerScript === 'run dev-server') {
     let child = exec(
-      'webpack',
+      'npm run dev-server',
       {
         cwd: projInfo.rootPath,
         shell: '/bin/bash'
@@ -39,8 +42,8 @@ const simulator = root => {
           width: WIDTH,
           height: HEIGHT
         });
-        child.loadURL('file://' + projInfo.htmlPath);
-        child.toggleDevTools();
+        child.loadURL('http://localhost:8085');
+        child.openDevTools();
       }
     );
   } else if (projInfo.htmlPath) {
@@ -49,7 +52,7 @@ const simulator = root => {
       height: HEIGHT
     });
     child.loadURL('file://' + projInfo.htmlPath);
-    child.toggleDevTools();
+    child.openDevTools();
   } else {
     console.log('No Index.html found');
   }
