@@ -7,7 +7,7 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="http://tinypic.com?ref=148nldv">
+  <img alt="Reactide Screenshot" src="http://i68.tinypic.com/148nldv.jpg">
 </p>
 
 ## Get right to coding
@@ -27,15 +27,15 @@ In order to take advantage of the live simulator, please follow the below steps.
 1. `npm install webpack dev-server -D`
 2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
 ```
-devServer: {
-   publicPath: path.resolve(__dirname, '/build/'),
-   port: 8085,
-   hot: true,
- },
-plugins: [
-   new webpack.HotModuleReplacementPlugin(),
- ],
-mode: 'development',
+    devServer: {
+       publicPath: path.resolve(__dirname, '/build/'),
+       port: 8085,
+       hot: true,
+     },
+    plugins: [
+       new webpack.HotModuleReplacementPlugin(),
+     ],
+    mode: 'development',
 ```
 3. Go to your package.json and add the following scripts under the "scripts" object:
 ```
@@ -44,4 +44,4 @@ mode: 'development',
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
 ## Contributors
-[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee] (https://github.com/pablytolee) | [Ryan Yang] (https://github.com/ryany1819) | [Oscar Chan] (https://github.com/chanoscar0)
+[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0)
