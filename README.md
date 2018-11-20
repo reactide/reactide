@@ -22,8 +22,31 @@ The component tree works by finding the entry point to your React application fr
 ## Integrated Terminal for powerful commands and workflows
 The terminal is the life and blood of any IDE, allowing for complex manipulation of the file system, node, and even build-tools. Reactide offers a compatible terminal for running commands in bin/bash for Unix, and cmd for Windows to provide powerful workflows to even seasoned developers.
 
+## Getting Started with Reactide
+The Reactide IDE can be set up in two ways, the first is to bundle the electron app and run it as a native desktop App. The instructions are as follows:
+
+1. go to your terminal and type the following:
+```
+git checkout 2.0-release
+npm install
+npm run webpack
+npm run electron-packager
+```
+2. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
+
+## To check out Reactide in developer mode follow these instructions:
+1. go to your terminal and type the following:
+```
+git checkout 2.0-release
+npm install
+npm run webpack
+npm start
+```
+
+Beware: the close simulator button works by creating a child node process and executing killall node on close, clicking on the 'close simulator' button in developer mode will cause the electron app to close as well.
+
 ## Setting up Webpack dev-server to work with Simulator
-In order to take advantage of the live simulator, please follow the below steps. We are assuming you have a basic webpack config file, which you can find an example of in our repo under the example folder.
+In order to take advantage of the live simulator, please follow the below steps in your project directory. We are assuming you have a basic webpack config file, which you can find an example of in our repo under the example folder.
 
 1. `npm install webpack dev-server -D`
 2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
@@ -41,11 +64,6 @@ In order to take advantage of the live simulator, please follow the below steps.
 3. Go to your package.json and add the following scripts under the "scripts" object:
 ```
 "dev-server": "webpack-dev-server"
-```
-
-4. Run this script in your terminal: 
-```
-npm run electron-packager
 ```
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
