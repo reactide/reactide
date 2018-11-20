@@ -7,7 +7,8 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="http://i68.tinypic.com/148nldv.jpg">
+  <img alt="Reactide Screenshot" src="https://farm5.staticflickr.com/4911/44158127700_b8c3246b72_k.jpg">
+
 </p>
 
 ## Get right to coding
@@ -40,6 +41,11 @@ In order to take advantage of the live simulator, please follow the below steps.
 3. Go to your package.json and add the following scripts under the "scripts" object:
 ```
 "dev-server": "webpack-dev-server"
+```
+
+4. Run this script in your terminal: 
+```
+npm run electron-packager
 ```
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 

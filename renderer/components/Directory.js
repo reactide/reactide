@@ -20,7 +20,7 @@ const Directory = ({
   id
 }) => {
   const arr = [];
-  let uniqueId;
+
   for (var i = 0; i < directory.subdirectories.length; i++) {
     arr.push(
       <Directory
@@ -50,19 +50,24 @@ const Directory = ({
         selectedItem={selectedItem}
         renameFlag={renameFlag}
         renameHandler={renameHandler}
+        openCreateMenu={openCreateMenu}
+        openMenuId={openMenuId}
+        createMenuHandler={createMenuHandler}
+        parentDirectory = {directory}
       />)
   }
   let item = (
     <div
       className="list-item"
-      onClick={clickHandler.bind(null, id, directory.path, directory.type)}
+      onClick={(event) => clickHandler(id, directory.path, directory.type, event)}
+      onContextMenu={(event) => openCreateMenu(id, directory.path, directory.type, event)}
     >
-      <span className="icon icon-file-directory">
+      <span className="octi-file-directory">
         {directory.name}
       </span>
-      <span className="plus-icon" onClick={openCreateMenu.bind(null, id, directory.path)}>+</span>
-      {openMenuId === id ? <CreateMenu createMenuHandler={createMenuHandler} id={id} /> : <span />}
-      {createMenuInfo.id === id ? <CreateForm createItem={createItem} /> : <span />}
+      {/* <span className="plus-icon" onClick={(event) => openCreateMenu(id, directory.path, directory.type, event)}>+</span> */}
+      {openMenuId === id ? <CreateMenu createMenuHandler={createMenuHandler} path = {directory.path} type = {directory.type} id={id} /> : <span />}
+      {createMenuInfo.id === id ? <CreateForm createItem={createItem} /> : <span />} 
     </div>)
   if (directory.opened) {
     return (
