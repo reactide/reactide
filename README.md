@@ -26,7 +26,7 @@ The terminal is the life and blood of any IDE, allowing for complex manipulation
 The Reactide IDE can be set up in two ways, the first is to bundle the electron app and run it as a native desktop App. The instructions are as follows:
 
 1. go to your terminal and type the following:
-```
+```bash
 git checkout 2.0-release
 npm install
 npm run webpack
@@ -36,7 +36,7 @@ npm run electron-packager
 
 ## To check out Reactide in developer mode follow these instructions:
 1. go to your terminal and type the following:
-```
+```bash
 git checkout 2.0-release
 npm install
 npm run webpack
@@ -50,7 +50,7 @@ In order to take advantage of the live simulator, please follow the below steps 
 
 1. `npm install webpack dev-server -D`
 2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
-```
+```js
     devServer: {
        publicPath: path.resolve(__dirname, '/build/'),
        port: 8085,
@@ -62,7 +62,7 @@ In order to take advantage of the live simulator, please follow the below steps 
     mode: 'development',
 ```
 3. Go to your package.json and add the following scripts under the "scripts" object:
-```
+```js
 "dev-server": "webpack-dev-server"
 ```
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
