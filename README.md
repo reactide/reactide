@@ -1,23 +1,71 @@
 <p align="center"><a href='http://reactide.io/'><img alt="reactide" src="http://reactide.io/images/reactide-header.png" height="60%" width="60%"></a></p>
 
 ### Reactide is the first dedicated IDE for React web application development.
-Reactide is a cross-platform desktop application that offers a custom simulator, making build-tool and server configuration unnecessary. Reactide brings development back to the days where opening a single file instantly renders the project in the browser. With Reactide, developers can achieve the same simplicity with a single React JSX file while still utilizing the power of React.
+Reactide is a cross-platform desktop application that offers a simulator, made for live reloading and quick React component prototyping. React brings an integrated suite of development tools to streamline react development. The days of flipping between browser, IDE, and server are over.
 
 #### Reactide is in active development. Please follow this repo for contribution guidelines and our development road map.
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="http://reactide.io.s3-website-us-west-1.amazonaws.com/images/reactide-screenshot2.png">
+  <img alt="Reactide Screenshot" src="https://farm5.staticflickr.com/4911/44158127700_b8c3246b72_k.jpg">
+
 </p>
 
 ## Get right to coding
-Reactide runs an integrated Node server and custom browser simulator, which eliminates the need to configure servers, build-tools, and even offers hot module reloading right out of the box. Projects developed in Reactide are build-tool agnostic. As projects evolve, the developer only needs to add necessary dependencies without having to make decisions before coding has even started.
+Reactide runs an integrated Node server and custom browser simulator, which works best with Webpack and Webpack dev-server. As projects evolve, the developer can continually track changes through live reloading directly in the development environment without the need for constant flipping to the browser. Reactide also offers integration with Create React App for faster project boilerplate configuration. The simulator and component tree are both functioning for Create-React-App made applications.
 
 ## State flow visualization.
-Managing state across a complex web of React components is the biggest pain point of developing React apps. Reactide offers the first visual editing solution for today's most powerful visual UI engine. By navigating through a live-representation of  the architecture of a project, developers can quickly identify and jump to relevant components and edit them on the fly.
+Managing state across a complex React application is the biggest pain point of developing React apps. Reactide offers a visual component tree that dynamically loads and changes based on components within the working directory while giving information about props and state at every component. By navigating through a live-representation of the architecture of a project, developers can quickly identify and pinpoint the parent-child relationships of even the most complex applications.
 
-## Synchronized property and style controls
-Code is the representation of user interfaces, but writing code rarely ever resembles it. By cross-utilizing Reactide’s tools, properties and styles can be edited through straightforward GUI controls that provide immediate feedback in the browser simulator. The cumbersome process of having to wait and transpile every minor edit to a project is now instant.
+The component tree works by finding the entry point to your React application from the webpack.config.js file. It works out-of-the-box with Create React App.
+
+## Integrated Terminal for powerful commands and workflows
+The terminal is the life and blood of any IDE, allowing for complex manipulation of the file system, node, and even build-tools. Reactide offers a compatible terminal for running commands in bin/bash for Unix, and cmd for Windows to provide powerful workflows to even seasoned developers.
+
+## Getting Started with Reactide
+The Reactide IDE can be set up in two ways, the first is to bundle the electron app and run it as a native desktop App. The instructions are as follows:
+
+1. go to your terminal and type the following:
+```
+git checkout 2.0-release
+npm install
+npm run webpack
+npm run electron-packager
+```
+2. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
+
+## To check out Reactide in developer mode follow these instructions:
+1. go to your terminal and type the following:
+```
+git checkout 2.0-release
+npm install
+npm run webpack
+npm start
+```
+
+Beware: the close simulator button works by creating a child node process and executing killall node on close, clicking on the 'close simulator' button in developer mode will cause the electron app to close as well.
+
+## Setting up Webpack dev-server to work with Simulator
+In order to take advantage of the live simulator, please follow the below steps in your project directory. We are assuming you have a basic webpack config file, which you can find an example of in our repo under the example folder.
+
+1. `npm install webpack dev-server -D`
+2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
+```
+    devServer: {
+       publicPath: path.resolve(__dirname, '/build/'),
+       port: 8085,
+       hot: true,
+     },
+    plugins: [
+       new webpack.HotModuleReplacementPlugin(),
+     ],
+    mode: 'development',
+```
+3. Go to your package.json and add the following scripts under the "scripts" object:
+```
+"dev-server": "webpack-dev-server"
+```
+For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
 ## Contributors
-[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj)
+[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0)
