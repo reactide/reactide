@@ -39,11 +39,11 @@ export default class TextEditor extends React.PureComponent {
     this.editorStates = new Map();
   }
 
-  _updateMarkers(data) {
+  _updateMarkers(data = {}) {
     window.requestAnimationFrame(() => {
       const model = this.editor.getModel();
 
-      if (model && model.getVersionId() === version) {
+      if (model && model.getVersionId() === data.version) {
         monaco.editor.setModelMarkers(model, 'eslint', data.markers);
       }
     });
@@ -213,7 +213,7 @@ export default class TextEditor extends React.PureComponent {
     );
     // Intialize the linter
     this._linterWorker = new ESLintWorker();
-    this._linterWorker.addEventListener('message', (data) => { this._updateMarkers(data); });
+    this._linterWorker.addEventListener('message', (e) => { this._updateMarkers(e.data); });
 
 
     //this._openFile(this.props.path);
