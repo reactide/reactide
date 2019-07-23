@@ -5,8 +5,8 @@ class MockComponentTree extends React.PureComponent {
   constructor(props) {
     super(props);
   }
-  
-  
+
+
   // input for renderChildrenTrees is an array of objects
   renderChildrenTrees(children) {
     console.log(`This is the props: ${this.props}`);
@@ -27,16 +27,13 @@ class MockComponentTree extends React.PureComponent {
   }
 
   // this renders the stateProps passed to it
-  // stateProps expected to be an array of objects
+  // stateProps expected to be an object 
   renderStateProps(stateProps) {
-    // this conditional asks if stateProps even exists
-    if (stateProps && stateProps.length) {
+
+    if (stateProps && Object.keys(stateProps).length) {
       let renderArr = [];
-      // used forEach iterator to iterate over inputted stateProps array
-      stateProps.forEach(elem => {
-        // creates a list item of each element in stateProps array and pushes it to the renderArr array
-        renderArr.push(<li>{elem}</li>)
-      });
+      // creates a list item of each element in stateProps object and pushes it to the renderArr array
+      { Object.keys(stateProps).map(key => renderArr.push(<li>{key} : {stateProps[key]}</li>)) }
       // here, we render each <li> in the renderArr array as children of an unordered list with a className of 'state_props'
       return (
         <ul className="state_props">
@@ -92,17 +89,15 @@ class MockComponentTree extends React.PureComponent {
 
         <label key={'ct_node-lbl_' + name} id={'ct_node-lbl_' + name} className="tree_node" htmlFor={'ct_node-npt_' + name}>{name}</label>
 
-        {(stateProps.length > 0 || childProps.length > 0) && (
+        {(Object.keys(stateProps).length > 0 || childProps.length > 0) && (
           <div className="props-container">
             <span className="props-form">
-              
-              {stateProps.length > 0 && (
+              {Object.keys(stateProps).length && (
                 <React.Fragment>
                   <input type="checkbox" id={"ct_state-npt_" + name} />
-                  <label htmlFor={"ct_state-npt_" + name}>[state_props] ({stateProps.length})</label><br />
+                  <label htmlFor={"ct_state-npt_" + name}>[state_props] ({Object.keys(stateProps).length})</label><br />
                   {this.renderStateProps(stateProps)}
                 </React.Fragment>)}
-
               {childProps.length > 0 && (
                 <React.Fragment>
                   <input type="checkbox" id={"ct_child-npt_" + name} />
@@ -128,6 +123,4 @@ class MockComponentTree extends React.PureComponent {
     );
   }
 }
-
-
 export default MockComponentTree;

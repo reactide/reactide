@@ -75,17 +75,22 @@ export default class App extends React.Component {
     //reset tabs, should store state in local storage before doing this though
   }
 
+  //when component mounts set the project path
   componentDidMount() {
     ipcRenderer.on('openDir', (event, projPath) => {
       if (this.state.openedProjectPath !== projPath) {
         this.setState({ openTabs: {}, openedProjectPath: projPath });
       }
     });
+
+    //when save file is initiated, save the tab
     ipcRenderer.on('saveFile', (event, arg) => {
       if (this.state.previousPaths[this.state.previousPaths.length - 1] !== null) {
         this.saveTab();
       }
     });
+
+    //
     ipcRenderer.on('delete', (event, arg) => {
       if (this.state.selectedItem.id) {
         this.setState({
@@ -598,6 +603,7 @@ export default class App extends React.Component {
                   <RefreshComponentTreeButton constructComponentTreeObj={this.constructComponentTreeObj} />}
               </div>
             </header>
+            
             <main className="styleguide-sections">
               {this.state.componentTreeObj &&
                 <MockComponentTree componentTreeObj={this.state.componentTreeObj} />
@@ -641,7 +647,7 @@ export default class App extends React.Component {
         />);
     }
   }
-  
+
   renderMainLayout() {
     return (
       <ride-pane style={{ flexGrow: 0, flexBasis: '1150px' }}>

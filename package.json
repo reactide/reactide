@@ -54,13 +54,13 @@
     "spectron": "^3.6.2",
     "style-loader": "^0.23.1",
     "webpack": "4.25.1",
-    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-electron-packager": "^1.0.0",
     "worker-loader": "^2.0.0",
     "xterm": "^3.8.0"
   },
   "devDependencies": {
-    "electron": "^3.0.9"
+    "electron": "^3.0.9",
+    "webpack-cli": "^3.3.6"
   }
 }

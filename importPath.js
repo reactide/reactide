@@ -52,13 +52,13 @@ function digStateInClassBody(obj) {
 function digStateInBlockStatement(obj) {
   if (obj.type !== 'BlockStatement')
     return;
-  let ret = [];
+  let ret = {};
   obj.body.forEach((elem) => {
     if (elem.type === "ExpressionStatement" && elem.expression.type === "AssignmentExpression")
       if (elem.expression.left.property.name === 'state') {
         if (elem.expression.right.type === "ObjectExpression")
-          return elem.expression.right.properties.forEach(elem => {
-            return ret.push(elem.key.name);
+           elem.expression.right.properties.forEach(elem => {
+             ret[elem.key.value] = elem.value.value;
           });
       }
   });
