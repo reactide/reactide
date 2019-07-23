@@ -17,7 +17,7 @@ class MockComponentTree extends React.PureComponent {
 
   renderStateProps(stateProps) {
 
-    if (Object.keys(stateProps).length ) {
+    if (stateProps && Object.keys(stateProps).length ) {
       let renderArr = [];
       {Object.keys(stateProps).map( key => renderArr.push(<li>{key} : {stateProps[key]}</li>))}
       return (
@@ -56,7 +56,7 @@ class MockComponentTree extends React.PureComponent {
       <li key={'ct_node-li' + name} className="tree_row">
         <input type="checkbox" id={'ct_node-npt_' + name} key={'ct_node-npt_' + name} />
         <label key={'ct_node-lbl_' + name} id={'ct_node-lbl_' + name} className="tree_node" htmlFor={'ct_node-npt_' + name}>{name}</label>
-        {(stateProps.length > 0 || childProps.length > 0) && (
+        {(Object.keys(stateProps).length > 0 || childProps.length > 0) && (
           <div className="props-container">
             <span className="props-form">
               {Object.keys(stateProps).length && (
