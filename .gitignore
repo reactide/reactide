@@ -8,3 +8,4 @@ yarn.lock
 /lib/new-project/**
 /lib/projInfo.js
 package-lock.json
+release-builds
