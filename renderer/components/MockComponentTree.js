@@ -1,5 +1,4 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 
 class MockComponentTree extends React.PureComponent {
   constructor(props) {
@@ -17,11 +16,10 @@ class MockComponentTree extends React.PureComponent {
   }
 
   renderStateProps(stateProps) {
-    if (stateProps && stateProps.length) {
+
+    if (Object.keys(stateProps).length ) {
       let renderArr = [];
-      stateProps.forEach(elem => {
-        renderArr.push(<li>{elem}</li>)
-      });
+      {Object.keys(stateProps).map( key => renderArr.push(<li>{key} : {stateProps[key]}</li>))}
       return (
         <ul className="state_props">
           {renderArr}
@@ -61,10 +59,10 @@ class MockComponentTree extends React.PureComponent {
         {(stateProps.length > 0 || childProps.length > 0) && (
           <div className="props-container">
             <span className="props-form">
-              {stateProps.length > 0 && (
+              {Object.keys(stateProps).length && (
                 <React.Fragment>
                   <input type="checkbox" id={"ct_state-npt_" + name} />
-                  <label htmlFor={"ct_state-npt_" + name}>[state_props] ({stateProps.length})</label><br />
+                  <label htmlFor={"ct_state-npt_" + name}>[state_props] ({Object.keys(stateProps).length})</label><br />
                   {this.renderStateProps(stateProps)}
                 </React.Fragment>)}
               {childProps.length > 0 && (
