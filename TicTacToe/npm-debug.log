@@ -1,0 +1,31 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'dev' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose stack Error: Failed to parse json
+4 verbose stack Unexpected token 'b' at 9:6
+4 verbose stack     "build": "cross-env NODE_ENV=production webpack",
+4 verbose stack      ^
+4 verbose stack     at parseError (/usr/share/npm/node_modules/read-package-json/read-json.js:379:11)
+4 verbose stack     at parseJson (/usr/share/npm/node_modules/read-package-json/read-json.js:68:23)
+4 verbose stack     at /usr/share/npm/node_modules/read-package-json/read-json.js:48:5
+4 verbose stack     at /usr/share/npm/node_modules/graceful-fs/graceful-fs.js:76:16
+4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+5 verbose cwd /home/rocky/TicTacToe
+6 error Linux 4.18.0-25-generic
+7 error argv "/usr/bin/node" "/usr/bin/npm" "run" "dev"
+8 error node v8.10.0
+9 error npm  v3.5.2
+10 error file /home/rocky/TicTacToe/package.json
+11 error code EJSONPARSE
+12 error Failed to parse json
+12 error Unexpected token 'b' at 9:6
+12 error     "build": "cross-env NODE_ENV=production webpack",
+12 error      ^
+13 error File: /home/rocky/TicTacToe/package.json
+14 error Failed to parse package.json data.
+14 error package.json must be actual JSON, not just JavaScript.
+14 error
+14 error This is not a bug in npm.
+14 error Tell the package author to fix their package.json file. JSON.parse
+15 verbose exit [ 1, true ]
