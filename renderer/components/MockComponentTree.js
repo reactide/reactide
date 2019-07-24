@@ -9,10 +9,8 @@ class MockComponentTree extends React.PureComponent {
 
   // input for renderChildrenTrees is an array of objects
   renderChildrenTrees(children) {
-    console.log(`This is the props: ${this.props}`);
     // children should be an array
     // children are the children components
-    console.log('this is children line 11 mockTree', children)
     // if (children.length) should work 
     if (children && children.length) {
       let renderArr = [];
@@ -21,7 +19,6 @@ class MockComponentTree extends React.PureComponent {
         renderArr.push(this.renderTree(elem));
       })
       // for every elemnt of the renderArr, we create a list items to 'tree_rows' unordered list
-      console.log('this is renderArr line 16 mockTree', renderArr)
       return (<ul className="tree_rows">{renderArr}</ul>);
     }
   }
@@ -33,7 +30,7 @@ class MockComponentTree extends React.PureComponent {
     if (stateProps && Object.keys(stateProps).length) {
       let renderArr = [];
       // creates a list item of each element in stateProps object and pushes it to the renderArr array
-      { Object.keys(stateProps).map(key => renderArr.push(<li>{key} : {stateProps[key]}</li>)) }
+       Object.keys(stateProps).map(key => renderArr.push(<li>{key} : {stateProps[key]}</li>)) 
       // here, we render each <li> in the renderArr array as children of an unordered list with a className of 'state_props'
       return (
         <ul className="state_props">
