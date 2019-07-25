@@ -5,13 +5,19 @@ class Board extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rows : [['-','-','-'],['-','-','-'],['-','-','-']],
+      rows : [['-','-','-'],['X','X','-'],['-','-','-']],
       playerMove: 'X',
+      testingState: {name:'rocku', 
+      item: {
+        clothes: 'clothes',
+        cookies:'cookies'
+        }
+      }
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(){
+  handleClick(event){
     event.preventDefault();
     let cellPressed = event.target.id.split('');
     let rows = [...this.state.rows];

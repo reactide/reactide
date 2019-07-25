@@ -29,7 +29,12 @@ class MockComponentTree extends React.PureComponent {
     if (stateProps && Object.keys(stateProps).length) {
       let renderArr = [];
       // creates a list item of each element in stateProps object and pushes it to the renderArr array
-      Object.keys(stateProps).map(key => renderArr.push(<li>{key} : {stateProps[key]}</li>)) 
+      Object.keys(stateProps).forEach(key => {
+        
+        let value = typeof stateProps[key] === 'Object' ? stateProps[key] : JSON.stringify(stateProps[key])
+        renderArr.push(<li>{key} :{value}</li>)
+      })
+       
       // here, we render each <li> in the renderArr array as children of an unordered list with a className of 'state_props'
       return (
         <ul className="state_props">

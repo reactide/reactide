@@ -557,7 +557,6 @@ export default class App extends React.Component {
         closeTab={this.closeTab}
         cbOpenSimulator_Main={this.openSimulatorInMain}
         cbOpenSimulator_Ext={this.openSim}
-        // onOpenFile={this.handleOpenFile}
         onEditorValueChange={this.handleEditorValueChange}
       />);
   }

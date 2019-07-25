@@ -1,11 +1,10 @@
 {
-  "name": "TicTacToe",
+  "name": "tictactoe",
   "version": "1.0.0",
   "description": "",
   "main": "./client/main.js",
   "scripts": {
-    "start": "nodemon main.js",
-    "dev": "parcel serve index.html --port 8085",
+    "start": "nodemon index.html",
     "build": "cross-env NODE_ENV=production webpack",
     "dev-server": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
