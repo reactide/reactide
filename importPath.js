@@ -45,23 +45,53 @@ function digStateInClassBody(obj) {
   });
   return ret;
 }
+
+function parseNestedObjects(stateValue, nested=false){
+  //check if the array is nested. Only use for arrays
+  const curr = nested ? stateValue : stateValue.value;
+  if(curr.type === 'ObjectExpression'){
+    //iterate through object properties and store them in values
+    let values = {}
+    for(let key in stateValue.value.properties){
+      // console.log('OBJECT SHITTT' , key, stateValue.value.properties[key])
+      values[key] = parseNestedObjects(stateValue.value.properties[key])
+    }
+    return values
+  }
+  else if(curr.type === 'ArrayExpression'){
+    let values = []
+    let currObj = curr.elements;
+    for(let key in currObj){
+      // console.log('ARRAY SHITTTTTTTTTT ', key,currObj[key])
+      values.push(parseNestedObjects(currObj[key],true))
+    }
+    return values
+  }
+  else {
+    // console.log('value is ', curr.value)
+    return curr.value;
+  }
+}
 /**
  * traverses through AST BlockStatement object and returns the state of Component;
  * @param {*} obj 
  */
 function digStateInBlockStatement(obj) {
-  if (obj.type !== 'BlockStatement')
-    return;
+  if (obj.type !== 'BlockStatement') return;
   let ret = {};
-  obj.body.forEach((elem) => {
-    if (elem.type === "ExpressionStatement" && elem.expression.type === "AssignmentExpression")
-      if (elem.expression.left.property.name === 'state') {
-        if (elem.expression.right.type === "ObjectExpression")
-           elem.expression.right.properties.forEach(elem => {
-             ret[elem.key.value] = elem.value.value;
+  obj.body.forEach((element) => {
+    if (element.type === "ExpressionStatement" && element.expression.type === "AssignmentExpression")
+      if (element.expression.left.property.name === 'state') {
+        if (element.expression.right.type === "ObjectExpression"){
+           element.expression.right.properties.forEach(elem => {
+            //  ret[elem.key.name] = elem.value.value;
+            ret[elem.key.name] = parseNestedObjects(elem)
+            console.log('parseNestedObjects return value', parseNestedObjects(elem))
           });
+        }
       }
   });
+  console.log('return' ,ret)
   return ret;
  }
 
