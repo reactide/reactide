@@ -108,6 +108,7 @@ export default class App extends React.Component {
       }
     });
     ipcRenderer.on('start simulator', (event, arg) => {
+      console.log('this is start simulator event line 111 appjsx', event);
       this.setState({ url: arg[0], liveServerPID: arg[1] });
     });
     ipcRenderer.on('craOut', (event, arg) => {
@@ -509,6 +510,7 @@ export default class App extends React.Component {
    * Changes state of simulator to true to trigger conditional rendering of Editor and Simulator
    */
   openSimulatorInMain() {
+    console.log('fucking firing')
     this.setState({ simulator: true });
     ipcRenderer.send('start simulator', 'helloworld');
   }
