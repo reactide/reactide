@@ -41,6 +41,7 @@ const menuTemplate = windowObj => [
         label: 'Open…',
         click: () => {
           global.newProj = false;
+          //opens a directory
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
           });
