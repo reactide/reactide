@@ -8,8 +8,8 @@ class InWindowSimulator extends React.Component {
     }
   }
   componentDidUpdate(prevProps) {
-    console.log('IWS prev props', prevProps)
-    console.log('IWS didUpdate this.props', this.props)
+    // console.log('IWS prev props', prevProps)
+    // console.log('IWS didUpdate this.props', this.props)
     if(prevProps.url !== this.state.url) {
       this.setState({url: this.props.url});
     }
