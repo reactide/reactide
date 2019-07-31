@@ -12,7 +12,10 @@ export default {
     { token: 'variable', foreground: 'C7C7C7' },  // panda veriable
     { token: 'variable.predefined', foreground: 'FF0000' }, // panda 
     { token: 'constant', foreground: 'FFB86C' },  // panda const
-    { token: 'comment', foreground: '676B79', fontstyle: 'italic' },  // panda comment
+    { token: 'comment', foreground: '676B79', fontstyle: 'italic' },// panda comment
+    { token: 'comment.js', foreground: '008800', fontStyle: 'bold' },
+    { token: 'comment.css', foreground: '008800' },
+    { token: 'comment.scss', foreground: '008800' },
     { token: 'number', foreground: 'ff9d45' },
     { token: 'number.hex', foreground: 'ff9d45' },
     { token: 'regexp', foreground: '95e6cb' },
