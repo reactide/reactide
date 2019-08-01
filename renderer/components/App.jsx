@@ -576,7 +576,7 @@ export default class App extends React.Component {
 
   renderSideLayout() {
     return (
-      <ride-pane style={{ flexGrow: 0,flexBasis: this.state.closed ? 0 : 300}}>
+      <ride-pane style={{ flexGrow: 0,flexBasis: this.state.closed ? 0 : 250}}>
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">
@@ -688,7 +688,7 @@ export default class App extends React.Component {
 
   renderMainLayout() {
     return (
-      <ride-pane style={{ flexGrow: 1, flexBasis: '1150px'}}>
+      <ride-pane style={{ flexGrow: 1, flexBasis: '1200px'}}>
         {this.state.rootDirPath &&
           <React.Fragment>
             {this.renderMainTopPanel()}
