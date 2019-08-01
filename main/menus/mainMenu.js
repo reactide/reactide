@@ -1,5 +1,4 @@
 'use strict';
-
 const { dialog } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
@@ -88,7 +87,7 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow){
-          focusedWindow.toggleDevTools();
+            focusedWindow.toggleDevTools();
         }
       },
       {

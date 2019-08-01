@@ -8,6 +8,7 @@ import RefreshComponentTreeButton from './RefreshComponentTreeButton';
 import ConsolePane from './ConsolePane';
 import { ipcMain } from 'electron';
 import InWindowSimulator from './InWindowSimulator';
+import TabContainer from './TabContainer';
 const { ipcRenderer } = require('electron');
 const { getTree, getFileExt } = require('../../lib/file-tree');
 const fs = require('fs');
@@ -49,8 +50,7 @@ export default class App extends React.Component {
       craOut: '',
       outputOrTerminal: 'output',
       liveServerPID: null,
-      closed: false,
-      
+      closed: false,      
     };
 
     this.fileTreeInit();
@@ -555,7 +555,6 @@ export default class App extends React.Component {
   }
 
   close(){
-    console.log('this is state', this.state.closed)
     this.setState({closed: !this.state.closed})
   }
   /**
@@ -637,6 +636,7 @@ export default class App extends React.Component {
     let renderer = [];
 
     if (this.state.simulator) {
+      
       renderer.push(
         <React.Fragment>
           <InWindowSimulator url={this.state.url} />
@@ -645,8 +645,28 @@ export default class App extends React.Component {
           </button>
         </React.Fragment>
       );
+      renderer.push(
+      <TabContainer
+        close = {this.close}
+        isClosed = {this.state.closed}
+        appState={this.state}
+        setActiveTab={this.setActiveTab}
+        closeTab={this.closeTab}
+        cbOpenSimulator_Main={this.openSimulatorInMain}
+        cbOpenSimulator_Ext={this.openSim}
+      />)
     }
     else {
+      renderer.push(
+        <TabContainer
+          close = {this.close}
+        isClosed = {this.state.closed}
+          appState={this.state}
+          setActiveTab={this.setActiveTab}
+          closeTab={this.closeTab}
+          cbOpenSimulator_Main={this.openSimulatorInMain}
+          cbOpenSimulator_Ext={this.openSim}
+        />)
       renderer.push(this.renderTextEditorPane());
     }
     return renderer;

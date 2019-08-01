@@ -52,14 +52,17 @@ const TabContainer = ({
       </div>
       <div id="editor-tabbar-right">
         <div id="btn-hmr-group">
-        {/* <button id='toggle-file-directory' onClick={close} >{isClosed ? 'Open': 'Close'} </button> */}
-        {isClosed ? <i class="fas fa-lock"  onClick={close}/> : <i  onClick={close} class="fas fa-lock-open"/>} 
+        {/* {isClosed ? <i className="fas fa-lock"  onClick={close}/> : <i  onClick={close} className="fas fa-lock-open"/>}  */}
+        {/* <i onClick={close} className= {isClosed ? "fas fa-lock" : "fas fa-lock-open"} />  */}
+        <div id="btn-hmr-main" className="btn" onClick={close}>
+            <i className='fas fa-window-maximize fa-rotate-270'></i>
+            </div>
 
           <div id="btn-hmr-main" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Main)}>
             <i className="fas fa-window-maximize" />
           </div>
           <div id="btn-hmr-ext" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Ext)}>
-            <i className="fas fa-window-restore"></i>
+            <i className="fas fa-window-restore"/>
           </div>
 
         </div>

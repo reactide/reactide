@@ -3,7 +3,7 @@ import TextEditor from './TextEditor';
 import TabContainer from './TabContainer';
 import PropTypes from 'prop-types';
 
-const TextEditorPane = ({ appState, setActiveTab, closeTab, onEditorValueChange, cbOpenSimulator_Main, cbOpenSimulator_Ext,close, isClosed }) => {
+const TextEditorPane = ({ appState, setActiveTab, closeTab, onEditorValueChange, cbOpenSimulator_Main, cbOpenSimulator_Ext }) => {
   // const editorArr = [];
   // if (Object.keys(appState.openTabs).length > 0) {
   //   //console.log(appState.previousPaths[appState.previousPaths.length-1]);
@@ -18,15 +18,6 @@ const TextEditorPane = ({ appState, setActiveTab, closeTab, onEditorValueChange,
     <ride-pane>
       {Object.keys(appState.openTabs).length > 0 &&
         <React.Fragment>
-          <TabContainer
-            close= {close}
-            isClosed ={isClosed}
-            appState={appState}
-            setActiveTab={setActiveTab}
-            closeTab={closeTab}
-            cbOpenSimulator_Main={cbOpenSimulator_Main}
-            cbOpenSimulator_Ext={cbOpenSimulator_Ext}
-          />
           <TextEditor
             path={appState.previousPaths[appState.previousPaths.length - 1]}
             onValueChange={onEditorValueChange}
