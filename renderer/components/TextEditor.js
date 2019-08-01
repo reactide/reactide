@@ -17,11 +17,6 @@ monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
 monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
 
-
-
-/**
- * Configure the typescript compiler to detect JSX and load type definitions
- */
 const compilerOptions = {
   allowJs: true,
   allowSyntheticDefaultImports: true,
@@ -162,11 +157,12 @@ export default class TextEditor extends React.PureComponent {
       {
         language: this._getLanguage(this.props.path),
         theme: 'ayu-dark',
-        // theme:'myCustomTheme',
         lineNumbers: 'on',
         wordWrap: 'on',
         scrollBeyondLastLine: false,
         automaticLayout: true,
+        glyphMargin: true
+
       },
 
     );

@@ -48,7 +48,9 @@ export default class App extends React.Component {
       cra: false,
       craOut: '',
       outputOrTerminal: 'output',
-      liveServerPID: null
+      liveServerPID: null,
+      closed: false,
+      
     };
 
     this.fileTreeInit();
@@ -71,6 +73,7 @@ export default class App extends React.Component {
     this.openSim = this.openSim.bind(this);
     this.closeSim = this.closeSim.bind(this);
     this.openSimulatorInMain = this.openSimulatorInMain.bind(this);
+    this.close = this.close.bind(this)
 
     //reset tabs, should store state in local storage before doing this though
   }
@@ -550,12 +553,19 @@ export default class App extends React.Component {
     this.setState({ simulator: false });
     ipcRenderer.send('closeSim', this.state.liveServerPID);
   }
+
+  close(){
+    console.log('this is state', this.state.closed)
+    this.setState({closed: !this.state.closed})
+    return this.state.closed
+  }
   /**
    * render function for TextEditorPane
    */
   renderTextEditorPane() {
     return (
       <TextEditorPane
+        close = {this.close}
         appState={this.state}
         setActiveTab={this.setActiveTab}
         closeTab={this.closeTab}
@@ -566,13 +576,13 @@ export default class App extends React.Component {
   }
 
   renderSideLayout() {
-    console.log('this.state.componentTreeObj = ', this.state.componentTreeObj)
     return (
-      <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
+      <ride-pane style={{ flexGrow: 0,flexBasis: this.state.closed ? 0 : 300}}>
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">
               <h5>File Directory</h5>
+
             </header>
             <main className="styleguide-sections">
               {this.state.fileTree &&
@@ -658,7 +668,7 @@ export default class App extends React.Component {
 
   renderMainLayout() {
     return (
-      <ride-pane style={{ flexGrow: 0, flexBasis: '1150px' }}>
+      <ride-pane style={{ flexGrow: 0, flexBasis: '1150px'}}>
         {this.state.rootDirPath &&
           <React.Fragment>
             {this.renderMainTopPanel()}

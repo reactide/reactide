@@ -15,7 +15,8 @@ const TabContainer = ({
   setActiveTab,
   closeTab,
   cbOpenSimulator_Main,
-  cbOpenSimulator_Ext
+  cbOpenSimulator_Ext,
+  close
 }) => {
   const tabs = [];
   // for (var i = 0; i < appState.openTabs.length; i++) {
@@ -49,6 +50,7 @@ const TabContainer = ({
       </div>
       <div id="editor-tabbar-right">
         <div id="btn-hmr-group">
+        <button onClick={close}>{close ? "Hide" : 'Open'}</button>
           <i className="fas fa-desktop" />HMR
           <div id="btn-hmr-main" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Main)}>
             <i className="fas fa-window-maximize" />

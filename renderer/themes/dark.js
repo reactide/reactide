@@ -13,7 +13,7 @@ export default {
     { token: 'variable.predefined', foreground: 'FF0000' }, // panda 
     { token: 'constant', foreground: 'FFB86C' },  // panda const
     { token: 'comment', foreground: '676B79', fontstyle: 'italic' },// panda comment
-    { token: 'comment.js', foreground: '008800', fontStyle: 'bold' },
+    { token: 'comment.js', foreground: '008800' },
     { token: 'comment.css', foreground: '008800' },
     { token: 'comment.scss', foreground: '008800' },
     { token: 'number', foreground: 'ff9d45' },
