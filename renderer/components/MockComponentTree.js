@@ -8,6 +8,7 @@ class MockComponentTree extends React.PureComponent {
 
   // input for renderChildrenTrees is an array of objects
   renderChildrenTrees(children) {
+    console.log("i'm fucking out here")
     // children should be an array
     // children are the children components
     // if (children.length) should work 

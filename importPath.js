@@ -102,11 +102,16 @@ function digStateInBlockStatement(obj) {
   */
 function grabAttr(arrOfAttr) {
   return arrOfAttr.reduce((acc, curr) => {
+    console.log('this is reduce 104', curr)
     if (curr.value.type === 'JSXExpressionContainer') {
       if (curr.value.expression.type === 'ArrowFunctionExpression' || curr.value.expression.type === 'FunctionExpression') {
         if(curr.value.expression.body.body) {
+          console.log('line 108 curr.name.name = ', curr.name.name)
+          console.log('line 109 curr.value.expression.body.body[0].expression.callee.name = ', curr.value.expression.body.body[0].expression.callee.name)
           acc[curr.name.name] = curr.value.expression.body.body[0].expression.callee.name
         } else {
+          console.log('line 112 curr.name.name = ', curr.name.name)
+          console.log('line 113 curr.value.expression.body.callee.name = ', curr.value.expression.body.callee.name)
           acc[curr.name.name] = curr.value.expression.body.callee.name
         }
       } else if (curr.value.expression.type === 'Literal') {
@@ -148,6 +153,7 @@ function grabAttr(arrOfAttr) {
  */
 function grabImportNameAndPath(json) {
   // console.log(json, 'XXX');
+  console.log('this is json in GINAP', json)
   let output;
   //inputted AST has a property named body that is an array of objects
   //importObjectArr is filtered
@@ -194,6 +200,7 @@ const constructComponentProps = (returnObj) => {
  * @param {String} jsxPath - Path of file to convert into a AST object
  */
 function constructSingleLevel(jsxPath) {
+  console.log('this is jsx path l 191', jsxPath);
   let reactObj = {};
   // fileContent stores the file at the jsxPath
   const fileContent = fs.readFileSync(jsxPath, { encoding: 'utf-8' });
@@ -233,9 +240,11 @@ function constructSingleLevel(jsxPath) {
 function constructComponentTree(filePath, rootPath) {
   // create object at current level;
   let result = constructSingleLevel(path.join(rootPath, filePath));
+  console.log(result, 'this is result l224')
   // checks if current Object has children and traverses through children to create Object;
   if(result && Object.keys(result.childProps).length > 0){
     for(let childProp of result.childProps) {
+      console.log(childProp, 'this is childProp line 227 importPath')
       //creates new path for children components - if girootPath doesnt have an extension adds .js extension
       let fullPath = path.join(rootPath, childProp.path);
       let newRootPath = path.dirname(fullPath);
