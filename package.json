@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=production electron .",
     "dev-start": "cross-env NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer",
-    "webpack": "webpack --mode development && npm run dev-start",
+    "webpack": "webpack --mode development",
     "webpack-production": "webpack --mode production",
     "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=renderer/assets/icons/mac/icon.icns --prune=true --out=release-builds"
   },
