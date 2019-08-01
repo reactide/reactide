@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from './Tab';
 import PropTypes from 'prop-types';
 
+
 // Button click event handler for InMain and InExternal
 function handleHMRButtonClick(event, callback) {
   event.stopPropagation();
@@ -16,7 +17,8 @@ const TabContainer = ({
   closeTab,
   cbOpenSimulator_Main,
   cbOpenSimulator_Ext,
-  close
+  close,
+  isClosed
 }) => {
   const tabs = [];
   // for (var i = 0; i < appState.openTabs.length; i++) {
@@ -50,14 +52,16 @@ const TabContainer = ({
       </div>
       <div id="editor-tabbar-right">
         <div id="btn-hmr-group">
-        <button onClick={close}>{close ? "Hide" : 'Open'}</button>
-          <i className="fas fa-desktop" />HMR
+        {/* <button id='toggle-file-directory' onClick={close} >{isClosed ? 'Open': 'Close'} </button> */}
+        {isClosed ? <i class="fas fa-lock"  onClick={close}/> : <i  onClick={close} class="fas fa-lock-open"/>} 
+
           <div id="btn-hmr-main" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Main)}>
             <i className="fas fa-window-maximize" />
           </div>
           <div id="btn-hmr-ext" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Ext)}>
             <i className="fas fa-window-restore"></i>
           </div>
+
         </div>
       </div>
     </div>

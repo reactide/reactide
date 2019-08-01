@@ -557,7 +557,6 @@ export default class App extends React.Component {
   close(){
     console.log('this is state', this.state.closed)
     this.setState({closed: !this.state.closed})
-    return this.state.closed
   }
   /**
    * render function for TextEditorPane
@@ -566,6 +565,7 @@ export default class App extends React.Component {
     return (
       <TextEditorPane
         close = {this.close}
+        isClosed = {this.state.closed}
         appState={this.state}
         setActiveTab={this.setActiveTab}
         closeTab={this.closeTab}
