@@ -15,6 +15,7 @@ module.exports = () => {
   });
 
   ipcMain.on('openInWindow', () => {
+    // console.log('firing inWindowSimulator')
     InWindowSimulator();
   })
   ipcMain.on('createItem', (event, dirPath, name, type) => {
