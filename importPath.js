@@ -53,7 +53,6 @@ function parseNestedObjects(stateValue, nested=false){
     //iterate through object properties and store them in values
     let values = {}
     for(let key in stateValue.value.properties){
-      // console.log('OBJECT SHITTT' , key, stateValue.value.properties[key])
       values[key] = parseNestedObjects(stateValue.value.properties[key])
     }
     return values
@@ -62,13 +61,11 @@ function parseNestedObjects(stateValue, nested=false){
     let values = []
     let currObj = curr.elements;
     for(let key in currObj){
-      // console.log('ARRAY SHITTTTTTTTTT ', key,currObj[key])
       values.push(parseNestedObjects(currObj[key],true))
     }
     return values
   }
   else {
-    // console.log('value is ', curr.value)
     return curr.value;
   }
 }

@@ -11,7 +11,7 @@
     "dev": "webpack-dev-server --inline --content-base ./renderer",
     "webpack": "webpack --mode development",
     "webpack-production": "webpack --mode production",
-    "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=renderer/assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds"
   },
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Rocky Liao, Khalid Umar",
   "license": "ISC",

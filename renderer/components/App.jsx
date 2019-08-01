@@ -575,7 +575,6 @@ export default class App extends React.Component {
   }
 
   renderSideLayout() {
-    console.log('this.state.componentTreeObj = ', this.state.componentTreeObj)
     return (
       <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
         <div className="item-views">
