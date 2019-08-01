@@ -130,7 +130,14 @@ export default class App extends React.Component {
       this.setState({
         componentTreeObj: componentObj
       });
-    }  //If there is no webpack, it checks if its create react app application
+    } else if (projInfo.reactEntry === '') {
+      let rootPath = path.dirname(projInfo.reactEntry);
+      let fileName = path.basename(projInfo.reactEntry);
+      const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
+      this.setState({
+        componentTreeObj: componentObj
+      });
+    }//If there is no webpack, it checks if its create react app application
     else if (projInfo.CRA === true) {
       let rootPath = path.join(projInfo.rootPath, 'src');
       const componentObj = importPathFunctions.constructComponentTree('App.js', rootPath);

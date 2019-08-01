@@ -5,7 +5,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        <h1>REACTIDE BOISSSSSSS</h1>
+        <h1>REACTIDE BOISSSS</h1>
         <Board />
       </div>
     )
