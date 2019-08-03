@@ -50,7 +50,8 @@ export default class App extends React.Component {
       craOut: '',
       outputOrTerminal: 'output',
       liveServerPID: null,
-      closed: false,      
+      closed: false,
+      toggleTerminal:false,      
     };
 
     this.fileTreeInit();
@@ -74,6 +75,7 @@ export default class App extends React.Component {
     this.closeSim = this.closeSim.bind(this);
     this.openSimulatorInMain = this.openSimulatorInMain.bind(this);
     this.close = this.close.bind(this)
+    this.toggleTerminal = this.toggleTerminal.bind(this);
 
     //reset tabs, should store state in local storage before doing this though
   }
@@ -557,6 +559,9 @@ export default class App extends React.Component {
   close(){
     this.setState({closed: !this.state.closed})
   }
+  toggleTerminal(){
+    this.setState({toggleTerminal:!this.state.toggleTerminal})
+  }
   /**
    * render function for TextEditorPane
    */
@@ -564,7 +569,7 @@ export default class App extends React.Component {
     return (
       <TextEditorPane
         close = {this.close}
-        isClosed = {this.state.closed}
+        toggleTerminal = {this.toggleTerminal}
         appState={this.state}
         setActiveTab={this.setActiveTab}
         closeTab={this.closeTab}
@@ -648,7 +653,7 @@ export default class App extends React.Component {
       renderer.push(
       <TabContainer
         close = {this.close}
-        isClosed = {this.state.closed}
+        toggleTerminal = {this.toggleTerminal}
         appState={this.state}
         setActiveTab={this.setActiveTab}
         closeTab={this.closeTab}
@@ -660,7 +665,7 @@ export default class App extends React.Component {
       renderer.push(
         <TabContainer
           close = {this.close}
-        isClosed = {this.state.closed}
+          toggleTerminal = {this.toggleTerminal}
           appState={this.state}
           setActiveTab={this.setActiveTab}
           closeTab={this.closeTab}
@@ -675,7 +680,10 @@ export default class App extends React.Component {
   renderMainBottomPanel() {
     if (this.state.simulator) {
       return this.renderTextEditorPane();
-    } else {
+    }
+  }
+  renderTerminal(){
+    if(this.state.toggleTerminal){
       return (
         <ConsolePane
           rootDirPath={this.state.rootDirPath}
@@ -685,7 +693,6 @@ export default class App extends React.Component {
         />);
     }
   }
-
   renderMainLayout() {
     return (
       <ride-pane style={{ flexGrow: 1, flexBasis: '1200px'}}>
@@ -693,6 +700,7 @@ export default class App extends React.Component {
           <React.Fragment>
             {this.renderMainTopPanel()}
             {this.renderMainBottomPanel()}
+            {this.renderTerminal()}
           </React.Fragment>
         }
       </ride-pane>

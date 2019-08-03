@@ -87,7 +87,9 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow){
-            focusedWindow.toggleDevTools();
+          // mainWindow.webContents.openDevTools();
+
+            //  focusedWindow.toggleDevTools()
         }
       },
       {
