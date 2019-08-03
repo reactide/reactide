@@ -46,7 +46,7 @@ app.on('ready', async () => {
     minHeight: 283,
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
-    // icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
+    icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
     show: false
   });
 
