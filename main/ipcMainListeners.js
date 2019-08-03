@@ -18,6 +18,7 @@ module.exports = () => {
     // console.log('firing inWindowSimulator')
     InWindowSimulator();
   })
+  
   ipcMain.on('createItem', (event, dirPath, name, type) => {
     if (type === 'file') {
       fs.writeFile(path.join(dirPath, name), '', err => {

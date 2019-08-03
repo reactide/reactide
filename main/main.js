@@ -69,6 +69,13 @@ app.on('ready', async () => {
   //Register listener to close entire window + simulator window when mainWindow closes
   win.on('closed', function(){
     fs.writeFileSync(projInfoPath, JSON.stringify(projInfo));
+    exec(
+      'killall node',
+      (err, stdout, stderr) => {
+        if(err) console.log(err);
+        else console.log('GEYUHHHH')
+      }
+    );
     app.quit();
   });
   // Wait for window to be ready before showing to avoid white loading screen

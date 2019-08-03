@@ -9481,3 +9481,15 @@ label.tree_label:hover:before {
   background-color: #23272f;
   color:white;
 }
+
+.refresh {
+  float: right;
+  border: 5px solid black;
+  padding: 2px;
+}
+
+#refresh {
+  height: 20px;
+  text-align: center;
+  padding-top: 3px;
+}
