@@ -65,7 +65,7 @@ const TabContainer = ({
             <i className="fas fa-window-restore"/>
           </div>
           <div id="btn-hmr-main" className="btn" onClick={toggleTerminal}>
-            <i className='fas fa-window-maximize fa-rotate-270'></i>
+            <i className='fas fa-window-maximize fa-rotate-180'></i>
           </div>
         </div>
       </div>
