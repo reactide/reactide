@@ -5,7 +5,8 @@ import path from 'path';
 const { runTerminal } = require('../../nodeTerminal.js');
 Terminal.applyAddon(fit);
 let term = new Terminal({
-  theme: { background: '#090c0f' }
+  theme: { background: '#090c0f' },
+  rendererType: 'dom'
 });
 
 //Declare terminal for use throughout the component lifecycle
