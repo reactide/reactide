@@ -13,7 +13,7 @@
     "webpack-production": "webpack --mode production",
     "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=renderer/assets/icons/mac/icon.icns --prune=true --out=release-builds"
   },
-  "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan",
+  "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Khalid Umar, Rocky Liao",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.1.2",
