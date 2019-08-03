@@ -28,7 +28,7 @@ const menuTemplate = windowObj => [
           global.newProj = true;
           const save = dialog.showSaveDialog();
           //Run cra with 'save' variable as destination path
-          if(save) {
+          if (save) {
             cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
             global.mainWindow.webContents.send('newProject');
           }
@@ -54,7 +54,7 @@ const menuTemplate = windowObj => [
       {
         label: 'Save',
         click: () => {
-          
+
           global.mainWindow.webContents.send('saveFile');
         },
         accelerator: 'CommandOrControl+S'
@@ -86,10 +86,8 @@ const menuTemplate = windowObj => [
       {
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
-        click(item, focusedWindow){
-          // mainWindow.webContents.openDevTools();
-
-            //  focusedWindow.toggleDevTools()
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools()
         }
       },
       {
