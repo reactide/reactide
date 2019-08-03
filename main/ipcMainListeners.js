@@ -41,7 +41,6 @@ module.exports = () => {
     });
   });
   ipcMain.on('start simulator', ()=> {
-    console.log('firing windowSimulator')
     windowSimulator();
   });
   ipcMain.on('closeSim', (event, pid) => {

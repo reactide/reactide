@@ -149,7 +149,16 @@ export default class App extends React.Component {
       this.setState({
         componentTreeObj: componentObj
       });
-    } // if neither Create React App or have webpack, then can't render it 
+    }    
+    else if (projInfo.reactEntry === '') {
+      let rootPath = path.dirname(projInfo.reactEntry);
+      let fileName = path.basename(projInfo.reactEntry);
+      const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
+      console.log('componentObj = ', componentObj)
+      this.setState({
+        componentTreeObj: componentObj
+      })}
+     // if neither Create React App or have webpack, then can't render it 
     else {
       this.setState({
         componentTreeObj: {}
@@ -576,7 +585,6 @@ export default class App extends React.Component {
   }
 
   renderSideLayout() {
-    console.log('this.state.componentTreeObj = ', this.state.componentTreeObj)
     return (
       <ride-pane style={{ flexGrow: 0, flexBasis: '300px' }}>
         <div className="item-views">
