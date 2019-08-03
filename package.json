@@ -9,11 +9,11 @@
     "start": "cross-env NODE_ENV=production electron .",
     "dev-start": "cross-env NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer",
-    "webpack": "webpack --mode development && npm start",
+    "webpack": "webpack --mode development",
     "webpack-production": "webpack --mode production",
-    "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=renderer/assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds"
   },
-  "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Khalid Umar, Rocky Liao",
+  "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Rocky Liao, Khalid Umar",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -50,6 +50,7 @@
     "react-redux": "^5.0.7",
     "react-xterm": "^2.0.4",
     "redux": "^4.0.1",
+    "remote": "^0.2.6",
     "sinon": "^2.1.0",
     "spectron": "^3.6.2",
     "style-loader": "^0.23.1",
@@ -61,6 +62,7 @@
   },
   "devDependencies": {
     "electron": "^3.0.9",
+    "file-loader": "^4.1.0",
     "webpack-cli": "^3.3.6"
   }
 }

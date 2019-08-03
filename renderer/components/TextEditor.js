@@ -17,9 +17,6 @@ monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
 monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
 
-/**
- * Configure the typescript compiler to detect JSX and load type definitions
- */
 const compilerOptions = {
   allowJs: true,
   allowSyntheticDefaultImports: true,
@@ -91,7 +88,8 @@ export default class TextEditor extends React.PureComponent {
       model = monaco.editor.createModel(
         value,
         this._getLanguage(this.props.path),
-        new monaco.Uri().with({ path })
+        new monaco.Uri().with({ path }),
+        
       );
       model.updateOptions({
         tabSize: 2,
@@ -148,6 +146,8 @@ export default class TextEditor extends React.PureComponent {
     }
   };
 
+  
+
   componentDidMount() {
     const path = window.require('path');
     const fs = window.require('fs');
@@ -160,14 +160,20 @@ export default class TextEditor extends React.PureComponent {
         lineNumbers: 'on',
         wordWrap: 'on',
         scrollBeyondLastLine: false,
-        automaticLayout: true
+        automaticLayout: true,
+        glyphMargin: true
+
       },
+
     );
+
+
     // Intialize the linter
     this._linterWorker = new ESLintWorker();
     this._linterWorker.addEventListener('message', (message) => { this._updateMarkers(message); });
 
     this._openFile(this.props.path);
+
   }
 
   componentDidUpdate(prevProps) {
