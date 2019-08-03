@@ -5,6 +5,7 @@ import DeletePrompt from './DeletePrompt';
 import MockComponentTree from './MockComponentTree';
 import MockComponentInspector from './MockComponentInspector';
 import RefreshComponentTreeButton from './RefreshComponentTreeButton';
+import RefreshFileDirectory from './RefreshFileDirectory';
 import ConsolePane from './ConsolePane';
 import { ipcMain } from 'electron';
 import InWindowSimulator from './InWindowSimulator';
@@ -71,6 +72,7 @@ export default class App extends React.Component {
     this.openSim = this.openSim.bind(this);
     this.closeSim = this.closeSim.bind(this);
     this.openSimulatorInMain = this.openSimulatorInMain.bind(this);
+    this.updateFileDirectory = this.updateFileDirectory.bind(this);
 
     //reset tabs, should store state in local storage before doing this though
   }
@@ -133,7 +135,14 @@ export default class App extends React.Component {
       this.setState({
         componentTreeObj: componentObj
       });
-    }  //If there is no webpack, it checks if its create react app application
+    } else if (projInfo.reactEntry === '') {
+      let rootPath = path.dirname(projInfo.reactEntry);
+      let fileName = path.basename(projInfo.reactEntry);
+      const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
+      this.setState({
+        componentTreeObj: componentObj
+      });
+    }//If there is no webpack, it checks if its create react app application
     else if (projInfo.CRA === true) {
       let rootPath = path.join(projInfo.rootPath, 'src');
       const componentObj = importPathFunctions.constructComponentTree('App.js', rootPath);
@@ -275,9 +284,10 @@ export default class App extends React.Component {
         this.state.watch.close();
       }
       //Setting up fs.watch to watch for changes that occur anywhere in the filesystem
-      let watch = fs.watch(dirPath, { recursive: true }, (eventType, fileName) => {
+      let watch = fs.watch(dirPath, { recursive: true, persistent: true }, (eventType, fileName) => {
         if (eventType === 'rename') {
           const fileTree = this.state.fileTree;
+          
           const absPath = path.join(this.state.rootDirPath, fileName);
           const parentDir = this.findParentDir(path.dirname(absPath), fileTree);
           const name = path.basename(absPath);
@@ -580,7 +590,13 @@ export default class App extends React.Component {
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">
-              <h5>File Directory</h5>
+              <h5>File Directory</h5> 
+
+              <div id="comptree-titlebar-right">
+              {this.state.fileTree && 
+                  <RefreshFileDirectory updateFileDirectory={this.updateFileDirectory} />}    
+              </div>
+       
             </header>
             <main className="styleguide-sections">
               {this.state.fileTree &&
@@ -676,6 +692,11 @@ export default class App extends React.Component {
       </ride-pane>
     );
   }
+
+  updateFileDirectory (){
+    this.setFileTree(this.state.rootDirPath);
+  }
+
   render() {
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
