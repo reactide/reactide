@@ -50,6 +50,7 @@
     "react-redux": "^5.0.7",
     "react-xterm": "^2.0.4",
     "redux": "^4.0.1",
+    "remote": "^0.2.6",
     "sinon": "^2.1.0",
     "spectron": "^3.6.2",
     "style-loader": "^0.23.1",
@@ -61,6 +62,7 @@
   },
   "devDependencies": {
     "electron": "^3.0.9",
+    "file-loader": "^4.1.0",
     "webpack-cli": "^3.3.6"
   }
 }
