@@ -53,7 +53,6 @@ function parseNestedObjects(stateValue, nested=false){
     //iterate through object properties and store them in values
     let values = {}
     for(let key in stateValue.value.properties){
-      // console.log('OBJECT SHITTT' , key, stateValue.value.properties[key])
       values[key] = parseNestedObjects(stateValue.value.properties[key])
     }
     return values
@@ -62,13 +61,11 @@ function parseNestedObjects(stateValue, nested=false){
     let values = []
     let currObj = curr.elements;
     for(let key in currObj){
-      // console.log('ARRAY SHITTTTTTTTTT ', key,currObj[key])
       values.push(parseNestedObjects(currObj[key],true))
     }
     return values
   }
   else {
-    // console.log('value is ', curr.value)
     return curr.value;
   }
 }
@@ -101,16 +98,11 @@ function digStateInBlockStatement(obj) {
   */
 function grabAttr(arrOfAttr) {
   return arrOfAttr.reduce((acc, curr) => {
-    console.log('this is reduce 104', curr)
     if (curr.value.type === 'JSXExpressionContainer') {
       if (curr.value.expression.type === 'ArrowFunctionExpression' || curr.value.expression.type === 'FunctionExpression') {
         if(curr.value.expression.body.body) {
-          console.log('line 108 curr.name.name = ', curr.name.name)
-          console.log('line 109 curr.value.expression.body.body[0].expression.callee.name = ', curr.value.expression.body.body[0].expression.callee.name)
           acc[curr.name.name] = curr.value.expression.body.body[0].expression.callee.name
         } else {
-          console.log('line 112 curr.name.name = ', curr.name.name)
-          console.log('line 113 curr.value.expression.body.callee.name = ', curr.value.expression.body.callee.name)
           acc[curr.name.name] = curr.value.expression.body.callee.name
         }
       } else if (curr.value.expression.type === 'Literal') {
@@ -151,7 +143,6 @@ function grabAttr(arrOfAttr) {
  * @param {Object} json- AST Object
  */
 function grabImportNameAndPath(json) {
-  console.log('this is json in GINAP', json)
   let output;
   const importObjectArr = json.body.filter((importObj) => {
     if (importObj.type === 'ImportDeclaration') {
@@ -189,7 +180,6 @@ const constructComponentProps = (returnObj) => {
  * @param {String} jsxPath - Path of file to convert into a AST object
  */
 function constructSingleLevel(jsxPath) {
-  console.log('this is jsx path l 191', jsxPath);
   let reactObj = {};
   // grabs content from file and creates an AST Object
   const fileContent = fs.readFileSync(jsxPath, { encoding: 'utf-8' });
@@ -228,11 +218,9 @@ function constructSingleLevel(jsxPath) {
 function constructComponentTree(filePath, rootPath) {
   // create object at current level;
   let result = constructSingleLevel(path.join(rootPath, filePath));
-  console.log(result, 'this is result l224')
   // checks if current Object has children and traverses through children to create Object;
   if(result && Object.keys(result.childProps).length > 0){
     for(let childProp of result.childProps) {
-      console.log(childProp, 'this is childProp line 227 importPath')
       //creates new path for children components - if girootPath doesnt have an extension adds .js extension
       let fullPath = path.join(rootPath, childProp.path);
       let newRootPath = path.dirname(fullPath);
@@ -245,7 +233,6 @@ function constructComponentTree(filePath, rootPath) {
       result.children.push(constructComponentTree(newFileName, newRootPath));
     }
   }  
-  console.log(result, 'this is result line 239 importPath')
   return result;
 }
 /**
