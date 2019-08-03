@@ -16,7 +16,7 @@ function handleRefreshButtonClick(event, refreshComponentTree) {
 //takes in the the constructComponentTreeObj method in
 const RefreshComponentTreeButton = ({ constructComponentTreeObj }) => {
   return (
-    <div className="btn icon-btn" onClick={(event) => { handleRefreshButtonClick(event, constructComponentTreeObj) }} >
+    <div id="refresh" className="btn icon-btn" onClick={(event) => { handleRefreshButtonClick(event, constructComponentTreeObj) }} >
       <i className="fas fa-redo-alt" />
     </div>
   );
