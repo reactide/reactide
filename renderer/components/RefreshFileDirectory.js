@@ -9,7 +9,6 @@ function RefreshFileDirectory ({ updateFileDirectory }){
   return (
     <div className="btn icon-btn" onClick={(event) => { handleRefreshButtonClick(event, updateFileDirectory) }} >
       <i className="fas fa-redo-alt" />
-      Refresh
     </div>
   )
 }

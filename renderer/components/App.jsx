@@ -697,7 +697,6 @@ export default class App extends React.Component {
           <ride-pane-axis className="horizontal">
             {this.renderSideLayout()}
             {this.renderMainLayout()}
-            <button onClick={this.test}>???</button>
           </ride-pane-axis>
         </ride-pane-container>
       </ride-workspace>
