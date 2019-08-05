@@ -1,0 +1,3 @@
+renderer/assets/* linguist-vendored
+lib/new-project-template/* linguist-
+*.jsx linguist-language=JavaScript
