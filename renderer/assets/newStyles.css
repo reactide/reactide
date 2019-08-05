@@ -344,7 +344,7 @@ input[type="checkbox"] ~ label {
   cursor: pointer;
   font-size: 12px;
   border: 1px solid #23272f;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 .icon-btn i {
   padding-right: 4px;

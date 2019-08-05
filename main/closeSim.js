@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 
 const closeSim = (pid) => {
     //Killall Node
-    let command = 'killall node'
+    let command = `kill -9 ${pid}`
     let child = exec(
       command,
       (err, stdout, stderr) => {

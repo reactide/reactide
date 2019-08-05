@@ -1,6 +1,7 @@
 
 const fs = require('fs');
 const path = require('path');
+//The Flow Parser is a JavaScript parser written in OCaml. It produces an AST that conforms to the ESTree spec and that mostly matches what esprima produces.
 const flowParser = require('flow-parser');
 
 /**
@@ -45,23 +46,50 @@ function digStateInClassBody(obj) {
   });
   return ret;
 }
+
+function parseNestedObjects(stateValue, nested=false){
+  //check if the array is nested. Only use for arrays
+  const curr = nested ? stateValue : stateValue.value;
+  if(curr.type === 'ObjectExpression'){
+    //iterate through object properties and store them in values
+    let values = {}
+    for(let key in stateValue.value.properties){
+      values[key] = parseNestedObjects(stateValue.value.properties[key])
+    }
+    return values
+  }
+  else if(curr.type === 'ArrayExpression'){
+    let values = []
+    let currObj = curr.elements;
+    for(let key in currObj){
+      values.push(parseNestedObjects(currObj[key],true))
+    }
+    return values
+  }
+  else {
+    return curr.value;
+  }
+}
 /**
  * traverses through AST BlockStatement object and returns the state of Component;
  * @param {*} obj 
  */
 function digStateInBlockStatement(obj) {
-  if (obj.type !== 'BlockStatement')
-    return;
-  let ret = [];
-  obj.body.forEach((elem) => {
-    if (elem.type === "ExpressionStatement" && elem.expression.type === "AssignmentExpression")
-      if (elem.expression.left.property.name === 'state') {
-        if (elem.expression.right.type === "ObjectExpression")
-          return elem.expression.right.properties.forEach(elem => {
-            return ret.push(elem.key.name);
+  if (obj.type !== 'BlockStatement') return;
+  let ret = {};
+  obj.body.forEach((element) => {
+    if (element.type === "ExpressionStatement" && element.expression.type === "AssignmentExpression")
+      if (element.expression.left.property.name === 'state') {
+        if (element.expression.right.type === "ObjectExpression"){
+           element.expression.right.properties.forEach(elem => {
+            //  ret[elem.key.name] = elem.value.value;
+            ret[elem.key.name] = parseNestedObjects(elem)
+            // console.log('parseNestedObjects return value', parseNestedObjects(elem))
           });
+        }
       }
   });
+  // console.log('return' ,ret)
   return ret;
  }
 
@@ -91,7 +119,7 @@ function grabAttr(arrOfAttr) {
           }
           if(curr.value.expression.consequent.type === 'MemberExpression') {
             consequent = curr.value.expression.consequent.property.name;
-          } else{
+          } else {
             consequent = curr.value.expression.consequent.name;
           }
           if(curr.value.expression.alternate.type === 'MemberExpression') {
@@ -117,13 +145,18 @@ function grabAttr(arrOfAttr) {
  */
 function grabImportNameAndPath(json) {
   let output;
+  //inputted AST has a property named body that is an array of objects
+  //importObjectArr is filtered
   const importObjectArr = json.body.filter((importObj) => {
+    //whatever importObjs have a 'type' value of 'ImportDeclaration' are what are returned
     if (importObj.type === 'ImportDeclaration') {
       return {
         importObj
       }
     }
   })
+  //importObjectArr is mappped over and if the importObj.specifiers[0] is true/truthy, a new object is returned
+  // console.log(importObjectArr, 'XXX');
   output = importObjectArr.map((importObj) => {
     if (importObj.specifiers[0]) {
       return {
@@ -132,11 +165,15 @@ function grabImportNameAndPath(json) {
       }
     }
   })
+  // output is reassigned to the array returned by filtering anything that isn't true/truthy
+  // console.log(output, '***');
   output = output.filter((obj) => {
     if (obj) {
       return obj;
     }
   })
+  // console.log(output, 'SSS');
+  //an array of imported objects is returned
   return output;
 }
 /**
@@ -154,8 +191,9 @@ const constructComponentProps = (returnObj) => {
  */
 function constructSingleLevel(jsxPath) {
   let reactObj = {};
-  // grabs content from file and creates an AST Object
+  // fileContent stores the file at the jsxPath
   const fileContent = fs.readFileSync(jsxPath, { encoding: 'utf-8' });
+  //jsonObj uses flowParser to turn the file into an AST
   let jsonObj = flowParser.parse(fileContent);
   // checks for Components in imports section  
   let imports = grabImportNameAndPath(jsonObj);
@@ -214,6 +252,7 @@ function constructComponentTree(filePath, rootPath) {
  * @param {String} fileContent - String of File Content;
  */
 function grabChildComponents(imports, fileContent) {
+  // console.log(imports, fileContent, '***');
   // grab all import object name from import array;
   let compNames = imports.reduce((arr, cur) => {
     // skips <Provider/> component from redux
@@ -222,6 +261,7 @@ function grabChildComponents(imports, fileContent) {
     }
     return arr;
   }, []);
+  // console.log(compNames, 'XXX');
   // format all import names for regex
   compNames = compNames.join('|');
   let pattern = '<\s*(' + compNames + ')(>|(.|[\r\n])*?[^?]>)'
@@ -231,4 +271,5 @@ function grabChildComponents(imports, fileContent) {
 
   return matchedComponents;
 }
+
 module.exports = {grabChildComponents, constructComponentTree, constructSingleLevel, constructComponentProps, grabImportNameAndPath, grabAttr, digStateInBlockStatement, digStateInClassBody, grabState, getClassEntry}

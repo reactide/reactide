@@ -1,5 +1,4 @@
 'use strict';
-
 const { dialog } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
@@ -29,7 +28,7 @@ const menuTemplate = windowObj => [
           global.newProj = true;
           const save = dialog.showSaveDialog();
           //Run cra with 'save' variable as destination path
-          if(save) {
+          if (save) {
             cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
             global.mainWindow.webContents.send('newProject');
           }
@@ -41,9 +40,11 @@ const menuTemplate = windowObj => [
         label: 'Open…',
         click: () => {
           global.newProj = false;
+          //opens a directory
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
           });
+          // console.log(rootDir, 'SSS');
           if (rootDir) {
             global.mainWindow.webContents.send('openDir', rootDir[0]);
           }
@@ -54,7 +55,7 @@ const menuTemplate = windowObj => [
       {
         label: 'Save',
         click: () => {
-          
+
           global.mainWindow.webContents.send('saveFile');
         },
         accelerator: 'CommandOrControl+S'
@@ -86,8 +87,8 @@ const menuTemplate = windowObj => [
       {
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
-        click(item, focusedWindow){
-          focusedWindow.toggleDevTools();
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools()
         }
       },
       {

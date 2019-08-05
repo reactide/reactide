@@ -5,7 +5,8 @@ import path from 'path';
 const { runTerminal } = require('../../nodeTerminal.js');
 Terminal.applyAddon(fit);
 let term = new Terminal({
-  theme: { background: '#090c0f' }
+  theme: { background: '#090c0f' },
+  rendererType: 'dom'
 });
 
 //Declare terminal for use throughout the component lifecycle
@@ -22,18 +23,30 @@ class XTerm extends React.Component {
       rootDir: this.props.rootdir
     }
   }
-  //Compare rootdir being passed to determine whether or not we need to render a new terminal
-  //with a different rootpath
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.rootdir !== this.state.cwd && nextProps.rootdir !== this.props.rootdir) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.rootdir !== this.state.cwd && prevProps.rootdir !== this.props.rootdir) {
       //Perform some operation
-      this.setState({ cwd: nextProps.rootdir, rootDir: nextProps.rootdir }, () => {
+      this.setState({ cwd: prevProps.rootdir, rootDir: prevProps.rootdir }, () => {
         term.clear();
         term.write(this.state.cwd + '\r\n' + '$');
         shell.cd(this.state.cwd);
       });
     }
   }
+  // //Compare rootdir being passed to determine whether or not we need to render a new terminal
+  // //with a different rootpath
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('terminal next props' , nextProps)
+  //   console.log('terminal this props' , this.props)
+  //   if (nextProps.rootdir !== this.state.cwd && nextProps.rootdir !== this.props.rootdir) {
+  //     //Perform some operation
+  //     this.setState({ cwd: nextProps.rootdir, rootDir: nextProps.rootdir }, () => {
+  //       term.clear();
+  //       term.write(this.state.cwd + '\r\n' + '$');
+  //       shell.cd(this.state.cwd);
+  //     });
+  //   }
+  // }
   componentDidMount() {
     //Set up some terminal options
     term.setOption('cursorStyle', 'block');
