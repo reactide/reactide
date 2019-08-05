@@ -68,4 +68,4 @@ In order to take advantage of the live simulator, please follow the below steps 
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
 ## Contributors
-[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0)
+[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0) | [Juan Hart](https://github.com/juanhart1) | [Eric Pham](https://github.com/EP36) | [Khalid Umar](https://github.com/khalid050) | [Rocky Liao](https://github.com/seemsrocky)

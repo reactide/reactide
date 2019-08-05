@@ -553,3 +553,11 @@ CONSOLE PANE
   height: 100%;
   padding: 0 20px;
 }
+
+.xterm .xterm-viewport {
+  overflow-y: scroll;
+}
+
+.xterm {
+  height: 95%;
+}
