@@ -1,9 +1,10 @@
 'use strict';
-const { dialog } = require('electron');
+const { dialog, BrowserWindow } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
+let splash = null;
 
 const menuTemplate = windowObj => [
   {
@@ -30,6 +31,16 @@ const menuTemplate = windowObj => [
           //Run cra with 'save' variable as destination path
           if (save) {
             cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
+            splash = new BrowserWindow({
+              width: 600,
+              height: 400,
+              minWidth: 604,
+              minHeight: 283,
+              title: 'Khalid-town'
+            })
+            splash.once('ready-to-show', () => {
+              splash.show();
+            })
             global.mainWindow.webContents.send('newProject');
           }
         },
