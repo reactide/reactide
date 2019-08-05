@@ -6,7 +6,7 @@ const RenameForm = ({
 }) => {
   return (
     <span>
-      <input className='rename-input' onKeyPress={renameHandler} onClick={(event)=>{event.stopPropagation()}}/>
+      <input autoFocus className='rename-input' onKeyPress={renameHandler} onClick={(event)=>{event.stopPropagation()}}/>
     </span>
   )
 }

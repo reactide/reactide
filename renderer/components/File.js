@@ -1,20 +1,26 @@
 import React from 'react';
 import RenameForm from './RenameForm';
 import PropTypes from 'prop-types';
+import CreateMenu from './CreateMenu';
 
-const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, renameFlag, renameHandler }) => {
+const { getCssClassByFileExt } = require('../../lib/file-tree');
+
+const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, renameFlag, renameHandler, openCreateMenu, openMenuId, createMenuHandler}) => {
   return (
     <li
       className={selectedItem.id === id ? 'list-item selected' : 'list-item'}
-      onDoubleClick={dblClickHandler.bind(null, file)}
-      onClick={clickHandler.bind(null, id, file.path, file.type)}
+      onDoubleClick={(event) => dblClickHandler(file, event)}
+      onClick={(event) => clickHandler(id, file.path, file.type, event)}
+      onContextMenu ={(event) => openCreateMenu(id, file.path, file.type, event)}
     >
-      {renameFlag && selectedItem.id === id
+    {openMenuId === id ? <CreateMenu createMenuHandler={createMenuHandler} path = {file.path} type = {file.type} id={id} /> : <span />}
+    {renameFlag && selectedItem.id === id
         ? <RenameForm renameHandler={renameHandler} />
-        : <span className="icon icon-file-text">{file.name}</span>}
+        : <span className={getCssClassByFileExt(file.ext)}>{file.name}</span>}
     </li>
   );
 };
+
 
 File.propTypes = {
   file: PropTypes.object.isRequired,

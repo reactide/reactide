@@ -1,0 +1,563 @@
+@font-face {
+  font-family: 'seti';
+  src: url('./seti/seti.eot');
+  src: url('./seti/seti.eot?#iefix') format('eot'), url('./seti/seti.woff2') format('woff2'), url('./seti/seti.woff') format('woff'), url('./seti/seti.ttf') format('truetype'), url('./seti/seti.svg#seti') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* js */
+.seti-javascript:before {
+  content: '\E03E';
+  color: #cbcb41;
+}
+/* jsx */
+.seti-react:before {
+  content: '\E05D';
+  color: #519aba;
+}
+/* css */
+.seti-css:before {
+  content: '\E015';
+  color: #519aba;
+}
+/* sass */
+.seti-sass:before {
+  content: '\E062';
+  color: #f55385;
+}
+.seti-less:before {
+  content: '\E044';
+  color: #519aba;
+}
+/* font */
+.seti-font:before {
+  content: '\E026';
+  color: #cc3e44;
+}
+/* html */
+.seti-html:before {
+  content: '\E035';
+  color: #e37933;
+}
+/* json */
+.seti-json:before {
+  content: '\E041';
+  color: #cbcb41;
+}
+/* svg */
+.seti-svg:before {
+  content: '\E06D';
+  color: #a074c4;
+}
+/* gitinore */
+.seti-gitignore:before {
+  content: '\E028';
+  color: #4d5a5e;
+}
+/* xml */
+.seti-xml:before {
+  content: '\E07B';
+  color: #e37933;
+}
+/* yml */
+.seti-yml:before {
+  content: '\E07D';
+  color: #a074c4;
+}
+.seti-default:before {
+  content: '\E019';
+  color: #d4d7d6;
+}
+.seti-image:before {
+  content: '\E039';
+  color: #a074c4;
+}
+.seti-markdown:before {
+  content: '\E04A';
+  color: #519aba;
+}
+.seti-folder:before{
+  content: '\E025';
+  color: #519aba;
+}
+/* common rule for '.seti-' */
+[class*="seti-"]:before {
+  font-family: 'seti';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+  font-size: 21px;
+  margin-left: -2px;
+  margin-right: 2px;
+  vertical-align: bottom;
+}
+.octi-file-text::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0 3px 4px;
+  content: "\f011";
+  vertical-align: bottom;
+}
+.octi-file-directory::before {
+  font-family: 'seti';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 15px;
+  content: '\e025';
+  color: #519aba;
+  margin-right: 6px;
+  vertical-align: bottom;
+  margin-bottom: 5px;
+}
+body {
+  font-family: "BlinkMacSystemFont", "Lucida Grande", "Segoe UI", Ubuntu,
+    Cantarell, sans-serif;
+}
+/*
+Component Tree
+*/
+.tree-view-scroller {
+  overflow: scroll;
+}
+.tree {
+  list-style: none;
+  margin: 0 1em;
+  padding: 0;
+}
+.tree_rows {
+  padding-left: 0;
+  padding: 0;
+}
+/* */
+.tree_row > input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+/* hide content for detail and subnodes */
+.tree_row > input[type="checkbox"] ~ .props-container {
+  display: none;
+}
+/* show content for detail and subnodes */
+.tree_row > input[type="checkbox"]:checked ~ .props-container {
+  display: block;
+}
+/* ————————————————————–
+  Tree branches
+*/
+/* tree positioning */
+li.tree_row {
+  line-height: 1.2;
+  position: relative;
+  list-style: none;
+  padding: 1em 0 0 1em;
+}
+/* !!this style seems to be no effect */
+/*
+.tree>li:
+.tree > li:last-child {
+  padding-bottom: 0;
+}
+*/
+/* ————————————————————–
+  Tree nodes
+*/
+/*
+/* node body w/o icon */
+.tree_node {
+  position: relative;
+  left: -0.5em;
+  display: inline-block;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 1px solid rgba(0, 0, 0, 0);
+}
+/* node icon */
+.tree_node:before {
+  background: #538CEB;
+  color: #7c8492;
+  position: relative;
+  float: left;
+  margin: 0 0.8em 0 -1.6em;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.6em;
+  content: "";
+  text-align: center;
+  line-height: 0.66em;
+  border: 3px solid #538CEB;
+  z-index: 1;
+  cursor: pointer;
+}
+/*
+:checked ~ label.tree_label {
+  border-left: 1px solid blue;
+}
+*/
+/* change node color when expanded */
+input:checked ~ .tree_node:before {
+  background: #4dc1cc;
+  content: "";
+}
+/*end of chain
+[disabled] ~ .tree_node:before {
+  background: #23272f;
+}*/
+/* node hover */
+.tree_node:hover:before {
+  border-color: #d6dae1;
+}
+/* ————————————————————–
+  Tree branches
+*/
+/* vertical link */
+.tree_row:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5em;
+  display: block;
+  width: 0;
+  border-left: 1px solid #538CEB;
+  content: "";
+}
+/* no v-link for the root row */
+.tree > .tree_row:before {
+  display: none;
+}
+/* adjust v-link length for the last row */
+.tree_row:last-child:before {
+  height: 1em;
+  border-left: 1px solid #538CEB;
+}
+/* curve link */
+.tree_node:after {
+  position: absolute;
+  top: 0;
+  left: -1.1em;
+  display: block;
+  height: 0.5em;
+  width: 1.07em;
+  border-bottom: 1px solid #538CEB;
+  border-left: 1px solid #538CEB;
+  border-radius: 0 0 0 0.6em;
+  content: "";
+}
+/* no curve line for the root node */
+.tree > .tree_row > .tree_node:after {
+  display: none;
+}
+/* prop form */
+.props-form {
+  display: block;
+  background: #292e38;
+  padding: 0.9em 1.2em 0.6em;
+  border-radius: 0.2em;
+  border: 1px solid #1a1d23;
+}
+.comp_refs li {
+  list-style: circle;
+}
+/* green text */
+.state_props {
+  color: #86f694;
+}
+/* blue text */
+.comp_props {
+  color: #6494ed;
+}
+.comp_props li {
+  list-style: square;
+}
+/* make mouse pointer icon for the toggle */ 
+input[type="checkbox"] ~ label {
+  cursor: pointer;
+}
+.props-container {
+  position: relative;
+  padding: 0.9em 1.2em 0.6em;
+  width: 200px;
+}
+/* draw vertical link for props */
+.props-container:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5em;
+  display: block;
+  width: 0;
+  border-left: 1px solid #4d78cc;
+  content: "";
+}
+/* hide checkbox */
+.props-form > input[type="checkbox"] {
+  clip: rect(0, 0, 0, 0);
+  display: none;
+}
+/* hide props content */
+.props-form > input[type="checkbox"]:checked ~ .state_props,
+.props-form > input[type="checkbox"]:checked ~ .comp_refs {
+  display: none;
+}
+/* show caret-down icon */
+.props-form > input[type="checkbox"] + label:before {
+  font-family: 'Octicons Regular';
+  content: "\f05b";
+  display: inline-block;
+  padding: 3px;
+}
+/* show caret-right icon */
+.props-form > input[type="checkbox"]:checked + label:before {
+  font-family: 'Octicons Regular';
+  content: "\f05a";
+}
+.comp_props {
+  padding-left: 15px;
+}
+.list-item {
+  cursor: pointer;
+}
+#comptree-titlebar-left {
+  float: left;
+}
+#comptree-titlebar-right {
+  position: absolute;
+  top: 3px;
+  right: 9px;
+}
+.icon-btn {
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  border: 1px solid #23272f;
+  margin-top: 5px;
+}
+.icon-btn i {
+  padding-right: 4px;
+}
+.icon-btn:hover {
+  color: #d6dae1;
+}
+.styleguide-header {
+  padding: 3px 15px 2px;
+  border-bottom: 1px solid #1a1d23;
+}
+ride-pane-container {
+  padding: 0;
+}
+.list-tree.has-collapsable-children .list-nested-item > .list-item::before {
+  position: relative;
+  margin-right: 3px;
+  margin-left: 2px;
+}
+/* applies to entire editor tabbar */
+#editor-tabbar-container {
+  background-color: #292d34;
+}
+#editor-tabbar-left {
+  float: left;
+}
+#editor-tabbar-right {
+  float: right;
+}
+#editor-tabbar-left .tab.active {
+  border-radius: 5.25px 5.25px 0 0;
+  background-color: #292A2B;
+}
+#editor-tabbar-left .tab.active::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  width: 2px;
+  border-top-left-radius: inherit;
+  border-radius: 3px 0;
+  background: #568af2;
+  transition: opacity .16s;
+}
+/* tabbar */
+.tab-bar {
+  height: 3em;
+  box-shadow: inset 0 -1px 0 #242526;
+    /* background: #23272f; */
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+/* tabbr tab */
+.tab-bar .tab {
+  position: relative;
+  top: 0;
+  max-width: 22em;
+  min-width: 7em;
+  height: 3em;
+  font-size: inherit;
+  line-height: 3em;
+  padding: 0;
+  margin: 0;
+  background-clip: content-box;
+  cursor: pointer;
+}
+.tab-bar .tab::after {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: inherit;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #1a1d23;
+    border-bottom-color: #292A2B;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    background-clip: content-box;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+    transition: opacity .16s;
+    opacity: 0;
+}
+/*
+tabbar tab title
+*/
+.tab-bar .tab .title {
+    position: relative;
+    height: inherit;
+    text-align: center;
+    margin: 0 0 0 0.8em;
+    padding-right: 1em;
+    border-bottom: 1px solid transparent;
+    text-overflow: clip;
+    mask: linear-gradient(to left, rgba(0, 0, 0, 0), #000000 1em) no-repeat;
+    -webkit-mask: linear-gradient(to left, rgba(0, 0, 0, 0), #000000 1em) no-repeat;
+    background-clip: content-box;
+    backface-visibility: hidden;
+    float: left;
+}
+.tab-bar .tab:hover {
+    color: #d6dae1;
+}
+/* close-icon: outer-box styling */
+.tab-bar .tab .close-icon {
+    top: 1em;
+    right: 0.6em;
+    z-index: 2;
+    font-size: 0.85em;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 3px;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .08s;
+    float: right;
+    position: relative;
+}
+/* close-icon: inner-icon styling */
+.tab-bar .tab .close-icon::before {
+    content: "\f05d";
+    font-size: 4.7em;
+    width: 1.6em;
+    height: 1.6em;
+    line-height: 1.6;
+    text-align: center;
+    transform: translate(-37.5%, -37.5%) rotate(45deg) scale(0.33);
+    pointer-events: none;
+    font-family: 'Octicons Regular';
+    font-weight: normal;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+/* show close-icon if is active or non-active but hover */
+.tab-bar .tab.active .close-icon,
+.tab-bar .tab:hover .close-icon {
+  transform: scale(1);
+  transition-duration: .16s;
+}
+/* general style for close-icon hover */
+.tab-bar .tab .close-icon:hover {
+  color: #001133;
+  background-color: #568af2;
+}
+/* */
+.tab-bar .tab .close-icon:hover ~.title {
+  mask-position: -1em 0;
+  -webkit-mask-position: -1em 0;
+}
+#btn-hmr-group {
+  background-color: transparent;
+  color: #4BC94D;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 2px 5px;
+  margin: 5px;
+  font-size: 14px;
+}
+/*
+CONSOLE PANE
+*/
+#console-pane {
+  border-top: 1px solid rgb(54, 61, 72);
+  box-sizing: border-box;
+  background-color: black;
+  flex: none;
+  height: 35%;
+}
+#console-tab .list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.1);/*rgb(25, 27, 30);*/
+  height: 36px;
+  padding-left: 5px;
+}
+#console-tab .list-item {
+  position: relative;
+  display: inline;
+  top: 8px;
+}
+#console-tab .list-item span {
+    padding-bottom: 6px;
+    margin-left: 15px;
+    font-size: 11.5px;
+    letter-spacing: -0.2px;
+}
+#console-tab .list-item:hover span,
+#console-tab .list-item.active span {
+  color: rgb(111, 193, 255);
+}
+#console-tab .list-item.active span {
+  border-bottom: 1px solid rgb(111, 193, 255, 0.4);
+}
+#console-content {
+  /*background-color: rgba(0, 0, 0, 0.9);*/
+  /*background-color: #1D1E22;*/
+  background-color: rgba(0,0,0,0.1);
+  height: 100%;
+  padding: 0 20px;
+}
+
+.xterm .xterm-viewport {
+  overflow-y: scroll;
+}
+
+.xterm {
+  height: 95%;
+}
