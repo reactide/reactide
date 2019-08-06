@@ -15,6 +15,7 @@ const { getTree, getFileExt } = require('../../lib/file-tree');
 const fs = require('fs');
 const path = require('path');
 const { File, Directory } = require('../../lib/item-schema');
+const { exec } = require('child_process');
 
 const importPathFunctions = require('../../importPath');
 
@@ -175,7 +176,7 @@ export default class App extends React.Component {
    */
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
-      if (dirPath !== this.state.rootDirPath) {
+      if (dirPath !== this.state.rootDirPath) { 
         this.setFileTree(dirPath);
       }
     }),
@@ -280,8 +281,13 @@ export default class App extends React.Component {
   }
   /**
    * calls file-tree module and sets state with file tree object representation in callback
+   * npm i -S npmtest-reactide && 
+   * && node reactide.js
    */
   setFileTree(dirPath) {
+    exec(`npm i -S npmtest-reactide && echo 'const yes = require("'npmtest-reactide'") \n yes.config()' >> reactide.js && node reactide.js`,{
+      cwd: dirPath
+    });
     getTree(dirPath, fileTree => {
       //if watcher instance already exists close it as it's for the previously opened project
       if (this.state.watch) {
@@ -360,7 +366,7 @@ export default class App extends React.Component {
           });
         }
       });
-
+      
       this.setState({
         fileTree,
         rootDirPath: dirPath,
