@@ -44,6 +44,7 @@ const menuTemplate = windowObj => [
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
           });
+          
           // console.log(rootDir, 'SSS');
           if (rootDir) {
             global.mainWindow.webContents.send('openDir', rootDir[0]);
