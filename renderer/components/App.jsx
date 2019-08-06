@@ -318,6 +318,7 @@ export default class App extends React.Component {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
               parentDir.files.push(new File(absPath, name, getFileExt));
+              console.log(parentDir.files);
             }
           } else if (this.state.fileChangeType === 'rename' && this.state.newName) {
             //rename handler
@@ -668,7 +669,7 @@ export default class App extends React.Component {
         <React.Fragment>
           <InWindowSimulator url={this.state.url} />
           <button className="btn" onClick={this.closeSim}>
-            Close Simulator
+            {/* Close Simulator */}
           </button>
         </React.Fragment>
       );
