@@ -285,9 +285,11 @@ export default class App extends React.Component {
    * && node reactide.js
    */
   setFileTree(dirPath) {
-    exec(`npm i -S npmtest-reactide && echo 'const yes = require("'npmtest-reactide'") \n yes.config()' >> reactide.js && node reactide.js`,{
-      cwd: dirPath
-    });
+    if (!fs.existsSync(path.join(dirPath, '/reactide.js'))) {
+      exec(`npm i -S npmtest-reactide && echo 'const yes = require("'npmtest-reactide'") \n yes.config()' >> reactide.js && node reactide.js `,{
+        cwd: dirPath
+      });  
+    }
     getTree(dirPath, fileTree => {
       //if watcher instance already exists close it as it's for the previously opened project
       if (this.state.watch) {
@@ -541,8 +543,12 @@ export default class App extends React.Component {
    * Changes state of simulator to true to trigger conditional rendering of Editor and Simulator
    */
   openSimulatorInMain() {
-    this.setState({ simulator: true });
-    ipcRenderer.send('start simulator', 'helloworld');
+    if(this.state.simulator === false){
+      this.setState({ simulator: true });
+      ipcRenderer.send('start simulator', 'helloworld');
+    } else {
+      this.closeSim()
+    }
   }
   /**
    * closes any open dialogs, handles clicks on anywhere besides the active open menu/form
@@ -673,9 +679,9 @@ export default class App extends React.Component {
       renderer.push(
         <React.Fragment>
           <InWindowSimulator url={this.state.url} />
-          <button className="btn" onClick={this.closeSim}>
+          {/* <button className="btn" onClick={this.closeSim}>
             Close Simulator
-          </button>
+          </button> */}
         </React.Fragment>
       );
       renderer.push(
