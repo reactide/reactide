@@ -36,7 +36,7 @@ const installExtensions = async () => {
 
 // Main window init
 // define window in global scope to prevent garbage collection
- let win = null;
+let win = null;
 app.on('ready', async () => {
   // initialize main window
   win = new BrowserWindow({
@@ -47,8 +47,10 @@ app.on('ready', async () => {
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
     // icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
-    show: false
+    show: false,
   });
+
+
 
   // load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));

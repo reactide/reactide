@@ -38,25 +38,32 @@ const menuTemplate = windowObj => [
               height: 400,
               minWidth: 604,
               minHeight: 283,
-              title: 'Khalid-town'
+              webPreferences: {
+                devTools: false
+              }
             })
 
-            splash.setAlwaysOnTop(true);
 
-             splash.loadFile(path.join(__dirname, "../../splash/public/index.html"))
+            splash.setAlwaysOnTop(true);
+            splash.loadFile(path.join(__dirname, "../../splash/public/index.html"))
+
+            // splash.webContents.on("devtools-opened", () => {  devToolsOpen ? splash.webContents.closeDevTools() : !devToolsOpen });
+            // splash.webContents.on("devtools-opened", () => { splash.webContents.closeDevTools(); })
 
 
             splash.once('ready-to-show', () => {
               splash.show();
             })
-            
-            global.mainWindow.webContents.send('newProject');
-            
-            ipcMain.on('closeSplash', () => {
-              splash.close();
-              splash = null
 
-            });
+            global.mainWindow.webContents.send('newProject');
+
+            ipcMain.on('closeSplash', () => {
+              splash.close()
+            })
+
+            ipcMain.on('closed', () => {
+              splash = null
+            })
           }
         },
         accelerator: 'CommandOrControl+N'
@@ -66,7 +73,6 @@ const menuTemplate = windowObj => [
         label: 'Open…',
         click: () => {
           global.newProj = false;
-          win
           //opens a directory
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
@@ -82,7 +88,6 @@ const menuTemplate = windowObj => [
       {
         label: 'Save',
         click: () => {
-
           global.mainWindow.webContents.send('saveFile');
         },
         accelerator: 'CommandOrControl+S'
@@ -116,6 +121,7 @@ const menuTemplate = windowObj => [
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow) {
           focusedWindow.toggleDevTools()
+
         }
       },
       {
