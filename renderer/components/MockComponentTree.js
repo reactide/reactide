@@ -105,7 +105,6 @@ class MockComponentTree extends React.PureComponent {
                   <label htmlFor={"ct_child-npt_" + name}>[comp_props] ({childProps.length})</label><br />
                   {this.renderChildProps(childProps)}
                 </React.Fragment>)}
-
             </span>
           </div>
         )}

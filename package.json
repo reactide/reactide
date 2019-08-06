@@ -16,12 +16,6 @@
   "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Rocky Liao, Khalid Umar",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "@fortawesome/fontawesome-free": "^5.5.0",
-=======
     "monaco-editor": "^0.14.3",
     "prop-types": "^15.5.8",
     "react": "^16.6.0",
@@ -33,7 +27,6 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
->>>>>>> master
     "babel-loader": "^8.0.4",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
