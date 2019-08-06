@@ -197,8 +197,6 @@ export default class App extends React.Component {
           cra: true,
         });
       })
-      console.log('this is the file tree', this.state)
-
   }
   /**
    * sends old path and new name to main process to rename, closes rename form and sets filechangetype and newName for fswatch

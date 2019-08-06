@@ -43,9 +43,8 @@ const menuTemplate = windowObj => [
               }
             })
 
-
             splash.setAlwaysOnTop(true);
-            splash.loadFile(path.join(__dirname, "../../splash/public/index.html"))
+            splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
 
             // splash.webContents.on("devtools-opened", () => {  devToolsOpen ? splash.webContents.closeDevTools() : !devToolsOpen });
             // splash.webContents.on("devtools-opened", () => { splash.webContents.closeDevTools(); })
@@ -120,8 +119,7 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow) {
-          focusedWindow.toggleDevTools()
-
+          global.mainWindow.toggleDevTools()
         }
       },
       {
