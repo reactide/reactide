@@ -4,6 +4,8 @@ const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
+const { ipcMain } = require('electron');
+
 let splash = null;
 
 const menuTemplate = windowObj => [
@@ -38,10 +40,23 @@ const menuTemplate = windowObj => [
               minHeight: 283,
               title: 'Khalid-town'
             })
+
+            splash.setAlwaysOnTop(true);
+
+             splash.loadFile(path.join(__dirname, "../../splash/public/index.html"))
+
+
             splash.once('ready-to-show', () => {
               splash.show();
             })
+            
             global.mainWindow.webContents.send('newProject');
+            
+            ipcMain.on('closeSplash', () => {
+              splash.close();
+              splash = null
+
+            });
           }
         },
         accelerator: 'CommandOrControl+N'
@@ -51,6 +66,7 @@ const menuTemplate = windowObj => [
         label: 'Open…',
         click: () => {
           global.newProj = false;
+          win
           //opens a directory
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
@@ -110,4 +126,6 @@ const menuTemplate = windowObj => [
 ];
 
 
-module.exports = menuTemplate;
+module.exports = menuTemplate
+
+

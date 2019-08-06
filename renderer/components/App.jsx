@@ -178,13 +178,11 @@ export default class App extends React.Component {
 
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
-      console.log('this is the file tree', this.state.fileTree)
       if (dirPath !== this.state.rootDirPath) {
         this.setFileTree(dirPath);
       }
     }),
       ipcRenderer.on('newProject', (event, arg) => {
-        alert('Creating a project may take 8-10 seconds Please wait :)');
         if (this.state.watch) this.state.watch.close();
         console.log(this.state)
 
@@ -375,6 +373,9 @@ export default class App extends React.Component {
         rootDirPath: dirPath,
         watch
       });
+
+      ipcRenderer.send('closeSplash');
+
       this.constructComponentTreeObj();
     });
   }

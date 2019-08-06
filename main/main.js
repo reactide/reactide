@@ -36,7 +36,7 @@ const installExtensions = async () => {
 
 // Main window init
 // define window in global scope to prevent garbage collection
-let win = null;
+ let win = null;
 app.on('ready', async () => {
   // initialize main window
   win = new BrowserWindow({
