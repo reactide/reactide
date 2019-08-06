@@ -50,6 +50,8 @@ app.on('ready', async () => {
     show: false
   });
 
+
+
   // load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
 
@@ -72,8 +74,6 @@ app.on('ready', async () => {
     exec(
       'killall node',
       (err, stdout, stderr) => {
-        if(err) console.log(err);
-        else console.log('GEYUHHHH')
       }
     );
     app.quit();
