@@ -52,7 +52,7 @@ export default class App extends React.Component {
       outputOrTerminal: 'output',
       liveServerPID: null,
       closed: false,
-      toggleTerminal:false,      
+      toggleTerminal: false,
     };
 
     this.fileTreeInit();
@@ -153,7 +153,7 @@ export default class App extends React.Component {
       this.setState({
         componentTreeObj: componentObj
       });
-    }    
+    }
     else if (projInfo.reactEntry === '') {
       let rootPath = path.dirname(projInfo.reactEntry);
       let fileName = path.basename(projInfo.reactEntry);
@@ -161,8 +161,9 @@ export default class App extends React.Component {
       console.log('componentObj = ', componentObj)
       this.setState({
         componentTreeObj: componentObj
-      })}
-     // if neither Create React App or have webpack, then can't render it 
+      })
+    }
+    // if neither Create React App or have webpack, then can't render it 
     else {
       this.setState({
         componentTreeObj: {}
@@ -173,6 +174,7 @@ export default class App extends React.Component {
   /**
    * Registers listeners for opening projects and new projects
    */
+
   fileTreeInit() {
     ipcRenderer.on('openDir', (event, dirPath) => {
       if (dirPath !== this.state.rootDirPath) {
@@ -181,6 +183,8 @@ export default class App extends React.Component {
     }),
       ipcRenderer.on('newProject', (event, arg) => {
         if (this.state.watch) this.state.watch.close();
+        console.log(this.state)
+
         this.setState({
           fileTree: null,
           watch: null,
@@ -190,9 +194,11 @@ export default class App extends React.Component {
             path: null,
             type: null
           },
-          cra: true
+          cra: true,
         });
-      });
+      })
+      console.log('this is the file tree', this.state)
+
   }
   /**
    * sends old path and new name to main process to rename, closes rename form and sets filechangetype and newName for fswatch
@@ -291,7 +297,7 @@ export default class App extends React.Component {
       let watch = fs.watch(dirPath, { recursive: true, persistent: true }, (eventType, fileName) => {
         if (eventType === 'rename') {
           const fileTree = this.state.fileTree;
-          
+
           const absPath = path.join(this.state.rootDirPath, fileName);
           const parentDir = this.findParentDir(path.dirname(absPath), fileTree);
           const name = path.basename(absPath);
@@ -366,6 +372,9 @@ export default class App extends React.Component {
         rootDirPath: dirPath,
         watch
       });
+
+      ipcRenderer.send('closeSplash');
+
       this.constructComponentTreeObj();
     });
   }
@@ -573,11 +582,11 @@ export default class App extends React.Component {
     ipcRenderer.send('closeSim', this.state.liveServerPID);
   }
 
-  close(){
-    this.setState({closed: !this.state.closed})
+  close() {
+    this.setState({ closed: !this.state.closed })
   }
-  toggleTerminal(){
-    this.setState({toggleTerminal:!this.state.toggleTerminal})
+  toggleTerminal() {
+    this.setState({ toggleTerminal: !this.state.toggleTerminal })
   }
   /**
    * render function for TextEditorPane
@@ -585,8 +594,8 @@ export default class App extends React.Component {
   renderTextEditorPane() {
     return (
       <TextEditorPane
-        close = {this.close}
-        toggleTerminal = {this.toggleTerminal}
+        close={this.close}
+        toggleTerminal={this.toggleTerminal}
         appState={this.state}
         setActiveTab={this.setActiveTab}
         closeTab={this.closeTab}
@@ -598,17 +607,17 @@ export default class App extends React.Component {
 
   renderSideLayout() {
     return (
-      <ride-pane style={{ flexGrow: 0,flexBasis: this.state.closed ? 0 : 250}}>
+      <ride-pane style={{ flexGrow: 0, flexBasis: this.state.closed ? 0 : 250 }}>
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">
-              <h5>File Directory</h5> 
+              <h5>File Directory</h5>
 
               <div id="comptree-titlebar-right">
-              {this.state.fileTree && 
-                  <RefreshFileDirectory updateFileDirectory={this.updateFileDirectory} />}    
+                {this.state.fileTree &&
+                  <RefreshFileDirectory updateFileDirectory={this.updateFileDirectory} />}
               </div>
-       
+
             </header>
             <main className="styleguide-sections">
               {this.state.fileTree &&
@@ -646,7 +655,7 @@ export default class App extends React.Component {
                   <RefreshComponentTreeButton constructComponentTreeObj={this.constructComponentTreeObj} />}
               </div>
             </header>
-            
+
             <main className="styleguide-sections">
               {
                 this.state.componentTreeObj &&
@@ -663,7 +672,7 @@ export default class App extends React.Component {
     let renderer = [];
 
     if (this.state.simulator) {
-      
+
       renderer.push(
         <React.Fragment>
           <InWindowSimulator url={this.state.url} />
@@ -673,21 +682,21 @@ export default class App extends React.Component {
         </React.Fragment>
       );
       renderer.push(
-      <TabContainer
-        close = {this.close}
-        toggleTerminal = {this.toggleTerminal}
-        appState={this.state}
-        setActiveTab={this.setActiveTab}
-        closeTab={this.closeTab}
-        cbOpenSimulator_Main={this.openSimulatorInMain}
-        cbOpenSimulator_Ext={this.openSim}
-      />)
+        <TabContainer
+          close={this.close}
+          toggleTerminal={this.toggleTerminal}
+          appState={this.state}
+          setActiveTab={this.setActiveTab}
+          closeTab={this.closeTab}
+          cbOpenSimulator_Main={this.openSimulatorInMain}
+          cbOpenSimulator_Ext={this.openSim}
+        />)
     }
     else {
       renderer.push(
         <TabContainer
-          close = {this.close}
-          toggleTerminal = {this.toggleTerminal}
+          close={this.close}
+          toggleTerminal={this.toggleTerminal}
           appState={this.state}
           setActiveTab={this.setActiveTab}
           closeTab={this.closeTab}
@@ -704,8 +713,8 @@ export default class App extends React.Component {
       return this.renderTextEditorPane();
     }
   }
-  renderTerminal(){
-    if(this.state.toggleTerminal){
+  renderTerminal() {
+    if (this.state.toggleTerminal) {
       return (
         <ConsolePane
           rootDirPath={this.state.rootDirPath}
@@ -717,7 +726,7 @@ export default class App extends React.Component {
   }
   renderMainLayout() {
     return (
-      <ride-pane style={{ flexGrow: 1, flexBasis: '1200px'}}>
+      <ride-pane style={{ flexGrow: 1, flexBasis: '1200px' }}>
         {this.state.rootDirPath &&
           <React.Fragment>
             {this.renderMainTopPanel()}
@@ -729,7 +738,7 @@ export default class App extends React.Component {
     );
   }
 
-  updateFileDirectory (){
+  updateFileDirectory() {
     this.setFileTree(this.state.rootDirPath);
   }
 
