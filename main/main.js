@@ -46,8 +46,8 @@ app.on('ready', async () => {
     minHeight: 283,
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
-    // icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
-    show: false,
+    icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
+    show: false
   });
 
 
@@ -71,6 +71,11 @@ app.on('ready', async () => {
   //Register listener to close entire window + simulator window when mainWindow closes
   win.on('closed', function(){
     fs.writeFileSync(projInfoPath, JSON.stringify(projInfo));
+    exec(
+      'killall node',
+      (err, stdout, stderr) => {
+      }
+    );
     app.quit();
   });
   // Wait for window to be ready before showing to avoid white loading screen
