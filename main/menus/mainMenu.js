@@ -1,9 +1,12 @@
 'use strict';
-const { dialog } = require('electron');
+const { dialog, BrowserWindow } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
+const { ipcMain } = require('electron');
+
+let splash = null;
 
 const menuTemplate = windowObj => [
   {
@@ -30,7 +33,31 @@ const menuTemplate = windowObj => [
           //Run cra with 'save' variable as destination path
           if (save) {
             cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
+            splash = new BrowserWindow({
+              width: 600,
+              height: 400,
+              minWidth: 604,
+              minHeight: 283,
+              webPreferences: {
+                devTools: false
+              }
+            })
+
+            splash.setAlwaysOnTop(true);
+            splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
+
+            splash.once('ready-to-show', () => {
+              splash.show();
+            })
+
             global.mainWindow.webContents.send('newProject');
+
+           //garbage collect loader page
+            splash.on('closeSplash', () => {
+              splash.close()
+              splash = null
+            })
+
           }
         },
         accelerator: 'CommandOrControl+N'
@@ -44,6 +71,7 @@ const menuTemplate = windowObj => [
           const rootDir = dialog.showOpenDialog(windowObj, {
             properties: ['openDirectory']
           });
+          
           // console.log(rootDir, 'SSS');
           if (rootDir) {
             global.mainWindow.webContents.send('openDir', rootDir[0]);
@@ -55,7 +83,6 @@ const menuTemplate = windowObj => [
       {
         label: 'Save',
         click: () => {
-
           global.mainWindow.webContents.send('saveFile');
         },
         accelerator: 'CommandOrControl+S'
@@ -88,7 +115,7 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow) {
-          focusedWindow.toggleDevTools()
+          global.mainWindow.toggleDevTools()
         }
       },
       {
@@ -99,4 +126,6 @@ const menuTemplate = windowObj => [
 ];
 
 
-module.exports = menuTemplate;
+module.exports = menuTemplate
+
+
