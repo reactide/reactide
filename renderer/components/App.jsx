@@ -616,7 +616,7 @@ export default class App extends React.Component {
 
   renderSideLayout() {
     return (
-      <ride-pane style={{ flexGrow: 0, flexBasis: this.state.closed ? 0 : 250 }}>
+      <ride-pane style={{ flexGrow: 0, flexBasis: this.state.closed ? 0 : 275 }}>
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">
