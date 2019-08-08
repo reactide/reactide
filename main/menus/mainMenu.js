@@ -9,6 +9,7 @@ const { ipcMain } = require('electron');
 let splash = null;
 
 const menuTemplate = windowObj => [
+  {},
   {
     label: 'Main',
     submenu: [

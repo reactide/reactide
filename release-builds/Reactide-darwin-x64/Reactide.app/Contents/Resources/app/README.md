@@ -50,7 +50,7 @@ In order to take advantage of the live simulator, please follow the below steps 
 
 1. `npm install webpack dev-server -D`
 2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
-```
+```js
     devServer: {
        publicPath: path.resolve(__dirname, '/build/'),
        port: 8085,
@@ -62,10 +62,10 @@ In order to take advantage of the live simulator, please follow the below steps 
     mode: 'development',
 ```
 3. Go to your package.json and add the following scripts under the "scripts" object:
-```
+```js
 "dev-server": "webpack-dev-server"
 ```
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
 ## Contributors
-[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0)
+[Jin Choi](https://github.com/jinihendrix) | [Mark Marcelo](https://github.com/markmarcelo) | [Bita Djaghouri](https://github.com/bitadj) | [Pablo Lee](https://github.com/pablytolee) | [Ryan Yang](https://github.com/ryany1819) | [Oscar Chan](https://github.com/chanoscar0) | [Juan Hart](https://github.com/juanhart1) | [Eric Pham](https://github.com/EP36) | [Khalid Umar](https://github.com/khalid050) | [Rocky Liao](https://github.com/seemsrocky)

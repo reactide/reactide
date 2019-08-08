@@ -344,7 +344,7 @@ input[type="checkbox"] ~ label {
   cursor: pointer;
   font-size: 12px;
   border: 1px solid #23272f;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 .icon-btn i {
   padding-right: 4px;
@@ -552,4 +552,12 @@ CONSOLE PANE
   background-color: rgba(0,0,0,0.1);
   height: 100%;
   padding: 0 20px;
+}
+
+.xterm .xterm-viewport {
+  overflow-y: scroll;
+}
+
+.xterm {
+  height: 95%;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from './Tab';
 import PropTypes from 'prop-types';
 
+
 // Button click event handler for InMain and InExternal
 function handleHMRButtonClick(event, callback) {
   event.stopPropagation();
@@ -15,7 +16,9 @@ const TabContainer = ({
   setActiveTab,
   closeTab,
   cbOpenSimulator_Main,
-  cbOpenSimulator_Ext
+  cbOpenSimulator_Ext,
+  close,
+  toggleTerminal,
 }) => {
   const tabs = [];
   // for (var i = 0; i < appState.openTabs.length; i++) {
@@ -49,12 +52,20 @@ const TabContainer = ({
       </div>
       <div id="editor-tabbar-right">
         <div id="btn-hmr-group">
-          <i className="fas fa-desktop" />HMR
+        {/* {isClosed ? <i className="fas fa-lock"  onClick={close}/> : <i  onClick={close} className="fas fa-lock-open"/>}  */}
+        {/* <i onClick={close} className= {isClosed ? "fas fa-lock" : "fas fa-lock-open"} />  */}
+          <div id="btn-hmr-main" className="btn" onClick={close}>
+            <i className='fas fa-window-maximize fa-rotate-270'></i>
+          </div>
+
           <div id="btn-hmr-main" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Main)}>
             <i className="fas fa-window-maximize" />
           </div>
           <div id="btn-hmr-ext" className="btn" onClick={(event) => handleHMRButtonClick(event, cbOpenSimulator_Ext)}>
-            <i className="fas fa-window-restore"></i>
+            <i className="fas fa-window-restore"/>
+          </div>
+          <div id="btn-hmr-main" className="btn" onClick={toggleTerminal}>
+            <i className='fas fa-window-maximize fa-rotate-180'></i>
           </div>
         </div>
       </div>

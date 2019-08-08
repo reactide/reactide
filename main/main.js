@@ -1,7 +1,8 @@
 'use strict';
 
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, Tray } = require('electron');
 const path = require('path');
+const url = require('url')
 const fs = require('fs');
 const menuTemplate = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
@@ -34,22 +35,33 @@ const installExtensions = async () => {
   }
 };
 
-// Main window init
-// define window in global scope to prevent garbage collection
-let win = null;
-app.on('ready', async () => {
-  // initialize main window
-  win = new BrowserWindow({
-    width: 1200,
+const iconUrl = url.format({
+  pathname: path.join(__dirname, "icons/reactide-logo.icns"),
+  protocol: "file:",
+  slashes: true
+ })
+
+ 
+ const nativeImage = require('electron').nativeImage;
+ let image = nativeImage.createFromPath(__dirname + '/icons/icon.icns');
+ image.setTemplateImage(true);
+ 
+ // Main window init
+ // define window in global scope to prevent garbage collection
+ let win = null;
+ app.on('ready', async () => {
+   // initialize main window
+   win = new BrowserWindow({
+     width: 1200,
     height: 800,
     minWidth: 604,
     minHeight: 283,
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
-    icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
+    // icon: image,
     show: false
   });
-
+  win.setIcon('/Users/ep/Codesmith/reactide/icons/icon.icns');
 
 
   // load index.html to main window

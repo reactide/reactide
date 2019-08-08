@@ -7,8 +7,8 @@ class InWindowSimulator extends React.Component {
       url : 'about:blank'
     }
   }
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.url !== this.state.url) {
+  componentDidUpdate(prevProps) {
+    if(prevProps.url !== this.state.url) {
       this.setState({url: this.props.url});
     }
   }
