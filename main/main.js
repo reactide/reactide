@@ -75,8 +75,6 @@ app.on('ready', async () => {
     exec(
       'killall node',
       (err, stdout, stderr) => {
-        if(err) console.log(err);
-        else console.log('GEYUHHHH')
       }
     );
     app.quit();

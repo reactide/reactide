@@ -46,15 +46,12 @@ const menuTemplate = windowObj => [
             splash.setAlwaysOnTop(true);
             splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
 
-            // splash.webContents.on("devtools-opened", () => {  devToolsOpen ? splash.webContents.closeDevTools() : !devToolsOpen });
-            // splash.webContents.on("devtools-opened", () => { splash.webContents.closeDevTools(); })
-
-
             splash.once('ready-to-show', () => {
               splash.show();
             })
 
             global.mainWindow.webContents.send('newProject');
+
 
             ipcMain.on('closeSplash', () => {
               splash.close()
@@ -63,6 +60,14 @@ const menuTemplate = windowObj => [
             ipcMain.on('closed', () => {
               splash = null
             })
+
+           //garbage collect loader page
+            splash.on('closeSplash', () => {
+              splash.close()
+              splash = null
+            })
+
+
           }
         },
         accelerator: 'CommandOrControl+N'
