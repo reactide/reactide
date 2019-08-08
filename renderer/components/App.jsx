@@ -184,6 +184,8 @@ export default class App extends React.Component {
     }),
       ipcRenderer.on('newProject', (event, arg) => {
         if (this.state.watch) this.state.watch.close();
+        console.log(this.state)
+
         this.setState({
           fileTree: null,
           watch: null,
@@ -614,7 +616,7 @@ export default class App extends React.Component {
 
   renderSideLayout() {
     return (
-      <ride-pane style={{ flexGrow: 0, flexBasis: this.state.closed ? 0 : 250 }}>
+      <ride-pane style={{ flexGrow: 0, flexBasis: this.state.closed ? 0 : 275 }}>
         <div className="item-views">
           <div className="styleguide pane-item">
             <header className="styleguide-header">

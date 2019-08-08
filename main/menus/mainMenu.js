@@ -52,11 +52,21 @@ const menuTemplate = windowObj => [
 
             global.mainWindow.webContents.send('newProject');
 
+
+            ipcMain.on('closeSplash', () => {
+              splash.close()
+            })
+
+            ipcMain.on('closed', () => {
+              splash = null
+            })
+
            //garbage collect loader page
             splash.on('closeSplash', () => {
               splash.close()
               splash = null
             })
+
 
           }
         },

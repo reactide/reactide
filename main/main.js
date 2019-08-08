@@ -7,6 +7,7 @@ const menuTemplate = require('./menus/mainMenu');
 const registerShortcuts = require('./localShortcuts');
 const registerIpcListeners = require('./ipcMainListeners');
 const devtron = require('devtron');
+const { exec } = require('child_process');
 require('electron-debug')();
 
 const projInfoPath = path.join(__dirname, '../lib/projInfo.js');
@@ -46,8 +47,8 @@ app.on('ready', async () => {
     minHeight: 283,
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
-    icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
-    show: false
+    // icon: path.join(__dirname, 'renderer/assets/icons/mac/reactide-logo.icns'),
+    show: false,
   });
 
 
