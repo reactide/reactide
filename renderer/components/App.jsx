@@ -687,15 +687,9 @@ export default class App extends React.Component {
       renderer.push(
         <React.Fragment>
           <InWindowSimulator url={this.state.url} />
-<<<<<<< HEAD
-          {/* <button className="btn" onClick={this.closeSim}>
-            Close Simulator
-          </button> */}
-=======
           <button className="btn" onClick={this.closeSim}>
             {/* Close Simulator */}
           </button>
->>>>>>> Reactide_Test/dev
         </React.Fragment>
       );
       renderer.push(
