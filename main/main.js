@@ -35,13 +35,6 @@ const installExtensions = async () => {
     }
   }
 };
-
-const iconUrl = url.format({
-  pathname: path.join(__dirname, "icons/reactide-logo.icns"),
-  protocol: "file:",
-  slashes: true
- })
-
  
  const nativeImage = require('electron').nativeImage;
  let image = nativeImage.createFromPath(__dirname + '/icons/icon.icns');
@@ -62,8 +55,6 @@ const iconUrl = url.format({
     // icon: image,
     show: false
   });
-  win.setIcon('/Users/ep/Codesmith/reactide/icons/icon.icns');
-
 
   // load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
