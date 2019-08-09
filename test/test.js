@@ -22,45 +22,8 @@ import TabContainer from '../renderer/components/TabContainer'
 import TextEditorPane from '../renderer/components/TextEditorPane';
 import RenameForm from '../renderer/components/RenameForm';
 
-// describe('Electron', () => {
-//   describe('application launch', function () {
-//     this.timeout(20000);
-
-//     beforeEach(function () {
-//       console.log('file://' + path.join(__dirname, '../renderer/index.html'));
-//       this.app = new Application({
-//         path: 'node_modules/electron/dist/electron.exe',
-//         args: [path.join(__dirname, '../main/main.js')]
-//       });
-//       console.log(this.app)
-//       this.app.start();
-
-//     });
-
-//     afterEach(function () {
-//       if (this.app && this.app.isRunning()) {
-//         this.app.stop()
-//       }
-//     });
-
-//     it('shows an initial window', function () {
-//       // console.log(this.app);
-//       this.app.client.getWindowCount().then(function (count) {
-//         expect(count).toEqual(1);
-//       });
-//     });
-//   });
-
-// });
-
 describe('React Components', () => {
 
-  // describe('App', () => {
-  //   it('should render', () => {
-  //     const wrapper = shallow(<App />);
-  //     expect(wrapper.exists()).toEqual(true);
-  //   });
-  // });
 
   describe('CreateForm', () => {
 
