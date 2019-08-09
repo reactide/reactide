@@ -35,7 +35,6 @@ const installExtensions = async () => {
     }
   }
 };
-
  
  const nativeImage = require('electron').nativeImage;
  let image = nativeImage.createFromPath(__dirname + '/icons/icon.icns');
@@ -56,7 +55,6 @@ const installExtensions = async () => {
     // icon: image,
     show: false
   });
-
 
   // load index.html to main window
   win.loadURL('file://' + path.join(__dirname, '../renderer/index.html'));
