@@ -39,7 +39,7 @@ npm run electron-packager
 ```
 git checkout 3.0-release
 npm install
-npm run webpack
+npm run webpack-production
 npm start
 ```
 
