@@ -7,7 +7,7 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="https://farm5.staticflickr.com/4911/44158127700_b8c3246b72_k.jpg">
+  <img alt="Reactide Screenshot" src="https://live.staticflickr.com/65535/48503465947_77a9c3be2b_k.jpg">
 
 </p>
 
@@ -27,7 +27,7 @@ The Reactide IDE can be set up in two ways, the first is to bundle the electron 
 
 1. go to your terminal and type the following:
 ```
-git checkout 2.0-release
+git checkout 3.0-release
 npm install
 npm run webpack
 npm run electron-packager
@@ -37,34 +37,18 @@ npm run electron-packager
 ## To check out Reactide in developer mode follow these instructions:
 1. go to your terminal and type the following:
 ```
-git checkout 2.0-release
+git checkout 3.0-release
 npm install
 npm run webpack
 npm start
 ```
 
-Beware: the close simulator button works by creating a child node process and executing killall node on close, clicking on the 'close simulator' button in developer mode will cause the electron app to close as well.
+## Setting up the Simulator
+In order to take advantage of the live simulator, please follow the below steps in your project directory. 
 
-## Setting up Webpack dev-server to work with Simulator
-In order to take advantage of the live simulator, please follow the below steps in your project directory. We are assuming you have a basic webpack config file, which you can find an example of in our repo under the example folder.
+1. Go to the reactide.config.js file and change the .html and .js entry points to the relative path of your respective files. 
+2. In the terminal run: `npm run reactide-server`
 
-1. `npm install webpack dev-server -D`
-2. Go to your webpack.config.js file and add the following lines of code. Make sure you set the port to 8085.
-```js
-    devServer: {
-       publicPath: path.resolve(__dirname, '/build/'),
-       port: 8085,
-       hot: true,
-     },
-    plugins: [
-       new webpack.HotModuleReplacementPlugin(),
-     ],
-    mode: 'development',
-```
-3. Go to your package.json and add the following scripts under the "scripts" object:
-```js
-"dev-server": "webpack-dev-server"
-```
 For any questions, please look at the example project in the example folder for how to set-up webpack and dev-server.
 
 ## Contributors
