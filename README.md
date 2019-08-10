@@ -29,7 +29,7 @@ The Reactide IDE can be set up in two ways, the first is to bundle the electron 
 ```
 git checkout 3.0-release
 npm install
-npm run webpack
+npm run webpack-production
 npm run electron-packager
 ```
 2. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
