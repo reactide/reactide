@@ -1,149 +1,126 @@
 import React from 'react';
 
-const MockComponentTree = () => (
-  <div className="item-views">
-    <div className="styleguide pane-item">
-      <header className="styleguide-header">
-        <h5>Component Tree</h5>
-      </header>
+class MockComponentTree extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-      <main className="styleguide-sections">
 
-          <div className="tree-view-resizer tool-panel">
-            <div className="tree-view-scroller">
+  // input for renderChildrenTrees is an array of objects
+  renderChildrenTrees(children) {
+    // children should be an array
+    // children are the children components
+    // if (children.length) should work 
+    if (children && children.length) {
+      let renderArr = [];
+      children.forEach(elem => {
+        // push resolved value of invoking renderTree on each element
+        renderArr.push(this.renderTree(elem));
+      })
+      // for every elemnt of the renderArr, we create a list items to 'tree_rows' unordered list
+      return (<ul className="tree_rows">{renderArr}</ul>);
+    }
+  }
 
-                <ul className="tree">
-                  <li>
-                    <input type="checkbox" checked="checked" id="a1" />
-                    <label className="tree_label" htmlFor="a1">app</label>
-                    <ul>
-                      <li>
-                        <input type="checkbox" checked="checked" id="c1" />
-                        <label className="tree_label" htmlFor="c1">header</label>
-                        <ul>
-                          <li>
-                            <input type="checkbox" checked="checked" id="c2" />
-                            <label htmlFor="c2" className="tree_label">h1</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" id="c14" disabled />
-                                <label htmlFor="c14" className="tree_label">todos</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" id="c15" disabled />
-                                <label htmlFor="c15" className="tree_label">input</label>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <input type="checkbox" checked="checked" id="c3" />
-                            <label htmlFor="c3" className="tree_label">Looong level 1 <br/>label text</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" id="c13" disabled />
-                                <label htmlFor="c13" className="tree_label">Level 2</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" checked="checked" id="c4" />
-                                <label htmlFor="c4" className="tree_label">
-                                  <span className="treecaret">Sample</span>
-                                  <span className="tree_custom">
-                                    type: <span className="text-info">'input'</span><br />
-                                    className: <span className="text-info">'new-todo'</span><br />
-                                    type: <span className="text-info">'text'</span><br />
-                                    placeholder: <span className="text-info">'What needs to be done?'</span><br />
-                                    autoFocus: <span className="text-info">true</span><br />
-                                    value: <span className="text-info">''</span>
-                                  </span>
-                                </label>
-                                <ul>
-                                  <li>
-                                    <input type="checkbox" id="c12" disabled />
-                                    <label htmlFor="c12" className="tree_label">Level 3</label>
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                              
-                      <li>
-                        <input type="checkbox" checked="checked" id="c5" />
-                        <label className="tree_label" htmlFor="c5">section</label>
-                        <ul>
-                          <li>
-                            <input type="checkbox" checked="checked" id="c6" />
-                            <label htmlFor="c6" className="tree_label">input</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" id="c11" disabled />
-                                <label htmlFor="c11" className="tree_label">Level 2</label>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <input type="checkbox" checked="checked" id="c7" />
-                            <label htmlFor="c7" className="tree_label">ul</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" id="c10" disabled />
-                                <label htmlFor="c10" className="tree_label">Level 2</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" checked="checked" id="c8" />
-                                <label htmlFor="c8" className="tree_label">Level 2</label>
-                                <ul>
-                                  <li>
-                                    <input type="checkbox" id="c9" disabled />
-                                    <label htmlFor="c9" className="tree_label">Level 3</label>
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <input type="checkbox" checked="checked" id="c20" />
-                            <label htmlFor="c20" className="tree_label">footer</label>
-                            <ul>
-                              <li>
-                                <input type="checkbox" id="c21" disabled />
-                                <label htmlFor="c21" className="tree_label">span</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" checked="checked" id="c22" />
-                                <label htmlFor="c22" className="tree_label">ul</label>
-                                <ul>
-                                  <li>
-                                    <input type="checkbox" checked="checked" id="c23" />
-                                    <label htmlFor="c23" className="tree_label">li</label>
-                                    <ul>
-                                      <li>
-                                        <input type="checkbox" id="c25" disabled />
-                                        <label htmlFor="c25" className="tree_label">a</label>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox" id="c24" disabled />
-                                    <label htmlFor="c24" className="tree_label">li</label>
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+  // this renders the stateProps passed to it
+  // stateProps expected to be an object 
+  renderStateProps(stateProps) {
 
-            </div>
+    if (stateProps && Object.keys(stateProps).length) {
+      let renderArr = [];
+      // creates a list item of each element in stateProps object and pushes it to the renderArr array
+      Object.keys(stateProps).forEach(key => {
+        
+        let value = typeof stateProps[key] === 'Object' ? stateProps[key] : JSON.stringify(stateProps[key])
+        renderArr.push(<li>{key} :{value}</li>)
+      })
+       
+      // here, we render each <li> in the renderArr array as children of an unordered list with a className of 'state_props'
+      return (
+        <ul className="state_props">
+          {renderArr}
+        </ul>
+      );
+    }
+  }
+
+  // this renders the childProps passed to it
+  // childProps expected to be an array of objects
+  renderChildProps(childProps) {
+    // this conditional asks if childProps even exists
+    if (childProps && childProps.length > 0) {
+      let renderArr = [];
+      // used forEach iterator to iterate over inputted childProps array
+      childProps.forEach(elem => {
+        // creates a list item of each element in childProps array and pushes it to the renderArr array
+        renderArr.push(<li>{elem.name}
+          <ul className="comp_props">
+            {Object.keys(elem.props).map(key =>
+              <li>{key}: <i>{elem.props[key]}</i></li>
+            )}
+          </ul>
+        </li>);
+      });
+      // here, we render each <li> in the renderArr array as children of an unordered list with a className of 'comp_refs'
+      return (
+        <ul className="comp_refs">
+          {renderArr}
+        </ul>
+      );
+    }
+  }
+
+  // this method renders the entire tree
+  renderTree(treeObj) {
+    // we deconstructe the inputted treeObj to access these properties
+    const { name, stateProps, childProps, children } = treeObj;
+    //renderArr isn't used
+    let renderArr = [];
+    // here, we return the DOM for the Component Tree
+    // this is the first element appened to the DOM
+    // has a className of tree_row
+    // inside of <li> w/ className of 'tree_row', there is an <input> element and a <label> element
+    // when stateProps or childProps have lengths greater than 0, <div> element and <span> elements are added to the DOM
+    // if stateProps has a length greater than 0, we appened React.Fragment that includes an <input> element, a <label> element, and the result of invoking renderStateProps w/ stateProps passed in as argument  
+    // if childProps has a length greater than 0, we appened React.Fragment that includes an <input> element, a <label> element, and the result of invoking renderchildProps w/ childProps passed in as argument
+    // last element in <li> is the returned value of invoking renderChildrenTrees w/ children argument passed to it
+    return (
+      <li key={'ct_node-li' + name} className="tree_row">
+        <input type="checkbox" id={'ct_node-npt_' + name} key={'ct_node-npt_' + name} />
+
+        <label key={'ct_node-lbl_' + name} id={'ct_node-lbl_' + name} className="tree_node" htmlFor={'ct_node-npt_' + name}>{name}</label>
+
+        {(Object.keys(stateProps).length > 0 || childProps.length > 0) && (
+          <div className="props-container">
+            <span className="props-form">
+              {Object.keys(stateProps).length && (
+                <React.Fragment>
+                  <input type="checkbox" id={"ct_state-npt_" + name} />
+                  <label htmlFor={"ct_state-npt_" + name}>[state_props] ({Object.keys(stateProps).length})</label><br />
+                  {this.renderStateProps(stateProps)}
+                </React.Fragment>)}
+              {childProps.length > 0 && (
+                <React.Fragment>
+                  <input type="checkbox" id={"ct_child-npt_" + name} />
+                  <label htmlFor={"ct_child-npt_" + name}>[comp_props] ({childProps.length})</label><br />
+                  {this.renderChildProps(childProps)}
+                </React.Fragment>)}
+            </span>
           </div>
+        )}
+        {this.renderChildrenTrees(children)}
+      </li>
+    );
+  }
+  // we render an <ul> w/ a className of 'tree' that displays the return value of invoking renderTree and passing the value stored in props object at the componentTreeObj property
+  render() {
+    let componentTree = [];
 
-      </main>
-    </div>
-  </div>
-);
-
+    return (
+      <ul className="tree">
+        {this.renderTree(this.props.componentTreeObj)}
+      </ul>
+    );
+  }
+}
 export default MockComponentTree;

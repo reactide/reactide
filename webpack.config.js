@@ -4,9 +4,10 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 module.exports = {
   entry: './renderer/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
+    globalObject: 'self',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'webpack-bundle.js',
-    publicPath: '/dist/',
+    publicPath: '../dist/',
   },
   // Compile for Electron for main process.
   target: 'electron-main',

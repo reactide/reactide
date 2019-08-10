@@ -5,13 +5,20 @@ const fs = require('fs');
 const path = require('path');
 const deleteItem = require('../lib/delete-directory');
 const simulator = require('./simulator');
+const windowSimulator = require('./windowSimulator')
+const closeSim = require('./closeSim');
 
 module.exports = () => {
   //ipcMain listeners
-  ipcMain.on('openSimulator', (event, root) => {
-    simulator(root);
+  ipcMain.on('openSimulator', (event) => {
+    simulator();
   });
 
+  ipcMain.on('openInWindow', () => {
+    // console.log('firing inWindowSimulator')
+    InWindowSimulator();
+  })
+  
   ipcMain.on('createItem', (event, dirPath, name, type) => {
     if (type === 'file') {
       fs.writeFile(path.join(dirPath, name), '', err => {
@@ -29,6 +36,14 @@ module.exports = () => {
   });
 
   ipcMain.on('rename', (event, itemPath, newName) => {
-    fs.rename(itemPath, path.join(path.dirname(itemPath), newName));
+    fs.rename(itemPath, path.join(path.dirname(itemPath), newName), (err) => {
+      if(err) console.log(err);
+    });
+  });
+  ipcMain.on('start simulator', ()=> {
+    windowSimulator();
+  });
+  ipcMain.on('closeSim', (event, pid) => {
+    closeSim(pid);
   });
 };

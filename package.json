@@ -1,6 +1,7 @@
 {
   "name": "reactide",
-  "version": "1.0.0",
+  "productName": "Reactide",
+  "version": "3.0.0",
   "description": "",
   "main": "./main/main.js",
   "scripts": {
@@ -8,29 +9,24 @@
     "start": "cross-env NODE_ENV=production electron .",
     "dev-start": "cross-env NODE_ENV=development electron .",
     "dev": "webpack-dev-server --inline --content-base ./renderer",
-    "webpack": "webpack --mode production"
+    "webpack": "webpack --mode development",
+    "webpack-production": "webpack --mode production",
+    "electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=/Users/ep/Codesmith/reactide/icons/icon.png --prune=true --out=release-builds"
   },
-  "author": "Mark Cruz, Jin Choi, Bita Djaghouri",
+  "author": "Mark Cruz, Jin Choi, Bita Djaghouri, Pablo Lee, Ryan Yang, Oscar Chan, Juan Hart, Eric Pham, Rocky Liao, Khalid Umar",
   "license": "ISC",
   "dependencies": {
-    "monaco-editor": "^0.14.3",
-    "prop-types": "^15.5.8",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.1"
-  },
-  "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "babel-loader": "^8.0.4",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
     "cross-env": "^4.0.0",
     "css-loader": "^1.0.1",
     "devtron": "^1.4.0",
-    "electron": "^3.0.5",
+    "electron-builder": "^20.36.2",
     "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.1.0",
     "electron-hot-loader": "^0.8.0",
@@ -39,16 +35,34 @@
     "electron-reload": "^1.1.0",
     "enzyme": "^2.8.0",
     "eslint": "^3.19.0",
+    "executive": "^1.6.3",
     "expect": "^1.20.2",
+    "fix-path": "^2.1.0",
+    "flow-parser": "^0.85.0",
     "mocha": "^3.2.0",
+    "monaco-editor": "^0.14.3",
     "monaco-editor-webpack-plugin": "^1.5.4",
+    "prop-types": "^15.5.8",
+    "react": "^16.6.0",
     "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^16.6.0",
+    "react-iframe": "^1.3.3",
+    "react-redux": "^5.0.7",
+    "react-xterm": "^2.0.4",
+    "redux": "^4.0.1",
+    "remote": "^0.2.6",
     "sinon": "^2.1.0",
     "spectron": "^3.6.2",
     "style-loader": "^0.23.1",
-    "webpack": "^4.23.0",
-    "webpack-cli": "^3.1.2",
+    "webpack": "4.25.1",
     "webpack-dev-server": "^3.1.10",
-    "worker-loader": "^2.0.0"
+    "webpack-electron-packager": "^1.0.0",
+    "worker-loader": "^2.0.0",
+    "xterm": "^3.8.0"
+  },
+  "devDependencies": {
+    "electron": "^3.0.9",
+    "file-loader": "^4.1.0",
+    "webpack-cli": "^3.3.6"
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ESLintWorker from './../workers/eslint.worker';
 import * as monaco from 'monaco-editor';
 import PropTypes from 'prop-types';
-//import { StaticServices } from 'monaco-editor/esm/vs/editor/standalone/browser/standaloneServices';
+//import { StaticServices } from 'monaco-editor/esm/vs/editor/standalone/browser/standaloneServices'; 
 import light from './../themes/light';
 import dark from './../themes/dark';
 
@@ -17,9 +17,6 @@ monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
 monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
 
-/**
- * Configure the typescript compiler to detect JSX and load type definitions
- */
 const compilerOptions = {
   allowJs: true,
   allowSyntheticDefaultImports: true,
@@ -28,8 +25,12 @@ const compilerOptions = {
   jsxFactory: 'React.createElement',
 };
 
+// Set compiler options to typescriptDefaults and javascriptDefaults
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions(compilerOptions);
 monaco.languages.typescript.javascriptDefaults.setCompilerOptions(compilerOptions);
+
+monaco.editor.defineTheme('ayu-light', light);
+monaco.editor.defineTheme('ayu-dark', dark);
 
 export default class TextEditor extends React.PureComponent {
   constructor(props) {
@@ -39,16 +40,17 @@ export default class TextEditor extends React.PureComponent {
     this.editorStates = new Map();
   }
 
-  _updateMarkers(data) {
+  // Render eslint message as marker in monaco
+  _updateMarkers(message) {
     window.requestAnimationFrame(() => {
       const model = this.editor.getModel();
-
-      if (model && model.getVersionId() === version) {
-        monaco.editor.setModelMarkers(model, 'eslint', data.markers);
+      if (model && model.getVersionId() === message.data.version) {
+        monaco.editor.setModelMarkers(model, 'eslint', message.data.markers);
       }
     });
   };
 
+  // Pass code to eslint linterWorker for processing
   _lintCode(code) {
     const model = this.editor.getModel();
 
@@ -60,9 +62,10 @@ export default class TextEditor extends React.PureComponent {
     });
   };
 
-  // Find or create a model if not exists, and then set model
+  // Return existing model or create a new model if not exists
   _initializeFile(path) {
     const fs = window.require('fs');
+
     const value = fs.readFileSync(path, { encoding: 'utf-8' });
     let model = monaco.editor
       .getModels()
@@ -85,7 +88,8 @@ export default class TextEditor extends React.PureComponent {
       model = monaco.editor.createModel(
         value,
         this._getLanguage(this.props.path),
-        new monaco.Uri().with({ path })
+        new monaco.Uri().with({ path }),
+        
       );
       model.updateOptions({
         tabSize: 2,
@@ -96,6 +100,7 @@ export default class TextEditor extends React.PureComponent {
     return model;
   };
 
+  // Setup or restore monaco model for the opening file path 
   _openFile(path) {
     let model = this._initializeFile(path);
 
@@ -110,13 +115,14 @@ export default class TextEditor extends React.PureComponent {
     this.editor.focus();
 
     // Subscribe to change in value so we can notify the parent
-    // this._subscription = model.onDidChangeContent(() => {
-    //   const value = model.getValue();
-    //   //this.props.onValueChange(value);
-    //   this._lintCode(value);
-    // });
+    this._subscription = model.onDidChangeContent(() => {
+      const value = model.getValue();
+      this.props.onValueChange(value);
+      this._lintCode(value);
+    });
   };
 
+  // Return language type as a string
   _getLanguage(path) {
     if (path.includes('.')) {
       switch (path.split('.').pop()) {
@@ -140,83 +146,34 @@ export default class TextEditor extends React.PureComponent {
     }
   };
 
+  
+
   componentDidMount() {
-    // let amdRequire = global.require('monaco-editor/min/vs/loader.js').require;
-    // const path = window.require('path');
-    // const fs = window.rerequire('fs');
-    //var file = fs.readFileSync(this.props.tab.path, { encoding: 'utf8' });
-
-    // function uriFromPath(_path) {
-    //   var pathName = path.resolve(_path).replace(/\\/g, '/');
-    //   if (pathName.length > 0 && pathName.charAt(0) !== '/') {
-    //     pathName = '/' + pathName;
-    //   }
-    //   return encodeURI('file://' + pathName);
-    // }
-    //
-    // amdRequire.config({
-    //   baseUrl: uriFromPath(path.resolve(__dirname, '../node_modules/monaco-editor/min'))
-    // });
-    // workaround monaco-css not understanding the environment
-    //self.module = undefined;
-    // workaround monaco-typescript not understanding the environment
-    //self.process.browser = true;
-    //const id = this.props.id;
-    //var editor; comment out by Ryan --> definition moved to constructor
-
-    // amdRequire(['vs/editor/editor.main'], () => {
-    //   editor = monaco.editor.create(document.getElementById(id), {
-    //     value: file,
-    //     language: 'javascript',
-    //     theme: 'vs-dark'
-    //   });
-    //   this.props.addEditorInstance(editor, id);
-
-    //   window.addEventListener('resize', () => {
-    //     if (id === this.props.activeTab) {
-    //       let editorNode = document.getElementById(id);
-    //       let parent = editorNode.parentElement;
-    //       editorNode.style.width = parent.clientWidth;
-    //       editorNode.firstElementChild.style.width = parent.clientWidth;
-    //       editorNode.firstElementChild.firstElementChild.style.width = parent.clientWidth;
-    //       editorNode.getElementsByClassName('monaco-scrollable-element')[0].style.width = parent.clientWidth - 46;
-    //     }
-    //   });
-    // });
-
+    const path = window.require('path');
+    const fs = window.require('fs');
+    var file = fs.readFileSync(this.props.path, { encoding: 'utf8' });
+    // initialize editor
     this.editor = monaco.editor.create(document.getElementById('editor-container'),
       {
         language: this._getLanguage(this.props.path),
-        theme: 'vs-dark',
-        automaticLayout: true
+        theme: 'ayu-dark',
+        lineNumbers: 'on',
+        wordWrap: 'on',
+        scrollBeyondLastLine: false,
+        automaticLayout: true,
+        glyphMargin: true
+
       },
-      // {
-      //   codeEditorService: Object.assign(Object.create(codeEditorService),
-      //     {
-      //       openCodeEditor: async ({ resource, options }, editor) => {
-      //         // Open the file with this path
-      //         // This should set the model with the path and value
-      //         //this.props.onOpenPath(resource.path);
 
-      //         // Move cursor to the desired position
-      //         this.editor.setSelection(options.selection);
-
-      //         // Scroll the editor to bring the desired line into focus
-      //         this.editor.revealLine(options.selection.startLineNumber);
-
-      //         return Promise.resolve({
-      //           getControl: () => editor
-      //         });
-      //       }
-      //     })
-      // }
     );
+
+
     // Intialize the linter
     this._linterWorker = new ESLintWorker();
-    this._linterWorker.addEventListener('message', (data) => { this._updateMarkers(data); });
+    this._linterWorker.addEventListener('message', (message) => { this._updateMarkers(message); });
 
+    this._openFile(this.props.path);
 
-    //this._openFile(this.props.path);
   }
 
   componentDidUpdate(prevProps) {
@@ -253,7 +210,6 @@ export default class TextEditor extends React.PureComponent {
 
   render() {
     return (
-      // <div className="item-views" style={{ display: this.props.id == this.props.activeTab ? 'block' : 'none' }}>
       <div className="item-views">
         <div className="styleguide pane-item">
           <div id="editor-container" style={{ height: '100%', width: '100%' }} />
