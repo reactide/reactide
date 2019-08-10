@@ -12,12 +12,12 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 </p>
 
 ## Get right to coding
-Reactide runs an integrated Node server and custom browser simulator, which works best with Webpack and Webpack dev-server. As projects evolve, the developer can continually track changes through live reloading directly in the development environment without the need for constant flipping to the browser. Reactide also offers integration with Create React App for faster project boilerplate configuration. The simulator and component tree are both functioning for Create-React-App made applications.
+Reactide runs an integrated Node server and custom browser simulator. As projects evolve, the developer can continually track changes through live reloading directly in the development environment without the need for constant flipping to the browser. Reactide also offers integration with Create React App for faster project boilerplate configuration. The simulator and component tree are both functioning for all React applications.
 
 ## State flow visualization.
 Managing state across a complex React application is the biggest pain point of developing React apps. Reactide offers a visual component tree that dynamically loads and changes based on components within the working directory while giving information about props and state at every component. By navigating through a live-representation of the architecture of a project, developers can quickly identify and pinpoint the parent-child relationships of even the most complex applications.
 
-The component tree works by finding the entry point to your React application from the webpack.config.js file. It works out-of-the-box with Create React App.
+The component tree works out-of-the-box by finding the entry point to your React application that you provide inside the reactide.config.js file.
 
 ## Integrated Terminal for powerful commands and workflows
 The terminal is the life and blood of any IDE, allowing for complex manipulation of the file system, node, and even build-tools. Reactide offers a compatible terminal for running commands in bin/bash for Unix, and cmd for Windows to provide powerful workflows to even seasoned developers.
