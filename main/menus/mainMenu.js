@@ -1,12 +1,70 @@
+
 'use strict';
-const { dialog, BrowserWindow } = require('electron');
+const { app,dialog, BrowserWindow } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
-const { ipcMain } = require('electron');
-
+const { ipcMain} = require('electron')
 let splash = null;
+
+const createNewProj = ()=>{
+   // warn user of unsaved changes before below
+   global.newProj = true;
+   const save = dialog.showSaveDialog();
+   //Run cra with 'save' variable as destination path
+   if (save) {
+     cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
+     splash = new BrowserWindow({
+       width: 600,
+       height: 400,
+       minWidth: 604,
+       minHeight: 283,
+       webPreferences: {
+         devTools: false
+       }
+     })
+
+     splash.setAlwaysOnTop(true);
+     splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
+
+     splash.once('ready-to-show', () => {
+       splash.show();
+     })
+     global.mainWindow.webContents.send('newProject');
+
+    //  ipcMain.on('closeSplash', () => {
+    //    splash.close()
+    //  })
+
+    //  ipcMain.on('closed', () => {
+    //    splash = null
+    //  })
+
+    //garbage collect loader page
+     splash.on('closeSplash', () => {
+       splash.close()
+       splash = null
+     })
+   }
+}
+
+const openExistingProject = (windowObj)=>{
+  global.newProj = false;
+  //opens a directory
+  const rootDir = dialog.showOpenDialog(windowObj, {
+    properties: ['openDirectory']
+  });
+  
+  // console.log(rootDir, 'SSS');
+  if (rootDir) {
+    global.mainWindow.webContents.send('openDir', rootDir[0]);
+  }
+}
+
+ipcMain.on('createNewProj', createNewProj)  
+ipcMain.on('openExistingProject', openExistingProject)
+
 
 const menuTemplate = windowObj => [
   {},
@@ -27,67 +85,13 @@ const menuTemplate = windowObj => [
     submenu: [
       {
         label: 'New Project',
-        click: () => {
-          // warn user of unsaved changes before below
-          global.newProj = true;
-          const save = dialog.showSaveDialog();
-          //Run cra with 'save' variable as destination path
-          if (save) {
-            cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
-            splash = new BrowserWindow({
-              width: 600,
-              height: 400,
-              minWidth: 604,
-              minHeight: 283,
-              webPreferences: {
-                devTools: false
-              }
-            })
-
-            splash.setAlwaysOnTop(true);
-            splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
-
-            splash.once('ready-to-show', () => {
-              splash.show();
-            })
-
-            global.mainWindow.webContents.send('newProject');
-
-
-            ipcMain.on('closeSplash', () => {
-              splash.close()
-            })
-
-            ipcMain.on('closed', () => {
-              splash = null
-            })
-
-           //garbage collect loader page
-            splash.on('closeSplash', () => {
-              splash.close()
-              splash = null
-            })
-
-
-          }
-        },
+        click:()=> openProj(),
         accelerator: 'CommandOrControl+N'
       },
       { type: 'separator' },
       {
         label: 'Open…',
-        click: () => {
-          global.newProj = false;
-          //opens a directory
-          const rootDir = dialog.showOpenDialog(windowObj, {
-            properties: ['openDirectory']
-          });
-          
-          // console.log(rootDir, 'SSS');
-          if (rootDir) {
-            global.mainWindow.webContents.send('openDir', rootDir[0]);
-          }
-        },
+        click: () => openExistingProject(),
         accelerator: 'CommandOrControl+O'
       },
       { type: 'separator' },
@@ -138,5 +142,6 @@ const menuTemplate = windowObj => [
 
 
 module.exports = menuTemplate
+
 
 
