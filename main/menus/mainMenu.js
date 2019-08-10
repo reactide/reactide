@@ -1,72 +1,112 @@
-
 'use strict';
-const { app,dialog, BrowserWindow } = require('electron');
+const { dialog, BrowserWindow } = require('electron');
 const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
-const { ipcMain} = require('electron')
+const { ipcMain } = require('electron')
 let splash = null;
 
-const createNewProj = ()=>{
-   // warn user of unsaved changes before below
-   global.newProj = true;
-   const save = dialog.showSaveDialog();
-   //Run cra with 'save' variable as destination path
-   if (save) {
-     cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
-     splash = new BrowserWindow({
-       width: 600,
-       height: 400,
-       minWidth: 604,
-       minHeight: 283,
-       webPreferences: {
-         devTools: false
-       }
-     })
+const createNewProj = () => {
+  // warn user of unsaved changes before below
+  global.newProj = true;
+  const save = dialog.showSaveDialog();
+  //Run cra with 'save' variable as destination path
+  if (save) {
+    cra(path.join(path.dirname(save), path.basename(save).toLowerCase()));
+    splash = new BrowserWindow({
+      width: 600,
+      height: 400,
+      minWidth: 604,
+      minHeight: 283,
+      webPreferences: {
+        devTools: false
+      }
+    })
 
-     splash.setAlwaysOnTop(true);
-     splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
+    splash.setAlwaysOnTop(true);
+    splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
 
-     splash.once('ready-to-show', () => {
-       splash.show();
-     })
-     global.mainWindow.webContents.send('newProject');
-
-    //  ipcMain.on('closeSplash', () => {
-    //    splash.close()
-    //  })
-
-    //  ipcMain.on('closed', () => {
-    //    splash = null
-    //  })
+    splash.once('ready-to-show', () => {
+      splash.show();
+    })
+    global.mainWindow.webContents.send('newProject');
+    ipcMain.on('closeSplash', () => {
+      splash.close()
+    })
+    ipcMain.on('closed', () => {
+      splash = null
+    })
 
     //garbage collect loader page
-     splash.on('closeSplash', () => {
-       splash.close()
-       splash = null
-     })
-   }
-}
-
-const openExistingProject = (windowObj)=>{
-  global.newProj = false;
-  //opens a directory
-  const rootDir = dialog.showOpenDialog(windowObj, {
-    properties: ['openDirectory']
-  });
-  
-  // console.log(rootDir, 'SSS');
-  if (rootDir) {
-    global.mainWindow.webContents.send('openDir', rootDir[0]);
+    splash.on('closeSplash', () => {
+      splash.close()
+      splash = null
+    })
   }
 }
 
-ipcMain.on('createNewProj', createNewProj)  
+const openExistingProject = (windowObj) => {
+  global.newProj = false;
+  //opens a directory
+  const rootDir = dialog.showOpenDialog(this.windowObj, {
+    properties: ['openDirectory']
+  });
+  if (rootDir) {
+    global.mainWindow.webContents.send('openDir', rootDir[0]);
+  }
+
+}
+const reactideWindow = () => {
+  let reactideWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    minWidth: 600,
+    minHeight: 300,
+    webPreferences: {
+      devTools: false
+    }
+  })
+
+  reactideWindow.loadURL('https://reactide.github.io/reactide-website/')
+  reactideWindow.once('ready-to-show', () => {
+  reactideWindow.show()
+  })
+
+  reactideWindow.on('closed', () => {
+    reactideWindow = null
+  })
+}
+
+const githubWindow = () => {
+  let githubSite = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    minWidth: 604,
+    minHeight: 300,
+    webPreferences: {
+      devTools: false
+    }
+  })
+  githubSite.loadURL('https://github.com/reactide/reactide')
+  githubSite.once('ready-to-show', () => {
+    githubSite.show()
+  })
+
+  githubSite.on('closed', () => {
+    githubSite = null
+  })
+}
+
+
+ipcMain.on('createNewProj', createNewProj)
 ipcMain.on('openExistingProject', openExistingProject)
+ipcMain.on('openReactideSite', reactideWindow)
+ipcMain.on('openGithub', githubWindow)
 
 
 const menuTemplate = windowObj => [
+
   {},
   {
     label: 'Main',
@@ -85,7 +125,7 @@ const menuTemplate = windowObj => [
     submenu: [
       {
         label: 'New Project',
-        click:()=> openProj(),
+        click: () => openProj(),
         accelerator: 'CommandOrControl+N'
       },
       { type: 'separator' },
@@ -139,6 +179,9 @@ const menuTemplate = windowObj => [
     ]
   }
 ];
+
+
+
 
 
 module.exports = menuTemplate
