@@ -39,6 +39,7 @@
     "expect": "^1.20.2",
     "fix-path": "^2.1.0",
     "flow-parser": "^0.85.0",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^3.2.0",
     "monaco-editor": "^0.14.3",
     "monaco-editor-webpack-plugin": "^1.5.4",
@@ -54,14 +55,14 @@
     "sinon": "^2.1.0",
     "spectron": "^3.6.2",
     "style-loader": "^0.23.1",
-    "webpack": "4.25.1",
+    "webpack": "^4.25.1",
     "webpack-dev-server": "^3.1.10",
     "webpack-electron-packager": "^1.0.0",
     "worker-loader": "^2.0.0",
     "xterm": "^3.8.0"
   },
   "devDependencies": {
-    "electron": "^3.0.9",
+    "electron": "^3.1.13",
     "file-loader": "^4.1.0",
     "webpack-cli": "^3.3.6"
   }
