@@ -1,6 +1,6 @@
 import React from 'react'
-
 const {ipcRenderer} = require('electron');
+
 
 const createNewProj = ()=> ipcRenderer.send('createNewProj')
 const openProject = () => ipcRenderer.send('openExistingProject')
@@ -11,6 +11,8 @@ const openGithub = () => ipcRenderer.send('openGithub')
 
 
 const WelcomePage = ()=>{
+    console.log(__dirname + '../splash')
+
     return(
         <div id='welcome-page'>
             <h2 class='welcome-heading'>Start</h2>
