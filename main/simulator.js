@@ -37,6 +37,7 @@ const simulator = () => {
     });
     child.loadURL('http://localhost:8085');
     child.openDevTools();
+
     // let child = exec(
     //   'npm run dev-server',
     //   {

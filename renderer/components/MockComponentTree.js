@@ -4,8 +4,6 @@ class MockComponentTree extends React.PureComponent {
   constructor(props) {
     super(props);
   }
-
-
   // input for renderChildrenTrees is an array of objects
   renderChildrenTrees(children) {
     // children should be an array

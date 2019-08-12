@@ -10,6 +10,7 @@ import ConsolePane from './ConsolePane';
 import { ipcMain } from 'electron';
 import InWindowSimulator from './InWindowSimulator';
 import TabContainer from './TabContainer';
+import WelcomePage from './WelcomePage';
 const { ipcRenderer } = require('electron');
 const { getTree, getFileExt } = require('../../lib/file-tree');
 const fs = require('fs');
@@ -377,7 +378,6 @@ export default class App extends React.Component {
         rootDirPath: dirPath,
         watch
       });
-
       ipcRenderer.send('closeSplash');
 
       this.constructComponentTreeObj();
@@ -736,12 +736,12 @@ export default class App extends React.Component {
   renderMainLayout() {
     return (
       <ride-pane style={{ flexGrow: 1, flexBasis: '1200px' }}>
-        {this.state.rootDirPath &&
+        {this.state.rootDirPath ?
           <React.Fragment>
             {this.renderMainTopPanel()}
             {this.renderMainBottomPanel()}
             {this.renderTerminal()}
-          </React.Fragment>
+          </React.Fragment> : <WelcomePage/>
         }
       </ride-pane>
     );
