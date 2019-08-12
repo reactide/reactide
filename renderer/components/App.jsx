@@ -286,12 +286,10 @@ export default class App extends React.Component {
   }
   /**
    * calls file-tree module and sets state with file tree object representation in callback
-   * npm i -S npmtest-reactide && 
-   * && node reactide.js
    */
   setFileTree(dirPath) {
     if (!fs.existsSync(path.join(dirPath, '/reactide.js'))) {
-      exec(`npm i -S npmtest-reactide && echo 'const yes = require("'npmtest-reactide'") \n yes.config()' >> reactide.js && node reactide.js `,{
+      exec(`npm i -S reactide-config && echo 'const yes = require("'reactide-config'") \n yes.config()' >> reactide.js && node reactide.js `,{
         cwd: dirPath
       });  
     }
