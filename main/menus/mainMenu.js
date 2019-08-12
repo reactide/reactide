@@ -7,7 +7,6 @@ const cra = require('../../lib/create-react-app');
 const { ipcMain } = require('electron')
 let splash = null;
 
-
 const createNewProj = () => {
   // warn user of unsaved changes before below
   global.newProj = true;
@@ -23,7 +22,7 @@ const createNewProj = () => {
       webPreferences: {
         devTools: false
       },
-      frame:false
+      frame: false
     })
 
     splash.setAlwaysOnTop(true);
@@ -38,14 +37,13 @@ const createNewProj = () => {
       //garbage collect loader page
       splash.hide()
     })
-
   }
 }
 
 const openExistingProject = (windowObj) => {
   global.mainWindow.webContents.send('closeSim', 'helloworld');
 
- 
+
   global.newProj = false;
   //opens a directory
   const rootDir = dialog.showOpenDialog(this.windowObj, {
@@ -54,8 +52,8 @@ const openExistingProject = (windowObj) => {
   if (rootDir) {
     global.mainWindow.webContents.send('openDir', rootDir[0]);
   }
-
 }
+
 const reactideWindow = () => {
   let reactideWindow = new BrowserWindow({
     width: 1200,
@@ -69,7 +67,7 @@ const reactideWindow = () => {
 
   reactideWindow.loadURL('https://reactide.github.io/reactide-website/')
   reactideWindow.once('ready-to-show', () => {
-  reactideWindow.show()
+    reactideWindow.show()
   })
 
   reactideWindow.on('closed', () => {
@@ -97,14 +95,7 @@ const githubWindow = () => {
   })
 }
 
-const changeDevTools = ()=>{
-  global.mainWindow.toggleDevTools()
-  console.log('hello there')
-}
-
 // ipcMain.on('itsReady', changeDevTools)
-
-
 ipcMain.on('createNewProj', createNewProj)
 ipcMain.on('openExistingProject', openExistingProject)
 ipcMain.on('openReactideSite', reactideWindow)
@@ -176,8 +167,7 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow) {
-
-          changeDevTools()
+           global.mainWindow.toggleDevTools()
         }
       },
       {

@@ -86,9 +86,5 @@ const installExtensions = async () => {
   // Wait for window to be ready before showing to avoid white loading screen
   win.once('ready-to-show', () => {
     win.show();
-    // ipcRenderer.send('itsReady')
-
   });
-
-
 });
