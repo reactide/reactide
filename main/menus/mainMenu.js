@@ -7,6 +7,7 @@ const cra = require('../../lib/create-react-app');
 const { ipcMain } = require('electron')
 let splash = null;
 
+
 const createNewProj = () => {
   // warn user of unsaved changes before below
   global.newProj = true;
@@ -21,7 +22,8 @@ const createNewProj = () => {
       minHeight: 283,
       webPreferences: {
         devTools: false
-      }
+      },
+      frame:false
     })
 
     splash.setAlwaysOnTop(true);
@@ -32,15 +34,18 @@ const createNewProj = () => {
     })
     global.mainWindow.webContents.send('newProject');
 
-    //garbage collect loader page
-    splash.on('closeSplash', () => {
-      splash.close()
-      splash = null
+    ipcMain.on('closeSplash', () => {
+      //garbage collect loader page
+      splash.hide()
     })
+
   }
 }
 
 const openExistingProject = (windowObj) => {
+  global.mainWindow.webContents.send('closeSim', 'helloworld');
+
+ 
   global.newProj = false;
   //opens a directory
   const rootDir = dialog.showOpenDialog(this.windowObj, {
@@ -92,6 +97,13 @@ const githubWindow = () => {
   })
 }
 
+const changeDevTools = ()=>{
+  global.mainWindow.toggleDevTools()
+  console.log('hello there')
+}
+
+// ipcMain.on('itsReady', changeDevTools)
+
 
 ipcMain.on('createNewProj', createNewProj)
 ipcMain.on('openExistingProject', openExistingProject)
@@ -119,7 +131,7 @@ const menuTemplate = windowObj => [
     submenu: [
       {
         label: 'New Project',
-        click: () => openProj(),
+        click: () => createNewProj(),
         accelerator: 'CommandOrControl+N'
       },
       { type: 'separator' },
@@ -164,7 +176,8 @@ const menuTemplate = windowObj => [
         label: 'Toggle DevTools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
         click(item, focusedWindow) {
-          global.mainWindow.toggleDevTools()
+
+          changeDevTools()
         }
       },
       {
@@ -179,6 +192,5 @@ const menuTemplate = windowObj => [
 
 
 module.exports = menuTemplate
-
 
 

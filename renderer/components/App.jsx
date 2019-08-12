@@ -380,7 +380,6 @@ export default class App extends React.Component {
         rootDirPath: dirPath,
         watch
       });
-
       ipcRenderer.send('closeSplash');
 
       this.constructComponentTreeObj();

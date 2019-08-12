@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray } = require('electron');
+const { app, BrowserWindow, Menu, Tray ,ipcRenderer} = require('electron');
 const path = require('path');
 const url = require('url')
 const fs = require('fs');
@@ -46,14 +46,15 @@ const installExtensions = async () => {
  app.on('ready', async () => {
    // initialize main window
    win = new BrowserWindow({
-     width: 1200,
+    width: 1200,
     height: 800,
     minWidth: 604,
     minHeight: 283,
     title: 'Reactide',
     // titleBarStyle: hidden-inset, // pending
     // icon: image,
-    show: false
+    show: false,
+    
   });
 
   // load index.html to main window
@@ -85,5 +86,9 @@ const installExtensions = async () => {
   // Wait for window to be ready before showing to avoid white loading screen
   win.once('ready-to-show', () => {
     win.show();
+    // ipcRenderer.send('itsReady')
+
   });
+
+
 });
