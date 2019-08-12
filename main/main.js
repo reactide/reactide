@@ -1,5 +1,4 @@
 'use strict';
-
 const { app, BrowserWindow, Menu, Tray ,ipcRenderer} = require('electron');
 const path = require('path');
 const url = require('url')
