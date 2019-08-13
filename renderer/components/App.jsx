@@ -142,7 +142,6 @@ export default class App extends React.Component {
       let rootPath = path.dirname(projInfo.reactEntry);
       let fileName = path.basename(projInfo.reactEntry);
       const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
-      console.log('componentObj = ', componentObj)
       this.setState({
         componentTreeObj: componentObj
       });
@@ -165,7 +164,6 @@ export default class App extends React.Component {
       let rootPath = path.dirname(projInfo.reactEntry);
       let fileName = path.basename(projInfo.reactEntry);
       const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
-      console.log('componentObj = ', componentObj)
       this.setState({
         componentTreeObj: componentObj
       })
@@ -190,8 +188,6 @@ export default class App extends React.Component {
     }),
       ipcRenderer.on('newProject', (event, arg) => {
         if (this.state.watch) this.state.watch.close();
-        console.log(this.state)
-
         this.setState({
           fileTree: null,
           watch: null,
@@ -334,7 +330,6 @@ export default class App extends React.Component {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
               parentDir.files.push(new File(absPath, name, getFileExt));
-              console.log(parentDir.files);
             }
           } else if (this.state.fileChangeType === 'rename' && this.state.newName) {
             //rename handler
