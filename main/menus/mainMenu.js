@@ -30,10 +30,7 @@ const menuTemplate = windowObj => [
         label: 'New Project',
         click: () => {
           // warn user of unsaved changes before below
-          exec(`killall node`, (err, stdout, stderr) => {
-            if (err) console.log(`ERROR: ${err}`);
-            else console.log(`Good shit: ${stdout}`);
-          });
+          exec(`killall node`);
           global.newProj = true;
           const save = dialog.showSaveDialog();
           //Run cra with 'save' variable as destination path
