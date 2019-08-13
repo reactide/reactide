@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray } = require('electron');
+const { app, BrowserWindow, Menu, Tray ,ipcRenderer} = require('electron');
 const path = require('path');
 const url = require('url')
 const fs = require('fs');
@@ -46,7 +46,7 @@ const installExtensions = async () => {
  app.on('ready', async () => {
    // initialize main window
    win = new BrowserWindow({
-     width: 1200,
+    width: 1200,
     height: 800,
     minWidth: 604,
     minHeight: 283,
