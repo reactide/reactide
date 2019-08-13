@@ -4,7 +4,8 @@ const path = require('path');
 const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
-const { ipcMain } = require('electron')
+const { ipcMain } = require('electron');
+const { exec } = require('child_process');
 let splash = null;
 
 const createNewProj = () => {
@@ -27,12 +28,10 @@ const createNewProj = () => {
 
     splash.setAlwaysOnTop(true);
     splash.loadFile(path.join(__dirname, "../../renderer/splash/public/index.html"))
-
     splash.once('ready-to-show', () => {
       splash.show();
     })
     global.mainWindow.webContents.send('newProject');
-
     ipcMain.on('closeSplash', () => {
       //garbage collect loader page
       splash.hide()
@@ -41,9 +40,9 @@ const createNewProj = () => {
 }
 
 const openExistingProject = (windowObj) => {
+
+  exec(`killall node`);
   global.mainWindow.webContents.send('closeSim', 'helloworld');
-
-
   global.newProj = false;
   //opens a directory
   const rootDir = dialog.showOpenDialog(this.windowObj, {

@@ -51,10 +51,7 @@ const installExtensions = async () => {
     minWidth: 604,
     minHeight: 283,
     title: 'Reactide',
-    // titleBarStyle: hidden-inset, // pending
-    // icon: image,
-    show: false,
-    
+    show: false
   });
 
   // load index.html to main window
