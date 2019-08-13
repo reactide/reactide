@@ -5,6 +5,7 @@ const copy = require('../../lib/copy-directory');
 const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
 const { ipcMain } = require('electron');
+const { exec } = require('child_process');
 
 let splash = null;
 
@@ -29,6 +30,10 @@ const menuTemplate = windowObj => [
         label: 'New Project',
         click: () => {
           // warn user of unsaved changes before below
+          exec(`killall node`, (err, stdout, stderr) => {
+            if (err) console.log(`ERROR: ${err}`);
+            else console.log(`Good shit: ${stdout}`);
+          });
           global.newProj = true;
           const save = dialog.showSaveDialog();
           //Run cra with 'save' variable as destination path
@@ -64,7 +69,7 @@ const menuTemplate = windowObj => [
 
            //garbage collect loader page
             splash.on('closeSplash', () => {
-              splash.close()
+              splash.close();
               splash = null
             })
 
@@ -77,6 +82,10 @@ const menuTemplate = windowObj => [
       {
         label: 'Open…',
         click: () => {
+          exec(`killall node`, (err, stdout, stderr) => {
+            if (err) console.log(`ERROR: ${err}`);
+            else console.log(`Good shit: ${stdout}`);
+          });
           global.newProj = false;
           //opens a directory
           const rootDir = dialog.showOpenDialog(windowObj, {

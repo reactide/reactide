@@ -116,8 +116,13 @@ export default class App extends React.Component {
       }
     });
     ipcRenderer.on('start simulator', (event, arg) => {
-      console.log('this is start simulator event line 111 appjsx', event);
+      // if (this.state.liveServerPID !== null) exec(`killall node`, (err, stdout, stderr) => {
+      //   if (err) console.error(`This is the error:${stderr}`);
+      //   else console.log(`Here is what you wanted: ${stdout}`);
+      // });
+      // if (this.state.liveServerPID !== null) console.log(`This is the PID before: ${this.state.liveServerPID}`);
       this.setState({ url: arg[0], liveServerPID: arg[1] });
+      // console.log(`This is the PID after: ${this.state.liveServerPID}`);
     });
     ipcRenderer.on('craOut', (event, arg) => {
       this.setState({ craOut: arg, cra: false });
@@ -553,7 +558,7 @@ export default class App extends React.Component {
       this.setState({ simulator: true });
       ipcRenderer.send('start simulator', 'helloworld');
     } else {
-      this.closeSim()
+      this.closeSim();
     }
   }
   /**

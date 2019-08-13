@@ -40,10 +40,10 @@ module.exports = () => {
       if(err) console.log(err);
     });
   });
-  ipcMain.on('start simulator', ()=> {
+  ipcMain.on('start simulator', () => {
     windowSimulator();
   });
-  ipcMain.on('closeSim', (event, pid) => {
-    closeSim(pid);
-  });
+  // ipcMain.on('closeSim', (event, pid) => {
+  //   closeSim(pid);
+  // });
 };
