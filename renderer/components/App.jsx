@@ -23,7 +23,6 @@ const importPathFunctions = require('../../importPath');
 
 export default class App extends React.Component {
   constructor() {
-
     super();
     this.state = {
       openTabs: {},
@@ -60,7 +59,6 @@ export default class App extends React.Component {
 
     this.fileTreeInit();
     autoBind(this)
- 
   }
 
   //when component mounts set the project path

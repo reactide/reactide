@@ -1,4 +1,11 @@
 'use strict';
+require('update-electron-app')({
+  repo: 'khalid050/reactide',
+  updateInterval: '5 minutes',
+  logger: require('electron-log')
+})
+
+
 const { app, BrowserWindow, Menu, Tray ,ipcRenderer} = require('electron');
 const path = require('path');
 const url = require('url')
