@@ -6,12 +6,10 @@ const deleteDirectory = require('../../lib/delete-directory');
 const cra = require('../../lib/create-react-app');
 const { ipcMain } = require('electron');
 const { exec } = require('child_process');
-
 let splash = null;
 
 const createNewProj = () => {
   // warn user of unsaved changes before below
-  // exec(`killall node`);
   global.newProj = true;
   const save = dialog.showSaveDialog();
   //Run cra with 'save' variable as destination path
@@ -42,6 +40,7 @@ const createNewProj = () => {
 }
 
 const openExistingProject = (windowObj) => {
+
   exec(`killall node`);
   global.mainWindow.webContents.send('closeSim', 'helloworld');
   global.newProj = false;
