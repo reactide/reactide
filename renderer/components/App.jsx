@@ -94,8 +94,13 @@ export default class App extends React.Component {
       }
     });
     ipcRenderer.on('start simulator', (event, arg) => {
-      console.log('this is start simulator event line 111 appjsx', event);
+      // if (this.state.liveServerPID !== null) exec(`killall node`, (err, stdout, stderr) => {
+      //   if (err) console.error(`This is the error:${stderr}`);
+      //   else console.log(`Here is what you wanted: ${stdout}`);
+      // });
+      // if (this.state.liveServerPID !== null) console.log(`This is the PID before: ${this.state.liveServerPID}`);
       this.setState({ url: arg[0], liveServerPID: arg[1] });
+      // console.log(`This is the PID after: ${this.state.liveServerPID}`);
     });
     ipcRenderer.on('craOut', (event, arg) => {
       this.setState({ craOut: arg, cra: false });
@@ -114,7 +119,6 @@ export default class App extends React.Component {
       let rootPath = path.dirname(projInfo.reactEntry);
       let fileName = path.basename(projInfo.reactEntry);
       const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
-      console.log('componentObj = ', componentObj)
       this.setState({
         componentTreeObj: componentObj
       });
@@ -137,7 +141,6 @@ export default class App extends React.Component {
       let rootPath = path.dirname(projInfo.reactEntry);
       let fileName = path.basename(projInfo.reactEntry);
       const componentObj = importPathFunctions.constructComponentTree(fileName, rootPath);
-      console.log('componentObj = ', componentObj)
       this.setState({
         componentTreeObj: componentObj
       })
@@ -162,8 +165,6 @@ export default class App extends React.Component {
     }),
       ipcRenderer.on('newProject', (event, arg) => {
         if (this.state.watch) this.state.watch.close();
-        console.log(this.state)
-
         this.setState({
           fileTree: null,
           watch: null,
@@ -306,7 +307,6 @@ export default class App extends React.Component {
               parentDir.subdirectories.push(new Directory(absPath, name));
             } else {
               parentDir.files.push(new File(absPath, name, getFileExt));
-              console.log(parentDir.files);
             }
           } else if (this.state.fileChangeType === 'rename' && this.state.newName) {
             //rename handler
@@ -530,7 +530,7 @@ export default class App extends React.Component {
       this.setState({ simulator: true });
       ipcRenderer.send('start simulator', 'helloworld');
     } else {
-      this.closeSim()
+      this.closeSim();
     }
   }
   /**

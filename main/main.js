@@ -17,6 +17,14 @@ const devtron = require('devtron');
 const { exec } = require('child_process');
 require('electron-debug')();
 
+
+require('update-electron-app')({
+  repo: 'khalid050/reactide',
+  updateInterval: '5 minutes',
+  logger: require('electron-log')
+})
+
+
 const projInfoPath = path.join(__dirname, '../lib/projInfo.js');
 const projInfo = {
   htmlPath: '',
@@ -57,10 +65,7 @@ const installExtensions = async () => {
     minWidth: 604,
     minHeight: 283,
     title: 'Reactide',
-    // titleBarStyle: hidden-inset, // pending
-    // icon: image,
-    show: false,
-    
+    show: false
   });
 
   // load index.html to main window

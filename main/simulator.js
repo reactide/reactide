@@ -37,22 +37,6 @@ const simulator = () => {
     });
     child.loadURL('http://localhost:8085');
     child.openDevTools();
-
-    // let child = exec(
-    //   'npm run dev-server',
-    //   {
-    //     cwd: projInfo.rootPath,
-    //     shell: '/bin/bash'
-    //   },
-    //   (err, stdout, stderr) => {
-    //     let child = new BrowserWindow({
-    //       width: WIDTH,
-    //       height: HEIGHT
-    //     });
-    //     child.loadURL('http://localhost:8085');
-    //     child.openDevTools();
-    //   }
-    // );
   } else if (projInfo.htmlPath) {
     let child = new BrowserWindow({
       width: WIDTH,
