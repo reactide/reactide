@@ -25,6 +25,7 @@
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.5.0",
     "auto-bind": "^2.1.0",
+    "autobind": "^1.0.3",
     "babel-loader": "^8.0.4",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
