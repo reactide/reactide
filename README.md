@@ -1,5 +1,7 @@
 <p align="center"><a href='http://reactide.io/'><img alt="reactide" src="http://reactide.io/images/reactide-header.png" height="60%" width="60%"></a></p>
 
+[![GitHub license](https://img.shields.io/github/license/reactide/reactide)](https://github.com/reactide/reactide/blob/master/LICENSE.txt) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/reactide/reactide/pulls)
+
 ### Reactide is the first dedicated IDE for React web application development.
 Reactide is a cross-platform desktop application that offers a simulator, made for live reloading and quick React component prototyping. React brings an integrated suite of development tools to streamline react development. The days of flipping between browser, IDE, and server are over.
 
@@ -7,7 +9,7 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="https://live.staticflickr.com/65535/48503465947_77a9c3be2b_k.jpg">
+  <img alt="Reactide Screenshot" src="https://i.imgur.com/A29J8fs.jpg">
 
 </p>
 
