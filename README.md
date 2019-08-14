@@ -7,7 +7,7 @@ Reactide is a cross-platform desktop application that offers a simulator, made f
 
 ##
 <p align="center">
-  <img alt="Reactide Screenshot" src="https://live.staticflickr.com/65535/48503465947_77a9c3be2b_k.jpg">
+  <img alt="Reactide Screenshot" src="https://i.imgur.com/A29J8fs.jpg">
 
 </p>
 
