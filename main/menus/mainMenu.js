@@ -39,9 +39,9 @@ const createNewProj = () => {
   }
 }
 
+
 const openExistingProject = (windowObj) => {
 
-  exec(`killall node`);
   global.mainWindow.webContents.send('closeSim', 'helloworld');
   global.newProj = false;
   //opens a directory
@@ -53,6 +53,19 @@ const openExistingProject = (windowObj) => {
   }
 }
 
+const killNode = (windowObj) => {
+  exec(`killall node`);
+
+  global.mainWindow.webContents.send('closeSim', 'helloworld');
+  global.newProj = false;
+  //opens a directory
+  const rootDir = dialog.showOpenDialog(this.windowObj, {
+    properties: ['openDirectory']
+  });
+  if (rootDir) {
+    global.mainWindow.webContents.send('openDir', rootDir[0]);
+  }
+}
 const reactideWindow = () => {
   let reactideWindow = new BrowserWindow({
     width: 1200,
@@ -127,7 +140,7 @@ const menuTemplate = windowObj => [
       { type: 'separator' },
       {
         label: 'Open…',
-        click: () => openExistingProject(),
+        click: () => killNode(),
         accelerator: 'CommandOrControl+O'
       },
       { type: 'separator' },

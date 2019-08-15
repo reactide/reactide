@@ -17,12 +17,12 @@ const fs = require('fs');
 const path = require('path');
 const { File, Directory } = require('../../lib/item-schema');
 const { exec } = require('child_process');
+const autoBind = require('auto-bind');
 
 const importPathFunctions = require('../../importPath');
 
 export default class App extends React.Component {
   constructor() {
-
     super();
     this.state = {
       openTabs: {},
@@ -58,30 +58,7 @@ export default class App extends React.Component {
     };
 
     this.fileTreeInit();
-    this.clickHandler = this.clickHandler.bind(this);
-    this.setFileTree = this.setFileTree.bind(this);
-    this.dblClickHandler = this.dblClickHandler.bind(this);
-    this.setActiveTab = this.setActiveTab.bind(this);
-    //this.isFileOpened = this.isFileOpened.bind(this);
-    this.saveTab = this.saveTab.bind(this);
-    this.closeTab = this.closeTab.bind(this);
-    this.openCreateMenu = this.openCreateMenu.bind(this);
-    this.closeOpenDialogs = this.closeOpenDialogs.bind(this);
-    this.createMenuHandler = this.createMenuHandler.bind(this);
-    this.createItem = this.createItem.bind(this);
-    this.findParentDir = this.findParentDir.bind(this);
-    this.deletePromptHandler = this.deletePromptHandler.bind(this);
-    this.renameHandler = this.renameHandler.bind(this);
-    this.constructComponentTreeObj = this.constructComponentTreeObj.bind(this);
-    this.handleEditorValueChange = this.handleEditorValueChange.bind(this);
-    this.openSim = this.openSim.bind(this);
-    this.closeSim = this.closeSim.bind(this);
-    this.openSimulatorInMain = this.openSimulatorInMain.bind(this);
-    this.close = this.close.bind(this)
-    this.toggleTerminal = this.toggleTerminal.bind(this);
-    this.updateFileDirectory = this.updateFileDirectory.bind(this);
-
-    //reset tabs, should store state in local storage before doing this though
+    autoBind(this)
   }
 
   //when component mounts set the project path

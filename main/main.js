@@ -1,4 +1,10 @@
 'use strict';
+require('update-electron-app')({
+  repo: 'khalid050/reactide',
+  updateInterval: '5 minutes',
+  logger: require('electron-log')
+})
+
 
 const { app, BrowserWindow, Menu, Tray ,ipcRenderer} = require('electron');
 const path = require('path');
@@ -10,6 +16,7 @@ const registerIpcListeners = require('./ipcMainListeners');
 const devtron = require('devtron');
 const { exec } = require('child_process');
 require('electron-debug')();
+
 
 const projInfoPath = path.join(__dirname, '../lib/projInfo.js');
 const projInfo = {
