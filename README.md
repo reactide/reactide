@@ -50,7 +50,7 @@ npm install
 npm run webpack-production
 npm run electron-packager
 ```
-2. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
+3. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
 
 ## To check out Reactide in developer mode follow these instructions:
 1. go to your terminal and type the following:
