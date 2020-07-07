@@ -61,7 +61,7 @@
     "xterm": "^3.8.0"
   },
   "devDependencies": {
-    "electron": "^3.0.9",
+    "electron": "^9.1.0",
     "file-loader": "^4.1.0",
     "webpack-cli": "^3.3.6"
   }
