@@ -1,4 +1,4 @@
-<p align="center"><a href='http://reactide.io/'><img alt="reactide" src="http://reactide.io/images/reactide-header.png" height="60%" width="60%"></a></p>
+<p align="center"><a href='http://reactide.io/'><img alt="reactide" src="https://i.imgur.com/HRNmuJs.png" width="30%"></a></p>
 
 [![GitHub license](https://img.shields.io/github/license/reactide/reactide)](https://github.com/reactide/reactide/blob/master/LICENSE.txt) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/reactide/reactide/pulls)
 
