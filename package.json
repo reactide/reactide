@@ -34,7 +34,7 @@
     "electron-packager": "^12.2.0",
     "electron-reload": "^1.1.0",
     "enzyme": "^2.8.0",
-    "eslint": "^3.19.0",
+    "eslint": "^6.6.0",
     "executive": "^1.6.3",
     "expect": "^1.20.2",
     "fix-path": "^2.1.0",
