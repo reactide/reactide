@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray } = require('electron');
+const electron, { app, BrowserWindow, Menu, Tray } = require('electron');
 const path = require('path');
 const url = require('url')
 const fs = require('fs');
@@ -36,7 +36,7 @@ const installExtensions = async () => {
   }
 };
  
- const nativeImage = require('electron').nativeImage;
+ const nativeImage = electron.nativeImage;
  let image = nativeImage.createFromPath(__dirname + '/icons/icon.icns');
  image.setTemplateImage(true);
  
