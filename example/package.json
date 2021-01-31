@@ -18,7 +18,7 @@
     "expect": "^1.6.0",
     "express": "^4.12.3",
     "html-webpack-plugin": "^3.2.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "nebulis-endpoint": "^0.4.2",
     "node-sass": "^4.0.0",
     "prop-types": "^15.6.1",
