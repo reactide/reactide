@@ -27,14 +27,30 @@ The terminal is the life and blood of any IDE, allowing for complex manipulation
 ## Getting Started with Reactide
 The Reactide IDE can be set up in two ways, the first is to bundle the electron app and run it as a native desktop App. The instructions are as follows:
 
-1. go to your terminal and type the following:
+
+1. specify the OS you're building for in package.json by changing the --platform option in line 15 of package.json 
+
+MacOS
+```
+"electron-packager": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release
+```
+Linux
+```
+"electron-packager": "electron-packager . --overwrite --platform=linux --arch=x64 --prune=true --out=release
+```
+Windows
+```
+"electron-packager": "electron-packager . --overwrite --platform=windows --arch=x64 --prune=true --out=release
+```
+
+2. go to your terminal and type the following:
 ```
 git checkout 3.0-release
 npm install
 npm run webpack-production
 npm run electron-packager
 ```
-2. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
+3. in your Reactide folder, navigate to the release-builds folder and double-click on Reactide (executable).
 
 ## To check out Reactide in developer mode follow these instructions:
 1. go to your terminal and type the following:
