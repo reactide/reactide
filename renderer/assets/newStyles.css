@@ -561,3 +561,31 @@ CONSOLE PANE
 .xterm {
   height: 95%;
 }
+
+.welcome-heading{
+  color:grey
+}
+#welcome-page{
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.create-project p {
+  margin:2px;
+  cursor: pointer;
+  color:#00CED1;
+}
+
+#welcome-title{
+  color:#00CED1;
+}
+
+.help-heading h2{
+  color:grey
+}
+
+.help-heading p{
+  margin: 2px;
+  color:#00CED1;
+  cursor: pointer;
+}
